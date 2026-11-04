@@ -41,7 +41,13 @@ class EpisodeDiagnostics:
     def decision(self, step, diagnostic, elapsed):
         index = diagnostic['active_goal_index']
         if index != self.goal:
-            self.event('goal_changed', step, previous_index=self.goal, active_goal_index=index)
+            extra = {k: diagnostic[k] for k in ('goal_change_reason', 'goal_change_from', 'goal_change_to',
+                     'matched_goal_index', 'matched_goal_distance_sq', 'matched_goal_threshold_sq',
+                     'matched_goal_q', 'matched_confirmations', 'goal_change_direction',
+                     'alignment_match_direction', 'alignment_search_mode') if diagnostic.get(k) is not None}
+            if self.goal is None:
+                extra['goal_change_reason'] = 'initial'
+            self.event('goal_changed', step, previous_index=self.goal, active_goal_index=index, **extra)
             self.goal, self.goal_since = index, step
         row = dict(control_step=step, sim_time=step*CONTROL_DT, stacked_count=self.count,
                    max_stacked_count=self.peak, **diagnostic,
@@ -82,7 +88,7 @@ class EpisodeDiagnostics:
             (folder/f'{name}.jsonl').write_text(''.join(json.dumps(r, allow_nan=False)+'\n' for r in rows),
                                               encoding='utf-8')
         write_json(folder/'summary.json', result)
-        plot_timeline(self.steps, self.events, folder/'timeline.png')
+        plot_timeline(self.steps, self.events, folder/'timeline.png', segment_goals='variant' in result)
 
 
 def annotate_frame(frame, goal, row, label):
@@ -101,7 +107,7 @@ def annotate_frame(frame, goal, row, label):
     return np.asarray(canvas)
 
 
-def plot_timeline(rows, events, path):
+def plot_timeline(rows, events, path, segment_goals=False):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -121,8 +127,12 @@ def plot_timeline(rows, events, path):
         return [r.get(key) if r.get(key) is not None else np.nan for r in rows]
     axes[1].set_ylabel('Goal distance')
     if any(r.get('active_goal_index') is not None for r in rows):
-        axes[1].plot(times, series('goal_distance_sq'), label='distance squared')
-        axes[1].plot(times, series('goal_threshold_sq'), label='switch threshold')
+        distances = np.asarray(series('goal_distance_sq'), float)
+        if segment_goals:
+            changes = np.r_[False, np.diff(series('active_goal_index')) != 0]
+            distances[changes] = np.nan
+        axes[1].plot(times, distances, label='distance squared (within goal)' if segment_goals else 'distance squared')
+        axes[1].step(times, series('goal_threshold_sq'), where='post', label='switch threshold')
         twin = axes[1].twinx()
         twin.step(times, series('active_goal_index'), where='post', color='gray', alpha=.6)
         twin.set_ylabel('Goal index')

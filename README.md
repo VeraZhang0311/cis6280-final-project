@@ -13,6 +13,14 @@ Start with **[`assignment/README.md`](assignment/README.md)** for an overview of
 - **[Planning Track (`assignment/planning/`)](assignment/planning/README.md)** — Keep our pretrained latent world model and action-chunk policy frozen, and design a test-time planner that scores candidate action chunks against visual subgoals. You can run and edit the entire baseline in Google Colab through [`assignment/planning/colab.ipynb`](assignment/planning/colab.ipynb) without local setup.
 - **[Training Track (`assignment/training/`)](assignment/training/README.md)** — Build the five-stage pipeline from scratch, covering demonstration collection, world-model pretraining, diffusion-forcing policy training, on-policy predictor finetuning, and parallel closed-loop evaluation. Every stage has a pretrained artifact on Hugging Face so that you can start at whichever stage you want to explore.
 
+## Planning Experiment Results
+
+The completed **[G1–G7 experiment summary](notes/v1.1/RESULTS.md)** compares planning scores,
+goal alignment, adaptive resampling and a fixed 48-candidate budget. It includes a
+[versioned evidence bundle](notes/v1.1/evidence/manifest.json) with source statistics,
+figures, paired cases and checksums for the original video/log evidence. The two
+execution cohorts and their separate G1 controls are reported separately.
+
 ## Local Installation
 
 If you are running the training track or evaluating planners locally on Linux or macOS, create the Python environment and download the Sharpa Wave hand meshes with the setup script:

@@ -1,0 +1,167 @@
+[
+  {
+    "variant": "G1",
+    "category": "improved",
+    "scene": 100175,
+    "sample_seed": 0,
+    "peak_base": 0,
+    "peak": 4,
+    "delta": 4,
+    "final_base": 0,
+    "final": 4
+  },
+  {
+    "variant": "G1",
+    "category": "tied",
+    "scene": 100035,
+    "sample_seed": 3,
+    "peak_base": 1,
+    "peak": 1,
+    "delta": 0,
+    "final_base": 1,
+    "final": 1
+  },
+  {
+    "variant": "G1",
+    "category": "regressed",
+    "scene": 100069,
+    "sample_seed": 2,
+    "peak_base": 3,
+    "peak": 1,
+    "delta": -2,
+    "final_base": 0,
+    "final": 1
+  },
+  {
+    "variant": "G2",
+    "category": "improved",
+    "scene": 100175,
+    "sample_seed": 0,
+    "peak_base": 0,
+    "peak": 3,
+    "delta": 3,
+    "final_base": 0,
+    "final": 2
+  },
+  {
+    "variant": "G2",
+    "category": "tied",
+    "scene": 100035,
+    "sample_seed": 3,
+    "peak_base": 1,
+    "peak": 1,
+    "delta": 0,
+    "final_base": 1,
+    "final": 1
+  },
+  {
+    "variant": "G2",
+    "category": "regressed",
+    "scene": 100057,
+    "sample_seed": 3,
+    "peak_base": 3,
+    "peak": 1,
+    "delta": -2,
+    "final_base": 3,
+    "final": 1
+  },
+  {
+    "variant": "G3",
+    "category": "improved",
+    "scene": 100175,
+    "sample_seed": 3,
+    "peak_base": 0,
+    "peak": 3,
+    "delta": 3,
+    "final_base": 0,
+    "final": 2
+  },
+  {
+    "variant": "G3",
+    "category": "tied",
+    "scene": 100038,
+    "sample_seed": 2,
+    "peak_base": 2,
+    "peak": 2,
+    "delta": 0,
+    "final_base": 2,
+    "final": 1
+  },
+  {
+    "variant": "G3",
+    "category": "regressed",
+    "scene": 100057,
+    "sample_seed": 0,
+    "peak_base": 3,
+    "peak": 1,
+    "delta": -2,
+    "final_base": 3,
+    "final": 1
+  },
+  {
+    "variant": "G4",
+    "category": "improved",
+    "scene": 100166,
+    "sample_seed": 2,
+    "peak_base": 1,
+    "peak": 4,
+    "delta": 3,
+    "final_base": 1,
+    "final": 4
+  },
+  {
+    "variant": "G4",
+    "category": "tied",
+    "scene": 100035,
+    "sample_seed": 3,
+    "peak_base": 1,
+    "peak": 1,
+    "delta": 0,
+    "final_base": 1,
+    "final": 1
+  },
+  {
+    "variant": "G4",
+    "category": "regressed",
+    "scene": 100069,
+    "sample_seed": 2,
+    "peak_base": 3,
+    "peak": 0,
+    "delta": -3,
+    "final_base": 0,
+    "final": 0
+  },
+  {
+    "variant": "G5",
+    "category": "improved",
+    "scene": 100175,
+    "sample_seed": 3,
+    "peak_base": 0,
+    "peak": 4,
+    "delta": 4,
+    "final_base": 0,
+    "final": 4
+  },
+  {
+    "variant": "G5",
+    "category": "tied",
+    "scene": 100035,
+    "sample_seed": 3,
+    "peak_base": 1,
+    "peak": 1,
+    "delta": 0,
+    "final_base": 1,
+    "final": 0
+  },
+  {
+    "variant": "G5",
+    "category": "regressed",
+    "scene": 100069,
+    "sample_seed": 2,
+    "peak_base": 3,
+    "peak": 0,
+    "delta": -3,
+    "final_base": 0,
+    "final": 0
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "verified_utc": "2026-11-04T13:46:53.576723+00:00",
+  "episodes": {
+    "G1": 60,
+    "G6": 60,
+    "G7": 60
+  },
+  "total_episodes": 180,
+  "videos": 180,
+  "keyframes": 1080,
+  "status": "all primary and tail evidence present; final manifest complete"
+}

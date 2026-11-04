@@ -1,0 +1,2227 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "protocol_id": "4edaa31cf3cf0cadb9c89709cd71a166c13d1b1409d641217069483a2251537f",
+  "protocol": {
+    "version": "v1.1-bidirectional-r2",
+    "code": {
+      "git": null,
+      "source_sha256": "a7479528f90d86f7f141853daedad0106268384f0838f87d91f013eb8928ef5b",
+      "snapshot_origin": {
+        "branch": "tianzi-branch/v1.1",
+        "commit": "8d32302677833ee5af25fe99fadd790f41791ee0",
+        "status": " M assignment/training/planning/agent.py\n M assignment/training/planning/diagnostics.py\n M assignment/training/planning/evaluate.py\n M notes/v1.1/DESIGN.md\n?? assignment/training/planning/alignment.py\n?? assignment/training/planning/v11.py\n?? assignment/training/planning/v11_report.py\n?? notes/v1.1/IMPLEMENTATION.md\n?? notes/v1.1/RUN.md\n?? scripts/v11_pipeline.sbatch\n?? tests/test_v11_agent.py\n?? tests/test_v11_alignment.py\n?? tests/test_v11_pipeline.py\n",
+        "protocol": "v1.1-bidirectional-r2",
+        "note": "Uncommitted implementation included; actual Python and design bytes hashed by run manifest."
+      }
+    },
+    "inputs": {
+      "policy": {
+        "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+        "bytes": 156950877,
+        "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+      },
+      "world_model": {
+        "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+        "bytes": 73352395,
+        "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+      },
+      "goals": {
+        "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+        "bytes": 34086423,
+        "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+      }
+    },
+    "task": {
+      "target_count": 4,
+      "horizon": 1795,
+      "terminate_on_ground": false
+    },
+    "design": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/notes/v1.1/DESIGN.md",
+      "bytes": 18475,
+      "sha256": "d9729177243d19a72bc1695114964203b17a5e6cfc777a02d6e41006ff7c1d60"
+    },
+    "pilot_scenes": [
+      100038,
+      100069,
+      100078,
+      100152
+    ],
+    "full_scenes": [
+      100035,
+      100038,
+      100057,
+      100060,
+      100069,
+      100072,
+      100078,
+      100085,
+      100087,
+      100098,
+      100102,
+      100137,
+      100145,
+      100152,
+      100164,
+      100166,
+      100169,
+      100175,
+      100183,
+      100186
+    ],
+    "sample_seeds": [
+      0,
+      2,
+      3
+    ],
+    "initial_variants": {
+      "G0": {
+        "candidates": 16,
+        "generate": 16,
+        "execute": 1,
+        "n_steps": 10,
+        "lag": 0,
+        "tau": 0.25,
+        "scoring": "terminal",
+        "realignment": false,
+        "realignment_config": {
+          "min_dwell_s": 24.0,
+          "window_s": 8.0,
+          "improvement_fraction": 0.1,
+          "edge_samples": 4,
+          "lookahead": 3,
+          "confirmations": 3,
+          "block_s": 0.5
+        }
+      },
+      "G1": {
+        "candidates": 16,
+        "generate": 16,
+        "execute": 1,
+        "n_steps": 10,
+        "lag": 0,
+        "tau": 0.25,
+        "scoring": "tail_min",
+        "realignment": false,
+        "realignment_config": {
+          "min_dwell_s": 24.0,
+          "window_s": 8.0,
+          "improvement_fraction": 0.1,
+          "edge_samples": 4,
+          "lookahead": 3,
+          "confirmations": 3,
+          "block_s": 0.5
+        }
+      },
+      "G2": {
+        "candidates": 16,
+        "generate": 16,
+        "execute": 1,
+        "n_steps": 10,
+        "lag": 0,
+        "tau": 0.25,
+        "scoring": "tail_weighted",
+        "realignment": false,
+        "realignment_config": {
+          "min_dwell_s": 24.0,
+          "window_s": 8.0,
+          "improvement_fraction": 0.1,
+          "edge_samples": 4,
+          "lookahead": 3,
+          "confirmations": 3,
+          "block_s": 0.5
+        }
+      },
+      "G3": {
+        "candidates": 16,
+        "generate": 16,
+        "execute": 1,
+        "n_steps": 10,
+        "lag": 0,
+        "tau": 0.25,
+        "scoring": "terminal",
+        "realignment": true,
+        "realignment_config": {
+          "min_dwell_s": 24.0,
+          "window_s": 8.0,
+          "improvement_fraction": 0.1,
+          "edge_samples": 4,
+          "lookahead": 3,
+          "confirmations": 3,
+          "block_s": 0.5
+        }
+      },
+      "G4": {
+        "candidates": 16,
+        "generate": 16,
+        "execute": 1,
+        "n_steps": 10,
+        "lag": 0,
+        "tau": 0.25,
+        "scoring": "terminal",
+        "realignment": true,
+        "realignment_config": {
+          "min_dwell_s": 24.0,
+          "window_s": 8.0,
+          "improvement_fraction": 0.1,
+          "edge_samples": 4,
+          "lookahead": 3,
+          "confirmations": 3,
+          "block_s": 0.5
+        },
+        "realignment_mode": "bidirectional"
+      }
+    },
+    "formulas": {
+      "terminal": "D[16]",
+      "tail_min": "min(D[13:17])",
+      "tail_weighted": "(D[13]+2*D[14]+3*D[15]+4*D[16])/10"
+    },
+    "definitions": {
+      "G3": "forward alignment + terminal",
+      "G4": "bidirectional alignment + terminal",
+      "G5": "bidirectional alignment + selected scoring",
+      "timeout_advance": false,
+      "bidirectional_same_call_official_advance": false
+    },
+    "pilot_selection": {
+      "primary": "mean peak boxes",
+      "tie_tolerance": 0.08333333333333333,
+      "rule": "G1 only if mean peak > G2 + 1/12; otherwise G2"
+    },
+    "full_baseline": "same-runtime G0; compatible completed G0 may be reused; historical BF16 not pooled",
+    "workers": 8,
+    "gpus": "0,1,2,3",
+    "evidence": {
+      "videos": "all episodes",
+      "tail_state_steps": 56,
+      "keyframes": 6
+    },
+    "old_baseline": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/outputs/diagnostics/b1-20-1497072/run.json",
+      "bytes": 14233,
+      "sha256": "987df6cae387e39b0ddc2726f0d3fdfb728f54af565f887181cf36154f26970f"
+    },
+    "reuse": {
+      "manifest": {
+        "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/run.json",
+        "bytes": 7244,
+        "sha256": "cc808e95e15b21e3a0b4b78e22c2cafc383e539275d5815be8f3d8a2a26ae89b"
+      },
+      "episodes": {
+        "pilot/G0/scene-100038.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-0",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "d5f44270127db7a8002d7688d9a8f2cc2c55eee1ac3f2f3709eee8c19e644879"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-0/summary.json",
+              "bytes": 1106,
+              "sha256": "bfd2132097819736ee8b76172739e143488a891812b78659750c981f64136b8c"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-0/steps.jsonl",
+              "bytes": 431911,
+              "sha256": "d2cf2e1757f6e119ac2cd71bb0366c01c69c780ea9800c6d794ac94773c5cbba"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-0/events.jsonl",
+              "bytes": 1057,
+              "sha256": "b4dc260b71e4068ead6bf61adf9f51b5dcdf307ab57b32acb6680963ed686acc"
+            }
+          }
+        },
+        "pilot/G0/scene-100038.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-2",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "e96e730f64331f56f283648615b0d743753d0505f7993659ee0435370d18a4b5"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-2/summary.json",
+              "bytes": 1088,
+              "sha256": "c0a2d1a447887a5850c7eabfdfcfccbdac852e7f0644993a1263f5916a6733e5"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-2/steps.jsonl",
+              "bytes": 432833,
+              "sha256": "2d1168525b4e2d224bc6fb7659bca5abdeeb6d3e75300cdfa5c3c117ed09faf1"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-2/events.jsonl",
+              "bytes": 982,
+              "sha256": "39fec16d348a5dc4cb2a8bbcadef5c44ca9dabca472ca4dee0cd09266ebd7527"
+            }
+          }
+        },
+        "pilot/G0/scene-100038.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-3",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "4c64add4da239c7ac43d939eeda95636ee612c0ae0e1f052f59d5ce1f68817c0"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-3/summary.json",
+              "bytes": 1108,
+              "sha256": "3df7aa75e3729065805ca1827c099e80d6085ffc4450fe0ddf228b55c0d86053"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-3/steps.jsonl",
+              "bytes": 432357,
+              "sha256": "c4493a9f50f192a2bdf05b26b421f3346cf92430ef53a60b4a9f573418c6c458"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100038.sample-3/events.jsonl",
+              "bytes": 2523,
+              "sha256": "4f4fae998a86cc2af17af51eee742c10a32f2834592da0ccbb18b1f929bdd56b"
+            }
+          }
+        },
+        "pilot/G0/scene-100069.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-0",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "0a48132755e8c5dbbbed32228ab05388759fb0d7a4f66ed2254a86c74e5a4ced"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-0/summary.json",
+              "bytes": 1098,
+              "sha256": "14b49aeff7fcdee87302a96fe78f1de1fb3a1cfd65e01323c9917e59a38984e8"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-0/steps.jsonl",
+              "bytes": 432578,
+              "sha256": "4b57f738991f389cc28beb7af44d11f321597707aedc296465904ac986cad6b2"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-0/events.jsonl",
+              "bytes": 974,
+              "sha256": "d083f4be47fff6317eab47e242f4a8834db99dad7fcad5e23c747c85c598877f"
+            }
+          }
+        },
+        "pilot/G0/scene-100069.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-2",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "ac005d50be60d8bf294e7c578d95bbd1580d8175010bd41b4cd161823a5caf7a"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-2/summary.json",
+              "bytes": 1100,
+              "sha256": "e5f725c159cea3abc556b425c46a8c2b3056a5410e891f8391c3ee93897137e4"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-2/steps.jsonl",
+              "bytes": 433450,
+              "sha256": "decf4d350ed547fcf82b0a9d7b7406432b99957c0327aa2887e83eafbb808d49"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-2/events.jsonl",
+              "bytes": 1562,
+              "sha256": "e57c0d75852b595d2fa9e34763e89c1b14d514159bcd4ec617451ce445948b21"
+            }
+          }
+        },
+        "pilot/G0/scene-100069.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-3",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "04a30f4d21c6fec7395a0e909f72059dc77cc3aa325c7908246b5f0c2928e41d"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-3/summary.json",
+              "bytes": 1121,
+              "sha256": "c33f771c4b2cef86410efeea8bda99a801b25af3fce750e38c5d296f19579fb6"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-3/steps.jsonl",
+              "bytes": 431600,
+              "sha256": "e977f5f832310f4bd69657882bcee7472759566b477dd82ee3da99a87cdf9682"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100069.sample-3/events.jsonl",
+              "bytes": 1649,
+              "sha256": "ff1d196b7144cc897c7aae10f7076d0f7a633a6d02ac8621dbad3f0655019e0e"
+            }
+          }
+        },
+        "pilot/G0/scene-100078.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-0",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "0777f3de3ed2a4c638ae7cd37182c31845b081c8672a03ef18372f728a87a7a6"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-0/summary.json",
+              "bytes": 1117,
+              "sha256": "016c1d714f798b73ee224432557da11752fc4ca00b1c409e794c77616e6a123a"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-0/steps.jsonl",
+              "bytes": 434073,
+              "sha256": "4db0378c9868eecea16e7f97c8a8e1ca3b818cbf0314ae6f45d5f1180076a60b"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-0/events.jsonl",
+              "bytes": 3658,
+              "sha256": "cd8322327eb4a9bdd12a84f2c428a5ce35639894ee6ff8bc2b85b19f3fd53ef9"
+            }
+          }
+        },
+        "pilot/G0/scene-100078.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-2",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "a36dc72961f0ad2e1fe4105242fa9d0212c1744b572c2e8a284e9455e8b17d80"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-2/summary.json",
+              "bytes": 1109,
+              "sha256": "a798d99cba99556b0b5b5b4d6d693d6c642b1e858c850a272ed3a1005073cb1f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-2/steps.jsonl",
+              "bytes": 433520,
+              "sha256": "bbd1d8b194e78bf4909aa765d20f32c46d3fd3bb5738c3eea33592d70e26b9e2"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-2/events.jsonl",
+              "bytes": 3099,
+              "sha256": "cece3b1c22820b8da593b8892287305b4225596d55b9bb19cb08764d52038fe0"
+            }
+          }
+        },
+        "pilot/G0/scene-100078.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-3",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "206539c424ca53305da36a930dedfac6233b268821bc36fae0a8575a16d73d31"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-3/summary.json",
+              "bytes": 1094,
+              "sha256": "ee83112351651f2fd7cce65571c3173f937b9f64a6d2defb7d05705a6767ad8f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-3/steps.jsonl",
+              "bytes": 433691,
+              "sha256": "a7cfa4576c84bf3cc0fa14b5884f22cfc61111454f5f852a584ca294c2eb0a7a"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100078.sample-3/events.jsonl",
+              "bytes": 2770,
+              "sha256": "5ae5510c1e70f81019a34174363ad5b4da67f7b98c17eab750d085ee306158d7"
+            }
+          }
+        },
+        "pilot/G0/scene-100152.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-0",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "5f32be91496f17bdc515d53ec73a09e6faef58e587febd1168776467c3822d4c"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-0/summary.json",
+              "bytes": 1072,
+              "sha256": "b36c4b1f67c77749abbcd0778fb6a354bed251e86d1d357e45fee6074858728e"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-0/steps.jsonl",
+              "bytes": 434416,
+              "sha256": "cdc7c6c2e9b94945369bfff99835a7112088d66439749afca2f5e859308cf312"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-0/events.jsonl",
+              "bytes": 696,
+              "sha256": "cf54ba7501a494ef9f9df88b1184e59da0b852942d831585d8931dcf93ad40eb"
+            }
+          }
+        },
+        "pilot/G0/scene-100152.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-2",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "110247a824905f817cab6f1111dfdbdc94bc040ccd21622a49e391f7d421b1de"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-2/summary.json",
+              "bytes": 1099,
+              "sha256": "56685448cdc471d31ec7ade2eea0ca4c592a4cae3f34d3547bf5bf8476f230ea"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-2/steps.jsonl",
+              "bytes": 432561,
+              "sha256": "9829c4c363c95e5d7cda925a7a58c735cdd7916a974c65b4a7c9004a5bde93db"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-2/events.jsonl",
+              "bytes": 798,
+              "sha256": "2d8a8863d18afbd42bf51a86862776c8ed0d9fddfa3f9e2950f2c5b8bda89b8a"
+            }
+          }
+        },
+        "pilot/G0/scene-100152.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-3",
+          "protocol_id": "f16742c1a23010c88bc6a659496dd06711bec9dced63444966ddeaab834cefbb",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "b6e2bea6d89fb085dfd1728851cf0d05549de1c43245a50ffef99a3c85e2fc6d"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-3/summary.json",
+              "bytes": 1099,
+              "sha256": "d197ad989b553a52423f02bcc0764542fafb2eae4a29aab7a99f087c4db2984a"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-3/steps.jsonl",
+              "bytes": 430009,
+              "sha256": "4599c2594d477b22701737918e8398811d5f93806afa9e22336e3cf3253b5642"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G0/episodes/scene-100152.sample-3/events.jsonl",
+              "bytes": 1953,
+              "sha256": "d71a730d27a27515bca1d6b7134d20f9dc5c1d7a98fc66a442678ab3ab39cda1"
+            }
+          }
+        },
+        "pilot/G1/scene-100038.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-0",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "9c40255c41f4a370e3f6b61f4b6e9eb5399941686399871f1f4955168a2e4add"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-0/summary.json",
+              "bytes": 1093,
+              "sha256": "26edbe52f221065170ff94ccd1e7a75405627254a0ae5ff8aa86e8051521a6db"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-0/steps.jsonl",
+              "bytes": 433639,
+              "sha256": "bf6adb5c019efec3ad2ce5de86e8fa3633252fffedf7004aecf2770995cd2fbc"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-0/events.jsonl",
+              "bytes": 3600,
+              "sha256": "3bb5b359adb9f576d2c92a6d01de6481da280a35b2b6f7fce7def0f927215e72"
+            }
+          }
+        },
+        "pilot/G1/scene-100038.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-2",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "0cda9fa46a22fe1ac4e9990b94ba363a44242904f5f0fc781089e9d6347aed41"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-2/summary.json",
+              "bytes": 1086,
+              "sha256": "749a626d0dcb6b0ea82a3a53681feea758fb35cfded34d489edde5da06adc43b"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-2/steps.jsonl",
+              "bytes": 429941,
+              "sha256": "52ce6df7257ad6d163dfca67ec8daa6046ecd8784402e7687cf4103f5e1fa9ec"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-2/events.jsonl",
+              "bytes": 634,
+              "sha256": "0ddcfb2503b8a6bd08b6b593c57b3297ff8b4e82801c8a3f1567e7bc848b96d2"
+            }
+          }
+        },
+        "pilot/G1/scene-100038.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-3",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "80d984d51cb9c1f9848471856add9603cca338112a63844af9feb29e55cee0d4"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-3/summary.json",
+              "bytes": 1105,
+              "sha256": "44dd26ef8f81305fad545b13975c5d916604a81ad52a4c085ba59673de28a0e3"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-3/steps.jsonl",
+              "bytes": 434827,
+              "sha256": "489488dab124f00466ef390ed19de4e40845b9c527287a9f4b505d2e260d17a5"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100038.sample-3/events.jsonl",
+              "bytes": 3384,
+              "sha256": "fffd25bff6104bcca9fdb698766edce48490299ff3ff48d9e3fff4c7253c3d72"
+            }
+          }
+        },
+        "pilot/G1/scene-100069.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-0",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "ab74f896f9838a5bc5eacb5d456f31be315ac28bcb58df91099f7a025263fa93"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-0/summary.json",
+              "bytes": 1099,
+              "sha256": "5c3ead102a05c304d10b335c7b702dcd7a8d2e0f3b1f666b94e28380347298aa"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-0/steps.jsonl",
+              "bytes": 431810,
+              "sha256": "83f9e5d17f1870bf4f72416573f83e2eebaa8a007f9a41a8189e82468ddf9691"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-0/events.jsonl",
+              "bytes": 974,
+              "sha256": "b2f793422d452afa4b4e4a8a1e3756b2eb8fdd7a1bc3a333ae7479b74e8c31ea"
+            }
+          }
+        },
+        "pilot/G1/scene-100069.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-2",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "bc11c3aa7e5fc5d80220810dc667bb4a6e6703af5cad9cc25e93aa559d814c51"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-2/summary.json",
+              "bytes": 1087,
+              "sha256": "1ea47a8c52be50911069ddd84d188f46afbd8223b2768ccd31a793bd9dab476b"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-2/steps.jsonl",
+              "bytes": 433195,
+              "sha256": "2c9b4e3bf521819a193b99b21242b245e66ee9ed866e71e506d86c8ed2086746"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-2/events.jsonl",
+              "bytes": 1380,
+              "sha256": "4f1a42618858deabc474e440d8ef9b86ea1b4bfe32ddde040f7ea7b137a90a10"
+            }
+          }
+        },
+        "pilot/G1/scene-100069.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-3",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "c902cb5cf837d65e617c69b6a8c4922a43c629725952234cd78e6cc4f153989a"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-3/summary.json",
+              "bytes": 1103,
+              "sha256": "8b21a9c059809fe9ad6e93428417ff6238c9ecc971c8446861338273754aba97"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-3/steps.jsonl",
+              "bytes": 433596,
+              "sha256": "ebeec34f1e919139719f3240874fe0cba6c8e45891108f821e6c42318e298d22"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100069.sample-3/events.jsonl",
+              "bytes": 1843,
+              "sha256": "39b4609e7464f08978aace51615a25b22774b46315447c7b10fc3a9193d24556"
+            }
+          }
+        },
+        "pilot/G1/scene-100078.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-0",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "59140155f655d4008bdc8c51e7921a4c7d1428bb6019fa01eeda1616db9fb20d"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-0/summary.json",
+              "bytes": 1085,
+              "sha256": "696c56f3214e6b550c4e0ffffb81d103cf9778b54dd383558fe408e69b88fc4e"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-0/steps.jsonl",
+              "bytes": 431469,
+              "sha256": "8854559b0f9c1ea7642b567acd845f6db390423e81c2a64e1537514d6afa0b0f"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-0/events.jsonl",
+              "bytes": 1882,
+              "sha256": "881adc448801c045f0f9cc8a94dd760e6725181e341d1301440346a510b37e62"
+            }
+          }
+        },
+        "pilot/G1/scene-100078.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-2",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "379bf40b356c64f8b372db35d2a06ac62275640b04e78106cad2307d55885ba0"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-2/summary.json",
+              "bytes": 1108,
+              "sha256": "c555335238bb56eec492ba5ba81e6f1aff1723904078f78708cf6b82b6f29207"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-2/steps.jsonl",
+              "bytes": 433833,
+              "sha256": "27387b22cdc9d50c260f42c11ad4935a504100b48bd59540dce46bed12ebde5e"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-2/events.jsonl",
+              "bytes": 2743,
+              "sha256": "123626490fbf3faef1111536e825f8d74641480632a003bab8b0773892ee821e"
+            }
+          }
+        },
+        "pilot/G1/scene-100078.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-3",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "cd06b48f40a899a17fb89361fd0c0fd311ae26a7cc1e67b25b1790f202c0c87f"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-3/summary.json",
+              "bytes": 1101,
+              "sha256": "1c7f5ae8085ecbbbdc2cb95f0c6e54a355125d8aa67314fede8c09e2ea1ab933"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-3/steps.jsonl",
+              "bytes": 433868,
+              "sha256": "5180bdd0e8d6bb7a14075fc0b08b9ce27e63214c348fc3be799a4d578659a2b6"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100078.sample-3/events.jsonl",
+              "bytes": 2466,
+              "sha256": "8dd7ce14bd6cbafe3c6d9844ae0d6157343cec6fbc490f38df24bbf2bcb91968"
+            }
+          }
+        },
+        "pilot/G1/scene-100152.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-0",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "7a16932aecf25ba1b2a67d03b68764833e2597932a98c36a0f24fbc22eac5509"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-0/summary.json",
+              "bytes": 1071,
+              "sha256": "6ecab919a09de590b6325c0641bca3a3f4091d65b6ce84a4577f8f3a8f8e12c4"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-0/steps.jsonl",
+              "bytes": 434752,
+              "sha256": "d48d8ab2e2c0cef38c7a03e8145c01568efab9c624c9481105fc21353e36882f"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-0/events.jsonl",
+              "bytes": 500,
+              "sha256": "a15a253aab3005fc25156cd578b3f1fb603585aed7becfd2dcfe525fef3e826f"
+            }
+          }
+        },
+        "pilot/G1/scene-100152.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-2",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "e25678b52a7d97833f67fb3e517fa1026c83a4944cf764d717819a7eeb508481"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-2/summary.json",
+              "bytes": 1087,
+              "sha256": "75385b0940593ea478cbe8a4e82965a5686c8b60483b83e4a93547f03eab05da"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-2/steps.jsonl",
+              "bytes": 431556,
+              "sha256": "e53779f9af8596b85e44d575db503b87142c5e4916460c84b130c90efa54c746"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-2/events.jsonl",
+              "bytes": 1004,
+              "sha256": "dac1a321a2e77eecff7411a7b735c04baa4f58ca45b5741fb36d90ca0efea7e0"
+            }
+          }
+        },
+        "pilot/G1/scene-100152.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-3",
+          "protocol_id": "2baede9967e900f07828fcad6e191d2350fe82f6e78437431e38f7766ac89a79",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "45607b98fd79882a4f47cca0dbc942732c9200c354107d555ae08bea117f514f"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-3/summary.json",
+              "bytes": 1076,
+              "sha256": "f7c4516170b57565a9d7063401d8d41e376be3f8646fc9534dd82797507ce6da"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-3/steps.jsonl",
+              "bytes": 431115,
+              "sha256": "05106de47b354fba3f17d88842a3a3f4bc2d3112d893fa681c56ba6cd729ea9f"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G1/episodes/scene-100152.sample-3/events.jsonl",
+              "bytes": 504,
+              "sha256": "88638f5dc7c309e32e325ff4dc86b877ac60f1773a4268791e5ed88a15747edb"
+            }
+          }
+        },
+        "pilot/G2/scene-100038.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-0",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "b3441fd890505734eaa7d80a7f7a0433d2155cc9238e6320ec4d179a78851b1b"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-0/summary.json",
+              "bytes": 1107,
+              "sha256": "1463404f0976dbc7e2d5ab35ac72a639552a013147c840b4a4e1a9f6a22927e6"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-0/steps.jsonl",
+              "bytes": 434244,
+              "sha256": "f3f0df7d56b1cdfccb4bf53cc9d5925b8c85e6c58ec07e75691809feb8c40bfc"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-0/events.jsonl",
+              "bytes": 2764,
+              "sha256": "2a3099091d8c5d5ad47156715db8e5f75f6901f9d1d81726d6d827a736719b80"
+            }
+          }
+        },
+        "pilot/G2/scene-100038.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-2",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "f1a2590d1eefe8de4536dffe883cfb4cf2c520da3bec34690e7f84c77ef31c42"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-2/summary.json",
+              "bytes": 1086,
+              "sha256": "331b2e5263e1dbfdd7c0b1c08ebc4eea4766cdd4a2c6138ccd1c7f6a6cd818fd"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-2/steps.jsonl",
+              "bytes": 432140,
+              "sha256": "58c924c511e3d8b4e0c14a82c4aec569248fddb495e3cd300714dba88e2ccf45"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-2/events.jsonl",
+              "bytes": 586,
+              "sha256": "6a48c92f18b9c5b88c22b17f8d0e7476a0b7c53dd835321327566a2262e5d591"
+            }
+          }
+        },
+        "pilot/G2/scene-100038.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-3",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "96f37af9902f495bb2088c456ca49632378611073a08d1471d0594ac578f3ffa"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-3/summary.json",
+              "bytes": 1105,
+              "sha256": "ebbd94c807e9c177a262189f37763996ac5aac5c5508779d4714776e08341fa5"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-3/steps.jsonl",
+              "bytes": 435462,
+              "sha256": "0f725abf2ba5ac7aa363081104cd9b34d3c6cba18cb9f7306dda0a2052447723"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100038.sample-3/events.jsonl",
+              "bytes": 4082,
+              "sha256": "365addc12c60640946a7a7e1dec46b85d505b74c00b977add50c6cac8e57e268"
+            }
+          }
+        },
+        "pilot/G2/scene-100069.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-0",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "9f3563ba16a9a79369149317b3ad546bca2a9a436f460d06a947e18b0b9f2816"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-0/summary.json",
+              "bytes": 1108,
+              "sha256": "bd0bdb016f451eed5d59f5d7a1f31bcdfc9abfa22064bf11fdd1f7965700557c"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-0/steps.jsonl",
+              "bytes": 433813,
+              "sha256": "e5b893c51f69ad0a6cf26b1d81e13ddf13b1d0a20976bdc86da8a24192ea2e7f"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-0/events.jsonl",
+              "bytes": 2622,
+              "sha256": "b2834eba10d56ec5c6e22f716efeafbb9ced4551922dd1cb98a4149ba66afdaf"
+            }
+          }
+        },
+        "pilot/G2/scene-100069.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-2",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "e882d8992a9c90dde8770e13b27c2900d5b8718dcbe25c34b01ea8c8ac584a50"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-2/summary.json",
+              "bytes": 1073,
+              "sha256": "66146e75cc477620cb0e4914da874340994b79e9a0467b1baf897e9350b55436"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-2/steps.jsonl",
+              "bytes": 433421,
+              "sha256": "b5cb93d6880cc0e35d757f2b239eb61ec9502ce47d6a5fc311723d0ff3bda1b7"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-2/events.jsonl",
+              "bytes": 698,
+              "sha256": "2ec2fe9aec4db431a8af1719f12e73c122f43089dcab9a0769b16a084cb78f72"
+            }
+          }
+        },
+        "pilot/G2/scene-100069.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-3",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "46f079e3860619cb5b6f78d570944db4fbba5d90b1ed656c1e7278936f0ac006"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-3/summary.json",
+              "bytes": 1108,
+              "sha256": "caf69231bf863b60043a2490a4977c8d2d15c5096d1c57376b0fd6b87b24b6de"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-3/steps.jsonl",
+              "bytes": 434196,
+              "sha256": "e92db169c1feb0b405bd5c143511a0890a729ba087160e29f64eba94f60689bb"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100069.sample-3/events.jsonl",
+              "bytes": 1125,
+              "sha256": "c18db8b97210653de01ec10730f99110bedb61dd5e42b05a27772330a1e79571"
+            }
+          }
+        },
+        "pilot/G2/scene-100078.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-0",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "6d73c12022023ed084171df63396740059584a21dc0b55d09f44332552860af2"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-0/summary.json",
+              "bytes": 1099,
+              "sha256": "ba39abf3414ffcafa68bea58250f4f677798d99e6478a2efe8c0959234671c4e"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-0/steps.jsonl",
+              "bytes": 434772,
+              "sha256": "e627f68ca1daf3addae766120546a9376f35356e3874ee05f46801f66916f1b1"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-0/events.jsonl",
+              "bytes": 1576,
+              "sha256": "625e76dc125633a73920971725f5f82a2f4b3ed75c3ad24cc567538993180f4e"
+            }
+          }
+        },
+        "pilot/G2/scene-100078.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-2",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "e3d14089d13f1a5375562926cec074c8b3d999ad1518d64ef478f3a8f81f7937"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-2/summary.json",
+              "bytes": 1098,
+              "sha256": "6f6b126b6edfb5e45f16a0cf3585012110781d450018f5ad726d69dbcc8ba8e9"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-2/steps.jsonl",
+              "bytes": 434213,
+              "sha256": "b36e2fe639aa6eb97de13a3248e538c0890de2486e105150efd9eb201b38216c"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-2/events.jsonl",
+              "bytes": 1688,
+              "sha256": "9811b455dd93aa8d2cbd4e58465517345aa61b883a66795bbd3c4be0b2c257de"
+            }
+          }
+        },
+        "pilot/G2/scene-100078.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-3",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "f5c805123236aaa246d4d61f7b010d4586579b9034f1a0c85368bf79d5342ca3"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-3/summary.json",
+              "bytes": 1094,
+              "sha256": "b0da637258e3c8c9ca24fa52ca04bb445b283108a024fe34bbee8903927d2611"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-3/steps.jsonl",
+              "bytes": 435512,
+              "sha256": "d7a4c9ce4f008b27cb0da6d30bc513467a5de3d6c28dad785dd701b21a83f45a"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100078.sample-3/events.jsonl",
+              "bytes": 3159,
+              "sha256": "428598f2592922856636d07f05307d92c96123d73efa69b3d28ea82b657c16b8"
+            }
+          }
+        },
+        "pilot/G2/scene-100152.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-0",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "c41619e2a0b83b56f75ef6a13bf6bad0541ed0798b96f9256118a9e8f9a05aec"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-0/summary.json",
+              "bytes": 1071,
+              "sha256": "5559dc8018cdaa43d75852254c670818b72c53cd2f5b1d0c5cfd31d0e27dcb04"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-0/steps.jsonl",
+              "bytes": 434666,
+              "sha256": "813464adaf390d139c59775cccbfb9c4040e5fd85b61924497423b2c722dd055"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-0/events.jsonl",
+              "bytes": 500,
+              "sha256": "ca7772b4b2b42536312e48f0fe991f00163e4638cd22b0472b460d9004b3ef54"
+            }
+          }
+        },
+        "pilot/G2/scene-100152.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-2",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "6f5632af5f7698bafad8034e78c8a2f5c9262f9af26133bc3027f9c7d20ec536"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-2/summary.json",
+              "bytes": 1086,
+              "sha256": "f3aa0002052f32bfdd6d84488e886c47e4740571796e7067d426f0e21ad44fc6"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-2/steps.jsonl",
+              "bytes": 433992,
+              "sha256": "57f9308ea798ea15327e9cfd4ca0c393b13327d2808c27f3048bb57a4dc98871"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-2/events.jsonl",
+              "bytes": 1578,
+              "sha256": "6fdea936b31626639c013dbfdb371dd0beba63cf739c5eb746c98c079bb2c626"
+            }
+          }
+        },
+        "pilot/G2/scene-100152.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-3",
+          "protocol_id": "99935ee2cc261851c5f6190cdac87625ea8ab2ad0bce0226fe29b33a8b4a41d9",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "fc6e50f9444532d9f8eb73d84ebab818b3918a74800f1970f1ff236dc4a5d9cf"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-3/summary.json",
+              "bytes": 1087,
+              "sha256": "b7f595e4f33209084986afe640741cf00dca57ecfed703b11676ed5ac39fc64f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-3/steps.jsonl",
+              "bytes": 434247,
+              "sha256": "824b99d2ec64f1f4768e995791d61d29aaa24a38da0e4e39391a6f3b94fcf513"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G2/episodes/scene-100152.sample-3/events.jsonl",
+              "bytes": 1116,
+              "sha256": "c050eafecf56c1559d0f7ed93e6aff1c1bf27832a9ac5bb56d25546d94534d9e"
+            }
+          }
+        },
+        "pilot/G3/scene-100038.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-0",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "32b62a28f11b3fd8fadd9539b5ac2483b49f88abeae05d70e055b28c8ead7991"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-0/summary.json",
+              "bytes": 1086,
+              "sha256": "fb1ddbc2cc35dff899ba1af27f793ea9b8943e5c5ec5c76f422e6dbe2d98f01b"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-0/steps.jsonl",
+              "bytes": 534503,
+              "sha256": "3dcfe69aad84877dc958cdc2d2f763ca8e6a0c3a49d48107c10b0e465a7fb419"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-0/events.jsonl",
+              "bytes": 2970,
+              "sha256": "3e9ae249c7a6b88a3c205686e712a08361438afbf741c922be1cdd202dd69ed3"
+            }
+          }
+        },
+        "pilot/G3/scene-100038.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-2",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "47ab49c2a625046c906f6f7cd731eaf7b64d73be975f0c59c3a6263fdb13c0c9"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-2/summary.json",
+              "bytes": 1087,
+              "sha256": "d36758714656634566653e09b8f7a815549bc46af52486cc45ba23d58b0634fd"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-2/steps.jsonl",
+              "bytes": 562559,
+              "sha256": "e9efcbb312089054c075fb0302706da1ccf40275b5f11f03402449fe9522e502"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-2/events.jsonl",
+              "bytes": 1831,
+              "sha256": "885482d42c2f26472d1b8f8e659877fe572e620a16a0925917be38d8aa622d59"
+            }
+          }
+        },
+        "pilot/G3/scene-100038.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-3",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "8632e9fdff83f76755afc9f97bf9274f51da980f20fbf288ba70569975756db6"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-3/summary.json",
+              "bytes": 1094,
+              "sha256": "4c157690d22dbd3d4e31d9d04a4dd768fd368bb1a68a349a6387076eec719d00"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-3/steps.jsonl",
+              "bytes": 557266,
+              "sha256": "b277732cb04d6313d282a5891f29503fd5e332ee375cc33de7a8e9f854fd6843"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100038.sample-3/events.jsonl",
+              "bytes": 2644,
+              "sha256": "72305fdd8ecb5174830cb7bfeab401bff36ad97bda736fc0c881881423810eb5"
+            }
+          }
+        },
+        "pilot/G3/scene-100069.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-0",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "4a86d3cf5d6524e8ad20e6b81ea43f1c7916767edfadf251b165ca06ddfc6f15"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-0/summary.json",
+              "bytes": 1094,
+              "sha256": "2a0c2f804bbbf07d872533e1fe372c81381ffd0c493d88ebad92b732ed121d71"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-0/steps.jsonl",
+              "bytes": 570737,
+              "sha256": "7776f68f9e0e7072251b8d34e8e6aba0b8015d53fb6e32d254cc5dd8ef5e8a24"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-0/events.jsonl",
+              "bytes": 2252,
+              "sha256": "2a5406ac1d6e17d1a1a528ac9387af875da2266d07c876bcb9d29c8019b1cd5f"
+            }
+          }
+        },
+        "pilot/G3/scene-100069.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-2",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "96311eb6b47a7b1aca132fcd0e2af86ef2271eff7e4bf9458899811103efb8c7"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-2/summary.json",
+              "bytes": 1087,
+              "sha256": "ea959aabec05aec09c724f190b278b32caf2f6bede3db4eec6c2c19c8ef648b3"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-2/steps.jsonl",
+              "bytes": 581231,
+              "sha256": "d72e44669fad8f7f9cb1eae1e1c3f3d0914ead4b5115a44d4427098dfc931f7e"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-2/events.jsonl",
+              "bytes": 2131,
+              "sha256": "eca9aa5957970362715ac8511143330305e6f904ef93561e67bd3e7561bf2f9a"
+            }
+          }
+        },
+        "pilot/G3/scene-100069.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-3",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "3cd4fdac74509f4bb49439ffde68bfdbdeb1e45a9c1b8e14d2b4b67234908ce3"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-3/summary.json",
+              "bytes": 1107,
+              "sha256": "d095282155877f9cdce4aa3a5266e4ad9aa155a590ebae4a258ebb96f4c00280"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-3/steps.jsonl",
+              "bytes": 555186,
+              "sha256": "a7e3013ca35d9f7aa9634ed5e634b7640601d6da42ef30f51fdf8fd3c69cddfb"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100069.sample-3/events.jsonl",
+              "bytes": 2722,
+              "sha256": "acdc785a0859416cc7428229f2317357c0d5491d0eb6357694179835bba5ac84"
+            }
+          }
+        },
+        "pilot/G3/scene-100078.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-0",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "7a3bcbb0ec80bc7fcea74d854122c9415e0c7cc8f96312f6a4edbbb43cbe7022"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-0/summary.json",
+              "bytes": 1103,
+              "sha256": "1f3497b9aa54a0343029f1fc30aef995797eb27b25428b4dd623a26228f4a8d0"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-0/steps.jsonl",
+              "bytes": 533250,
+              "sha256": "ccc6511c47bc862821507bb097f368880e08d100a2aca7bceea9ced9b6c8111a"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-0/events.jsonl",
+              "bytes": 3564,
+              "sha256": "c9d9e7d8d3e6a22bc015083be09115eea4a6fff88e05a7d2d9ac10c926130a16"
+            }
+          }
+        },
+        "pilot/G3/scene-100078.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-2",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "85c3e49557156c2473e74c212bcd24c63a81a5e6343139dc3bc5cccebb3f954f"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-2/summary.json",
+              "bytes": 1121,
+              "sha256": "b202ae2961438df7d923057b86d4200ec6d5652cfb6af8109d63f7261f32e2e4"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-2/steps.jsonl",
+              "bytes": 536161,
+              "sha256": "ad07c572481b12fb42c1ef5d819096ea1a2855cad9efddca4bcf6204e6e7eee2"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-2/events.jsonl",
+              "bytes": 3472,
+              "sha256": "1ea044c30e813e0b72cf351c9030592ba81586d0fc81e2fcddc2ebf4f3d84ffa"
+            }
+          }
+        },
+        "pilot/G3/scene-100078.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-3",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "dece27c2a621a12bb2842f13d41a253b6cfbb2a1845a9d5fcd688724b825949a"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-3/summary.json",
+              "bytes": 1110,
+              "sha256": "1d9c91eb4dae93ebec43cdd10f8ffa688b55cb887c28cc8e15beae3ef12f5826"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-3/steps.jsonl",
+              "bytes": 542331,
+              "sha256": "5456919f81dd7fc51ee41378e3827cc8402276a33b524ef15f410501ab574d0c"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100078.sample-3/events.jsonl",
+              "bytes": 2641,
+              "sha256": "f109681144fb4d383b23ae06516798d61a36b37a99f258bcbabcb7250baedc85"
+            }
+          }
+        },
+        "pilot/G3/scene-100152.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-0",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "bcb36ee2433ad0bc8c70c69526d69a149e7e17acf9a5c558924485d71045c212"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-0/summary.json",
+              "bytes": 1073,
+              "sha256": "18a3cbd2b5e6e7080621656b1796b184270132a7c8ba27540607f7ac84cf7dec"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-0/steps.jsonl",
+              "bytes": 594200,
+              "sha256": "15e4902861cfee9c77ae02fe8611fd21022c71ca33b2c8478fb865e7961f8714"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-0/events.jsonl",
+              "bytes": 500,
+              "sha256": "a15a253aab3005fc25156cd578b3f1fb603585aed7becfd2dcfe525fef3e826f"
+            }
+          }
+        },
+        "pilot/G3/scene-100152.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-2",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "061ed5478626e277da3d1239289821edcedd6962a77d8c36573c5106f0ab7194"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-2/summary.json",
+              "bytes": 1108,
+              "sha256": "3063fbfab0d831aa8285dcb67de562bb5e485aadb9a8056a9ea2a1056eaa8c5e"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-2/steps.jsonl",
+              "bytes": 565726,
+              "sha256": "918311b8584ba17c737e296459994eac79bb022aad2137150634b320a34061f0"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-2/events.jsonl",
+              "bytes": 1649,
+              "sha256": "c091509278c0511d6eaef52f9ad4c1d2764ed4c8925b4c0cb874311548176976"
+            }
+          }
+        },
+        "pilot/G3/scene-100152.sample-3": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-3",
+          "protocol_id": "4564965a1fd56c9b43b903f10f3923e29f053365e67c4d5dfa40ce6de4773b64",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-3/complete.json",
+              "bytes": 131,
+              "sha256": "c9e31e0da3c0adf07dd7215291a284299420a860fede69c351db82408b68a88a"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-3/summary.json",
+              "bytes": 1095,
+              "sha256": "78d55c67a168cc2a029b33d6dfa7fdc0bb25b125682abe1718a806b609611f6c"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-3/steps.jsonl",
+              "bytes": 563412,
+              "sha256": "5a512886b09bfdebd364dca49ab2f8fd3bebd0cdf6f0c689dde6b35f0d2e7394"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/pilot/G3/episodes/scene-100152.sample-3/events.jsonl",
+              "bytes": 2238,
+              "sha256": "4050956d538795e489342a3a19d4b76e9dd019a6fe4e754d9ddf10e9a38a8e5c"
+            }
+          }
+        },
+        "full/G0/scene-100035.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "56fcc9bb135f8adfdce45475d7a14ac11f1df8294aadef6a269075d28039d93d"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-0/summary.json",
+              "bytes": 1086,
+              "sha256": "8dcebde6077d17b1d3971c5e0d12b687ffe34788c3a78051d8a35a62eb7bc52f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-0/steps.jsonl",
+              "bytes": 433698,
+              "sha256": "94802197d91d89502c97fbf341e4002446c6a8f61aa9b27ebdcb02dc8f799509"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-0/events.jsonl",
+              "bytes": 1564,
+              "sha256": "8f06caad81d9fde62678f2f02805c7d4781348d4f8e248addfed667f615b7aac"
+            }
+          }
+        },
+        "full/G0/scene-100035.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-2",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "ee875f0da79ed612217bf65b63c850e9577daf34164ca119a24dfc3f2d3a22b6"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-2/summary.json",
+              "bytes": 1087,
+              "sha256": "f457ae6c2d3a51ac8cf256466681d927f9dec9490ba3686b6a9b69690618a3a0"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-2/steps.jsonl",
+              "bytes": 433073,
+              "sha256": "cfb48329742dde2341777650912efc89d10f17352b76e46ec41a63a180c527dd"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100035.sample-2/events.jsonl",
+              "bytes": 1562,
+              "sha256": "12a00d1a7532b59e5d425db753d87c64020ef8c63395cd58e6994cba08a63fef"
+            }
+          }
+        },
+        "full/G0/scene-100038.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "beaf05fea22276e006e38b7ed6e609cbecc7968cff980fd07305c56e792366fe"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-0/summary.json",
+              "bytes": 1086,
+              "sha256": "1cd32b40ed48cced8c3b9846d1521fa6f4ff7e0a5e704a488f177f3b7ec5291f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-0/steps.jsonl",
+              "bytes": 433499,
+              "sha256": "4bfd8166fd179673008fad170468c4e42080a2166803628bae2e8e121e4e0025"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-0/events.jsonl",
+              "bytes": 2266,
+              "sha256": "043e871a0f7c693fd439f532ab9ee264e4c8dcc9dea7ced5bbcbb018c945d40e"
+            }
+          }
+        },
+        "full/G0/scene-100038.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-2",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "7262a0929bc1b688e9d51c88a506105f17971ebc8550c1e97879485b728bceb2"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-2/summary.json",
+              "bytes": 1108,
+              "sha256": "e8357564f4d02649eba38c22f624fd750319828a3cf1896be8bd85f1860b891f"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-2/steps.jsonl",
+              "bytes": 432363,
+              "sha256": "91a9e623f058eef395e7e796eec81950562484a7d717f282b964640d7d9df4d7"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100038.sample-2/events.jsonl",
+              "bytes": 1777,
+              "sha256": "f3da63179bcbe33b4388faa48bf6a3553d649aa85721b0260f96e505d4a7406e"
+            }
+          }
+        },
+        "full/G0/scene-100057.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "ad1d7464dd14a2672b21edafa32297ab07af47c5e567f3b452fa31c83f56afb8"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-0/summary.json",
+              "bytes": 1117,
+              "sha256": "341e767a80a92af3a628c73f4ee1a85ba0eff62d04d4b268878417d47f197ea9"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-0/steps.jsonl",
+              "bytes": 434201,
+              "sha256": "90914bba269f5b9abdbff5dcd4bde6cdeb341e54321e9d047616a581663d3f27"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-0/events.jsonl",
+              "bytes": 3163,
+              "sha256": "ab8968efc2569b3038153384fbb8d09b597113f14b4b9920933d4cb8cfed446c"
+            }
+          }
+        },
+        "full/G0/scene-100057.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-2",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "5c922872bb7959035168288836f235d44c3ea97481f65677b0996f570bb1844c"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-2/summary.json",
+              "bytes": 1095,
+              "sha256": "163b3bb89ca9300f2c1d2fac194146d6aca7904840b5b53dc581c360e19ef2c7"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-2/steps.jsonl",
+              "bytes": 433570,
+              "sha256": "9a2d33808b4abc7947695228ea96101c280813fa196461650d7f91fe42457ffa"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100057.sample-2/events.jsonl",
+              "bytes": 3226,
+              "sha256": "f825c5641d8b6a5b2db941730f33746fdf844955b8c2a64a11a01ad4a10586b5"
+            }
+          }
+        },
+        "full/G0/scene-100060.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "c7330f8b2a1f52b0f075eda7a472ea402fa95469eb4de6f4d3c614ad7607433e"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-0/summary.json",
+              "bytes": 1084,
+              "sha256": "c64e7e04662fd262f20c071b26293d379cf1e08062795a95e1bee97d447b7bd7"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-0/steps.jsonl",
+              "bytes": 432254,
+              "sha256": "9cf06dcf2b63073d98fdb6951f1240f95427c52f446379ab6be56c89a83db219"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-0/events.jsonl",
+              "bytes": 1795,
+              "sha256": "8541c60facc0e0c0a4e51f43642fa242d4706d52c1cc6caa40031a4992d667e8"
+            }
+          }
+        },
+        "full/G0/scene-100060.sample-2": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-2",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-2/complete.json",
+              "bytes": 131,
+              "sha256": "e4f4474bbcd4d94cee9a65546886ad736f34f72e8290f949f391be0dea125f86"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-2/summary.json",
+              "bytes": 1106,
+              "sha256": "7dc3f46f5878e288e46fae55f29a743c6bebcc280ed2d263cf9562b13e6175fc"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-2/steps.jsonl",
+              "bytes": 432323,
+              "sha256": "199605f53da430967275ce6594c8dd2fe1bbcdbd3cdb1fcb50e8e316af2d0c54"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100060.sample-2/events.jsonl",
+              "bytes": 2818,
+              "sha256": "0c268ece085fa1331c99a33dbbda0a5f66340edc886a96ceab60cc39ea92c495"
+            }
+          }
+        },
+        "full/G0/scene-100069.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100069.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100069.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "61c5e7df0459b266d4fd2c47a38002ca6fcdcc9d685be88900afe28a8f38935d"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100069.sample-0/summary.json",
+              "bytes": 1084,
+              "sha256": "ef47887656bb034d8069a9e194be0f1342895288e12187a7741fb9d6569aee33"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100069.sample-0/steps.jsonl",
+              "bytes": 431521,
+              "sha256": "2b84aa6fa27b26cdd1f1b7038a25482954e4739f957e2a26ebc2b40c399e224b"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100069.sample-0/events.jsonl",
+              "bytes": 1222,
+              "sha256": "948b8619942c5a8d9cf36b2506435b6f6a7a96f7b1fc6286b77080b410cfde10"
+            }
+          }
+        },
+        "full/G0/scene-100072.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100072.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100072.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "4958d45f47c9686410e00af76017708d9454f54bb7e2ede2cc841ea03401e4f5"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100072.sample-0/summary.json",
+              "bytes": 1084,
+              "sha256": "ed83729c27acae9aea6f9e744eab7eebfcdb9fe95373fbc1f06d1bacde64942b"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100072.sample-0/steps.jsonl",
+              "bytes": 433078,
+              "sha256": "b6382558d131bc4594a0d08652cccbf6a2c85137847e55830ecb9dd712e4b862"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100072.sample-0/events.jsonl",
+              "bytes": 1566,
+              "sha256": "1f4375d32676fffd3a468c31a056803370756c794657e029b76c706f818f9210"
+            }
+          }
+        },
+        "full/G0/scene-100078.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100078.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100078.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "2337ec4b87e5993135004ae9d0c3f31e56df7ebbe7530bd9175f30c6a02616be"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100078.sample-0/summary.json",
+              "bytes": 1085,
+              "sha256": "5973c3305604f1a7e7ae0fb4136af49b1e4c3f0482e33b9268ba1f4f198a2cdb"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100078.sample-0/steps.jsonl",
+              "bytes": 431502,
+              "sha256": "73a5c84ca790e00e3542ebf8e2a7a7936e98efba430b240fe688a08c1e7f316b"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100078.sample-0/events.jsonl",
+              "bytes": 1868,
+              "sha256": "16c82da8314b114b06bd8a15311c2af4875fbf896b585f83f30e4ec7885b7edd"
+            }
+          }
+        },
+        "full/G0/scene-100085.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100085.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100085.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "792612ae8a54ebb36c1ddeb981108d06c900f3a46fb4a79487670e92cd4ae8d9"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100085.sample-0/summary.json",
+              "bytes": 1094,
+              "sha256": "2134aed9b539218e13656df4250a2e5c414b13f577737ccbcda1ad6933b780a8"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100085.sample-0/steps.jsonl",
+              "bytes": 433638,
+              "sha256": "6d401bc8728012afd819a86b557e0296525d5113f7f24056cad5958eea5b7f9a"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100085.sample-0/events.jsonl",
+              "bytes": 1763,
+              "sha256": "572c420cbb97608763fc8498e4556465f8e2c7aa261df59d21a4d03a3be4dbf7"
+            }
+          }
+        },
+        "full/G0/scene-100087.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100087.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100087.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "ee198d4b3a32a43bb15903c161309fb6d91ab4252085362bd3a2a9e0d40dd751"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100087.sample-0/summary.json",
+              "bytes": 1109,
+              "sha256": "02c230e14896adaf45d2599cd991e1ff41b34422ca29f689d44d64166aa4066d"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100087.sample-0/steps.jsonl",
+              "bytes": 433395,
+              "sha256": "656e4b4f100c819a7ef0bd152bd152886c0a5df085a80d68b27868dba398ba90"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100087.sample-0/events.jsonl",
+              "bytes": 2453,
+              "sha256": "1ef9ec378b41462d0cad8f08e1bedfa60867923362ac8aac1468e31453d0f42c"
+            }
+          }
+        },
+        "full/G0/scene-100098.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100098.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100098.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "ad5fdcd199560d51ad08fee864aea2aa75dcd70b6bce07aa531a291e25c6e831"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100098.sample-0/summary.json",
+              "bytes": 1106,
+              "sha256": "ac6690216b93aa64755752960102ace8bf99587e32a6b7cbf9ddccaffe97839a"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100098.sample-0/steps.jsonl",
+              "bytes": 434151,
+              "sha256": "fb415d377a65dbcb04e76ab48fbffed07a592dabf85ba02dc021e5c6c6f48871"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100098.sample-0/events.jsonl",
+              "bytes": 3315,
+              "sha256": "6a4985ff2bef5c548894e5adfc5a2b1baa4cf3e2a87bd5e877b88dd25c2fba76"
+            }
+          }
+        },
+        "full/G0/scene-100102.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100102.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100102.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "dd545fd049a0c8d7512d003acb185d6f3748893c0bf59c378a8b19d4250f3855"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100102.sample-0/summary.json",
+              "bytes": 1086,
+              "sha256": "6574df46a5e5f2faad04217969aad6f2934f700afc1a28dcfb9bc46c097476d2"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100102.sample-0/steps.jsonl",
+              "bytes": 433966,
+              "sha256": "ac4f38d69c6393fa8fd3d034ceaebc00658df0f893b604a7e7da70237868964a"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100102.sample-0/events.jsonl",
+              "bytes": 1366,
+              "sha256": "a82bb2df384bcb1609477651883f298ac781da36ae0c043b71ce852feabb79b4"
+            }
+          }
+        },
+        "full/G0/scene-100137.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100137.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100137.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "58371c48dbb9ed49a34bbe91af415ec28a87229d690d6f34ffe524d4349ce575"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100137.sample-0/summary.json",
+              "bytes": 1086,
+              "sha256": "c4af15ddeaf5ed94965b66f75f5810137287e1e3b0126406fed2b8770ca30e22"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100137.sample-0/steps.jsonl",
+              "bytes": 434021,
+              "sha256": "c8828d73af2fcadfd6f40f3698e04c6d0570885ae960a24a98d727cf5e52845c"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100137.sample-0/events.jsonl",
+              "bytes": 1578,
+              "sha256": "6f2029d0c85671950e6d80ad4777dd9f1cbc676989de99ec69acd71f21e494fb"
+            }
+          }
+        },
+        "full/G0/scene-100145.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100145.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100145.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "2e205de60713316d33d897271d9eab83b9554d4f9200a47ada7497125d0f41f0"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100145.sample-0/summary.json",
+              "bytes": 1107,
+              "sha256": "ff113a23961ba9aff68262c6b902d53999dc20c38f24e88ff6fda10bdf5592db"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100145.sample-0/steps.jsonl",
+              "bytes": 432222,
+              "sha256": "04c5cc9193ebeecdf644fc47e18b1240c2f96b1421f06653facae5d677509ac1"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100145.sample-0/events.jsonl",
+              "bytes": 2631,
+              "sha256": "006696c51ee26fe858bb1f224a22cf2f4f7abc2e551a687873e4f916a6318fff"
+            }
+          }
+        },
+        "full/G0/scene-100152.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100152.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100152.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "95090564fb922a77eacbf7fb41f101e6c0e2c4868c2a1bf5ac18960037c3bd26"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100152.sample-0/summary.json",
+              "bytes": 1073,
+              "sha256": "e338dd473f2c5e57e12114c24c37dfee7c00df1379013656ab329b273eaef5a6"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100152.sample-0/steps.jsonl",
+              "bytes": 433821,
+              "sha256": "d1f72eefd1568c482e501aa394ea53a33ff34bdbfe246252d0e1ac03a8a9f36e"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100152.sample-0/events.jsonl",
+              "bytes": 698,
+              "sha256": "86443e321a5955083e04dff2034dbf8f87a56575aa6df4a40ff4187cb4cbd8b5"
+            }
+          }
+        },
+        "full/G0/scene-100164.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100164.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100164.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "2bf9646a1d9df20e4c2534f92af0d3312f34ead7e3e075f9a3e2d65640eb29b4"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100164.sample-0/summary.json",
+              "bytes": 1072,
+              "sha256": "50335b975bb9040d1cbbaa77029b424cd2a569c841ccaf79d8bbf19ddb93d683"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100164.sample-0/steps.jsonl",
+              "bytes": 434169,
+              "sha256": "7c29ffe41cb9d33e89d72daaf5407b76c17cbb37cccd73a7c5024c5650787ca4"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100164.sample-0/events.jsonl",
+              "bytes": 696,
+              "sha256": "b79877fbc33d1cc11ee61f10e957bc03c56bcc28746d591dc1ca6088a7dd5822"
+            }
+          }
+        },
+        "full/G0/scene-100166.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100166.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100166.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "50cd85ef374397cd322ba36e06eabd562a9194c907804e41bd2e46fe10a3a0a3"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100166.sample-0/summary.json",
+              "bytes": 1093,
+              "sha256": "34bc55e307852a5833d5e7b1e76f58072502ac55f60fd6a657f86efd4c252172"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100166.sample-0/steps.jsonl",
+              "bytes": 433430,
+              "sha256": "68b468e0dac2b7d7e3cf031952068454ea70bc9bb52c9cdcb3b5c15270a3cb57"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100166.sample-0/events.jsonl",
+              "bytes": 2741,
+              "sha256": "a843a247a17144c0e328ebe5ced9d558d099fc2b9e0a6e300ef67913b05fdbe7"
+            }
+          }
+        },
+        "full/G0/scene-100169.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100169.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100169.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "20dd6ca2c18f78dd4a2b826c1382780dc5fe1250c7ae478b7aa66ab9a698f971"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100169.sample-0/summary.json",
+              "bytes": 1118,
+              "sha256": "6ea6132a4ecf23cb60eb4b26aceb19a9494918deef4078d46958c604467f3d7a"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100169.sample-0/steps.jsonl",
+              "bytes": 435561,
+              "sha256": "c847a6d9252c96cb006c4ce6f1e386541319e76dbef5f9355da39ef6f26c30f0"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100169.sample-0/events.jsonl",
+              "bytes": 3163,
+              "sha256": "2a42e8147bed12eedf91022d720af8b2677ebf4a534ae7b0f0423fb4d203f8e0"
+            }
+          }
+        },
+        "full/G0/scene-100175.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100175.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100175.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "ffd891fe04eecef7bd5f1df8f683572c7d5d6e5c5c9d90b56ff9e4de161920f7"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100175.sample-0/summary.json",
+              "bytes": 1073,
+              "sha256": "99914b13f56344ea6a1870aea0e8ca59a31c768e8c1a957eac3e7abfb7cf3d84"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100175.sample-0/steps.jsonl",
+              "bytes": 432535,
+              "sha256": "f729619f2d947f6559145762c929f69cb942368b420eb45cee1ebc0477350849"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100175.sample-0/events.jsonl",
+              "bytes": 500,
+              "sha256": "a747edb295d1a05bb1f13ac872731c1384cc94e40527cc4b8e22bed5e95c4037"
+            }
+          }
+        },
+        "full/G0/scene-100183.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100183.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100183.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "e0903803318d33222b77253025c80b41e2fa467298d5fb1e1aed189615578968"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100183.sample-0/summary.json",
+              "bytes": 1099,
+              "sha256": "8120235971a72a492ab4306c568b72219fe863afd4e5191204ffc77775965740"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100183.sample-0/steps.jsonl",
+              "bytes": 432983,
+              "sha256": "bd547a963929ad24561ecaa96c4aedf815711526ac9d6e799567a4decfcc363e"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100183.sample-0/events.jsonl",
+              "bytes": 1774,
+              "sha256": "8c2caffde7c72d2875c0f96abff6d36d12fb3f4f08f8484cfcc410fb779eda6c"
+            }
+          }
+        },
+        "full/G0/scene-100186.sample-0": {
+          "source": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100186.sample-0",
+          "protocol_id": "9d24c24660fbb3a61e40f61abf51f744d10c44de6f86a6e550a16402401fcfbd",
+          "files": {
+            "complete.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100186.sample-0/complete.json",
+              "bytes": 131,
+              "sha256": "60e49db84ea691e83f064b1ef977238d8423bfd1b519b2f93a2bee6f82e25bd7"
+            },
+            "summary.json": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100186.sample-0/summary.json",
+              "bytes": 1072,
+              "sha256": "cd9e4323d4dcf6264951dd2fcfdf8f25502e918f46aff50b05129ffd3fe0748a"
+            },
+            "steps.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100186.sample-0/steps.jsonl",
+              "bytes": 434041,
+              "sha256": "b7ede3a2d735db269d21a0cee3a38fa997f2196c4a6bf64ae858ac361421c629"
+            },
+            "events.jsonl": {
+              "path": "/mnt/projects/ll/tianzizh/cis6280-v11-20261103/outputs/planning/v1.1/run-1498776/full/G0/episodes/scene-100186.sample-0/events.jsonl",
+              "bytes": 696,
+              "sha256": "b79877fbc33d1cc11ee61f10e957bc03c56bcc28746d591dc1ca6088a7dd5822"
+            }
+          }
+        }
+      },
+      "execution_signature": {
+        "gpu": "NVIDIA GeForce RTX 2080 Ti",
+        "torch": "2.11.0+cu128",
+        "cuda": "12.8",
+        "numpy": "2.5.1",
+        "mujoco": "3.15.0",
+        "encoder_autocast_dtype": "torch.float16",
+        "model_parameter_dtype": "torch.float32",
+        "policy_parameter_dtype": "torch.float32",
+        "policy_autocast_dtype": null
+      },
+      "runtime": [
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "1",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "0",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "3",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "2",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        }
+      ],
+      "rule": "Only completed compatible G0-G3 are linked; old G4 excluded, never relabelled as G5"
+    }
+  },
+  "runtime": [
+    {
+      "gpu": "NVIDIA GeForce RTX 2080 Ti",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "device": "cuda",
+      "cuda_visible_devices": "1",
+      "encoder_autocast_dtype": "torch.float16",
+      "model_parameter_dtype": "torch.float32",
+      "policy_parameter_dtype": "torch.float32",
+      "policy_autocast_dtype": null
+    },
+    {
+      "gpu": "NVIDIA GeForce RTX 2080 Ti",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "device": "cuda",
+      "cuda_visible_devices": "0",
+      "encoder_autocast_dtype": "torch.float16",
+      "model_parameter_dtype": "torch.float32",
+      "policy_parameter_dtype": "torch.float32",
+      "policy_autocast_dtype": null
+    },
+    {
+      "gpu": "NVIDIA GeForce RTX 2080 Ti",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "device": "cuda",
+      "cuda_visible_devices": "3",
+      "encoder_autocast_dtype": "torch.float16",
+      "model_parameter_dtype": "torch.float32",
+      "policy_parameter_dtype": "torch.float32",
+      "policy_autocast_dtype": null
+    },
+    {
+      "gpu": "NVIDIA GeForce RTX 2080 Ti",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "device": "cuda",
+      "cuda_visible_devices": "2",
+      "encoder_autocast_dtype": "torch.float16",
+      "model_parameter_dtype": "torch.float32",
+      "policy_parameter_dtype": "torch.float32",
+      "policy_autocast_dtype": null
+    }
+  ],
+  "completed_new_episodes": 360,
+  "started_utc": "2026-11-04T02:28:23.421645+00:00",
+  "execution_signature": {
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "numpy": "2.5.1",
+    "mujoco": "3.15.0",
+    "encoder_autocast_dtype": "torch.float16",
+    "model_parameter_dtype": "torch.float32",
+    "policy_parameter_dtype": "torch.float32",
+    "policy_autocast_dtype": null
+  },
+  "reused_episodes": 72,
+  "stage": "full",
+  "variant": "G5",
+  "planned_group_episodes": 60,
+  "remaining_group_episodes": 0,
+  "ended_utc": "2026-11-04T03:26:47.107435+00:00"
+}

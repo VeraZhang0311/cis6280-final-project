@@ -1,0 +1,63 @@
+{
+  "protocol_id": "85c2762435a7b05b5e9596aeaed1a3c03a391da1d1dbeae329724c226b03dd02",
+  "stage": "full",
+  "variant": "G5",
+  "config": {
+    "candidates": 16,
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "tau": 0.25,
+    "scoring": "tail_weighted",
+    "realignment": true,
+    "realignment_config": {
+      "min_dwell_s": 24.0,
+      "window_s": 8.0,
+      "improvement_fraction": 0.1,
+      "edge_samples": 4,
+      "lookahead": 3,
+      "confirmations": 3,
+      "block_s": 0.5
+    },
+    "realignment_mode": "bidirectional"
+  },
+  "scoring_formula": "(D[13]+2*D[14]+3*D[15]+4*D[16])/10",
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "task": {
+    "target_count": 4,
+    "horizon": 1795,
+    "terminate_on_ground": false
+  },
+  "evidence": {
+    "videos": "all episodes",
+    "tail_state_steps": 56,
+    "keyframes": 6
+  }
+}

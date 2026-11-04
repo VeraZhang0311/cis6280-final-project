@@ -1,0 +1,46 @@
+{
+  "protocol_id": "3dc0ed8f16d8dd0d48a14502062c8161602ff79b85022ac7762685724bf4d886",
+  "stage": "pilot",
+  "variant": "G3",
+  "config": {
+    "candidates": 16,
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "tau": 0.25,
+    "scoring": "terminal",
+    "realignment": true,
+    "realignment_config": {
+      "min_dwell_s": 24.0,
+      "window_s": 8.0,
+      "improvement_fraction": 0.1,
+      "edge_samples": 4,
+      "lookahead": 3,
+      "confirmations": 3,
+      "block_s": 0.5
+    }
+  },
+  "scoring_formula": "D[16]",
+  "scene_seeds": [
+    100038,
+    100069,
+    100078,
+    100152
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "task": {
+    "target_count": 4,
+    "horizon": 1795,
+    "terminate_on_ground": false
+  },
+  "evidence": {
+    "videos": "all episodes",
+    "tail_state_steps": 56,
+    "keyframes": 6
+  }
+}

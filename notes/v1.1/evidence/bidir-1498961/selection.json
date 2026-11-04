@@ -1,0 +1,47 @@
+{
+  "selected_source": "G2",
+  "scoring": "tail_weighted",
+  "rule": "G1 only if mean peak exceeds G2 by more than 1/pilot_n; otherwise G2",
+  "mean_peak_difference_g1_minus_g2": 0.0,
+  "tie_tolerance_mean_peak": 0.08333333333333333,
+  "protocol_version": "v1.1-bidirectional-r2",
+  "combined_group": "G5",
+  "config": {
+    "candidates": 16,
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "tau": 0.25,
+    "scoring": "tail_weighted",
+    "realignment": true,
+    "realignment_config": {
+      "min_dwell_s": 24.0,
+      "window_s": 8.0,
+      "improvement_fraction": 0.1,
+      "edge_samples": 4,
+      "lookahead": 3,
+      "confirmations": 3,
+      "block_s": 0.5
+    },
+    "realignment_mode": "bidirectional"
+  },
+  "based_only_on": "fixed pilot; full results are not used",
+  "pilot_summaries": {
+    "G1": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/pilot/G1/summary.json",
+      "bytes": 989,
+      "sha256": "2bc769caff76d1083a954f99c8914d93ee383ffda3d9bb091dd54c4c6a0255d8"
+    },
+    "G2": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/pilot/G2/summary.json",
+      "bytes": 1019,
+      "sha256": "b3a2a70018970198037ed00899b54b916addc13ca4ac602788d4245a09f60d86"
+    },
+    "G4": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/pilot/G4/summary.json",
+      "bytes": 998,
+      "sha256": "3893e95c86726d7cb8401df0a19de7910f5aa20c54f5debfc3fb69a3e610d9df"
+    }
+  }
+}

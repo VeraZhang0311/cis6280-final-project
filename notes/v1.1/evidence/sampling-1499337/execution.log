@@ -1,0 +1,224 @@
+test_bidirectional_search_clips_both_boundaries (test_v11_agent.VariantAgent.test_bidirectional_search_clips_both_boundaries) ... ok
+test_bidirectional_uses_matched_target_this_call_then_official_next_call (test_v11_agent.VariantAgent.test_bidirectional_uses_matched_target_this_call_then_official_next_call) ... ok
+test_g0_matches_legacy_actions_rng_goal_and_rollout_calls (test_v11_agent.VariantAgent.test_g0_matches_legacy_actions_rng_goal_and_rollout_calls) ... ok
+test_realignment_then_official_advance_uses_real_observations_and_resets (test_v11_agent.VariantAgent.test_realignment_then_official_advance_uses_real_observations_and_resets) ... ok
+test_tail_formulas_select_different_candidates (test_v11_agent.VariantAgent.test_tail_formulas_select_different_candidates) ... ok
+test_tail_min_executes_first_block_not_closest_future_block (test_v11_agent.VariantAgent.test_tail_min_executes_first_block_not_closest_future_block) ... ok
+test_default_dwell_window_and_three_real_confirmations (test_v11_alignment.AlignmentRules.test_default_dwell_window_and_three_real_confirmations) ... ok
+test_improvement_or_official_switch_clears_pending (test_v11_alignment.AlignmentRules.test_improvement_or_official_switch_clears_pending) ... ok
+test_matching_uses_threshold_ratio_ties_and_rejects_zero_threshold (test_v11_alignment.AlignmentRules.test_matching_uses_threshold_ratio_ties_and_rejects_zero_threshold) ... ok
+test_nonmatching_real_observation_breaks_confirmation (test_v11_alignment.AlignmentRules.test_nonmatching_real_observation_breaks_confirmation) ... ok
+test_backward_and_forward_with_three_confirmations (test_v11_alignment.BidirectionalRules.test_backward_and_forward_with_three_confirmations) ... ok
+test_current_nearest_change_then_earlier_tie_breaks (test_v11_alignment.BidirectionalRules.test_current_nearest_change_then_earlier_tie_breaks) ... ok
+test_timeout_without_match_and_zero_threshold_never_moves (test_v11_alignment.BidirectionalRules.test_timeout_without_match_and_zero_threshold_never_moves) ... ok
+test_new_g4_and_selected_g5_are_bidirectional (test_v11_pipeline.PilotAndPairs.test_new_g4_and_selected_g5_are_bidirectional) ... ok
+test_pairs_match_identity_and_bootstrap_whole_scene (test_v11_pipeline.PilotAndPairs.test_pairs_match_identity_and_bootstrap_whole_scene) ... ok
+test_precommitted_tie_prefers_weighted_and_clear_gain_selects_min (test_v11_pipeline.PilotAndPairs.test_precommitted_tie_prefers_weighted_and_clear_gain_selects_min) ... ok
+test_reuse_excludes_old_g4_and_rejects_timeout_config (test_v11_pipeline.PilotAndPairs.test_reuse_excludes_old_g4_and_rejects_timeout_config) ... ok
+test_context_includes_executed_actions_once_and_logs_do_not_consume_rng (test_v11_sampling_agent.SamplingAgent.test_context_includes_executed_actions_once_and_logs_do_not_consume_rng) ... ok
+test_g7_has_one_48_candidate_policy_and_rollout_batch (test_v11_sampling_agent.SamplingAgent.test_g7_has_one_48_candidate_policy_and_rollout_batch) ... ok
+test_one_batch_when_sufficient_improvement (test_v11_sampling_agent.SamplingAgent.test_one_batch_when_sufficient_improvement) ... ok
+test_retains_earlier_best_even_if_later_batches_worse_or_tied (test_v11_sampling_agent.SamplingAgent.test_retains_earlier_best_even_if_later_batches_worse_or_tied) ... ok
+test_second_batch_improves_and_third_is_not_sampled (test_v11_sampling_agent.SamplingAgent.test_second_batch_improves_and_third_is_not_sampled) ... ok
+test_both_conditions_required_to_resample_and_strict_threshold (test_v11_sampling_rules.StopRules.test_both_conditions_required_to_resample_and_strict_threshold) ... ok
+test_maximum_stops_even_if_all_candidates_predict_worsening (test_v11_sampling_rules.StopRules.test_maximum_stops_even_if_all_candidates_predict_worsening) ... ok
+test_zero_current_distance_and_zero_threshold (test_v11_sampling_rules.StopRules.test_zero_current_distance_and_zero_threshold) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.218s
+
+OK
+test_goal_diagnostics_use_post_switch_goal_including_skips (test_planning_diagnostics.AgentDiagnostics.test_goal_diagnostics_use_post_switch_goal_including_skips) ... ok
+test_logging_preserves_actions_rng_and_rollout_count (test_planning_diagnostics.AgentDiagnostics.test_logging_preserves_actions_rng_and_rollout_count) ... ok
+test_prediction_and_plan_are_aligned_with_previous_plan (test_planning_diagnostics.AgentDiagnostics.test_prediction_and_plan_are_aligned_with_previous_plan) ... ok
+test_evaluator_records_control_events_and_roundtrips_outputs (test_planning_diagnostics.TaskDiagnostics.test_evaluator_records_control_events_and_roundtrips_outputs) ... ok
+test_events_keep_between_block_transients_and_censoring (test_planning_diagnostics.TaskDiagnostics.test_events_keep_between_block_transients_and_censoring) ... ok
+test_official_final_off_grid_goal_is_accepted (test_planning_diagnostics.TaskDiagnostics.test_official_final_off_grid_goal_is_accepted) ... ok
+test_slurm_worker_selects_within_allocation (test_planning_diagnostics.TaskDiagnostics.test_slurm_worker_selects_within_allocation) ... ok
+test_summary_does_not_turn_censored_time_into_transition (test_planning_diagnostics.TaskDiagnostics.test_summary_does_not_turn_censored_time_into_transition) ... ok
+test_tail_evidence_is_bounded_copies_rows_and_records_hand_exclusion (test_planning_diagnostics.TaskDiagnostics.test_tail_evidence_is_bounded_copies_rows_and_records_hand_exclusion) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.720s
+
+OK
+{"stage": "full", "variant": "G1", "scene": 100038, "sample": 0, "peak": 4, "final": 4, "remaining": 59}
+{"stage": "full", "variant": "G1", "scene": 100057, "sample": 0, "peak": 1, "final": 1, "remaining": 58}
+{"stage": "full", "variant": "G1", "scene": 100035, "sample": 0, "peak": 2, "final": 2, "remaining": 57}
+{"stage": "full", "variant": "G1", "scene": 100060, "sample": 0, "peak": 1, "final": 0, "remaining": 56}
+{"stage": "full", "variant": "G1", "scene": 100072, "sample": 0, "peak": 0, "final": 0, "remaining": 55}
+{"stage": "full", "variant": "G1", "scene": 100085, "sample": 0, "peak": 0, "final": 0, "remaining": 54}
+{"stage": "full", "variant": "G1", "scene": 100069, "sample": 0, "peak": 1, "final": 1, "remaining": 53}
+{"stage": "full", "variant": "G1", "scene": 100078, "sample": 0, "peak": 1, "final": 1, "remaining": 52}
+{"stage": "full", "variant": "G1", "scene": 100137, "sample": 0, "peak": 3, "final": 2, "remaining": 51}
+{"stage": "full", "variant": "G1", "scene": 100087, "sample": 0, "peak": 2, "final": 2, "remaining": 50}
+{"stage": "full", "variant": "G1", "scene": 100098, "sample": 0, "peak": 1, "final": 1, "remaining": 49}
+{"stage": "full", "variant": "G1", "scene": 100102, "sample": 0, "peak": 3, "final": 3, "remaining": 48}
+{"stage": "full", "variant": "G1", "scene": 100152, "sample": 0, "peak": 0, "final": 0, "remaining": 47}
+{"stage": "full", "variant": "G1", "scene": 100145, "sample": 0, "peak": 3, "final": 1, "remaining": 46}
+{"stage": "full", "variant": "G1", "scene": 100164, "sample": 0, "peak": 0, "final": 0, "remaining": 45}
+{"stage": "full", "variant": "G1", "scene": 100166, "sample": 0, "peak": 3, "final": 0, "remaining": 44}
+{"stage": "full", "variant": "G1", "scene": 100183, "sample": 0, "peak": 0, "final": 0, "remaining": 43}
+{"stage": "full", "variant": "G1", "scene": 100169, "sample": 0, "peak": 1, "final": 1, "remaining": 42}
+{"stage": "full", "variant": "G1", "scene": 100186, "sample": 0, "peak": 2, "final": 2, "remaining": 41}
+{"stage": "full", "variant": "G1", "scene": 100175, "sample": 0, "peak": 3, "final": 3, "remaining": 40}
+{"stage": "full", "variant": "G1", "scene": 100060, "sample": 2, "peak": 1, "final": 1, "remaining": 39}
+{"stage": "full", "variant": "G1", "scene": 100057, "sample": 2, "peak": 3, "final": 3, "remaining": 38}
+{"stage": "full", "variant": "G1", "scene": 100038, "sample": 2, "peak": 1, "final": 1, "remaining": 37}
+{"stage": "full", "variant": "G1", "scene": 100035, "sample": 2, "peak": 4, "final": 1, "remaining": 36}
+{"stage": "full", "variant": "G1", "scene": 100069, "sample": 2, "peak": 1, "final": 1, "remaining": 35}
+{"stage": "full", "variant": "G1", "scene": 100072, "sample": 2, "peak": 1, "final": 1, "remaining": 34}
+{"stage": "full", "variant": "G1", "scene": 100078, "sample": 2, "peak": 2, "final": 2, "remaining": 33}
+{"stage": "full", "variant": "G1", "scene": 100085, "sample": 2, "peak": 2, "final": 2, "remaining": 32}
+{"stage": "full", "variant": "G1", "scene": 100087, "sample": 2, "peak": 1, "final": 1, "remaining": 31}
+{"stage": "full", "variant": "G1", "scene": 100098, "sample": 2, "peak": 0, "final": 0, "remaining": 30}
+{"stage": "full", "variant": "G1", "scene": 100102, "sample": 2, "peak": 3, "final": 3, "remaining": 29}
+{"stage": "full", "variant": "G1", "scene": 100137, "sample": 2, "peak": 1, "final": 1, "remaining": 28}
+{"stage": "full", "variant": "G1", "scene": 100152, "sample": 2, "peak": 1, "final": 1, "remaining": 27}
+{"stage": "full", "variant": "G1", "scene": 100145, "sample": 2, "peak": 3, "final": 1, "remaining": 26}
+{"stage": "full", "variant": "G1", "scene": 100164, "sample": 2, "peak": 2, "final": 2, "remaining": 25}
+{"stage": "full", "variant": "G1", "scene": 100166, "sample": 2, "peak": 1, "final": 1, "remaining": 24}
+{"stage": "full", "variant": "G1", "scene": 100175, "sample": 2, "peak": 1, "final": 1, "remaining": 23}
+{"stage": "full", "variant": "G1", "scene": 100169, "sample": 2, "peak": 1, "final": 1, "remaining": 22}
+{"stage": "full", "variant": "G1", "scene": 100186, "sample": 2, "peak": 2, "final": 1, "remaining": 21}
+{"stage": "full", "variant": "G1", "scene": 100183, "sample": 2, "peak": 1, "final": 1, "remaining": 20}
+{"stage": "full", "variant": "G1", "scene": 100035, "sample": 3, "peak": 1, "final": 1, "remaining": 19}
+{"stage": "full", "variant": "G1", "scene": 100069, "sample": 3, "peak": 1, "final": 0, "remaining": 18}
+{"stage": "full", "variant": "G1", "scene": 100057, "sample": 3, "peak": 2, "final": 1, "remaining": 17}
+{"stage": "full", "variant": "G1", "scene": 100060, "sample": 3, "peak": 2, "final": 2, "remaining": 16}
+{"stage": "full", "variant": "G1", "scene": 100038, "sample": 3, "peak": 1, "final": 1, "remaining": 15}
+{"stage": "full", "variant": "G1", "scene": 100072, "sample": 3, "peak": 0, "final": 0, "remaining": 14}
+{"stage": "full", "variant": "G1", "scene": 100078, "sample": 3, "peak": 2, "final": 2, "remaining": 13}
+{"stage": "full", "variant": "G1", "scene": 100085, "sample": 3, "peak": 1, "final": 1, "remaining": 12}
+{"stage": "full", "variant": "G1", "scene": 100087, "sample": 3, "peak": 1, "final": 1, "remaining": 11}
+{"stage": "full", "variant": "G1", "scene": 100098, "sample": 3, "peak": 0, "final": 0, "remaining": 10}
+{"stage": "full", "variant": "G1", "scene": 100102, "sample": 3, "peak": 1, "final": 1, "remaining": 9}
+{"stage": "full", "variant": "G1", "scene": 100137, "sample": 3, "peak": 0, "final": 0, "remaining": 8}
+{"stage": "full", "variant": "G1", "scene": 100152, "sample": 3, "peak": 1, "final": 1, "remaining": 7}
+{"stage": "full", "variant": "G1", "scene": 100164, "sample": 3, "peak": 2, "final": 2, "remaining": 6}
+{"stage": "full", "variant": "G1", "scene": 100145, "sample": 3, "peak": 2, "final": 1, "remaining": 5}
+{"stage": "full", "variant": "G1", "scene": 100166, "sample": 3, "peak": 1, "final": 1, "remaining": 4}
+{"stage": "full", "variant": "G1", "scene": 100175, "sample": 3, "peak": 0, "final": 0, "remaining": 3}
+{"stage": "full", "variant": "G1", "scene": 100169, "sample": 3, "peak": 3, "final": 1, "remaining": 2}
+{"stage": "full", "variant": "G1", "scene": 100183, "sample": 3, "peak": 3, "final": 2, "remaining": 1}
+{"stage": "full", "variant": "G1", "scene": 100186, "sample": 3, "peak": 1, "final": 1, "remaining": 0}
+{"stage": "full", "variant": "G6", "scene": 100035, "sample": 0, "peak": 2, "final": 2, "remaining": 59}
+{"stage": "full", "variant": "G6", "scene": 100038, "sample": 0, "peak": 2, "final": 2, "remaining": 58}
+{"stage": "full", "variant": "G6", "scene": 100057, "sample": 0, "peak": 2, "final": 1, "remaining": 57}
+{"stage": "full", "variant": "G6", "scene": 100060, "sample": 0, "peak": 2, "final": 2, "remaining": 56}
+{"stage": "full", "variant": "G6", "scene": 100069, "sample": 0, "peak": 1, "final": 1, "remaining": 55}
+{"stage": "full", "variant": "G6", "scene": 100072, "sample": 0, "peak": 1, "final": 0, "remaining": 54}
+{"stage": "full", "variant": "G6", "scene": 100078, "sample": 0, "peak": 1, "final": 1, "remaining": 53}
+{"stage": "full", "variant": "G6", "scene": 100085, "sample": 0, "peak": 0, "final": 0, "remaining": 52}
+{"stage": "full", "variant": "G6", "scene": 100087, "sample": 0, "peak": 1, "final": 0, "remaining": 51}
+{"stage": "full", "variant": "G6", "scene": 100098, "sample": 0, "peak": 1, "final": 1, "remaining": 50}
+{"stage": "full", "variant": "G6", "scene": 100102, "sample": 0, "peak": 2, "final": 2, "remaining": 49}
+{"stage": "full", "variant": "G6", "scene": 100137, "sample": 0, "peak": 2, "final": 1, "remaining": 48}
+{"stage": "full", "variant": "G6", "scene": 100152, "sample": 0, "peak": 0, "final": 0, "remaining": 47}
+{"stage": "full", "variant": "G6", "scene": 100145, "sample": 0, "peak": 3, "final": 3, "remaining": 46}
+{"stage": "full", "variant": "G6", "scene": 100166, "sample": 0, "peak": 1, "final": 1, "remaining": 45}
+{"stage": "full", "variant": "G6", "scene": 100164, "sample": 0, "peak": 0, "final": 0, "remaining": 44}
+{"stage": "full", "variant": "G6", "scene": 100175, "sample": 0, "peak": 2, "final": 1, "remaining": 43}
+{"stage": "full", "variant": "G6", "scene": 100183, "sample": 0, "peak": 1, "final": 1, "remaining": 42}
+{"stage": "full", "variant": "G6", "scene": 100169, "sample": 0, "peak": 2, "final": 2, "remaining": 41}
+{"stage": "full", "variant": "G6", "scene": 100186, "sample": 0, "peak": 3, "final": 3, "remaining": 40}
+{"stage": "full", "variant": "G6", "scene": 100038, "sample": 2, "peak": 3, "final": 2, "remaining": 39}
+{"stage": "full", "variant": "G6", "scene": 100035, "sample": 2, "peak": 1, "final": 1, "remaining": 38}
+{"stage": "full", "variant": "G6", "scene": 100057, "sample": 2, "peak": 3, "final": 2, "remaining": 37}
+{"stage": "full", "variant": "G6", "scene": 100060, "sample": 2, "peak": 2, "final": 0, "remaining": 36}
+{"stage": "full", "variant": "G6", "scene": 100072, "sample": 2, "peak": 1, "final": 1, "remaining": 35}
+{"stage": "full", "variant": "G6", "scene": 100069, "sample": 2, "peak": 2, "final": 2, "remaining": 34}
+{"stage": "full", "variant": "G6", "scene": 100078, "sample": 2, "peak": 2, "final": 2, "remaining": 33}
+{"stage": "full", "variant": "G6", "scene": 100085, "sample": 2, "peak": 0, "final": 0, "remaining": 32}
+{"stage": "full", "variant": "G6", "scene": 100087, "sample": 2, "peak": 1, "final": 1, "remaining": 31}
+{"stage": "full", "variant": "G6", "scene": 100098, "sample": 2, "peak": 0, "final": 0, "remaining": 30}
+{"stage": "full", "variant": "G6", "scene": 100102, "sample": 2, "peak": 1, "final": 1, "remaining": 29}
+{"stage": "full", "variant": "G6", "scene": 100137, "sample": 2, "peak": 1, "final": 1, "remaining": 28}
+{"stage": "full", "variant": "G6", "scene": 100145, "sample": 2, "peak": 3, "final": 2, "remaining": 27}
+{"stage": "full", "variant": "G6", "scene": 100164, "sample": 2, "peak": 0, "final": 0, "remaining": 26}
+{"stage": "full", "variant": "G6", "scene": 100152, "sample": 2, "peak": 1, "final": 1, "remaining": 25}
+{"stage": "full", "variant": "G6", "scene": 100169, "sample": 2, "peak": 1, "final": 1, "remaining": 24}
+{"stage": "full", "variant": "G6", "scene": 100166, "sample": 2, "peak": 1, "final": 1, "remaining": 23}
+{"stage": "full", "variant": "G6", "scene": 100175, "sample": 2, "peak": 1, "final": 1, "remaining": 22}
+{"stage": "full", "variant": "G6", "scene": 100183, "sample": 2, "peak": 2, "final": 2, "remaining": 21}
+{"stage": "full", "variant": "G6", "scene": 100035, "sample": 3, "peak": 3, "final": 2, "remaining": 20}
+{"stage": "full", "variant": "G6", "scene": 100186, "sample": 2, "peak": 1, "final": 1, "remaining": 19}
+{"stage": "full", "variant": "G6", "scene": 100038, "sample": 3, "peak": 2, "final": 2, "remaining": 18}
+{"stage": "full", "variant": "G6", "scene": 100057, "sample": 3, "peak": 2, "final": 1, "remaining": 17}
+{"stage": "full", "variant": "G6", "scene": 100060, "sample": 3, "peak": 1, "final": 1, "remaining": 16}
+{"stage": "full", "variant": "G6", "scene": 100069, "sample": 3, "peak": 2, "final": 2, "remaining": 15}
+{"stage": "full", "variant": "G6", "scene": 100072, "sample": 3, "peak": 1, "final": 1, "remaining": 14}
+{"stage": "full", "variant": "G6", "scene": 100078, "sample": 3, "peak": 0, "final": 0, "remaining": 13}
+{"stage": "full", "variant": "G6", "scene": 100085, "sample": 3, "peak": 4, "final": 3, "remaining": 12}
+{"stage": "full", "variant": "G6", "scene": 100087, "sample": 3, "peak": 1, "final": 1, "remaining": 11}
+{"stage": "full", "variant": "G6", "scene": 100098, "sample": 3, "peak": 0, "final": 0, "remaining": 10}
+{"stage": "full", "variant": "G6", "scene": 100102, "sample": 3, "peak": 3, "final": 2, "remaining": 9}
+{"stage": "full", "variant": "G6", "scene": 100137, "sample": 3, "peak": 0, "final": 0, "remaining": 8}
+{"stage": "full", "variant": "G6", "scene": 100145, "sample": 3, "peak": 1, "final": 1, "remaining": 7}
+{"stage": "full", "variant": "G6", "scene": 100152, "sample": 3, "peak": 2, "final": 1, "remaining": 6}
+{"stage": "full", "variant": "G6", "scene": 100166, "sample": 3, "peak": 2, "final": 2, "remaining": 5}
+{"stage": "full", "variant": "G6", "scene": 100164, "sample": 3, "peak": 2, "final": 2, "remaining": 4}
+{"stage": "full", "variant": "G6", "scene": 100169, "sample": 3, "peak": 2, "final": 1, "remaining": 3}
+{"stage": "full", "variant": "G6", "scene": 100175, "sample": 3, "peak": 3, "final": 2, "remaining": 2}
+{"stage": "full", "variant": "G6", "scene": 100186, "sample": 3, "peak": 2, "final": 2, "remaining": 1}
+{"stage": "full", "variant": "G6", "scene": 100183, "sample": 3, "peak": 3, "final": 2, "remaining": 0}
+{"stage": "full", "variant": "G7", "scene": 100038, "sample": 0, "peak": 2, "final": 1, "remaining": 59}
+{"stage": "full", "variant": "G7", "scene": 100060, "sample": 0, "peak": 2, "final": 2, "remaining": 58}
+{"stage": "full", "variant": "G7", "scene": 100057, "sample": 0, "peak": 2, "final": 2, "remaining": 57}
+{"stage": "full", "variant": "G7", "scene": 100035, "sample": 0, "peak": 3, "final": 3, "remaining": 56}
+{"stage": "full", "variant": "G7", "scene": 100069, "sample": 0, "peak": 0, "final": 0, "remaining": 55}
+{"stage": "full", "variant": "G7", "scene": 100078, "sample": 0, "peak": 0, "final": 0, "remaining": 54}
+{"stage": "full", "variant": "G7", "scene": 100072, "sample": 0, "peak": 1, "final": 1, "remaining": 53}
+{"stage": "full", "variant": "G7", "scene": 100085, "sample": 0, "peak": 2, "final": 1, "remaining": 52}
+{"stage": "full", "variant": "G7", "scene": 100087, "sample": 0, "peak": 2, "final": 1, "remaining": 51}
+{"stage": "full", "variant": "G7", "scene": 100098, "sample": 0, "peak": 0, "final": 0, "remaining": 50}
+{"stage": "full", "variant": "G7", "scene": 100102, "sample": 0, "peak": 3, "final": 3, "remaining": 49}
+{"stage": "full", "variant": "G7", "scene": 100137, "sample": 0, "peak": 1, "final": 1, "remaining": 48}
+{"stage": "full", "variant": "G7", "scene": 100145, "sample": 0, "peak": 2, "final": 2, "remaining": 47}
+{"stage": "full", "variant": "G7", "scene": 100152, "sample": 0, "peak": 3, "final": 2, "remaining": 46}
+{"stage": "full", "variant": "G7", "scene": 100164, "sample": 0, "peak": 2, "final": 2, "remaining": 45}
+{"stage": "full", "variant": "G7", "scene": 100166, "sample": 0, "peak": 2, "final": 2, "remaining": 44}
+{"stage": "full", "variant": "G7", "scene": 100169, "sample": 0, "peak": 2, "final": 2, "remaining": 43}
+{"stage": "full", "variant": "G7", "scene": 100183, "sample": 0, "peak": 2, "final": 1, "remaining": 42}
+{"stage": "full", "variant": "G7", "scene": 100175, "sample": 0, "peak": 1, "final": 0, "remaining": 41}
+{"stage": "full", "variant": "G7", "scene": 100186, "sample": 0, "peak": 1, "final": 1, "remaining": 40}
+{"stage": "full", "variant": "G7", "scene": 100035, "sample": 2, "peak": 4, "final": 4, "remaining": 39}
+{"stage": "full", "variant": "G7", "scene": 100057, "sample": 2, "peak": 2, "final": 2, "remaining": 38}
+{"stage": "full", "variant": "G7", "scene": 100038, "sample": 2, "peak": 1, "final": 1, "remaining": 37}
+{"stage": "full", "variant": "G7", "scene": 100060, "sample": 2, "peak": 2, "final": 2, "remaining": 36}
+{"stage": "full", "variant": "G7", "scene": 100069, "sample": 2, "peak": 2, "final": 2, "remaining": 35}
+{"stage": "full", "variant": "G7", "scene": 100072, "sample": 2, "peak": 2, "final": 1, "remaining": 34}
+{"stage": "full", "variant": "G7", "scene": 100078, "sample": 2, "peak": 1, "final": 1, "remaining": 33}
+{"stage": "full", "variant": "G7", "scene": 100085, "sample": 2, "peak": 0, "final": 0, "remaining": 32}
+{"stage": "full", "variant": "G7", "scene": 100087, "sample": 2, "peak": 2, "final": 2, "remaining": 31}
+{"stage": "full", "variant": "G7", "scene": 100098, "sample": 2, "peak": 2, "final": 2, "remaining": 30}
+{"stage": "full", "variant": "G7", "scene": 100102, "sample": 2, "peak": 4, "final": 1, "remaining": 29}
+{"stage": "full", "variant": "G7", "scene": 100137, "sample": 2, "peak": 3, "final": 1, "remaining": 28}
+{"stage": "full", "variant": "G7", "scene": 100145, "sample": 2, "peak": 4, "final": 4, "remaining": 27}
+{"stage": "full", "variant": "G7", "scene": 100152, "sample": 2, "peak": 1, "final": 1, "remaining": 26}
+{"stage": "full", "variant": "G7", "scene": 100164, "sample": 2, "peak": 2, "final": 2, "remaining": 25}
+{"stage": "full", "variant": "G7", "scene": 100166, "sample": 2, "peak": 2, "final": 2, "remaining": 24}
+{"stage": "full", "variant": "G7", "scene": 100169, "sample": 2, "peak": 1, "final": 1, "remaining": 23}
+{"stage": "full", "variant": "G7", "scene": 100175, "sample": 2, "peak": 1, "final": 1, "remaining": 22}
+{"stage": "full", "variant": "G7", "scene": 100183, "sample": 2, "peak": 0, "final": 0, "remaining": 21}
+{"stage": "full", "variant": "G7", "scene": 100186, "sample": 2, "peak": 1, "final": 1, "remaining": 20}
+{"stage": "full", "variant": "G7", "scene": 100035, "sample": 3, "peak": 3, "final": 1, "remaining": 19}
+{"stage": "full", "variant": "G7", "scene": 100038, "sample": 3, "peak": 1, "final": 1, "remaining": 18}
+{"stage": "full", "variant": "G7", "scene": 100057, "sample": 3, "peak": 1, "final": 1, "remaining": 17}
+{"stage": "full", "variant": "G7", "scene": 100060, "sample": 3, "peak": 2, "final": 2, "remaining": 16}
+{"stage": "full", "variant": "G7", "scene": 100069, "sample": 3, "peak": 2, "final": 2, "remaining": 15}
+{"stage": "full", "variant": "G7", "scene": 100072, "sample": 3, "peak": 2, "final": 2, "remaining": 14}
+{"stage": "full", "variant": "G7", "scene": 100078, "sample": 3, "peak": 3, "final": 2, "remaining": 13}
+{"stage": "full", "variant": "G7", "scene": 100085, "sample": 3, "peak": 1, "final": 1, "remaining": 12}
+{"stage": "full", "variant": "G7", "scene": 100087, "sample": 3, "peak": 1, "final": 1, "remaining": 11}
+{"stage": "full", "variant": "G7", "scene": 100098, "sample": 3, "peak": 2, "final": 2, "remaining": 10}
+{"stage": "full", "variant": "G7", "scene": 100102, "sample": 3, "peak": 1, "final": 0, "remaining": 9}
+{"stage": "full", "variant": "G7", "scene": 100137, "sample": 3, "peak": 3, "final": 3, "remaining": 8}
+{"stage": "full", "variant": "G7", "scene": 100145, "sample": 3, "peak": 2, "final": 2, "remaining": 7}
+{"stage": "full", "variant": "G7", "scene": 100164, "sample": 3, "peak": 1, "final": 1, "remaining": 6}
+{"stage": "full", "variant": "G7", "scene": 100152, "sample": 3, "peak": 2, "final": 1, "remaining": 5}
+{"stage": "full", "variant": "G7", "scene": 100166, "sample": 3, "peak": 1, "final": 1, "remaining": 4}
+{"stage": "full", "variant": "G7", "scene": 100169, "sample": 3, "peak": 1, "final": 1, "remaining": 3}
+{"stage": "full", "variant": "G7", "scene": 100175, "sample": 3, "peak": 1, "final": 1, "remaining": 2}
+{"stage": "full", "variant": "G7", "scene": 100183, "sample": 3, "peak": 2, "final": 2, "remaining": 1}
+{"stage": "full", "variant": "G7", "scene": 100186, "sample": 3, "peak": 1, "final": 1, "remaining": 0}

@@ -105,6 +105,7 @@ def run_episode(job):
     kind, checkpoint, world_model, config, seed, task_kwargs, resolution, video, goals, sample_seed = job[:10]
     diagnostic_dir = job[10] if len(job) > 10 else None
     evidence_options = job[11] if len(job) > 11 else {}
+    label = evidence_options.get('label', 'B1' if kind == 'goal' else 'B0')
     from assignment.training.data.cache import STRIDE
     from assignment.training.data.signals import row_hand_parts, row_lifted
     from assignment.training.data.task import StackTaskEnv, TaskConfig
@@ -145,10 +146,12 @@ def run_episode(job):
             elapsed = time.perf_counter()-t0
             agent_s += elapsed
             if recorder:
+                if 'protocol_version' in evidence_options:
+                    agent.diagnostic.update(protocol_version=evidence_options['protocol_version'], variant=label)
                 diagnostic_row = recorder.decision(step, agent.diagnostic, elapsed)
             if video:
                 goal_frame = None if goal_frames is None else goal_frames[min(agent.index, len(goal_frames)-1)]
-                frames.append(annotate_frame(frame, goal_frame, diagnostic_row, 'B1' if kind == 'goal' else 'B0')
+                frames.append(annotate_frame(frame, goal_frame, diagnostic_row, label)
                               if recorder else frame if goal_frames is None else
                               np.concatenate([frame, goal_frame], axis=0))
                 video_steps.append(step)
@@ -178,7 +181,7 @@ def run_episode(job):
                          active_goal_index=agent.index if goal_frames is not None else None)
         goal_frame = None if goal_frames is None else goal_frames[min(agent.index, len(goal_frames)-1)]
         frames.append(annotate_frame(frame, goal_frame, final_row,
-                                     'B1 final' if kind == 'goal' else 'B0 final'))
+                                     label+' final'))
         video_steps.append(step+1)
     if tail:
         tail.save(diagnostic_dir, env)
@@ -200,6 +203,8 @@ def run_episode(job):
                       world_model=agent.world_model_path,
                       runtime=runtime_information(agent),
                       **recorder.finish(result))
+        if 'label' in evidence_options:
+            result['variant'] = label
         recorder.save(diagnostic_dir, result)
     return result
 

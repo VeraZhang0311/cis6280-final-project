@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "description": "G1-G7 full development evidence; cohorts and pilots stay distinct",
+  "cohorts": {
+    "bidir-1498961": {
+      "protocol_version": "v1.1-bidirectional-r2",
+      "protocol_id": "4edaa31cf3cf0cadb9c89709cd71a166c13d1b1409d641217069483a2251537f",
+      "status": "complete",
+      "source_code": {
+        "git": null,
+        "source_sha256": "a7479528f90d86f7f141853daedad0106268384f0838f87d91f013eb8928ef5b",
+        "snapshot_origin": {
+          "branch": "tianzi-branch/v1.1",
+          "commit": "8d32302677833ee5af25fe99fadd790f41791ee0",
+          "status": " M assignment/training/planning/agent.py\n M assignment/training/planning/diagnostics.py\n M assignment/training/planning/evaluate.py\n M notes/v1.1/DESIGN.md\n?? assignment/training/planning/alignment.py\n?? assignment/training/planning/v11.py\n?? assignment/training/planning/v11_report.py\n?? notes/v1.1/IMPLEMENTATION.md\n?? notes/v1.1/RUN.md\n?? scripts/v11_pipeline.sbatch\n?? tests/test_v11_agent.py\n?? tests/test_v11_alignment.py\n?? tests/test_v11_pipeline.py\n",
+          "protocol": "v1.1-bidirectional-r2",
+          "note": "Uncommitted implementation included; actual Python and design bytes hashed by run manifest."
+        }
+      },
+      "inputs": {
+        "policy": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+          "bytes": 156950877,
+          "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+        },
+        "world_model": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+          "bytes": 73352395,
+          "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+        },
+        "goals": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+          "bytes": 34086423,
+          "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+        }
+      },
+      "workers": 8,
+      "gpus": "0,1,2,3",
+      "runtime": [
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "1",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "0",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "3",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "2",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        }
+      ],
+      "scenes": [
+        100035,
+        100038,
+        100057,
+        100060,
+        100069,
+        100072,
+        100078,
+        100085,
+        100087,
+        100098,
+        100102,
+        100137,
+        100145,
+        100152,
+        100164,
+        100166,
+        100169,
+        100175,
+        100183,
+        100186
+      ],
+      "sample_seeds": [
+        0,
+        2,
+        3
+      ],
+      "task": {
+        "target_count": 4,
+        "horizon": 1795,
+        "terminate_on_ground": false
+      },
+      "counts": {
+        "full": {
+          "G0": 60,
+          "G1": 60,
+          "G2": 60,
+          "G3": 60,
+          "G4": 60,
+          "G5": 60
+        },
+        "pilot": {
+          "G0": 12,
+          "G1": 12,
+          "G2": 12,
+          "G3": 12,
+          "G4": 12,
+          "G5": 12
+        }
+      },
+      "local_root": "outputs/planning/v1.1/bidir-1498961",
+      "cluster_root": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961",
+      "started_utc": "2026-11-04T02:28:23.421645+00:00",
+      "ended_utc": "2026-11-04T03:26:47.107435+00:00"
+    },
+    "sampling-1499337": {
+      "protocol_version": "v1.1-sampling-r3",
+      "protocol_id": "9c3cb4b3f80de1747bea821c47ee55a40e55aa99804e47b2a33cbad9a014236f",
+      "status": "complete",
+      "source_code": {
+        "git": null,
+        "source_sha256": "a365a70009318e9e81332b02eebaf2cfb224dbca771af93f45357dc90fc47e2f",
+        "snapshot_origin": {
+          "branch": "tianzi-branch/v1.1",
+          "commit": "8d32302677833ee5af25fe99fadd790f41791ee0",
+          "status": " M assignment/training/planning/agent.py\n M assignment/training/planning/diagnostics.py\n M assignment/training/planning/evaluate.py\n M notes/v1.1/DESIGN.md\n?? assignment/training/planning/alignment.py\n?? assignment/training/planning/sampling.py\n?? assignment/training/planning/sampling_report.py\n?? assignment/training/planning/v11.py\n?? assignment/training/planning/v11_report.py\n?? assignment/training/planning/v11_sampling.py\n?? notes/v1.1/IMPLEMENTATION.md\n?? notes/v1.1/RUN.md\n?? scripts/v11_pipeline.sbatch\n?? scripts/v11_sampling.sbatch\n?? tests/test_v11_agent.py\n?? tests/test_v11_alignment.py\n?? tests/test_v11_pipeline.py\n?? tests/test_v11_sampling_agent.py\n?? tests/test_v11_sampling_rules.py\n",
+          "protocol": "v1.1-sampling-r3",
+          "note": "Direct full G1/G6/G7, matched fresh G1; no pilot; actual source/design hashes in manifest."
+        }
+      },
+      "inputs": {
+        "policy": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+          "bytes": 156950877,
+          "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+        },
+        "world_model": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+          "bytes": 73352395,
+          "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+        },
+        "goals": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+          "bytes": 34086423,
+          "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+        }
+      },
+      "workers": 4,
+      "gpus": "0,1",
+      "runtime": [
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "1",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        },
+        {
+          "gpu": "NVIDIA GeForce RTX 2080 Ti",
+          "torch": "2.11.0+cu128",
+          "cuda": "12.8",
+          "numpy": "2.5.1",
+          "mujoco": "3.15.0",
+          "device": "cuda",
+          "cuda_visible_devices": "0",
+          "encoder_autocast_dtype": "torch.float16",
+          "model_parameter_dtype": "torch.float32",
+          "policy_parameter_dtype": "torch.float32",
+          "policy_autocast_dtype": null
+        }
+      ],
+      "scenes": [
+        100035,
+        100038,
+        100057,
+        100060,
+        100069,
+        100072,
+        100078,
+        100085,
+        100087,
+        100098,
+        100102,
+        100137,
+        100145,
+        100152,
+        100164,
+        100166,
+        100169,
+        100175,
+        100183,
+        100186
+      ],
+      "sample_seeds": [
+        0,
+        2,
+        3
+      ],
+      "task": {
+        "target_count": 4,
+        "horizon": 1795,
+        "terminate_on_ground": false
+      },
+      "counts": {
+        "full": {
+          "G1": 60,
+          "G6": 60,
+          "G7": 60
+        }
+      },
+      "local_root": "outputs/planning/v1.1/sampling-1499337",
+      "cluster_root": "/mnt/projects/ll/tianzizh/cis6280-v11-sampling-r3/outputs/planning/v1.1/sampling-1499337",
+      "started_utc": "2026-11-04T04:14:59.971675+00:00",
+      "ended_utc": "2026-11-04T05:45:23.223450+00:00"
+    }
+  },
+  "total_full": 540,
+  "total_pilot": 72,
+  "total_indexed": 612,
+  "artifacts": {
+    "notes/v1.1/evidence/bidir-1498961/alignment-mechanism.png": {
+      "bytes": 38100,
+      "sha256": "405b40a6b4dc850b2e15dfa9143a26939a7b7e8dbf5b0dc8ddc9a80fcce67708"
+    },
+    "notes/v1.1/evidence/bidir-1498961/episodes.csv": {
+      "bytes": 29672,
+      "sha256": "74b2b43b759c1f4ea8591638fa0ebace6762a56c0182ec54d07a10e08f458954"
+    },
+    "notes/v1.1/evidence/bidir-1498961/execution.log": {
+      "bytes": 43416,
+      "sha256": "d91bfc198a1dac2bc41787db9b6950c40c20cb6598c9ec04698712000fc67eb5"
+    },
+    "notes/v1.1/evidence/bidir-1498961/local-evidence-check.json": {
+      "bytes": 509,
+      "sha256": "b73b8052306330717178f001de8e78ceb2479c97a5a8f71b556d3f71c0e41de9"
+    },
+    "notes/v1.1/evidence/bidir-1498961/outcomes.png": {
+      "bytes": 74758,
+      "sha256": "02fc512374163fd99950c8f40a79a993ee82d97ac6f8674e1111b3dcc0ed7f6c"
+    },
+    "notes/v1.1/evidence/bidir-1498961/paired-cases.csv": {
+      "bytes": 7060,
+      "sha256": "6066d0c75e9f48663a336876ff7839872e2bb88b7a0a5b210928c9dc371e1b5b"
+    },
+    "notes/v1.1/evidence/bidir-1498961/paired-cases.png": {
+      "bytes": 134643,
+      "sha256": "8eaa27642b4fa91bdbe7906a3a1cbfc3a81a3add8f1a742b1e7a5f1e9c3a3a30"
+    },
+    "notes/v1.1/evidence/bidir-1498961/pilot-outcomes.png": {
+      "bytes": 67218,
+      "sha256": "9cd5e43aa5f9dc33715b82434005c40aa8c4e656f4e7f8069947e4a7d384d2cd"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G0.json": {
+      "bytes": 1050,
+      "sha256": "cd79910b4640196bef82785cb3cd19a08942568637b2ff40b35d5d1b2f25ead8"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G1.json": {
+      "bytes": 1058,
+      "sha256": "c275172f0fd3cd9c1502755c9ce8f5d38288327f9a579321feeee244f7f70eaf"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G2.json": {
+      "bytes": 1084,
+      "sha256": "9237c26fdcd79b12849f9e98e7571522e4e70bcc3a552cc4a664570fff27d9bf"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G3.json": {
+      "bytes": 1049,
+      "sha256": "0ef6b38e23be1b96abf8eceaf6e1a847892fbb11d9b7ab3957be953070e48e4d"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G4.json": {
+      "bytes": 1090,
+      "sha256": "deefe8b82b9a5a0e75661e177be49b8b04ddb6514becb786c53567ce3e260c18"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/full-G5.json": {
+      "bytes": 1124,
+      "sha256": "15e61387ca3ec88af928dde6e16663460d2221f96abd2121415adef1ad4e8ca3"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G0.json": {
+      "bytes": 859,
+      "sha256": "2b16cfd192edb0678c98212ec584fb8508256d66c05769638699fe39d4b5a9bc"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G1.json": {
+      "bytes": 867,
+      "sha256": "adacb0b7d8908b66bf15974a00bac3a9e5961994d0d4c03f23ab6cce7f806576"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G2.json": {
+      "bytes": 893,
+      "sha256": "7b50203cdb565fb698bc43ab965326e002b9fb01404e1da1bc7305e34a6a4a0f"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G3.json": {
+      "bytes": 858,
+      "sha256": "096135b84aa3638e1dafde2fcdabd4875b1b2d00b1f11c86de90045068580c86"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G4.json": {
+      "bytes": 899,
+      "sha256": "747a8638c8ecaea5c31a58f8ffb9a3cc4bdff3938d7293589d6926a4770acb17"
+    },
+    "notes/v1.1/evidence/bidir-1498961/protocols/pilot-G5.json": {
+      "bytes": 933,
+      "sha256": "8666659f5b3363a1f64093b4297d0a8e7b2784abc214193cf03ffdb27194e98e"
+    },
+    "notes/v1.1/evidence/bidir-1498961/representative-cases.json": {
+      "bytes": 2812,
+      "sha256": "6d34edc407094af8c0a15f3b4d5d2fd29e8b04413889aae5759db4c81d5fe3d9"
+    },
+    "notes/v1.1/evidence/bidir-1498961/run.json": {
+      "bytes": 127546,
+      "sha256": "6dfeb6e7a6adb1c2fd556e5ec3ccc408aa1c6c3413931f987b4df6cc14537fad"
+    },
+    "notes/v1.1/evidence/bidir-1498961/selection.json": {
+      "bytes": 1568,
+      "sha256": "8600efcb47740e7596cb7d7c819872fbd6b79352a042912bcef0976a81c53b0b"
+    },
+    "notes/v1.1/evidence/bidir-1498961/summary.json": {
+      "bytes": 110808,
+      "sha256": "a5d81cb9bf9ef529c25f82dd02b19e4a53be6d5b0259fa4deecb074ca16b8877"
+    },
+    "notes/v1.1/evidence/episode-results.jsonl": {
+      "bytes": 692135,
+      "sha256": "83a75c8209e2a6fdd3f1d12b5cce4c61bcbd5855823d1ef8236eb59399bde891"
+    },
+    "notes/v1.1/evidence/evidence-index.jsonl": {
+      "bytes": 723293,
+      "sha256": "0c5b2e54bae25489d149642987277d4177b346bc3a4b08814bcac7a08c91a2c0"
+    },
+    "notes/v1.1/evidence/sampling-1499337/budgets-and-pairs.png": {
+      "bytes": 84988,
+      "sha256": "a28a512f55d28e2b1a5d716a91bc86ecbfc314025e2802b0d203530f134ae91f"
+    },
+    "notes/v1.1/evidence/sampling-1499337/episodes.csv": {
+      "bytes": 14822,
+      "sha256": "235def0a47073a60bbd7615b967eb11da5039d3fbf7c85679c94ed4b30564ac4"
+    },
+    "notes/v1.1/evidence/sampling-1499337/execution.log": {
+      "bytes": 24428,
+      "sha256": "8725c2bd089797bcb3ccd6a0dd79a7a75f2c20e3760c53ae396803ae5bbea69c"
+    },
+    "notes/v1.1/evidence/sampling-1499337/local-evidence-check.json": {
+      "bytes": 270,
+      "sha256": "27b859ba43d88752bfe090681910fc13556a04a3d8a2601c2d0f894144f2f82b"
+    },
+    "notes/v1.1/evidence/sampling-1499337/paired-cases.csv": {
+      "bytes": 4804,
+      "sha256": "3959b5524b262ece41504382d94b7285ad0691c3ca7e19c2f5c066c6a491aff2"
+    },
+    "notes/v1.1/evidence/sampling-1499337/protocols/full-G1.json": {
+      "bytes": 1058,
+      "sha256": "238b1abc3e62f9bbd6b8b510bf9fb7933c944998ad20ae0c11e2cfdd5020b09e"
+    },
+    "notes/v1.1/evidence/sampling-1499337/protocols/full-G6.json": {
+      "bytes": 1143,
+      "sha256": "4bb760b45fd532ba5e30f465db3d9292947fe298dd8cdc098acc1d49aeb16def"
+    },
+    "notes/v1.1/evidence/sampling-1499337/protocols/full-G7.json": {
+      "bytes": 1058,
+      "sha256": "125135e19599bb40b6271b875ebae80915972ab3f83e4f514f45d2fb9b2729a0"
+    },
+    "notes/v1.1/evidence/sampling-1499337/representative-cases.json": {
+      "bytes": 1742,
+      "sha256": "efcb5809330a8af36af905c1cc2aed97d437f8750cf35a7291811088fafedf84"
+    },
+    "notes/v1.1/evidence/sampling-1499337/run.json": {
+      "bytes": 84556,
+      "sha256": "39a1e124e148424f782caaf068835fd591548f4b0b9e3205ab6ca5a662c3fb04"
+    },
+    "notes/v1.1/evidence/sampling-1499337/summary.json": {
+      "bytes": 117831,
+      "sha256": "af0052be7df55dfbd66a2341efe7dbd732a2f5440fe3295cb3f18b1dd229ed9b"
+    },
+    "notes/v1.1/evidence/sampling-1499337/task-and-cost.png": {
+      "bytes": 63513,
+      "sha256": "affd0f4a6e0a082b5f2b6117019a0f3f1f24bc8ef5ad840f54827da6ee747eb9"
+    },
+    "notes/v1.1/RESULTS.md": {
+      "bytes": 12329,
+      "sha256": "48c9a0454c6eff495478ee719f87c09d4d9a3cd39ae22470b7ce04b2784114bb"
+    }
+  }
+}

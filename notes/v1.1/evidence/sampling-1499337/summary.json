@@ -1,0 +1,3227 @@
+{
+  "protocol_version": "v1.1-sampling-r3",
+  "pilot": false,
+  "reference": {
+    "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1",
+    "manifest": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/run.json",
+      "bytes": 127546,
+      "sha256": "6dfeb6e7a6adb1c2fd556e5ec3ccc408aa1c6c3413931f987b4df6cc14537fad"
+    },
+    "protocol_id": "4edaa31cf3cf0cadb9c89709cd71a166c13d1b1409d641217069483a2251537f",
+    "group_manifest": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/run.json",
+      "bytes": 1058,
+      "sha256": "c275172f0fd3cd9c1502755c9ce8f5d38288327f9a579321feeee244f7f70eaf"
+    },
+    "summary": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/summary.json",
+      "bytes": 1051,
+      "sha256": "aa0139d33376910ea5079e4d4e0b660eb0e4b352f94d8aafec96e1dd497de4bc"
+    },
+    "cases": [
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "59475e0cb43b7611ff26b9dfbf9b3a07805325c7b02666d0adcbb7c6148ed39a"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-0/summary.json",
+          "bytes": 1093,
+          "sha256": "0526fc7cd321d06b2da6b5a264f1daf154a62bc1bead68755ef09a0cc6bf29bb"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-0/steps.jsonl",
+          "bytes": 471082,
+          "sha256": "ccf00495eeeeaa28e50b8c1e2b6958e90a965d269aabeaac1f3722bd1174dc97"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-0/events.jsonl",
+          "bytes": 3080,
+          "sha256": "030de568c24540fa48fdd93c25d1a3dbb7ea1af1223bbe9a13536ac77534d611"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "58834f4e190f1c8a272fff8d237da1299ff90fa9e2110c4544c0ebe6d32a9179"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-2/summary.json",
+          "bytes": 1117,
+          "sha256": "8c90d2fa0d49a94cfd9b29e49f874a1bfcff6df03823244e4113aae5dc135754"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-2/steps.jsonl",
+          "bytes": 470926,
+          "sha256": "61d9b093a9edc6d4b46baf70c34dab4f9173d85024ebe2f1f95be0af9c74376c"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-2/events.jsonl",
+          "bytes": 4350,
+          "sha256": "c39b76e99e626af1b6647dbff1e3ac2c9570a80b74591837dd98f27261faa360"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "5a0c388052e6aac406711787aedec7f1b748199f19ab430cf3e02f2a08ad9191"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-3/summary.json",
+          "bytes": 1087,
+          "sha256": "e194c0fb47e4a2bbd8fd7001eaadd4d9940abff40fa06ab9b8901c9ee85700a7"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-3/steps.jsonl",
+          "bytes": 468862,
+          "sha256": "cab0994e0b582bb95c908c9c8a4b558ec0767d4d98a3bb065b4d431fcfc0fdaa"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100035.sample-3/events.jsonl",
+          "bytes": 2285,
+          "sha256": "59f4159579611cbb0749e98b9027b70a864789a5a6b11a67b3ae515cf9182a11"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "29c12e605ea61d31bf6b611a68e7bd749312c67243b6af45a9b02dba15a24dc5"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-0/summary.json",
+          "bytes": 1095,
+          "sha256": "4bddc1d1addc5083cbcd09bf297c72cdcc1257c790e1acdd7e204cf96d26497b"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-0/steps.jsonl",
+          "bytes": 469827,
+          "sha256": "98fdfbe5f0c95c32a675bb8f45050b6c934cdcc1a6e8b0a2b78973c08b895d82"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-0/events.jsonl",
+          "bytes": 3102,
+          "sha256": "b9c59086455544beabac7d8f26edbfc51c8b2bd90157d749a61ec46b10657d92"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "5bf7f4e8dbde164f0c207c50d5260ed4c19e0cde7a165ad2b307c489bac5e0cd"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-2/summary.json",
+          "bytes": 1107,
+          "sha256": "13c628a1c717ddf48e7aec237f8c12977bbe6c0b9ea9a3f63f64381ec74fa363"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-2/steps.jsonl",
+          "bytes": 467081,
+          "sha256": "bd8cf4eca0d05201ce5f8c9238545031eef3a0be9ab11ade75c739897181f419"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-2/events.jsonl",
+          "bytes": 2806,
+          "sha256": "c440ae115dde34b9414669eed274ad5781ae511bc350f577f85f28e3b9742079"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "1720fdd235b8c077eff7ead1b12548b21bd77c4c9c35142782d92f7231f8c5ed"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-3/summary.json",
+          "bytes": 1109,
+          "sha256": "c206d1488f48e1ff1878209c70e9b8fed4ed256a9a5b9385ec73b71b67e4c590"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-3/steps.jsonl",
+          "bytes": 468833,
+          "sha256": "758bd707f33c201b50b57535933a01e1b09811262c3e8af870c04d1d588ea6da"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100038.sample-3/events.jsonl",
+          "bytes": 3086,
+          "sha256": "3e2e2f36a2a7fd97fce42e8da705ed0c54329a57ac985fcd6ab40eba48d07464"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "ca18ab04d0bf9a6f6d1f9befabc47c4bbbab6a8a39b9ecc253ea706fbb8d07d2"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-0/summary.json",
+          "bytes": 1126,
+          "sha256": "e4feeee7aeaa6602c30bf2a6ac6391e18583558ea921226290c96ea9bf4d8096"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-0/steps.jsonl",
+          "bytes": 401759,
+          "sha256": "d7b28222a6d91ab34dc561d53e6b277eb69d0be0c800452d2b73bee7290e9d50"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-0/events.jsonl",
+          "bytes": 3661,
+          "sha256": "214bb2e8026e73bb3f4d0c86cf44d2577c252b61917d78b8f589dcb387d36445"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "647766295be404fa7647d6f37d63547fd90f05c1c0fe3ef723eefe9e1587d5d3"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-2/summary.json",
+          "bytes": 1087,
+          "sha256": "5f1be08e714112f18f55f47d9331f5244e741d514c9ce85adbb6fa9622b0abc4"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-2/steps.jsonl",
+          "bytes": 470544,
+          "sha256": "52249a5b0e3bb3127859e5ea68a0f05c554373a70b02f2849709c2b58a87a5be"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-2/events.jsonl",
+          "bytes": 2866,
+          "sha256": "4393091a7657f5d3ef5387d2085e620a0d1895d72c57c2f3d569693d15260bcd"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "ae8a6d36298a8cb0a06960893ca2bc099972a8b238b6182a264bbf89a795b6ef"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-3/summary.json",
+          "bytes": 1105,
+          "sha256": "19b754c39803251f12dbe3b6bcc14901e57ba12177b23eee5e5c81f9885d17b0"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-3/steps.jsonl",
+          "bytes": 470776,
+          "sha256": "93d29c3e67db41de20284a56b4f9cfda2088bb14771711aa2c23469f1dcfe0cf"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100057.sample-3/events.jsonl",
+          "bytes": 4017,
+          "sha256": "37162b9e74ec67a180ae758968dc0193a7332a35f47fad1329427ded48690718"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "c1676616bf16da540de1a9c1135618264417a7c1570153822ae257d73638c14a"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-0/summary.json",
+          "bytes": 1106,
+          "sha256": "5046c893fe4d2ee1c21208e83c9d01a3b757400c796f13a608942cba47474e8c"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-0/steps.jsonl",
+          "bytes": 469046,
+          "sha256": "0ad3f6e6655a2862f756d17d6d91c5f799f9371c517c2256c31fee7f60008ba7"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-0/events.jsonl",
+          "bytes": 2261,
+          "sha256": "32da066cb896a6e040ba305567478d01873d63b0b674ef4cdedd715df9281283"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "1c0b37dad3f4acd3832ceb0b20087906dc09d872f536dd0d637a155ca7fc7b51"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-2/summary.json",
+          "bytes": 1089,
+          "sha256": "30da3ff810feb66b76f23d86a639ebf65a69987aeaff75069ebc364885407149"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-2/steps.jsonl",
+          "bytes": 467798,
+          "sha256": "f92e563d27927c3fde8a8ec22ead92ac5e0125cc2b1cbb46a5995d5c11adda57"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-2/events.jsonl",
+          "bytes": 441,
+          "sha256": "0201e37798f7fab3c444d55bc40b14760842357e43222a0c412de54f21824a21"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "52392aaf27f4cfdcc5350197e1c87371a6bd37433ee482adcec0011f92d57761"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-3/summary.json",
+          "bytes": 1107,
+          "sha256": "699f7fe5d318fe589ddfbfb39794e34608cd02695133589502d6ed0789dd6528"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-3/steps.jsonl",
+          "bytes": 469005,
+          "sha256": "a72643aa066636f4f9afccfe8761650cfd568fb2955ca93329ac8cdd3a95666a"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100060.sample-3/events.jsonl",
+          "bytes": 2363,
+          "sha256": "ff6e2562c751d19ff824bc73a7c471c0f0f2526803cdbae00b773d5e2db605e1"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "b086b4c29bf77f6ae4d3142acc7f98953dd164040c1733ea4ae8346d93136e3b"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-0/summary.json",
+          "bytes": 1107,
+          "sha256": "88400d79814e2d4ab68c4e21b21c073f9b4c719438ea0ddbfff64677e788915b"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-0/steps.jsonl",
+          "bytes": 470542,
+          "sha256": "f4716f7dabb7e0083b51d8acc135f7c4f3b348b323425b4b6e92c345d4863ab6"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-0/events.jsonl",
+          "bytes": 4487,
+          "sha256": "b07d0620386fea832fc9eb504571ec1b80d7416df26a690914c05fb52ebc8db9"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "16ac8b41aaef0f88769faf424f4db79da75e1a979f1f15c3e5d554593377c589"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-2/summary.json",
+          "bytes": 1086,
+          "sha256": "e95d204c28f1178f93a6514397a78f8af3830b3ee858f58242c4edd57bdd08ae"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-2/steps.jsonl",
+          "bytes": 468219,
+          "sha256": "f9d4a141bf3d4638d4386f85a6c3f7e6ce4bbb966481b31cf128d5e4cce64ab5"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-2/events.jsonl",
+          "bytes": 1598,
+          "sha256": "b0ab34aef8b67743c83bd0cdf2b358af5cc1bcf3fd9967aa8f9eccbc5e434354"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "d471bc72ccf2e9dba42814a6e36afd96c4d9423d9b5d91bee1e9c3d34baeb788"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-3/summary.json",
+          "bytes": 1087,
+          "sha256": "1791eadf9febbc9df7ce3098657c6d616e96dabff76e5fd890d7ed7676788ca6"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-3/steps.jsonl",
+          "bytes": 468069,
+          "sha256": "2d8f6eaa245c9ab6d01c657c071faa0e1177518f174c045ea880a91d9f12b189"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100069.sample-3/events.jsonl",
+          "bytes": 658,
+          "sha256": "a68c650f1aae7e03df3223396d3cdfbb7529107ed617d69134c3df5192cbad7a"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "96cf875619fa265a24888676078195774eb0094da712a9233bd141532635666f"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-0/summary.json",
+          "bytes": 1085,
+          "sha256": "7fe1bbdc2293b581726ab1e8c9e820ed7bce197eca5e1bd8127fcc657f80fff1"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-0/steps.jsonl",
+          "bytes": 467162,
+          "sha256": "d579cbe930ee7a68209a38c30e9a46156b4a7a8a853f38b18328c773f988a3d2"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-0/events.jsonl",
+          "bytes": 2037,
+          "sha256": "c182998281a155e697b5821c9a6b02c6ec2f179785d2b9eceedd904716afc3ec"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "046052f0d0d97cb1f0533f14e3d686999fdd2a38d2e63ead17324ba2b1663ecf"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-2/summary.json",
+          "bytes": 1093,
+          "sha256": "2ccf3901e9a32bea6e66652035612037f53b807e915f8896846ac6d0389959c9"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-2/steps.jsonl",
+          "bytes": 468959,
+          "sha256": "7a463a129f8f396acdf8b7050dbe444b64a6d154a9e4ea1e53db6dd96530e507"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-2/events.jsonl",
+          "bytes": 2956,
+          "sha256": "7214347216bce10cf84259f13b691735d7773edc6e65e3539b3464f43a84da5a"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "7fd611474707f33e6306d1c7562a789d38f73d69981bf9228fa569f026548de9"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-3/summary.json",
+          "bytes": 1100,
+          "sha256": "34f53b36d218af8d2c39af2eb003e6edcf26c0d2ca1a949f20c1fa8f17ba5304"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-3/steps.jsonl",
+          "bytes": 467912,
+          "sha256": "e11c82c5a83f4d20267721a8cf94690ab97f6450575aa7d45ce497f9ec4cb272"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100072.sample-3/events.jsonl",
+          "bytes": 2066,
+          "sha256": "b962cf6d95b3b468f223211d2afe83da615802ecd58bebb62119ac642ca3ddad"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "33bf7fa2df696824d4825a579c6fbace65d3272aa9f736678564f73be48a1a24"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-0/summary.json",
+          "bytes": 1098,
+          "sha256": "e0823eeb3133e0680af055078bce00d440b7bd92ed4a5c152518a60c10ef7814"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-0/steps.jsonl",
+          "bytes": 469354,
+          "sha256": "37c6105f43848225ff2195ab80544604cb1a405b43a3db3b73aee4df993ce40c"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-0/events.jsonl",
+          "bytes": 1830,
+          "sha256": "e77f2eb1a70cf911a8293eac80d41cba5987328957f7e8b1fb8a1acadb9f7c39"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "cf7250a2ce4465af382e8c887ae0bbcd863d169b5bb3fb297f1eeaa16bef77e3"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-2/summary.json",
+          "bytes": 1129,
+          "sha256": "91f0f617a11dc62d15278c9a8913d7c75bc9f9e1d5877054576732bc54918a13"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-2/steps.jsonl",
+          "bytes": 454535,
+          "sha256": "ca0ab4dd86744d2987ac3597589dec6a7d40ee8ec6313f4be3c8ef0f8a472507"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-2/events.jsonl",
+          "bytes": 4743,
+          "sha256": "4303a8746a5a6b25fbf4e928f976255da0fed131c11aed666589f5a96e022334"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "88f0d86a1b44f805873addea4adbef05ddc5e55efdb86671490b1180a2298013"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-3/summary.json",
+          "bytes": 1108,
+          "sha256": "aec79a2277ded5e211b372554da13533130f0c4fca802b04f7b945408793d823"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-3/steps.jsonl",
+          "bytes": 469840,
+          "sha256": "d1acd1f1db93d55baaee0e683e94960148dddeaded2e96ccef9a5032b3ceece5"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100078.sample-3/events.jsonl",
+          "bytes": 4145,
+          "sha256": "d2d5bf661db811851182fcab3b93cf27732b1685a3edbab76baac2cf6549b628"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "198cb31f4660ce73710aa96687b32ac45def9c8ae66fc9385c24d8f4237ee9c9"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-0/summary.json",
+          "bytes": 1072,
+          "sha256": "4155f2ebda7f4ff58c32dda910946209525a608546a2b04ff95a531f5d82dbaa"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-0/steps.jsonl",
+          "bytes": 468425,
+          "sha256": "76a0620e69bd0e540a287f58c6e475afc0704c8aac3f23ec1f4137d88fcf1396"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-0/events.jsonl",
+          "bytes": 574,
+          "sha256": "4cd153069cf18d11300ef81139fa663ba30bcb06fc8471a42d21e7b7744c6adc"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "f753be23ec1c11d21dfeaa76967a01d4a9cacc364b11e4aef865d1357fa6a006"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-2/summary.json",
+          "bytes": 1073,
+          "sha256": "937181ffcdf88fcfd0393aa1bbd77892b289f687b45550cd208155ec71c89e24"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-2/steps.jsonl",
+          "bytes": 468458,
+          "sha256": "fb098173efb836487c52aa08cc6c0b6c2a6eabfba11d7868b77e98b92b490e39"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-2/events.jsonl",
+          "bytes": 806,
+          "sha256": "926fc61b03fce6a0fb90072b05fa96f23914de3b55c805b7388d879b85600b60"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "72a7b1e91ab28af64465cc7965b641f636db6c8c887ee9b9b893a3ba65a009e3"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-3/summary.json",
+          "bytes": 1072,
+          "sha256": "13898a099d5118dedcc21e86bf3328504be917a0f869d9f78757f38a31b0fa2d"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-3/steps.jsonl",
+          "bytes": 468749,
+          "sha256": "3cfe9eb8c9a212dc03e7e5e443b7111c316456b0ba994ce2e8d72a5cf1f8fb7b"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100085.sample-3/events.jsonl",
+          "bytes": 806,
+          "sha256": "bf8623607083afd90439d0a3354579790ddec7a73b3c19d1b330572552369137"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "fa943150f79061a9401e487a14790f2bbd676a5cb8718b07511d0c6ec07ac201"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-0/summary.json",
+          "bytes": 1074,
+          "sha256": "0634242ae727d193f656c754cffff8b0bbc8dd6443eb2ecdffdb4b2fe69dc544"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-0/steps.jsonl",
+          "bytes": 470169,
+          "sha256": "93e65e46d2239e2a25596807d91f07df4b91721c59292ec4e0c42e0eb444f57e"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-0/events.jsonl",
+          "bytes": 1040,
+          "sha256": "15c59b9fd05fcef4895beff91eca862bd4a32bec1d63a282c6a9b91883a78096"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "fd426987f6622f8e29a0cd5c50eddcc3915b7150a7d3f7f993f8827324ecf54c"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-2/summary.json",
+          "bytes": 1094,
+          "sha256": "ad558b41bd0818dc67d25d09cadb153fbcecffa5cf6c893e940751dbe86e8776"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-2/steps.jsonl",
+          "bytes": 470126,
+          "sha256": "3bdd85d477943717d7b41f48b58f109fcd08698341148d8aca63d6d5f8d2e0be"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-2/events.jsonl",
+          "bytes": 3192,
+          "sha256": "c0ca5a23f6fc5988eebe88e2924d472510e3b7e3be0ccd15dbfd5a4d3d60f5c4"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "816dec9a8a98bf0fd2dcf79c0b73dea2feb84ac864520121261632b74f1876b0"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-3/summary.json",
+          "bytes": 1095,
+          "sha256": "03ac8f138d15efa2382b70fbb829115a8e7c658be6c1c6eea3c4f717599be54c"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-3/steps.jsonl",
+          "bytes": 470274,
+          "sha256": "3ffcbd649c08038987db09132421c6743fe82e750da61801b1db38494acb016b"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100087.sample-3/events.jsonl",
+          "bytes": 3782,
+          "sha256": "bd975e181799707c7285c24527f956abdff1ff7c1d9a4a34433ab877ad5e07f5"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "17e12ea28dc019627fb12270299353889a51dd873bb65ebb9f5db30099dda6cd"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-0/summary.json",
+          "bytes": 1084,
+          "sha256": "0022ee6e1a728464e420a8178b4a51817330101f810d3090487cc78fb64a88fb"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-0/steps.jsonl",
+          "bytes": 468505,
+          "sha256": "a873033cd5b2d2b6a550585117af112fa5dc9c742f915afb260c0d5ca12e00de"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-0/events.jsonl",
+          "bytes": 1928,
+          "sha256": "683a4bade2423d099d461ef5627863116f53e35f400a5ddfe4504207483e9dd7"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "e791f2f5c3a20e81354073707af0db12fd93da46c9deee1a14e43a3cdd5730e5"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-2/summary.json",
+          "bytes": 1072,
+          "sha256": "ae7208be8cb296613a09b05db16045f74b227368d742f073147888d5ca69d36e"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-2/steps.jsonl",
+          "bytes": 469144,
+          "sha256": "623985c3face4b05802969326e062181c68e2e674de96ae4c3eab57720c5e5eb"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-2/events.jsonl",
+          "bytes": 806,
+          "sha256": "55f80a994923f5f72ce607e6acd4bb904662f5f00e6ca30bbb84ec455fa2d5bc"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "590f668547fac5dd2d69c25f2d30109010b3d5a910b3cbf613fd71b48841faa0"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-3/summary.json",
+          "bytes": 1107,
+          "sha256": "ee4afc731e293011f45b6169eadcd4e779cd2ff6f4bcb919e8ac4e52567bc39d"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-3/steps.jsonl",
+          "bytes": 469370,
+          "sha256": "615ff46516b531c5c1d11109fbdf746c2e2b57a4abdd8a78731cf04fb080a8f2"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100098.sample-3/events.jsonl",
+          "bytes": 3904,
+          "sha256": "9208c9edeaac5c77b863106b019c0f327f43418e18dad87544554da80826ad23"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "ab45b84bfbb491c0c555264f519d9a28164ec97c11077b4d750f0a3aa8c01607"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-0/summary.json",
+          "bytes": 1094,
+          "sha256": "a3bd611dce4df9f3a140e7a8539b130d65a0fcac04504cee8d0001f32c9b1780"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-0/steps.jsonl",
+          "bytes": 470096,
+          "sha256": "1f557a0b821d36a40d4c5c3bcd6872b2b013891089d9e520b177afe1dee92b1c"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-0/events.jsonl",
+          "bytes": 2857,
+          "sha256": "c74902b3b89059e0b42171592538ab1bc6f42f8f2ac3781222b8c1e9b1762595"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "16617c2ddedb36008e0364938fcaf47b8cd50461af1442e9ac5b3fc0d64b1c2b"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-2/summary.json",
+          "bytes": 1105,
+          "sha256": "a65a1291cb29082ca5e650c7423c82c93d14b5684e96f17ec6467a61d7cb38d0"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-2/steps.jsonl",
+          "bytes": 469718,
+          "sha256": "e3223e4389728befbe06b93507c25bc9721994c329a69fe85191ed593af8a40a"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-2/events.jsonl",
+          "bytes": 2845,
+          "sha256": "5a82ac58aa5305b6884eeafb54992b1c85277c9fb040a491c7ff4673191ec3e5"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "f193ef6d04594bb92ba61f414d558ad314292e172d8500f9e64778d19bde10ff"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-3/summary.json",
+          "bytes": 1086,
+          "sha256": "4faa23e26f8e8d54e97a85900d67ae6731ba057cc06c04af6b958a536c1df8d4"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-3/steps.jsonl",
+          "bytes": 468780,
+          "sha256": "e3a84c52f822053110add19a255d9381a5fcc56a2af145b6d11fd7c4a0a73fd8"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100102.sample-3/events.jsonl",
+          "bytes": 1942,
+          "sha256": "c0fb4dbeebca21ab6934323c51dd511a3908c9de4320666dd88343b7035ec6a3"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "f62877ac17f189a3dd89323f2402dd70b0f341656ccc854b715007d220e7497a"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-0/summary.json",
+          "bytes": 1105,
+          "sha256": "09853a950c3ba75c10972e7af203bbeda0e94592673419767731cfd1aa253982"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-0/steps.jsonl",
+          "bytes": 470015,
+          "sha256": "4750dc908f85c8537c26754f1626ed887155762668b609749d7e95304db62011"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-0/events.jsonl",
+          "bytes": 2597,
+          "sha256": "9b260a403970cff3a9a5626bfb8e11967c52c32f73f949c2f4a1c0ff325d56c8"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "be1b2ee6c1822922dd95e4fd744b0c59438541c311a499f5cfbb3990b3e8dc11"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-2/summary.json",
+          "bytes": 1087,
+          "sha256": "aa51b2e4dd7dc4fea692b8fe5995538d6d3e8fe58966c4bb2eefbc8b12859cf4"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-2/steps.jsonl",
+          "bytes": 467365,
+          "sha256": "2acc9cfeee8304d5c3152b0ec26aaabac331f2716991a0e875bb6c936963ca87"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-2/events.jsonl",
+          "bytes": 1490,
+          "sha256": "84bebca92281a9301159a89491be328e12fdb52e4420d7782e7ac4d9237ae70b"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "04c2020abac5a6bca2eacf5299e92fceae86bde2e1289db01938962544b73366"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-3/summary.json",
+          "bytes": 1075,
+          "sha256": "1444b60552bc21bb2b9907c49f3ee5c0e987e760dc52f5f5f5f6c2db590e098f"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-3/steps.jsonl",
+          "bytes": 467749,
+          "sha256": "f4329f2854a2dc0dd6031f6ab3c9a3f07bdd3bfc3b47a1a5147d882ca3c44535"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100137.sample-3/events.jsonl",
+          "bytes": 574,
+          "sha256": "4cd153069cf18d11300ef81139fa663ba30bcb06fc8471a42d21e7b7744c6adc"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "c43513ad339a848d6131daed2fc479234d98dd49220bce8a30d3bccd7153adc3"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-0/summary.json",
+          "bytes": 1117,
+          "sha256": "1d49f56de06bfb2532fe78ca4b89253f33b7204df438183fe406b73b52dc1ca2"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-0/steps.jsonl",
+          "bytes": 470453,
+          "sha256": "29a7cfb783edf4e7ac14da42ce86f6214e91e3aec9479a4965a5d1d2496b6f86"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-0/events.jsonl",
+          "bytes": 3307,
+          "sha256": "ae2cb9888dc9c5a0dad257958f10e01b35e14a2ea9d3e66c111d7c3fa88acfa2"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "eb550143df882bee8fc031ce6454f1b4129b83a9c73f1befaac93d098cc923a5"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-2/summary.json",
+          "bytes": 1107,
+          "sha256": "ececefa1ef9b7cf4ae83a1dff35f81f5b8278b911ad75a24a928e975e43e26ec"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-2/steps.jsonl",
+          "bytes": 469668,
+          "sha256": "93ffaaa421b08164a02b1c1a21a2356672034d2ca1ab9aa8a7672e6de660333c"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-2/events.jsonl",
+          "bytes": 3094,
+          "sha256": "c953548f2a1ec00f8effa21c026411996c9f2936640169215c931a8faa56cfcc"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "d578041fb89ad63d1de3369b36592ba48f39760e6f9a8bf2a12d930ffa4f4d3b"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-3/summary.json",
+          "bytes": 1092,
+          "sha256": "e0d1aa93cc041dc0d18ca31848ec84c1d202d4c71843162c8253e6081e73edad"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-3/steps.jsonl",
+          "bytes": 470196,
+          "sha256": "7723bc5739828f72680d15dab6c945c2f1ecd112079104216999bebbafd84f89"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100145.sample-3/events.jsonl",
+          "bytes": 2368,
+          "sha256": "e7e563988a9a349dfb4b704eae6338dd54e40d2f5e3ddbb79d169f08036fe157"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "4c9fb248129e71835f7fa5569a629cb406e37bdc8d2930a702b9bc6b3edcd8ef"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-0/summary.json",
+          "bytes": 1086,
+          "sha256": "31ee2857bf14848e5831c3d276b1b0d73fff333ca9f2f13a02dd8b9e0eeaa3c7"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-0/steps.jsonl",
+          "bytes": 470101,
+          "sha256": "87770c0efc095d4c85aace40d7a78173e4fe5fbe8aab40683eb6289c60716a53"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-0/events.jsonl",
+          "bytes": 1565,
+          "sha256": "5c0c144f3696f21f13f266ee8fcaf7de6509d0368cd8546a7c5e1bd5bc9b0746"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "fcea5cb238e359a749db05109970e9f9dd7a9d693d2fc1439f3f8c903edf5672"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-2/summary.json",
+          "bytes": 1108,
+          "sha256": "7f8b8b74531883426c515f5f1bf02cbcf1ab189104f950f5d6de78185400db4f"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-2/steps.jsonl",
+          "bytes": 468790,
+          "sha256": "8359570a197be119b7361726c1d60dcf37b5ea8c9f1c7b3ff2e7db4dabdf6ed7"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-2/events.jsonl",
+          "bytes": 1922,
+          "sha256": "3f29ec001c401ac55b2136dc307c3706923d22536e51d8909a23f3700d618633"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "d0326bd3926a9155ebd5014af566288c45db737a398e7ae039fa064a087cb615"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-3/summary.json",
+          "bytes": 1093,
+          "sha256": "5f22e3120997a9991d52616f897b040d02df3378487ce22497247ef1dc71705f"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-3/steps.jsonl",
+          "bytes": 469187,
+          "sha256": "857780d4f8c998c3515bdb692f350defba2b7e3b3d698fce9899886e9684a034"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100152.sample-3/events.jsonl",
+          "bytes": 1791,
+          "sha256": "c216549833e5a4d8fc20eb798e4f036976c0513fa432cb626212df8c0e722de9"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "8b677d1646d5cfb0cd9c71204ed60e1f62a75e5b59f074762e151f8131bdbf8f"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-0/summary.json",
+          "bytes": 1073,
+          "sha256": "bfe1e0cdb9c751b06fc6deae24dcd22b217e4f0f7de443b4e607acb0be4c8e3b"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-0/steps.jsonl",
+          "bytes": 468653,
+          "sha256": "0f2f179771d7dff293246cc8bbb2d8b1850aee5de1f255d54c93188098bd5951"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-0/events.jsonl",
+          "bytes": 806,
+          "sha256": "65b6ef2a384c601a86fe23e1e12f56cbc4538c329da814a6323c33e1492029e5"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "02cb34f2b28c08a3c1c079411cb2a8f693de9d5ccadb75081cb455dbb27b6cd2"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-2/summary.json",
+          "bytes": 1074,
+          "sha256": "fc991becee7037394c6d809939aa8052b7417f8b8cbc66be072371eee0de823f"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-2/steps.jsonl",
+          "bytes": 469464,
+          "sha256": "17b066a4003633ddc78158eed06819d6b28aea4645d8f9f2d77b8f1c8133ab78"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-2/events.jsonl",
+          "bytes": 806,
+          "sha256": "b7507351fa17248cc37b4f18c892edaebed4e18453b220da11cea83167d0ecd7"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "65780315cfe360d2fcb78fb2f3a132b36a4f40830583af869ffa1321606b49d1"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-3/summary.json",
+          "bytes": 1106,
+          "sha256": "5b87f0be7b42ae5f5273178c477dbd2379aac5bc1ab488ae65b6160087443944"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-3/steps.jsonl",
+          "bytes": 469996,
+          "sha256": "27b1e5033b0b6ad17ad953d4173ee0257e10d603077091a342c8a266e2690171"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100164.sample-3/events.jsonl",
+          "bytes": 2377,
+          "sha256": "7e50eae7a0cfb8b6b5115bff1ba7e7c5e00796b639d887dac4ed8edf740a0c5a"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "1506e6c22f70c0a7c8b07db2e2d501b8cde8583abb69cb526a2f30b5e916b834"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-0/summary.json",
+          "bytes": 1085,
+          "sha256": "bbac0b5eee91f3557ceba27dfe9b59bf869e173e38e27724c4162e769d7d8d7e"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-0/steps.jsonl",
+          "bytes": 470508,
+          "sha256": "61dfba6eb7516dee1e43f7d701913ab714d2612a68325442a6b06336bb1c0d42"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-0/events.jsonl",
+          "bytes": 1820,
+          "sha256": "fcc2c39013d3327bc1939dc7be0f46ca05f498011f3e4f947b2a4926efc295a1"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "4ef093ef3f7cfa88cf6248dbdb52e0d43201902e0883f7dbddc9342c1283a085"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-2/summary.json",
+          "bytes": 1108,
+          "sha256": "6b769c68971f614b656e1d0c1ceb5ffb0903458f92f29dc92538343183e1ae42"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-2/steps.jsonl",
+          "bytes": 469450,
+          "sha256": "98b46e1acfb3fadb69e055878421f7a45d3fecec7617e1d2c2af708bc47310c3"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-2/events.jsonl",
+          "bytes": 2745,
+          "sha256": "bb99e30eb05b0963d809ecbae5cc99946973acdb8f6adf9b291519eb9e6966dd"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "27ec6f425a6486f166d91ad19e007a56ea2164c2ca4f80fdfbee13ee898c36b1"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-3/summary.json",
+          "bytes": 1104,
+          "sha256": "22072633f444f06c521f6f167fb1b59249d7179687b6fd128518cc1251e820db"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-3/steps.jsonl",
+          "bytes": 470229,
+          "sha256": "ab06267c9ddc522f7dc5c89ac020c5ad2145ebab38c333cd9f1a72a155394f81"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100166.sample-3/events.jsonl",
+          "bytes": 4494,
+          "sha256": "8e39e8fa1f927bce977dd16fba0d5015293c03960ffff5966a038d4f243ced6b"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "33781ef8a1aeb47d607afe26765354fd2f68cb82d15f988600928227c8390192"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-0/summary.json",
+          "bytes": 1093,
+          "sha256": "741d4c8d00cd5d80569af22ee2b342d2864d7b9a5cf2d57099be34ffcfd5ee84"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-0/steps.jsonl",
+          "bytes": 470097,
+          "sha256": "580294f72e1c72dc0d4a65d553a6eeba0b320195da20c71b2520bbcf7bf13fb5"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-0/events.jsonl",
+          "bytes": 3081,
+          "sha256": "0ee7cf55b32ce848f38768acb3f778c17579781626ebe850178e5ae7cf3f76a6"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "cd53f60075d592555fb7d1aadf74ccc40795c344d6069293c227358e75365f27"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-2/summary.json",
+          "bytes": 1100,
+          "sha256": "7deed307a25a9e4a2a965ee25618d2f333ae918e84f576f512f96b965f96d574"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-2/steps.jsonl",
+          "bytes": 468874,
+          "sha256": "308402efda5558f9aed93af053a86003ab4cd3b20e0cff71c47cffc534f9ff78"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-2/events.jsonl",
+          "bytes": 2062,
+          "sha256": "09ba794c52f44a564ccca06c324d5447a18f474705185822389f3cd159ea087b"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "9cc77fdbddba7c9fe1efb0ef117d42b8a4479d22662f5104a04141e6792ae111"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-3/summary.json",
+          "bytes": 1132,
+          "sha256": "648c841ecf1202dcd257cbb240bbfa6b699e280a546d7b518ba26e24c02df9d1"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-3/steps.jsonl",
+          "bytes": 470288,
+          "sha256": "75e482ebb0ae1777a935cbe0db997170aa038edd662cb62e3f19115a85803791"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100169.sample-3/events.jsonl",
+          "bytes": 3558,
+          "sha256": "d8ce33d88fa59b3a3b60ffcdb2324a7865941c62a6ec5fce45616e306e434ed1"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "a5c496054c0bb0fc7f40ec0be37067e8e7784c13d35fa8f54c8637c5b3e620d0"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-0/summary.json",
+          "bytes": 1139,
+          "sha256": "191a087a0fc686eab2a2d3f4eead84927e24c924823b124ffb31369a49c77e11"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-0/steps.jsonl",
+          "bytes": 399424,
+          "sha256": "830c8fe71bea85ec868d4b1a90b4d2effaef6589e7e9433c411e9932a98ff744"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-0/events.jsonl",
+          "bytes": 4490,
+          "sha256": "1cb613ecedf864372c0cd4b335fc0ada25a1e266539c78dfd201bea8502bffa7"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "029271167517e08baae0654af17bab2157a2b5e132e56feef160f4b959ad307a"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-2/summary.json",
+          "bytes": 1087,
+          "sha256": "3fe9adff20e02fea1232c7ccd765a8203292c0a9d7bae5a86ad6eb758b73702c"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-2/steps.jsonl",
+          "bytes": 466647,
+          "sha256": "33b7944c1f825e06631e2620b7e7ef2c06c9be9955980a54b7bf4e3c7c3220f9"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-2/events.jsonl",
+          "bytes": 1125,
+          "sha256": "1ab2b1c4acd0d27122e1cbe0c1300954def2f032ff36661b8ab64599f219ec02"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "0b1275bfe2a3c3501778fe0185d06fd89107c614d9890f99f916c7a05f7a1b00"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-3/summary.json",
+          "bytes": 1086,
+          "sha256": "ea2e76b58c454c20383e680b3c759b5ee2c4458c69000c2bfab7978dc40d042a"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-3/steps.jsonl",
+          "bytes": 468872,
+          "sha256": "690c5688d28e0f47a49c48bc2b7265ae258cb0fb65745b2028dd0e4df8a3a1a1"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100175.sample-3/events.jsonl",
+          "bytes": 1816,
+          "sha256": "5aee8f1a1b0f2339cef830177ed9e2cfde6f07b8eb484965c9af0064e57f9391"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "0430778d8ac8b158c641eea8fb1fc49a9de9f412bfa8982d7d0be93fd7e5bf3a"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-0/summary.json",
+          "bytes": 1086,
+          "sha256": "c3449bab9b7e5e8dedd267dc96ff4553019b72c6d98fd02ff90282820884769e"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-0/steps.jsonl",
+          "bytes": 470529,
+          "sha256": "7712188d19452eb03addd872afd3207fd8d2f43713a829e986100225e7e29155"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-0/events.jsonl",
+          "bytes": 1120,
+          "sha256": "01de2e1513c2c07e660648ddf3f370d91bdc815a12e783b376a8e430c2351944"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "9eca746007910fb44c09871733c4492b3b0660d2f43c8de600bba651a88640fa"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-2/summary.json",
+          "bytes": 1108,
+          "sha256": "dcd07f3bceee8174d895cb7465b3e4c85c8e3ab7354e25a04e2cfa18f4e34ddc"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-2/steps.jsonl",
+          "bytes": 468697,
+          "sha256": "2ff19d134f5afe93e36c052c8a2a07f15ad3a55effb5d3f6538abf2aa39ef733"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-2/events.jsonl",
+          "bytes": 2734,
+          "sha256": "cb921cf8646756c77cf36ff5cc246c82e6baeb23a42c6717305fc3828b2582b5"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "8976d640363a864fbb8fea85db414c2d4a911a9810e27f099f1f7ac8d187fc43"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-3/summary.json",
+          "bytes": 1094,
+          "sha256": "31d14a462b776a9a8df3f569bb0cbc1fad33f6498060e07ce02daa00fe3a1920"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-3/steps.jsonl",
+          "bytes": 470670,
+          "sha256": "78236a20f063a0b837ca820796b58a076270b34daa9656315d4bc4ee12f294fe"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100183.sample-3/events.jsonl",
+          "bytes": 3067,
+          "sha256": "7e06386ee5efce00635057f30549828d3a4d835b16ab36ad9d703e5d2e9ec390"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-0/complete.json",
+          "bytes": 131,
+          "sha256": "0e4258d7547d77a98040b6c2069263f4d144e71093eb7e9c87c9a33d80646114"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-0/summary.json",
+          "bytes": 1106,
+          "sha256": "159646d8d4739f28fc771dab59075fd91b24f1e531cfc11491609da9d684d446"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-0/steps.jsonl",
+          "bytes": 469843,
+          "sha256": "b0780153504529b272c18ce8c5c83399e4ef583dc6ffda81a733e81542c5e133"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-0/events.jsonl",
+          "bytes": 2377,
+          "sha256": "81f6705d51eb442d0e9391be4ba45353772514986160bc49c8803f2f730efca1"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-2/complete.json",
+          "bytes": 131,
+          "sha256": "1fe76d343ee0a028a79afe94974213a81440c69a6f776ac57cdee5986bfb7cc4"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-2/summary.json",
+          "bytes": 1116,
+          "sha256": "86a8c6a3c920f9ccdf656a758be989edf3360d58607bfd86c3be70ddbbcd3eb5"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-2/steps.jsonl",
+          "bytes": 471846,
+          "sha256": "c0e2ac628eb148a64e6000ffd4f0c4efa4538100e7741bf69dad9bf8ca48ddbd"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-2/events.jsonl",
+          "bytes": 5427,
+          "sha256": "ecb22832dd345d5d1562be4fff750f1baabc88fe296c104cf84e14bf536bd97b"
+        }
+      },
+      {
+        "complete.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-3/complete.json",
+          "bytes": 131,
+          "sha256": "03b0782683b0c3d2b49329707b1676addecf13b5debad1b57a168f80e7d0fda9"
+        },
+        "summary.json": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-3/summary.json",
+          "bytes": 1087,
+          "sha256": "6362a09d09b30e7f6aba30bd8a48d7470c1f6aeac8f3b61b92cfabefb774e42c"
+        },
+        "steps.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-3/steps.jsonl",
+          "bytes": 469319,
+          "sha256": "0446c29674f0485187d1bfc6f76f8011c2fd31db5d347aa51d176c1e18041045"
+        },
+        "events.jsonl": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v11-bidir-r2/outputs/planning/v1.1/bidir-1498961/full/G1/episodes/scene-100186.sample-3/events.jsonl",
+          "bytes": 2068,
+          "sha256": "71ae3469337424622da25239687030ae72a38c3548087d3004081208e3094432"
+        }
+      }
+    ],
+    "note": "Source cohort/input provenance only; historical G1 outcomes not pooled. Fresh full G1 supplies the control."
+  },
+  "full": {
+    "G1": {
+      "episodes": 60,
+      "success": 0.016666666666666666,
+      "reached": {
+        "placed>=1": 0.8333333333333334,
+        "placed>=2": 0.4,
+        "placed>=3": 0.2,
+        "placed>=4": 0.03333333333333333
+      },
+      "max_placed_hist": {
+        "0": 10,
+        "1": 26,
+        "2": 12,
+        "3": 10,
+        "4": 2
+      },
+      "grasped": 1.0,
+      "lifted": 0.9333333333333333,
+      "mean_steps_success": 1588.0,
+      "ground_fall_episodes": 0.03333333333333333,
+      "mean_max_placed": 1.4666666666666666,
+      "mean_final_count": 1.15,
+      "first_box_episodes": 50,
+      "second_given_first": 0.48,
+      "first_to_second_completed_episodes": 24,
+      "first_to_second_s_mean": 47.49583333333334,
+      "post_first_censored_episodes": 26,
+      "decision_s_mean": 0.1266192822540647,
+      "decision_s_p95": 0.14539287514053284,
+      "mechanism": {
+        "stagnant_blocks": 0,
+        "checked_blocks": 0,
+        "match_blocks": 0,
+        "realignment_events": 0,
+        "forward_realignments": 0,
+        "backward_realignments": 0,
+        "alignment_direction_reversals": 0,
+        "closest_before_tail_blocks": 9370,
+        "decisions": 21499
+      },
+      "sampling": {
+        "decisions": 21499,
+        "mean_candidates": 16.0,
+        "candidate_count_distribution": {
+          "16": 21499,
+          "32": 0,
+          "48": 0
+        },
+        "second_batch_rate": 0.0,
+        "third_batch_rate": 0.0,
+        "policy_sample_calls_total": 21499,
+        "policy_sample_calls_mean": 1.0,
+        "wm_rollout_calls_total": 21499,
+        "selected_batch_distribution": {
+          "1": 21499
+        },
+        "stop_reasons": {
+          "fixed_budget": 21499
+        },
+        "extra_batches": 0,
+        "mean_extra_batch_cost_gain": null,
+        "mean_relative_extra_batch_gain": null,
+        "metadata_source": "recorded; missing G1 fixed-16 counts inferred only from validated frozen config"
+      }
+    },
+    "G6": {
+      "episodes": 60,
+      "success": 0.0,
+      "reached": {
+        "placed>=1": 0.85,
+        "placed>=2": 0.5,
+        "placed>=3": 0.16666666666666666,
+        "placed>=4": 0.016666666666666666
+      },
+      "max_placed_hist": {
+        "0": 9,
+        "1": 21,
+        "2": 20,
+        "3": 9,
+        "4": 1
+      },
+      "grasped": 0.9833333333333333,
+      "lifted": 0.9333333333333333,
+      "mean_steps_success": null,
+      "ground_fall_episodes": 0.016666666666666666,
+      "mean_max_placed": 1.5333333333333334,
+      "mean_final_count": 1.2333333333333334,
+      "first_box_episodes": 51,
+      "second_given_first": 0.5882352941176471,
+      "first_to_second_completed_episodes": 30,
+      "first_to_second_s_mean": 48.49666666666666,
+      "post_first_censored_episodes": 21,
+      "decision_s_mean": 0.19647342110793786,
+      "decision_s_p95": 0.3886897718301043,
+      "mechanism": {
+        "stagnant_blocks": 0,
+        "checked_blocks": 0,
+        "match_blocks": 0,
+        "realignment_events": 0,
+        "forward_realignments": 0,
+        "backward_realignments": 0,
+        "alignment_direction_reversals": 0,
+        "closest_before_tail_blocks": 8824,
+        "decisions": 21540
+      },
+      "sampling": {
+        "decisions": 21540,
+        "mean_candidates": 23.968802228412255,
+        "candidate_count_distribution": {
+          "16": 15837,
+          "32": 678,
+          "48": 5025
+        },
+        "second_batch_rate": 0.26476323119777156,
+        "third_batch_rate": 0.23328690807799443,
+        "policy_sample_calls_total": 32268,
+        "policy_sample_calls_mean": 1.498050139275766,
+        "wm_rollout_calls_total": 32268,
+        "selected_batch_distribution": {
+          "1": 17353,
+          "2": 2238,
+          "3": 1949
+        },
+        "stop_reasons": {
+          "predicted_threshold": 7464,
+          "sufficient_improvement": 9051,
+          "budget_exhausted": 5025
+        },
+        "extra_batches": 10728,
+        "mean_extra_batch_cost_gain": 2.3470897777679696,
+        "mean_relative_extra_batch_gain": 0.15628144062683358,
+        "metadata_source": "recorded; missing G1 fixed-16 counts inferred only from validated frozen config"
+      }
+    },
+    "G7": {
+      "episodes": 60,
+      "success": 0.03333333333333333,
+      "reached": {
+        "placed>=1": 0.9166666666666666,
+        "placed>=2": 0.5833333333333334,
+        "placed>=3": 0.16666666666666666,
+        "placed>=4": 0.05
+      },
+      "max_placed_hist": {
+        "0": 5,
+        "1": 20,
+        "2": 25,
+        "3": 7,
+        "4": 3
+      },
+      "grasped": 1.0,
+      "lifted": 0.9833333333333333,
+      "mean_steps_success": 1633.0,
+      "ground_fall_episodes": 0.016666666666666666,
+      "mean_max_placed": 1.7166666666666666,
+      "mean_final_count": 1.4333333333333333,
+      "first_box_episodes": 55,
+      "second_given_first": 0.6363636363636364,
+      "first_to_second_completed_episodes": 35,
+      "first_to_second_s_mean": 49.251428571428576,
+      "post_first_censored_episodes": 20,
+      "decision_s_mean": 0.19697102435028763,
+      "decision_s_p95": 0.24630531505681574,
+      "mechanism": {
+        "stagnant_blocks": 0,
+        "checked_blocks": 0,
+        "match_blocks": 0,
+        "realignment_events": 0,
+        "forward_realignments": 0,
+        "backward_realignments": 0,
+        "alignment_direction_reversals": 0,
+        "closest_before_tail_blocks": 8192,
+        "decisions": 21476
+      },
+      "sampling": {
+        "decisions": 21476,
+        "mean_candidates": 48.0,
+        "candidate_count_distribution": {
+          "16": 0,
+          "32": 0,
+          "48": 21476
+        },
+        "second_batch_rate": 0.0,
+        "third_batch_rate": 0.0,
+        "policy_sample_calls_total": 21476,
+        "policy_sample_calls_mean": 1.0,
+        "wm_rollout_calls_total": 21476,
+        "selected_batch_distribution": {
+          "1": 21476
+        },
+        "stop_reasons": {
+          "fixed_budget": 21476
+        },
+        "extra_batches": 0,
+        "mean_extra_batch_cost_gain": null,
+        "mean_relative_extra_batch_gain": null,
+        "metadata_source": "recorded; missing G1 fixed-16 counts inferred only from validated frozen config"
+      }
+    }
+  },
+  "paired": {
+    "G6-G1": {
+      "episodes": 60,
+      "scenes": 20,
+      "mean_peak_delta": 0.06666666666666667,
+      "improved": 20,
+      "tied": 25,
+      "regressed": 15,
+      "mean_peak_delta_ci95_scene_bootstrap": [
+        -0.13333333333333333,
+        0.25000000000000006
+      ],
+      "bootstrap": {
+        "draws": 5000,
+        "seed": 1103,
+        "resampling_unit": "whole scene with all sampler seeds"
+      },
+      "cases": [
+        {
+          "scene": 100035,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 2,
+          "peak_base": 4,
+          "peak": 1,
+          "delta": -3,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 0,
+          "peak_base": 4,
+          "peak": 2,
+          "delta": -2,
+          "final_base": 4,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 3,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 4,
+          "delta": 3,
+          "final_base": 1,
+          "final": 3
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 2,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 3,
+          "final": 2
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 3,
+          "final": 1
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 1,
+          "final": 3
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 3,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 3,
+          "delta": 3,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 3
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        }
+      ]
+    },
+    "G7-G1": {
+      "episodes": 60,
+      "scenes": 20,
+      "mean_peak_delta": 0.25,
+      "improved": 26,
+      "tied": 16,
+      "regressed": 18,
+      "mean_peak_delta_ci95_scene_bootstrap": [
+        -0.016666666666666653,
+        0.5333333333333333
+      ],
+      "bootstrap": {
+        "draws": 5000,
+        "seed": 1103,
+        "resampling_unit": "whole scene with all sampler seeds"
+      },
+      "cases": [
+        {
+          "scene": 100035,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 3
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 2,
+          "peak_base": 4,
+          "peak": 4,
+          "delta": 0,
+          "final_base": 1,
+          "final": 4
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 0,
+          "peak_base": 4,
+          "peak": 2,
+          "delta": -2,
+          "final_base": 4,
+          "final": 1
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 3,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 0,
+          "delta": -1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 0,
+          "delta": -1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 0,
+          "delta": -1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 2,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 3,
+          "final": 3
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 4,
+          "delta": 1,
+          "final_base": 3,
+          "final": 1
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 3,
+          "delta": 3,
+          "final_base": 0,
+          "final": 3
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 4,
+          "delta": 1,
+          "final_base": 1,
+          "final": 4
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 3,
+          "delta": 3,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 3,
+          "final": 0
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 3,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 0,
+          "delta": -1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        }
+      ]
+    },
+    "G6-G7": {
+      "episodes": 60,
+      "scenes": 20,
+      "mean_peak_delta": -0.18333333333333332,
+      "improved": 21,
+      "tied": 16,
+      "regressed": 23,
+      "mean_peak_delta_ci95_scene_bootstrap": [
+        -0.5166666666666667,
+        0.16666666666666663
+      ],
+      "bootstrap": {
+        "draws": 5000,
+        "seed": 1103,
+        "resampling_unit": "whole scene with all sampler seeds"
+      },
+      "cases": [
+        {
+          "scene": 100035,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 3,
+          "final": 2
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 2,
+          "peak_base": 4,
+          "peak": 1,
+          "delta": -3,
+          "final_base": 4,
+          "final": 1
+        },
+        {
+          "scene": 100035,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 3,
+          "delta": 0,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100038,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100057,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100060,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100069,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100072,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100078,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 0,
+          "delta": -3,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 2,
+          "peak_base": 0,
+          "peak": 0,
+          "delta": 0,
+          "final_base": 0,
+          "final": 0
+        },
+        {
+          "scene": 100085,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 4,
+          "delta": 3,
+          "final_base": 1,
+          "final": 3
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 0
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100087,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 0,
+          "peak_base": 0,
+          "peak": 1,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100098,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 2,
+          "delta": -1,
+          "final_base": 3,
+          "final": 2
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 2,
+          "peak_base": 4,
+          "peak": 1,
+          "delta": -3,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100102,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 2,
+          "peak_base": 3,
+          "peak": 1,
+          "delta": -2,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100137,
+          "sample_seed": 3,
+          "peak_base": 3,
+          "peak": 0,
+          "delta": -3,
+          "final_base": 3,
+          "final": 0
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 3
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 2,
+          "peak_base": 4,
+          "peak": 3,
+          "delta": -1,
+          "final_base": 4,
+          "final": 2
+        },
+        {
+          "scene": 100145,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 0,
+          "peak_base": 3,
+          "peak": 0,
+          "delta": -3,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100152,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 0,
+          "delta": -2,
+          "final_base": 2,
+          "final": 0
+        },
+        {
+          "scene": 100164,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 2,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 2,
+          "final": 1
+        },
+        {
+          "scene": 100166,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 2,
+          "delta": 0,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100169,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 0,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100175,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 2
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 0,
+          "peak_base": 2,
+          "peak": 1,
+          "delta": -1,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 2,
+          "peak_base": 0,
+          "peak": 2,
+          "delta": 2,
+          "final_base": 0,
+          "final": 2
+        },
+        {
+          "scene": 100183,
+          "sample_seed": 3,
+          "peak_base": 2,
+          "peak": 3,
+          "delta": 1,
+          "final_base": 2,
+          "final": 2
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 0,
+          "peak_base": 1,
+          "peak": 3,
+          "delta": 2,
+          "final_base": 1,
+          "final": 3
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 2,
+          "peak_base": 1,
+          "peak": 1,
+          "delta": 0,
+          "final_base": 1,
+          "final": 1
+        },
+        {
+          "scene": 100186,
+          "sample_seed": 3,
+          "peak_base": 1,
+          "peak": 2,
+          "delta": 1,
+          "final_base": 1,
+          "final": 2
+        }
+      ]
+    }
+  },
+  "baseline_mode": "Fresh G1 on the same allocation"
+}

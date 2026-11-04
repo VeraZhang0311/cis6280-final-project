@@ -1,0 +1,26 @@
+{
+  "verified_utc": "2026-11-04T03:35:05.562005+00:00",
+  "counts": {
+    "pilot": {
+      "G0": 12,
+      "G1": 12,
+      "G2": 12,
+      "G3": 12,
+      "G4": 12,
+      "G5": 12
+    },
+    "full": {
+      "G0": 60,
+      "G1": 60,
+      "G2": 60,
+      "G3": 60,
+      "G4": 60,
+      "G5": 60
+    }
+  },
+  "total_episodes": 432,
+  "videos": 432,
+  "tail_evidence": 432,
+  "keyframes": 2592,
+  "status": "all primary evidence, tail snapshots and six keyframes per episode present"
+}

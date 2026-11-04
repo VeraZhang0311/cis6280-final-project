@@ -1,0 +1,3 @@
+# Preserve archived source bytes and generated document hashes on every OS.
+RESULTS.md -text
+evidence/** -text whitespace=cr-at-eol
