@@ -19,7 +19,7 @@ class LatentPolicyAgent:
     """
 
     def __init__(self, policy_path, device='cuda', generate=None, execute=1, n_steps=10, lag=0, seed=0,
-                 world_model=None):
+                 world_model=None, diagnostics=False):
         from assignment.training.training.jepa import load_model
         self.policy, info = load_policy(policy_path, device)
         wm_path = Path(world_model or info['encoder'])
@@ -29,11 +29,15 @@ class LatentPolicyAgent:
                 f"or set ckpt['info']['encoder'] in '{policy_path}' to your local world-model file."
             )
         self.encoder, _ = load_model(wm_path, device)
+        self.world_model_path = str(wm_path.resolve())
+        self.diagnostics = diagnostics
         self.device, self.info = str(device), info
         self._device_type = torch.device(device).type
         self._amp_dtype = amp_dtype()
         self.generate = generate or self.policy.cfg.horizon
         self.execute, self.n_steps, self.lag = execute, n_steps, lag
+        if diagnostics and execute != 1:
+            raise ValueError('phase-1 diagnostics require execute=1 for one-block alignment')
         if not 1 <= execute <= self.generate <= self.policy.cfg.horizon:
             raise ValueError('need 1 <= execute <= generate <= horizon')
         self.z_mean = torch.tensor(info['z_mean'], device=device)
@@ -54,17 +58,42 @@ class LatentPolicyAgent:
         if seed is not None:
             self.generator.manual_seed(int(seed))
         self.history, self.queue = [], []
+        self.diagnostic = {}
+        self._previous_next_block = self._previous_prediction = None
+
+    def _diagnostic_observation(self, z):
+        """Compare only the previous one-block prediction with this real observation."""
+        self.diagnostic = dict(active_goal_index=None, goal_changed=None, goal_distance_sq=None,
+                               goal_threshold_sq=None, candidate_scores=None, selected_candidate=None,
+                               plan_change_rms=None, prediction_mse=None)
+        if self._previous_prediction is not None:
+            self.diagnostic['prediction_mse'] = float((z-self._previous_prediction).square().mean())
+        self._previous_prediction = None
+
+    def _diagnostic_plan(self, blocks, best=0, prediction=None):
+        # Raw, clipped action units, just like the actions returned to the evaluator.
+        raw = np.clip(blocks[best, :2].detach().cpu().numpy()*self.a_std+self.a_mean, -1, 1)
+        if self._previous_next_block is not None:
+            self.diagnostic['plan_change_rms'] = float(np.sqrt(np.mean(
+                np.square(raw[0]-self._previous_next_block))))
+        self._previous_next_block = raw[1].copy() if len(raw) > 1 else None
+        self._previous_prediction = prediction.detach().float().clone() if prediction is not None else None
 
     @torch.no_grad()
     def step(self, frame):
         x = torch.from_numpy(np.ascontiguousarray(frame)).to(self.device)[None, None]
         with self._autocast():
             z = self.encoder.encode(x)[0, 0].float()
+        if self.diagnostics:
+            self._diagnostic_observation(z)
         self.history = (self.history+[(z-self.z_mean)/self.z_std])[-self.policy.cfg.context:]
         if not self.queue:
             ctx = [self.history[0]]*(self.policy.cfg.context-len(self.history))+self.history
-            blocks = self.policy.sample(torch.stack(ctx)[None], self.generate, self.n_steps, self.lag,
-                                        self.generator)[0, :self.execute].cpu().numpy()
+            samples = self.policy.sample(torch.stack(ctx)[None], self.generate, self.n_steps, self.lag,
+                                         self.generator)
+            if self.diagnostics:
+                self._diagnostic_plan(samples)
+            blocks = samples[0, :self.execute].cpu().numpy()
             raw = np.clip(blocks*self.a_std+self.a_mean, -1, 1).reshape(-1, STRIDE, RAW_ACTION_DIM)
             self.queue = list(raw)
         return self.queue.pop(0)
@@ -120,16 +149,24 @@ class GoalPlanningAgent(LatentPolicyAgent):
         if self.goals is None:
             raise RuntimeError('Call agent.reset(goal_frames, init_frame) before step().')
         z = self._encode(frame[None])[0]
+        old_index = self.index
+        if self.diagnostics:
+            self._diagnostic_observation(z)
         ctx = self.encoder.cfg.context
         self.frames = (self.frames+[z])[-ctx:]
         self.history = (self.history+[(z-self.z_mean)/self.z_std])[-self.policy.cfg.context:]
         goal = self.goals[self.goal_index(z)]
+        if self.diagnostics:
+            self.diagnostic.update(active_goal_index=self.index, goal_changed=self.index != old_index,
+                                   goal_distance_sq=float((z-goal).square().sum()),
+                                   goal_threshold_sq=float(self.tau*self.gap[self.index]))
         if not self.queue:
             pctx = [self.history[0]]*(self.policy.cfg.context-len(self.history))+self.history
             n = self.candidates
             blocks = self.policy.sample(torch.stack(pctx)[None].expand(n, -1, -1), self.generate, self.n_steps,
                                         self.lag, self.generator)
             best = 0
+            pred = None
             if n > 1:
                 # Pair the C-1 earlier context frames with the C-1 blocks executed after them,
                 # and the current frame with the n candidate chunks of length `generate`.
@@ -140,6 +177,10 @@ class GoalPlanningAgent(LatentPolicyAgent):
                                                 self.encoder.action_encoder(acts), self.generate)
                 self.last_distance = (pred[:, -1].float()-goal).square().sum(-1)
                 best = int(self.last_distance.argmin())
+            if self.diagnostics:
+                self.diagnostic.update(candidate_scores=self.last_distance.detach().cpu().tolist()
+                                       if n > 1 else None, selected_candidate=best)
+                self._diagnostic_plan(blocks, best, pred[best, 0] if pred is not None else None)
             raw = np.clip(blocks[best, :self.execute].cpu().numpy()*self.a_std+self.a_mean, -1, 1)
             self.queue = list(raw.reshape(-1, STRIDE, RAW_ACTION_DIM))
         block = self.queue.pop(0)

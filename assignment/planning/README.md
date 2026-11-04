@@ -57,3 +57,7 @@ The full benchmark runs the 300 validation scenes with three policy seeds (`0`, 
 Results vary noticeably with the policy seed (the no-planning baseline ranges from 1.21 to 1.31 mean boxes across the three seeds), so compare planners on the same scenes and seeds and report the average. The evaluation command is in Stage 5 of the [training track](../training/README.md).
 
 Treat these 300 validation scenes as a development set. Competition details, including the held-out evaluation scenes, submission format, and compute limits, will be announced separately.
+
+## Phase-one baseline diagnostics
+
+Our diagnostic runner now defaults to B1 (with planning), recording block-level planner diagnostics, control-step task events, annotated videos, and timelines on fixed scenes and sampler seeds. Pass `--baselines B0 B1` explicitly to run the historical paired comparison. Start with scene `100038` and seeds `0 2 3`; see [`notes/PHASE1/PHASE1.md`](../../notes/PHASE1/PHASE1.md) for the commands, cluster submission, output schema, and interpretation limits. The original design is in [`notes/PHASE1/DESIGN.md`](../../notes/PHASE1/DESIGN.md).

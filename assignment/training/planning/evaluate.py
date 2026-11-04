@@ -89,12 +89,30 @@ def scene_goal_frames(path, seed):
     return d['sub_frames'][i, :d['sub_count'][i]], d['init_frames'][i]
 
 
+def runtime_information(agent):
+    import torch
+    import mujoco
+    return dict(gpu=torch.cuda.get_device_name(), torch=torch.__version__, cuda=torch.version.cuda,
+                numpy=np.__version__, mujoco=mujoco.__version__, device=agent.device,
+                cuda_visible_devices=os.environ.get('CUDA_VISIBLE_DEVICES'),
+                encoder_autocast_dtype=str(agent._amp_dtype),
+                model_parameter_dtype=str(next(agent.encoder.parameters()).dtype),
+                policy_parameter_dtype=str(next(agent.policy.parameters()).dtype),
+                policy_autocast_dtype=None)
+
+
 def run_episode(job):
-    kind, checkpoint, world_model, config, seed, task_kwargs, resolution, video, goals, sample_seed = job
+    kind, checkpoint, world_model, config, seed, task_kwargs, resolution, video, goals, sample_seed = job[:10]
+    diagnostic_dir = job[10] if len(job) > 10 else None
+    evidence_options = job[11] if len(job) > 11 else {}
     from assignment.training.data.cache import STRIDE
     from assignment.training.data.signals import row_hand_parts, row_lifted
     from assignment.training.data.task import StackTaskEnv, TaskConfig
-    agent = make_agent(kind, checkpoint, world_model, config)
+    agent = make_agent(kind, checkpoint, world_model, dict(config, diagnostics=True) if diagnostic_dir else config)
+    recorder = None
+    if diagnostic_dir:
+        from assignment.training.planning.diagnostics import EpisodeDiagnostics, annotate_frame
+        recorder = EpisodeDiagnostics()
     episode_seed = seed + 1_000_000*sample_seed
     goal_frames = None
     if kind == 'goal':
@@ -106,19 +124,34 @@ def run_episode(job):
     env = StackTaskEnv(task, seed)
     env.reset(('init', seed))
     env.env.resolution = resolution
+    tail = None
+    if diagnostic_dir and evidence_options.get('tail_state_steps', 0):
+        from assignment.training.planning.evidence import TailEvidence
+        tail = TailEvidence(evidence_options['tail_state_steps'])
     max_placed, first_placement, ground, info, success = 0, None, 0, {}, False
     touched = lifted = 0
     stage_steps = []
-    frames, start, agent_s = [], time.time(), 0.
+    frames, video_steps, start, agent_s = [], [], time.time(), 0.
     for step in range(task.horizon):
         if step % STRIDE == 0:
             frame = np.concatenate(list(env.env.render()), axis=1)
-            t0 = time.time()
+            if recorder:
+                import torch
+                torch.cuda.synchronize()
+            t0 = time.perf_counter()
             block = agent.step(frame)
-            agent_s += time.time()-t0
+            if recorder:
+                torch.cuda.synchronize()
+            elapsed = time.perf_counter()-t0
+            agent_s += elapsed
+            if recorder:
+                diagnostic_row = recorder.decision(step, agent.diagnostic, elapsed)
             if video:
-                frames.append(frame if goal_frames is None else
-                              np.concatenate([frame, goal_frames[min(agent.index, len(goal_frames)-1)]], axis=0))
+                goal_frame = None if goal_frames is None else goal_frames[min(agent.index, len(goal_frames)-1)]
+                frames.append(annotate_frame(frame, goal_frame, diagnostic_row, 'B1' if kind == 'goal' else 'B0')
+                              if recorder else frame if goal_frames is None else
+                              np.concatenate([frame, goal_frame], axis=0))
+                video_steps.append(step)
         _, _, terminated, truncated, info = env.step(block[step % STRIDE])
         while len(stage_steps) < info['placed']:
             stage_steps.append(step+1)
@@ -129,19 +162,46 @@ def run_episode(job):
         if info['placed'] > max_placed and first_placement is None:
             first_placement = step+1
         max_placed = max(max_placed, info['placed'])
+        if recorder:
+            recorder.task_step(step+1, info['count'])
+        if tail:
+            tail.capture(env, step+1)
         if terminated or truncated:
             success = bool(info['success'])
             break
+    if recorder and video:
+        # Block-boundary frames stop before the last block is executed. Include the
+        # terminal observation so the last video label agrees with final_count.
+        frame = np.concatenate(list(env.env.render()), axis=1)
+        final_row = dict(sim_time=(step+1)*.1, stacked_count=int(info['count']),
+                         max_stacked_count=int(max_placed),
+                         active_goal_index=agent.index if goal_frames is not None else None)
+        goal_frame = None if goal_frames is None else goal_frames[min(agent.index, len(goal_frames)-1)]
+        frames.append(annotate_frame(frame, goal_frame, final_row,
+                                     'B1 final' if kind == 'goal' else 'B0 final'))
+        video_steps.append(step+1)
+    if tail:
+        tail.save(diagnostic_dir, env)
     env.close()
     if video:
         from assignment.training.data.recording import write_video
         Path(video).parent.mkdir(parents=True, exist_ok=True)
         write_video(Path(video), [f[None] for f in frames], STRIDE)
+        if diagnostic_dir and evidence_options.get('keyframes', 0):
+            from assignment.training.planning.evidence import save_keyframes
+            save_keyframes(diagnostic_dir, frames, video_steps, evidence_options['keyframes'])
     goal_info = dict(goal_index=agent.index, goals=len(goal_frames)) if kind == 'goal' else {}
-    return dict(scene_seed=seed, success=success, steps=step+1, max_placed=int(max_placed), **goal_info,
+    result = dict(scene_seed=seed, success=success, steps=step+1, max_placed=int(max_placed), **goal_info,
                 final_count=int(info.get('count', 0)), first_placement_step=first_placement, ground_falls=int(ground),
                 grasp_steps=int(touched), lifted_steps=int(lifted), stage_steps=stage_steps, agent_s=round(agent_s, 1),
                 seconds=round(time.time()-start, 1))
+    if recorder:
+        result.update(sample_seed=sample_seed, episode_seed=episode_seed,
+                      world_model=agent.world_model_path,
+                      runtime=runtime_information(agent),
+                      **recorder.finish(result))
+        recorder.save(diagnostic_dir, result)
+    return result
 
 
 def tag(config):
