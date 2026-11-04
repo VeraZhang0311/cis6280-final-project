@@ -119,13 +119,19 @@ class GoalPlanningAgent(LatentPolicyAgent):
     def __init__(self, policy_path, device='cuda', candidates=16, tau=.25,
                  scoring='terminal', realignment=False, realignment_config=None,
                  realignment_mode='forward', adaptive_sampling=False, max_candidates=48,
-                 min_improvement=.20, **kwargs):
+                 min_improvement=.20, search_mode=None, **kwargs):
         if scoring not in ('terminal', 'tail_min', 'tail_weighted'):
             raise ValueError('unknown candidate scoring mode')
         from assignment.training.planning.alignment import GoalRealigner
         if realignment_mode not in ('forward', 'bidirectional'):
             raise ValueError('unknown realignment search mode')
         self.scoring = scoring
+        if search_mode is not None:
+            if scoring!='tail_min' or realignment or adaptive_sampling or candidates!=48:
+                raise ValueError('G9/G10 require G7 goals/scoring and an initial pool of 48')
+            from assignment.training.planning.search import SearchPlanner
+            self.search=SearchPlanner(search_mode)
+        else:self.search=None
         if adaptive_sampling and (scoring!='tail_min' or realignment or candidates!=16 or max_candidates!=48 or min_improvement!=.20):
             raise ValueError('G6 requires G1 scoring/goal selection and fixed 16/48/.20 sampling settings')
         self.adaptive_sampling, self.max_candidates = adaptive_sampling, max_candidates
@@ -136,6 +142,10 @@ class GoalPlanningAgent(LatentPolicyAgent):
             raise ValueError('tail scoring requires at least four generated blocks')
         if adaptive_sampling and (self.generate!=16 or self.execute!=1):
             raise ValueError('G6 requires generate=16, execute=1')
+        if self.search is not None and (self.generate!=16 or self.execute!=1 or self.policy.cfg.context!=1):
+            raise ValueError('G9/G10 require generate=16, execute=1 and policy context=1')
+        if self.search is not None and np.any(self.a_std<=0):
+            raise ValueError('search action normalization must have positive standard deviations')
         self.candidates, self.tau = candidates, tau
         self.goals = None
 
@@ -145,6 +155,7 @@ class GoalPlanningAgent(LatentPolicyAgent):
         super().reset(seed)
         self.frames, self.executed, self.index = [], [], 0
         self.last_distance = self.goals = self.gap = None
+        if getattr(self,'search',None) is not None:self.search.reset()
         if getattr(self, 'realigner', None) is not None:
             self.realigner.reset()
         if goal_frames is not None:
@@ -269,7 +280,9 @@ class GoalPlanningAgent(LatentPolicyAgent):
             pctx = [self.history[0]]*(self.policy.cfg.context-len(self.history))+self.history
             n = self.candidates
             sampling_info = None
-            if getattr(self, 'adaptive_sampling', False):
+            if getattr(self,'search',None) is not None:
+                blocks,pred,best,sampling_info=self.search.plan(self,pctx,goal)
+            elif getattr(self, 'adaptive_sampling', False):
                 blocks, pred, best, sampling_info = self._adaptive_plan(pctx, goal, z)
             else:
                 blocks = self.policy.sample(torch.stack(pctx)[None].expand(n, -1, -1), self.generate, self.n_steps,
@@ -301,7 +314,13 @@ class GoalPlanningAgent(LatentPolicyAgent):
                                                                 cumulative_best_cost=cost,extra_batch_cost_gain=None)],
                                          predicted_improvement=improvement(self.diagnostic['goal_distance_sq'],cost),
                                          stop_reason='fixed_budget', selected_batch=1,
-                                         policy_sample_calls=1, wm_rollout_calls=1)
+                                         policy_sample_calls=1, wm_rollout_calls=1,
+                                         wm_predict_calls=self.generate,policy_denoising_calls=self.n_steps+(self.generate-1)*self.lag,
+                                         trajectory_evaluations=n,future_latent_predictions=n*self.generate,
+                                         policy_action_blocks=n*self.generate,selected_source='policy',selected_round=0,
+                                         candidate_ids=list(range(n)),candidate_sources=['policy']*n,candidate_rounds=[0]*n,
+                                         policy_sample_batches=[dict(purpose='fresh_policy',candidates=n,blocks=self.generate)],
+                                         wm_rollout_batches=[dict(purpose='fresh_policy',candidates=n,steps=self.generate)])
                 if sampling_info is not None:
                     self.diagnostic.update(sampling_info)
                 if pred is not None:

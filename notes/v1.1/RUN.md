@@ -1,5 +1,83 @@
 # v1.1 cluster run
 
+## Current: G8/G9/G10 full search experiment (`v1.1-search-r4`)
+
+**Final: job 1500169 COMPLETED, exit 0, elapsed 3h31m32s.** All 420 new
+episodes are complete: 240 development (four configurations ×60) and 180
+fixed-new-scene validation (three groups ×60). Another 120 G1/G7 development
+reference cases are linked explicitly and are not new experiments. The final
+report is `outputs/planning/v1.1/search-1500169/analysis/index.html`.
+Complete evidence is currently being synchronized locally.
+
+| Development group | Mean peak | Mean final | Peak >=2 | Peak >=3 | Mean / P95 decision ms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| G8-32 | 1.800 | 1.467 | 37/60 | 16/60 | 156.4 / 193.2 |
+| G8-96 | 1.850 | 1.550 | 35/60 | 18/60 | 342.9 / 391.4 |
+| G9 | 1.783 | 1.333 | 38/60 | 11/60 | 293.6 / 328.4 |
+| G10 | 0.550 | 0.417 | 2/60 | 0/60 | 432.1 / 466.8 |
+
+G10-G8-96 paired peak difference is -1.300, 95% whole-scene bootstrap interval
+[-1.567,-1.017], with 2 improved/17 tied/41 regressed episodes. This version of
+policy-initialized iCEM substantially underperformed its 96-trajectory control.
+The results do not identify whether model exploitation, the action projection
+or other optimizer behavior caused the regression; no post-hoc tuning was done.
+
+G8-96 won the predeclared development mean-peak selection; `selection.json`
+locked it before any new-scene outcomes were evaluated.
+
+| New fixed-scene validation | Mean peak | Mean final | Peak >=2 | Peak >=3 | Mean / P95 decision ms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| G1 | 1.450 | 1.133 | 25/60 | 7/60 | 129.9 / 147.8 |
+| G7 | 1.483 | 1.267 | 27/60 | 6/60 | 195.0 / 242.9 |
+| G8-96 | 1.700 | 1.350 | 35/60 | 10/60 | 343.5 / 389.9 |
+
+On the new scenes, G8-96-G7 mean peak difference is +0.217, 95% interval
+[-0.083,0.500], with 25 improved/20 tied/15 regressed. G8-96-G1 is +0.250,
+interval [-0.050,0.517]. Both include zero. Mean decision latency is about
+76% higher than G7. G8-32/G9/G10 were not run on these validation scenes;
+do not infer heldout superiority over those configurations.
+
+The submission/progress notes below are historical snapshots.
+
+Submitted job **1500169**, `cis6280-G8G10`, shared `batch`, constrained to
+`dj-2080ti-0.grasp.maas` to match the completed G1/G7 reference host. Resources:
+2 × 2080 Ti, four workers, eight CPUs, 32 GB RAM, six-hour limit. Liu's active
+GPU nodes were fully allocated (the remaining Liu node drained), so shared
+resources are used. Existing teacher job 1498746 remains untouched.
+
+- Snapshot: `/mnt/projects/ll/tianzizh/cis6280-v11-search-r4`.
+- Output: `/mnt/projects/ll/tianzizh/cis6280-v11-search-r4/outputs/planning/v1.1/search-1500169/`.
+- Log: `/mnt/projects/ll/tianzizh/cis6280-v11-search-r4/outputs/v11-search-1500169.log`.
+- Direct development full runs: G8-32 → G8-96 → G9 → G10, 60 each = 240 new episodes.
+- Compatible complete G1/G7 from `sampling-1499337` are explicitly referenced,
+  not silently pooled or relabelled. Actual GPU/dtype/dependency signatures are enforced.
+- No pilot: direct full runs follow the user's stated preference. The design's
+  planned pilot is not described as an executed experiment.
+- The next 20 official scenes are already fixed in `validation-scenes-20-next.json`.
+  After development, select the best new method using mean peak, mean final,
+  lower mean decision time, then fixed configuration order; lock `selection.json`.
+  G1, G7 and this method then run 60 episodes each on those new scenes, separately.
+  Total new work is 420 episodes. Validation does not retune the method.
+
+44 targeted tests passed on the cluster. Independent comparisons against the
+immutable r3 source matched G0–G7 over 100 decisions per group (actions, RNG,
+goals, costs and model calls). Development/validation report rendering passed
+a synthetic smoke test including hyphenated G8 configuration names and galleries.
+The old versioned G1–G7 evidence archive still verifies unchanged.
+
+Every new episode keeps video, timeline, steps/events, six terminal keyframes
+and tail contact evidence. Search metadata accounts for prefix/tail predictions,
+all evaluated candidates, cached cost reuse, actual model batches and winner
+source. Reports show development and fixed-scene validation separately.
+Requeue/resume is automatic; partial episodes are archived, complete ones skipped.
+
+```powershell
+ssh tianzizh@grasp-login2.seas.upenn.edu "squeue -j 1500169; tail -20 /mnt/projects/ll/tianzizh/cis6280-v11-search-r4/outputs/v11-search-1500169.log"
+scp -O -r tianzizh@grasp-login2.seas.upenn.edu:/mnt/projects/ll/tianzizh/cis6280-v11-search-r4/outputs/planning/v1.1/search-1500169 outputs/planning/v1.1/
+```
+
+Earlier completed protocols follow.
+
 统一结果、两批可比范围和版本化证据入口见 [RESULTS.md](RESULTS.md)；本文件保留运行状态与历史沿革。
 
 ## Current: G6/G7 direct full run (`v1.1-sampling-r3`)

@@ -1,5 +1,64 @@
 # v1.1 implementation and execution protocol
 
+## Current revision: `v1.1-search-r4` (G8/G9/G10)
+
+Completed: all 240 new development and 180 fixed-new-scene validation cases.
+G8-96 was locked from development outcomes and validated against G1/G7;
+the validation sets remain separate. Final results and evidence paths are in RUN.md.
+
+G8-32/G8-96 use unchanged official goal advancement and tail-min scoring with
+one fixed policy/WM batch of 32/96 full plans. G9 starts exactly as G7 when cold;
+later, up to eight cached elites are shifted, their 15-block suffixes rolled out
+from the new real context, and a conditional one-block policy tail is sampled
+from each newly imagined endpoint. For a three-latent WM tail context z13/z14/z15,
+the outgoing actions are u13/u14/new_tail. This avoids re-rolling prefixes or
+using old states/costs. Missing/invalid cache entries are filled by fresh policy
+plans so every G9 decision evaluates exactly 48 full trajectories.
+
+G10 uses the specified iCEM variant: 48/32/16 new trajectories, K=8, within-round
+reuse of two already-scored elites, alpha=.1 old weight, sigma floor .05, and
+15 colored Gaussian plans plus one scored mean in the final 16 slots. The mean
+candidate is first in the last batch (global id 80). Stable cost ties prefer the
+earlier evaluated global id. Every evaluated plan remains eligible for execution;
+cross-decision elites are the global top eight across all 96, not just last-round
+elites. The final distribution is fitted after the third elite selection and
+cached for the next decision; that newly fitted, unscored mean is never executed.
+
+All G10 candidates/caches, including policy initialization, conditional tails
+and the scored mean, are projected into normalized executable bounds. G0–G9
+retain their original action treatment. Gaussian statistics are float32.
+Sigma is reinitialized from each new initial pool; only the optimized mean is
+shifted between real decisions, padded by mean conditional tails. Noise is an
+independent Torch FFT construction on 80 control steps and 25 channels, beta=2,
+zero DC, deterministic ensemble-variance normalization. This zero-DC choice is
+explicitly recorded; it is not a verbatim copy of the colorednoise package.
+
+Sources: [iCEM paper](https://arxiv.org/abs/2008.06389),
+[official code pinned at 98c1c1f](https://github.com/martius-lab/iCEM/blob/98c1c1fe2bfc94a87e4658b6c793f4e81bc30203/icem/controllers/icem.py).
+`search.py` is an independent task-specific implementation; policy initialization,
+conditional tails and fixed 96-trajectory budget are this experiment's settings.
+
+Full budgets are 48 trajectories / 768 future latents for G9, and 96 / 1536 for
+G10, including all prefix/tail predictions. The implementation logs policy
+sample batches, generated policy action blocks, WM rollout batches, underlying
+WM prediction steps and diffusion denoising calls. Same-decision reused costs
+are not evaluated twice. Metadata includes stable candidate IDs/source/round,
+all unique costs, cache/tail counts, per-round elites/reuse, sigma summaries,
+global best and actual winner source. Real history is appended only once per
+decision and imagined targets never advance official goal selection.
+
+The user requested direct full runs, so no pilot is run. Four development
+configurations × 60 cases = 240 new episodes, with compatible completed G1/G7
+references explicitly linked. Next, select the new method by development mean
+peak, then mean final, then lower mean decision time, then fixed configuration
+order. This hierarchy is fixed before outcomes; `selection.json` locks it.
+The next 20 official scene IDs after the development set are already frozen in
+`validation-scenes-20-next.json`. G1, G7 and the locked method each run 60 cases
+there, separately (180 new validation episodes; 420 new episodes total).
+No validation outcome changes the method or its parameters.
+
+Historical completed protocols and their evidence below remain unchanged.
+
 All G1–G7 experiments are complete. See [RESULTS.md](RESULTS.md) for the unified
 results and the versioned evidence bundle; this file records implementation details.
 
