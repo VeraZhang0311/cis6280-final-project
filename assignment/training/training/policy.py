@@ -161,9 +161,13 @@ class DFPolicy(nn.Module):
 
     def forward(self, z, x, t):
         """z: (B, C, latent), x: noisy actions (B, h, action), t: (B, h) noise levels -> velocity (B, h, action)."""
-        c, h = z.size(1), x.size(1)
-        tokens = torch.cat([self.obs_in(z), self.act_in(x)], 1)+self.pos[:, :c+h]
-        cond = torch.cat([self.obs_cond.expand(len(z), c, -1), self.t_embed(timestep_embedding(t, 256))], 1)
+        return self._velocity(self.obs_in(z), x, t)
+
+    def _velocity(self, obs_tokens, x, t):
+        """Shared transformer; goal conditioning only changes the observation token."""
+        c, h = obs_tokens.size(1), x.size(1)
+        tokens = torch.cat([obs_tokens, self.act_in(x)], 1)+self.pos[:, :c+h]
+        cond = torch.cat([self.obs_cond.expand(len(obs_tokens), c, -1), self.t_embed(timestep_embedding(t, 256))], 1)
         mask = self.mask[:c+h, :c+h]
         for block in self.blocks:
             tokens = block(tokens, cond, mask)
@@ -172,11 +176,7 @@ class DFPolicy(nn.Module):
 
     def loss(self, z, actions, mask, generator=None):
         """Diffusion-forcing flow-matching loss with independent per-token noise levels."""
-        t = torch.rand(actions.shape[:2], device=actions.device, generator=generator)
-        eps = torch.randn(actions.shape, device=actions.device, generator=generator)
-        x = (1-t[..., None])*actions+t[..., None]*eps
-        err = (self(z, x, t).float()-(eps-actions)).square().mean(-1)
-        return (err*mask).sum()/mask.sum().clamp(min=1)
+        return flow_matching_loss(lambda x, t: self(z, x, t), actions, mask, generator)
 
     @torch.no_grad()
     def sample(self, z, steps=None, n_steps=10, lag=0, generator=None):
@@ -186,17 +186,32 @@ class DFPolicy(nn.Module):
         lag=k>0: pyramid schedule where token i trails token i-1 by k solver steps; tokens
         with t_now == t_next at a given step receive a zero update.
         """
-        h = steps or self.cfg.horizon
-        x = torch.randn(len(z), h, self.cfg.action_dim, device=z.device, generator=generator)
-        offset = torch.arange(h, device=z.device)*lag
-        for s in range(n_steps+(h-1)*lag):
-            t_now = (1-(s-offset)/n_steps).clamp(0, 1)
-            t_next = (1-(s+1-offset)/n_steps).clamp(0, 1)
-            if not (t_now > t_next).any():
-                continue
-            v = self(z, x, t_now.expand(len(z), h)).float()
-            x = x+(t_next-t_now)[None, :, None]*v
-        return x
+        return sample_flow(lambda x, t: self(z, x, t), len(z), steps or self.cfg.horizon,
+                           self.cfg.action_dim, z.device, n_steps, lag, generator)
+
+
+def flow_matching_loss(velocity, actions, mask, generator=None):
+    """Original block-independent rectified-flow objective, shared by both actors."""
+    t = torch.rand(actions.shape[:2], device=actions.device, generator=generator)
+    eps = torch.randn(actions.shape, device=actions.device, generator=generator)
+    x = (1-t[..., None])*actions+t[..., None]*eps
+    err = (velocity(x, t).float()-(eps-actions)).square().mean(-1)
+    return (err*mask).sum()/mask.sum().clamp(min=1)
+
+
+@torch.no_grad()
+def sample_flow(velocity, batch, horizon, action_dim, device, n_steps=10, lag=0, generator=None):
+    """Original Euler / pyramid sampler, shared without changing its RNG draws."""
+    x = torch.randn(batch, horizon, action_dim, device=device, generator=generator)
+    offset = torch.arange(horizon, device=device)*lag
+    for s in range(n_steps+(horizon-1)*lag):
+        t_now = (1-(s-offset)/n_steps).clamp(0, 1)
+        t_next = (1-(s+1-offset)/n_steps).clamp(0, 1)
+        if not (t_now > t_next).any():
+            continue
+        v = velocity(x, t_now.expand(batch, horizon)).float()
+        x = x+(t_next-t_now)[None, :, None]*v
+    return x
 
 
 def save_policy(path, model, info):
@@ -205,6 +220,9 @@ def save_policy(path, model, info):
 
 def load_policy(path, device='cpu'):
     ckpt = torch.load(path, map_location=device, weights_only=False)
+    if ckpt.get('model_type', 'df-policy-v1') != 'df-policy-v1':
+        raise ValueError('This checkpoint requires a different actor architecture; '
+                         'use load_goal_policy for goal-conditioned checkpoints')
     model = DFPolicy(PolicyConfig(**ckpt['config'])).to(device)
     model.load_state_dict(ckpt['state_dict'])
     return model.eval(), ckpt['info']

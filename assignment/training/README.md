@@ -4,6 +4,121 @@ This directory contains the five-stage pipeline that produced the checkpoints us
 
 All commands below should be run from the repository root after setting up the local environment (`bash scripts/setup.sh`, `source .venv/bin/activate`, and `export MUJOCO_GL=egl`).
 
+### v2: Offline goal-conditioned actor finetuning
+
+The training part of `notes/v2/DESIGN_2.0.md` is implemented in
+[`goal_policy.py`](training/goal_policy.py) and
+[`train_goal_policy.py`](training/train_goal_policy.py). A1–A3 inference and
+paired evaluation are documented in [planning/README.md](planning/README.md).
+
+```bash
+python -m assignment.training.training.train_goal_policy \
+  --cache dataset/derived/jepa-cache-4cube-20k \
+  --latents dataset/derived/latents-smwm-c3 \
+  --init-policy checkpoints/policy/df-smwm-c1-sigma04/policy.pt \
+  --encoder checkpoints/jepa/smwm-c3/pretrain.pt \
+  --out checkpoints/goal-actor-v2-seed0 \
+  --log-dir outputs/training/v2/goal-actor-v2-seed0
+```
+
+Use the frozen encoder checkpoint that produced the cache with `--encoder`;
+the file is hashed for provenance, never loaded into the optimizer. Legacy
+released latent metadata contains a source path rather than an encoder hash;
+the manifest explicitly records this limit. If `latents.json` contains
+`model_sha256`, it must match. The official actor's latent and action statistics
+must match the cache. No raw images, WM inference or evaluation reference goals
+are needed for training.
+
+Defaults are fixed before training: 50,000 optimizer steps, effective batch 256,
+microbatch 64, LR 3e-5, warmup 1,000, AdamW betas (0.9, 0.95), weight decay 0.01,
+gradient norm clip 1, EMA 0.999 with the original startup schedule, seed 0.
+The original warmup/cosine LR and EMA formulas are recorded in `run.json`.
+Data filtering is fixed to sigma <= 0.04, context 1, and all 16 pre-stop action
+blocks plus frame t+16 present. K is uniform in 1..16 within the same episode;
+all 16 blocks remain supervised even when K < 16. Only sampled minibatches are
+copied from memory maps to the device. A smaller final microbatch is weighted
+by its sample count. `--device cpu` is available for small correctness checks.
+
+`policy.pt` always contains **final-step EMA** weights; validation loss does not
+select the model. Periodic `step-*.pt` checkpoints contain EMA actor weights.
+A separate atomic `train-state.pt` contains the actor, EMA, optimizer, scheduler
+and data/flow RNG states; `--state-every` defaults to 1,000 steps. `--resume`
+recovers this state in the same output directory after preemption, requiring
+identical source, training recipe and W&B run identity. Use a new output directory for each run. The trainer
+refuses to overwrite nonempty output/log directories. `run.json` records code
+identity, source hashes, cache/split/filter identities, normalizers, eligible
+episode/anchor counts, initialization SHA256, full training settings and the
+checkpoint rule; `train-log.jsonl` records FM losses and offline validation
+action MSE. These metrics do not establish closed-loop task performance.
+
+New checkpoints use `model_type=goal-df-policy-v2` and include the goal feature
+and adapter interface. Load them with `load_goal_policy`, which returns a
+`GoalDFPolicy` and its metadata. Its `forward(current, goal, x, t)`,
+`loss(current, goal, actions, mask)` and `sample(current, goal)` inputs use
+`[B, 1, latent_dim]` current/goal tensors normalized with the saved shared
+train statistics. The original `load_policy` explicitly rejects these models.
+The compatibility CLI is `python scripts/train_stack_goal_policy.py ...`.
+
+For online W&B tracking, add `--wandb-project 6280_actor` and optionally
+`--wandb-entity`, `--wandb-run-name` and a stable `--wandb-run-id`. This requires
+the `wandb` SDK and an authenticated account. Training loss, gradient norm,
+learning rate, throughput and offline validation metrics are logged; the run
+URL is saved in both manifests. Checkpoint files remain on cluster storage.
+
+For a new training phase, replace `--init-policy` with `--init-goal-policy`
+pointing at the previous phase's EMA `policy.pt`. The complete trained adapter
+and backbone are preserved; AdamW, the LR schedule and EMA startup are reset.
+Optionally provide the matching `--init-training-state` to continue the parent's
+data/flow RNG streams. Its EMA must exactly match the initialization checkpoint.
+This avoids repeating the previous phase's sampled anchor/K/noise sequence.
+`--resume` remains reserved for interruption recovery with the same recipe.
+Logs include both phase-local `step` and `cumulative_step`; W&B also records
+`trainer/total_step`. The fixed second-phase launcher is
+[`train_goal_actor_round2.sbatch`](../../scripts/train_goal_actor_round2.sbatch):
+50k additional steps, LR 1e-4, warmup 1k, otherwise the first-phase recipe.
+
+### A4: tail coverage from the locked 100k actor
+
+`--include-tail` implements design section 2.2. It samples uniformly from every
+valid pre-stop anchor, without oversampling the tail. For each anchor,
+`R=min(16, remaining valid blocks)` and `K` is a uniform integer in `1..R`.
+The goal frame is in the same episode. Labels contain the R actual blocks,
+followed by zeros in normalized action space; only `i<R` is supervised.
+The sampler never reads padding from the cache, repeats the last action, or
+uses post-stop finalization. Actions after K remain supervised when K<R.
+
+Microbatch gradients are weighted by `microbatch valid blocks / batch valid
+blocks`, matching the full batch's masked FM objective. Validation FM loss and
+all-block sampled-action MSE use the same valid-block denominator. The first
+block is valid for every sample. The actor still receives only current/goal
+conditions and outputs all 16 blocks; neither K nor R is an input.
+
+The fixed A4 recipe is in [train_goal_actor_a4.sbatch](../../scripts/train_goal_actor_a4.sbatch):
+load the complete 100k final EMA with SHA256
+`d039fbba25eabb9b976fff945afd6b59031cbbf11df5f916a5671dd774e234bf`,
+then train 50k new optimizer steps at LR 1e-4, warmup 1k, batch 256/microbatch 64,
+EMA 0.999 and seed 0. `--expected-init-sha256` and `--expected-prior-steps`
+enforce the parent identity. This phase uses fresh AdamW/scheduler/EMA startup
+and phase-seeded RNG; do not pass `--init-training-state`. Interruption recovery
+uses this phase's own `--resume` state. The final checkpoint is cumulative
+150k, selected by the fixed final-EMA rule. Parent artifacts remain independent.
+
+`run.json` records full/tail anchor counts, anchor R histograms, the conditional
+K distribution and implied overall K probabilities. `sampling.json` and training
+logs record actual R/K counts; recovery state preserves their cumulative joint
+R/K histogram. Final checkpoint/run manifests include the actual training
+sample counts and final validation sample distribution. Tail validation uses
+a different anchor distribution from the earlier full-window validation.
+
+The matching inference modes and reference comparison are in the
+[A4 evaluation instructions](planning/README.md#a4-16-and-a4-32).
+
+Run the training-only tests in a torch environment:
+
+```bash
+OMP_NUM_THREADS=1 python -m unittest discover -s tests -p test_goal_policy.py -v
+```
+
 <details>
 <summary><b>Stage 1: Dataset</b> (Can skip by downloading our dataset. Click to expand.)</summary>
 

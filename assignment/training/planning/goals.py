@@ -22,7 +22,11 @@ def init_worker(counter, gpus):
         rank = counter.value
         counter.value += 1
     os.environ['MUJOCO_GL'] = 'egl'
-    os.environ['MUJOCO_EGL_DEVICE_ID'] = str(gpus[rank % len(gpus)])
+    logical = gpus[rank % len(gpus)]
+    visible = os.environ.get('CUDA_VISIBLE_DEVICES')
+    physical = visible.split(',')[logical].strip() if visible else str(logical)
+    if physical.isdigit():
+        os.environ['MUJOCO_EGL_DEVICE_ID'] = physical
 
 
 def scene_goals(job):
@@ -72,6 +76,7 @@ def main():
     p.add_argument('--split', default='val')
     p.add_argument('--start-seed', type=int, default=100000)
     p.add_argument('--scenes', type=int, default=100)
+    p.add_argument('--scene-file', type=Path, help='Explicit fixed scene list, e.g. the union of A5 train/calibration scenes')
     p.add_argument('--stages', type=int, default=4)
     p.add_argument('--horizon', type=int, default=1795)
     p.add_argument('--resolution', type=int, default=128)
@@ -86,6 +91,13 @@ def main():
         if scene_split(seed) == args.split:
             seeds.append(seed)
         seed += 1
+    if args.scene_file:
+        seeds = json.loads(args.scene_file.read_text(encoding='utf-8-sig'))
+        if isinstance(seeds, dict):
+            seeds = seeds.get('scene_seeds', seeds.get('scenes'))
+        if (not isinstance(seeds, list) or not seeds or len(set(seeds)) != len(seeds)
+                or any(type(s) is not int or s < 0 or scene_split(s) != args.split for s in seeds)):
+            p.error('Explicit scenes must be unique and match --split')
     ctx = mp.get_context('spawn')
     with ProcessPoolExecutor(args.workers, mp_context=ctx, initializer=init_worker,
                              initargs=(ctx.Value('i', 0), [int(g) for g in args.gpus.split(',')])) as pool:
@@ -103,17 +115,21 @@ def main():
             sub[i, :count[i]], sub_steps[i, :count[i]] = r[4], r[5]
         extra = dict(init_frames=np.stack([r[3] for r in results]), sub_frames=sub, sub_steps=sub_steps,
                      sub_count=count)
-    np.savez_compressed(args.out/'goals.npz', seeds=np.array(seeds), frames=frames, steps=steps, **extra)
+    with (args.out/'goals.tmp').open('wb') as stream:
+        np.savez_compressed(stream, seeds=np.array(seeds), frames=frames, steps=steps, **extra)
+    (args.out/'goals.tmp').replace(args.out/'goals.npz')
     import imageio.v2 as imageio
     imageio.imwrite(args.out/'preview.png', np.concatenate([np.concatenate(list(f), axis=1) for f in frames[:6]], axis=0))
     reached = {f'stage{k+1}': float((steps[:, k] >= 0).mean()) for k in range(args.stages)}
-    meta = dict(source='scripted nominal + recovery', split=args.split, seeds=[seeds[0], seeds[-1]], scenes=len(seeds),
+    meta = dict(source='scripted nominal + recovery', split=args.split, seeds=[seeds[0], seeds[-1]],
+                scene_seeds=seeds, scenes=len(seeds),
                 stages=args.stages, horizon=args.horizon, goal='first step with k placed cubes', reached=reached,
                 every=args.every)
     if args.every:
         meta['subgoals_per_scene'] = dict(mean=float(extra['sub_count'].mean()), min=int(extra['sub_count'].min()),
                                           max=int(extra['sub_count'].max()))
-    (args.out/'goals.json').write_text(json.dumps(meta, indent=1))
+    (args.out/'goals.json.tmp').write_text(json.dumps(meta, indent=1))
+    (args.out/'goals.json.tmp').replace(args.out/'goals.json')
     print(json.dumps(meta), flush=True)
 
 

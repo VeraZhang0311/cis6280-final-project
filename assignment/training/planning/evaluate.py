@@ -71,6 +71,9 @@ def make_agent(kind, checkpoint, world_model, config):
             _worker[key] = LatentPolicyAgent(checkpoint, 'cuda', **kwargs)
         elif kind == 'goal':
             _worker[key] = GoalPlanningAgent(checkpoint, 'cuda', **kwargs)
+        elif kind in ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'):
+            from assignment.training.planning.goal_actor import GoalActorAgent
+            _worker[key] = GoalActorAgent(checkpoint, 'cuda', mode=kind, **kwargs)
         else:
             raise ValueError(kind)
     return _worker[key]
@@ -97,7 +100,7 @@ def run_episode(job):
     agent = make_agent(kind, checkpoint, world_model, config)
     episode_seed = seed + 1_000_000*sample_seed
     goal_frames = None
-    if kind == 'goal':
+    if kind in ('goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'):
         goal_frames, init_frame = scene_goal_frames(goals, seed)
         agent.reset(goal_frames, init_frame, episode_seed)
     else:
@@ -137,7 +140,7 @@ def run_episode(job):
         from assignment.training.data.recording import write_video
         Path(video).parent.mkdir(parents=True, exist_ok=True)
         write_video(Path(video), [f[None] for f in frames], STRIDE)
-    goal_info = dict(goal_index=agent.index, goals=len(goal_frames)) if kind == 'goal' else {}
+    goal_info = dict(goal_index=agent.index, goals=len(goal_frames)) if goal_frames is not None else {}
     return dict(scene_seed=seed, success=success, steps=step+1, max_placed=int(max_placed), **goal_info,
                 final_count=int(info.get('count', 0)), first_placement_step=first_placement, ground_falls=int(ground),
                 grasp_steps=int(touched), lifted_steps=int(lifted), stage_steps=stage_steps, agent_s=round(agent_s, 1),
@@ -153,7 +156,7 @@ def main():
     p.add_argument('checkpoints', nargs='+', type=Path)
     p.add_argument('--world-model', type=Path, default=None,
                    help="Optional world-model checkpoint path (overrides info['encoder'] in the policy checkpoint)")
-    p.add_argument('--kind', choices=('df', 'goal'), default='df')
+    p.add_argument('--kind', choices=('df', 'goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'), default='df')
     p.add_argument('--goals', type=Path, default=None, help='goals.npz from assignment.training.planning.goals (--kind goal)')
     p.add_argument('--configs', nargs='+', default=['{}'], help='JSON agent kwargs, e.g. {"generate": 16, "execute": 1}')
     p.add_argument('--split', default='val')
@@ -171,8 +174,8 @@ def main():
     p.add_argument('--workers', type=int, default=8)
     p.add_argument('--out-dir', type=Path, default=None, help='Defaults to <checkpoint dir>/eval')
     args = p.parse_args()
-    if args.kind == 'goal' and args.goals is None:
-        p.error('--kind goal requires --goals')
+    if args.kind != 'df' and args.goals is None:
+        p.error(f'--kind {args.kind} requires --goals')
     from assignment.training.data.signals import scene_split
     seeds, seed = [], args.start_seed
     while len(seeds) < args.scenes:
