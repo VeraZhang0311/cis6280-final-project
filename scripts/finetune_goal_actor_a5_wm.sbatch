@@ -19,7 +19,7 @@ resume_args=()
 if [[ -f checkpoints/wm-a5/train-state.pt ]]; then resume_args=(--resume); fi
 exec "$TASK_PYTHON" -u -m assignment.training.training.finetune_goal_onpolicy \
     --data dataset/onpolicy-a5 --init checkpoints/original-wm.pt --policy checkpoints/actor-120k.pt \
-    --out checkpoints/wm-a5 --steps 60000 --batch 256 --microbatch 16 \
+    --out checkpoints/wm-a5 --steps 60000 --batch 256 --microbatch 256 \
     --lr 1e-4 --warmup 1000 --seed 0 --eval-every 2000 --state-every 200 \
     --wandb-project 6280_wm --wandb-entity tianzizh-university-of-pennsylvania \
     --wandb-run-name a5-wm-onpolicy-120k --wandb-run-id a5-wm-onpolicy-120k-s0 \
