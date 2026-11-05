@@ -15,6 +15,11 @@ jobs:
     timeout-minutes: 30
     env:
       MUJOCO_GL: osmesa
+      # Match the CPU regression setup used on the cluster. Keep native math
+      # backends single-threaded for small deterministic gradient tests.
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONFAULTHANDLER: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
