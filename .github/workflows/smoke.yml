@@ -28,7 +28,21 @@ jobs:
       - name: Install software rendering libraries
         run: sudo apt-get update && sudo apt-get install -y libosmesa6 libgl1
       - name: Prepare environment
-        run: bash scripts/setup.sh
+        run: |
+          # Hosted smoke runners only use CPU. Preinstall the CPU build of the
+          # locked torch version so setup does not pull CUDA/Triton libraries.
+          # Triton's native extension crashes when AdamW is initialized in the
+          # OSMesa test process with the CUDA wheel on these runners.
+          python -m venv .venv
+          .venv/bin/python -m pip install 'torch==2.14.0+cpu' --index-url https://download.pytorch.org/whl/cpu
+          bash scripts/setup.sh
+          .venv/bin/python - <<'PY'
+          import importlib.util
+          import torch
+          assert torch.version.cuda is None, 'Smoke CI must use CPU-only PyTorch'
+          assert importlib.util.find_spec('triton') is None, 'GPU Triton is not needed for smoke CI'
+          print(f'Smoke runtime: torch={torch.__version__}, CUDA={torch.version.cuda}')
+          PY
       - name: Simulator and assignment unit tests
         if: matrix.suite == 'tests'
         run: .venv/bin/python -m unittest discover -s tests -v
