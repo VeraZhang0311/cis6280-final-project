@@ -1,0 +1,24 @@
+{
+  "rule": "user_requested_checkpoint",
+  "step": 56000,
+  "sha256": "bec1eb8df7b2ef90b909a12a03d94d1935a3577d118122cf05cd10eda0f8c376",
+  "actor_sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3",
+  "original_wm_sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa",
+  "training_selection_sha256": "50b69d17ae4e03a98902761c4172f29947183a50c0a58f59d8f667ec938aa473",
+  "source_checkpoint": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-20261105/checkpoints/wm-a5/step-056000.pt",
+  "original_selected_step": 0,
+  "scope": "User-requested 56k WM / 32 candidates development supplement; original selection unchanged",
+  "calibration_metrics": {
+    "h1": 0.0008599845694261604,
+    "h4": 0.0014916088545287494,
+    "h8": 0.0022696549784741366,
+    "h16": 0.004051940266916063,
+    "agreement_16": 0.464,
+    "regret_16": 0.456904536470538,
+    "agreement_32": 0.338,
+    "regret_32": 0.5575757153312443,
+    "selection_regret": 0.5072401259008912
+  },
+  "frozen_parameters_and_buffers_verified": true,
+  "representation_sha256": "403afd1c979ac651a6d7ffced23d18b98c9fd2326259052850c30e9a53cb7178"
+}

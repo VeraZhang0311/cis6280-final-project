@@ -1,12 +1,12 @@
 # v2.0：Goal-conditioned flow actor 与 on-policy WM finetuning
 
-日期：2026-11-05。状态：goal actor 已完成累计 100k optimizer steps 的训练，A1/A2/A3 共 180 条开发评估已完成。A4 尾部训练已结束（Job `1502354` 按用户指令取消），当前锁定累计 **120k** 的 `step-020000.pt` EMA，A4-16/A4-32 各 60 条测评使用该权重。A5 采集、WM 微调、W&B 与 A5-16/A5-32 测评代码已实现；用户已授权将采集和训练提交 cluster，任务测评尚未提交。
+日期：2026-11-05。状态：累计 100k actor 的 A1/A2/A3 共 180 条，以及累计 **120k** actor 的 A4-16/A4-32 各 60 条开发测评均已完成。A5 on-policy 采集和 60k-step WM 微调已完成；预设 calibration 选模保留 **step 0 原 WM**。用户额外指定的 **56k WM / A5-32** 已完成 60 条，平均任务表现低于 A4-32，本轮未看到 WM 微调收益。完整结果与限制见 [A5 实验结论](a5/RESULTS.md)。
 
-A5 采集 Job `1502656` 已在共享 `batch` A10 上运行，先生成训练用 scripted references，再完成固定分支预算。WM 训练 Job `1502663` 已设置 `afterok:1502656` 等待采集成功后自动启动；固定 60k steps、batch=256、microbatch=256。完整 batch 已通过实际 A10 的 16-step backward/冻结检查，峰值 tensor allocation 约 2.4 GiB。训练启动时注册 W&B `6280_wm`；[启动记录](a5/launch.json) 保存配置、依赖、模型/代码身份与日志路径。
+A5 采集 Job `1502656` 和 WM 训练 Job `1502663` 均已正常完成：5000/500 个 train/calibration 锚点、60k steps，分别耗时 3:41:29、4:05:51。训练 batch=256、microbatch=256，注册 W&B `6280_wm`。[原启动记录](a5/launch.json) 保存当时配置和依赖；[结果记录](a5/RESULTS.md) 保存最终状态、选模、闭环测评及证据。
 
 本次执行变更覆盖下文原定 150k final EMA 的选择：保留原 50k 训练预算和调度作为历史配置，当前测评显式传入 `--a4-cumulative-step 120000`，使用独立 `a4-120k` 证据目录，并记录 checkpoint SHA256 与 `user_selected_intermediate_ema`。不将中间 EMA 改写为 150k final，不依据本次任务结果挑选 checkpoint。A4-16 相对 A2 的新增训练量为 **20k**。
 
-120k 测评已提交 Job `1502593`，共享 `batch` 的单张 L40，8 workers；最后检查为 `PENDING (Resources)`，liu 组预计等待更长。两组各 60 条、共 120 条，均保存视频与逐步证据。[启动记录](../../outputs/planning/v2/a4-120k-20261104/launch.json)、[checkpoint 核验](../../outputs/planning/v2/a4-120k-20261104/preflight.json)。cluster 工作区为 `/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104`，结果目录为其下 `outputs/planning/v2/a4-120k`。
+120k actor 测评 Job `1502593` 已正常完成，使用共享 `batch` 的单张 L40、8 workers。A4-16/A4-32 各 60 条、共 120 条，均保存视频与逐步证据。[启动记录](../../outputs/planning/v2/a4-120k-20261104/launch.json)、[checkpoint 核验](../../outputs/planning/v2/a4-120k-20261104/preflight.json)。cluster 工作区为 `/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104`，结果目录为其下 `outputs/planning/v2/a4-120k`。
 
 本分支 `tianzi-branch/v2.0` 从 `main` 的 `9540172640099ac764e3eeca52d09265dbb018fb` 创建，不继承 v1.1 的 planner 实现。v1.1 已保存并推送至 `8c7ffdf1de2370e0fcca2a227f80663a1a3929c2`，其 [设计与结果记录](https://github.com/VeraZhang0311/cis6280-final-project/tree/8c7ffdf1de2370e0fcca2a227f80663a1a3929c2/notes/v1.1) 保持独立。
 
@@ -335,6 +335,12 @@ A2 达到至少 3 箱为 39/60，达到至少 4 箱为 16/60；A1 分别为 25/6
 v1.1 的第二批 20 个固定验证场景也已经看过结果，不能在 v2 再称为全新测试集。正式 v2 验证需先从剩余官方场景固定一份未用于本轮调参的清单，锁定 actor/checkpoint、权重和部署配置后再评估；不根据验证结果重新训练或选择参数。
 
 A2 不一定优于 A1。新 actor 改变了候选分布，冻结 WM 对这些动作的预测/排序可能失准；A2 退步时应分别检查 actor 与 selector，而不是直接判定 goal conditioning 无效。
+
+### 7.4 A5 实际结果：本轮未取得收益
+
+5000/500 个锚点的采集与 60k-step WM 微调已完成。预设的 `(regret_16 + regret_32)/2` 在原 WM 上为 **0.50420**，最佳微调 checkpoint（56k）为 **0.50724**，因此仍保留 step 0。用户随后额外指定 56k WM 跑 A5-32，各 60 条配对开发测评中，mean peak/final boxes 从 A4-32 的 **2.87/2.13** 降至 **2.58/1.83**，success 从 **14/60** 降至 **11/60**，平均决策耗时均约 **217 ms**。
+
+记录结论为本轮 on-policy WM finetuning 效果不好、没有观察到闭环收益；scene 配对区间包含或触及 0，不能将平均下降表述为已证明稳定退步。原选模仍为 step 0，56k 属于独立补充实验；未运行微调 WM 的 A5-16 或预留正式验证集。数据、配置、区间、原始指标和集群证据路径见 [A5 RESULTS.md](a5/RESULTS.md)。
 
 ## 8. 主要指标和必要记录
 

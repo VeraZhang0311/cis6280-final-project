@@ -1,0 +1,23 @@
+{
+  "step": 0,
+  "regret": 0.5042030989975901,
+  "checkpoint": "model.pt",
+  "sha256": "e32cbe03294e4c9a3336d427dc7f0381c50975ffea611c24019531b18e8b6767",
+  "frozen_checks": true,
+  "original_retained": true,
+  "training_complete": true,
+  "trained_steps": 60000,
+  "last_eval": {
+    "h1": 0.0008596802162355743,
+    "h4": 0.0014904968277842272,
+    "h8": 0.0022682640402927065,
+    "h16": 0.004054118526168168,
+    "agreement_16": 0.452,
+    "regret_16": 0.4837053467312362,
+    "agreement_32": 0.35,
+    "regret_32": 0.5478587223681388,
+    "selection_regret": 0.5157820345496875
+  },
+  "wall_seconds": 14745.23377643479,
+  "wall_scope": "current_attempt"
+}

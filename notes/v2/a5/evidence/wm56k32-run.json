@@ -1,0 +1,385 @@
+{
+  "code": {
+    "commit": "bb732bf2a87ed5d236b91e55fc02a54bd0858af1",
+    "branch": "tianzi-branch/v2.0",
+    "dirty": false,
+    "status": "",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_sha256": {
+      "assignment/training/__init__.py": "415ebb93c0b729e93cd5318b9d90b9995a0a4a7620e74ef2e9319083df9bf43e",
+      "assignment/training/_cli.py": "9e9f1ce686576cae4819f44d191252f4f5e0f291e756ca560559c9536a0b6f87",
+      "assignment/training/data/__init__.py": "cd7e1416b666fe54f6004bae60d727582a727cfb1a39b13c854754d85d57adac",
+      "assignment/training/data/cache.py": "11f01dab6ebe385b04c6e9c244e30c544a76db85e88473c4078ac4f72754f525",
+      "assignment/training/data/collect.py": "59ff67a2e21042d280d6b634b113fa5f9451aa37bec4670d1c70816de5adca32",
+      "assignment/training/data/collect_goal_onpolicy.py": "f49d18069aa50e428fb9673a631ff1227e19d5faa1dc9479bdefb964dae48d63",
+      "assignment/training/data/collect_onpolicy.py": "00ab3d1a37f27bde1a74305118f5aa99aab1e0cefd4e97a9876f856fe7eebdd0",
+      "assignment/training/data/encode.py": "4f44ad91c11ee65ab73c1e6a3eedbe97cdb6055fa8855b7a1cd364e0d3f6fa1f",
+      "assignment/training/data/recording.py": "b961ee620cb16fb44eaba1831d78e09d8224a463725287d93263c3851eaae07a",
+      "assignment/training/data/scripted.py": "f776ee27d10e113cfa5a6f26166e7cebc82e87d3f3e80d42c64b6c14c169f2e7",
+      "assignment/training/data/signals.py": "b539c6fefb1b5ae8b1863f02e2d47a21dbcd6932ec43f00a736da30a1968a49a",
+      "assignment/training/data/task.py": "3e6ea0528795c33a3ce0b32a610107086c97c30d6ff2d7787de459be2f057ff5",
+      "assignment/training/data/teacher.py": "b9148c4ca227c6e6c34c2b9d4e184a25e5902b5306106559e6e3908b70932259",
+      "assignment/training/planning/__init__.py": "b17115ff89f9e9f1e0636f180629eefbd37a690dcf36b742e8af8b1e4bebfd57",
+      "assignment/training/planning/agent.py": "216733b83b6384439804dcdbebfc4242eab437205ca481444fe996e805fad843",
+      "assignment/training/planning/evaluate.py": "575c50f8ea294b10a1feeee82c72a88aeb33734b445d719e27c503d6f45feedd",
+      "assignment/training/planning/evaluate_goal_actor.py": "5ca6eddc497ec156cabb686935fefd7b22c7376b9f52351d2af51f479d42ce3c",
+      "assignment/training/planning/goal_actor.py": "793d8911e4b91dcdb565e2259bc88957c5e99de7354ba8d9ceceab78b076ac5f",
+      "assignment/training/planning/goals.py": "b9ad2086f6e931b32d55bef0ff31f2bbf204820975923ffa241631c79bc9f762",
+      "assignment/training/training/__init__.py": "4129e6134960e62ac5a9e58aeb3afbeb3334952d078d099324533ce2d7e19959",
+      "assignment/training/training/finetune_goal_onpolicy.py": "653a9645bb8cdd14b7379f8b2bcf98e99468885fa62ac7d7f6f75d0b0ec8d7c5",
+      "assignment/training/training/finetune_onpolicy.py": "9dba363dbe218bfa002436976b28ac6887fc5e34ed07292aa9d4248273ccbd25",
+      "assignment/training/training/goal_policy.py": "32a5be5aa5796a7602c66b6adcc9fcf481b30656becafb3951d762559470695a",
+      "assignment/training/training/jepa.py": "6d6ae5e7856ba980932cb3eced73b2165cff9b7182d3d0497d69f61853b4df46",
+      "assignment/training/training/onpolicy_a5.py": "3a138181cd7ea86fe13663c0da0815f41045f629a7c1362d5d5fd7b270ffc443",
+      "assignment/training/training/policy.py": "5d449737034b14470cc578e93d30333dba2824d2304917cc72daa88f905c9c1b",
+      "assignment/training/training/train_goal_policy.py": "1d88ccf28263863f888678f77a8dd4171d1356c2fffa99a482b27093d625a373",
+      "assignment/training/training/train_jepa.py": "fba21d8691a78078765b6e9e0c62c42a08e5f4c276bbe3d831ba91f3226cb99b",
+      "assignment/training/training/train_policy.py": "2fd0f3c2c85a76170bcbbb1c812f95a6095423251cb01cc14b16d07f5c59d6be",
+      "scripts/train_stack_goal_policy.py": "24f70647caf4e7a3c0315bad8adec5a2a317355c24499a689987a8eceeef6fa4"
+    },
+    "cluster_source_verified": true
+  },
+  "groups": [
+    "A5-32"
+  ],
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "split": "val",
+  "policy_seed": "scene_seed + 1000000 * sample_seed",
+  "models": {
+    "world_model": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-eval56k-20261105/checkpoints/wm-step-056000.pt",
+      "sha256": "bec1eb8df7b2ef90b909a12a03d94d1935a3577d118122cf05cd10eda0f8c376"
+    },
+    "goal_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-eval56k-20261105/checkpoints/actor-120k.pt",
+      "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+    },
+    "official_actor": null,
+    "goals": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+      "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+    },
+    "wm_selection": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-eval56k-20261105/inputs/original-wm-selection.json",
+      "sha256": "50b69d17ae4e03a98902761c4172f29947183a50c0a58f59d8f667ec938aa473"
+    },
+    "wm_evaluation_receipt": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-eval56k-20261105/inputs/wm-evaluation.json",
+      "sha256": "51e50baf21b32a0f768afa1c225815b80d3cac65f77b31eb94b3f8b325273f98"
+    }
+  },
+  "actor_config": {
+    "latent_dim": 192,
+    "action_dim": 125,
+    "context": 1,
+    "horizon": 16,
+    "dim": 512,
+    "depth": 8,
+    "heads": 8,
+    "mlp": 2048
+  },
+  "actor_interface": {
+    "goal_features": "normalized_current,goal_minus_current,current_times_goal_minus_current",
+    "normalization": "shared_train_latent_mean_std",
+    "current_shape": [
+      1,
+      192
+    ],
+    "goal_shape": [
+      1,
+      192
+    ],
+    "adapter": {
+      "input_dim": 384,
+      "hidden_dim": 512,
+      "output_dim": 512,
+      "activation": "GELU",
+      "final_init": "zero"
+    },
+    "sampling": {
+      "n_steps": 10,
+      "lag": 0
+    },
+    "time_to_goal_input": false
+  },
+  "training_source": {
+    "step": 20000,
+    "cumulative_step": 120000,
+    "wandb": {
+      "project": "6280_actor",
+      "entity": "tianzizh-university-of-pennsylvania",
+      "id": "v2actor-20261104-a4-tail-s0",
+      "url": "https://forge.coreweave.com/wandb/tianzizh-university-of-pennsylvania/6280_actor/runs/v2actor-20261104-a4-tail-s0",
+      "sdk_version": "0.31.0"
+    },
+    "init_policy": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-eval-r2-20261104/checkpoints/goal-actor-r2-final.pt",
+      "sha256": "d039fbba25eabb9b976fff945afd6b59031cbbf11df5f916a5671dd774e234bf",
+      "model_type": "goal-df-policy-v2",
+      "parent_step": 50000
+    },
+    "wm": {
+      "schema": "goal-actor-onpolicy-a5-v1",
+      "code": {
+        "commit": "f241c06ee46b9a96bfc7f3b069118678da0be31b",
+        "branch": "tianzi-branch/v2.0",
+        "dirty": false,
+        "status": "",
+        "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_sha256": {
+          "assignment/training/__init__.py": "415ebb93c0b729e93cd5318b9d90b9995a0a4a7620e74ef2e9319083df9bf43e",
+          "assignment/training/_cli.py": "9e9f1ce686576cae4819f44d191252f4f5e0f291e756ca560559c9536a0b6f87",
+          "assignment/training/data/__init__.py": "cd7e1416b666fe54f6004bae60d727582a727cfb1a39b13c854754d85d57adac",
+          "assignment/training/data/cache.py": "11f01dab6ebe385b04c6e9c244e30c544a76db85e88473c4078ac4f72754f525",
+          "assignment/training/data/collect.py": "59ff67a2e21042d280d6b634b113fa5f9451aa37bec4670d1c70816de5adca32",
+          "assignment/training/data/collect_goal_onpolicy.py": "f49d18069aa50e428fb9673a631ff1227e19d5faa1dc9479bdefb964dae48d63",
+          "assignment/training/data/collect_onpolicy.py": "00ab3d1a37f27bde1a74305118f5aa99aab1e0cefd4e97a9876f856fe7eebdd0",
+          "assignment/training/data/encode.py": "4f44ad91c11ee65ab73c1e6a3eedbe97cdb6055fa8855b7a1cd364e0d3f6fa1f",
+          "assignment/training/data/recording.py": "b961ee620cb16fb44eaba1831d78e09d8224a463725287d93263c3851eaae07a",
+          "assignment/training/data/scripted.py": "f776ee27d10e113cfa5a6f26166e7cebc82e87d3f3e80d42c64b6c14c169f2e7",
+          "assignment/training/data/signals.py": "b539c6fefb1b5ae8b1863f02e2d47a21dbcd6932ec43f00a736da30a1968a49a",
+          "assignment/training/data/task.py": "3e6ea0528795c33a3ce0b32a610107086c97c30d6ff2d7787de459be2f057ff5",
+          "assignment/training/data/teacher.py": "b9148c4ca227c6e6c34c2b9d4e184a25e5902b5306106559e6e3908b70932259",
+          "assignment/training/planning/__init__.py": "b17115ff89f9e9f1e0636f180629eefbd37a690dcf36b742e8af8b1e4bebfd57",
+          "assignment/training/planning/agent.py": "216733b83b6384439804dcdbebfc4242eab437205ca481444fe996e805fad843",
+          "assignment/training/planning/evaluate.py": "575c50f8ea294b10a1feeee82c72a88aeb33734b445d719e27c503d6f45feedd",
+          "assignment/training/planning/evaluate_goal_actor.py": "7e407918694cb3dc8b6480c80c57c7ed9e29e7f93ff31adb8baa78d565e3b23d",
+          "assignment/training/planning/goal_actor.py": "6061fb978a2229eceb0c3a56a5ee4f9d9232a1c552010b41764178c190e2a872",
+          "assignment/training/planning/goals.py": "b9ad2086f6e931b32d55bef0ff31f2bbf204820975923ffa241631c79bc9f762",
+          "assignment/training/training/__init__.py": "4129e6134960e62ac5a9e58aeb3afbeb3334952d078d099324533ce2d7e19959",
+          "assignment/training/training/finetune_goal_onpolicy.py": "653a9645bb8cdd14b7379f8b2bcf98e99468885fa62ac7d7f6f75d0b0ec8d7c5",
+          "assignment/training/training/finetune_onpolicy.py": "9dba363dbe218bfa002436976b28ac6887fc5e34ed07292aa9d4248273ccbd25",
+          "assignment/training/training/goal_policy.py": "32a5be5aa5796a7602c66b6adcc9fcf481b30656becafb3951d762559470695a",
+          "assignment/training/training/jepa.py": "6d6ae5e7856ba980932cb3eced73b2165cff9b7182d3d0497d69f61853b4df46",
+          "assignment/training/training/onpolicy_a5.py": "1c3cb9a429828d22b04dfdf6abfd53b08d6b5c0f7336a0eb43ac21ebe3870c4f",
+          "assignment/training/training/policy.py": "5d449737034b14470cc578e93d30333dba2824d2304917cc72daa88f905c9c1b",
+          "assignment/training/training/train_goal_policy.py": "1d88ccf28263863f888678f77a8dd4171d1356c2fffa99a482b27093d625a373",
+          "assignment/training/training/train_jepa.py": "fba21d8691a78078765b6e9e0c62c42a08e5f4c276bbe3d831ba91f3226cb99b",
+          "assignment/training/training/train_policy.py": "2fd0f3c2c85a76170bcbbb1c812f95a6095423251cb01cc14b16d07f5c59d6be",
+          "scripts/train_stack_goal_policy.py": "24f70647caf4e7a3c0315bad8adec5a2a317355c24499a689987a8eceeef6fa4"
+        },
+        "cluster_source_verified": true
+      },
+      "actor_sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3",
+      "original_wm_sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa",
+      "representation_sha256": "403afd1c979ac651a6d7ffced23d18b98c9fd2326259052850c30e9a53cb7178",
+      "frozen_state_sha256": "850f58256b91515dead29d572677d72fa11fcc8bc257655fa2a008689e9a9dc0",
+      "dataset_manifest_sha256": "17e2aa33efad3731d868d5da304f23dc9066cf1b137575d8df7fd2953d8e5cd5",
+      "dataset_receipt_sha256": "d03d8f96b738ba8865b3515a08c591bdf5d618f9bfe5b871fa33f8214de4441a",
+      "optimization": {
+        "steps": 60000,
+        "batch": 256,
+        "microbatch": 256,
+        "lr": 0.0001,
+        "warmup": 1000,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "weight_decay": 0.001,
+        "clip": 1.0,
+        "seed": 0,
+        "eval_every": 2000,
+        "state_every": 200,
+        "trainable": [
+          "action_encoder",
+          "predictor",
+          "pred_proj"
+        ],
+        "objective": "mean full 16-step autoregressive latent MSE; no goal loss"
+      },
+      "selection": {
+        "rule": "mean_regret_16_32",
+        "true_cost": "min over future blocks 1..16",
+        "std": "sample std (correction=1), epsilon=1e-8",
+        "ties": "earliest checkpoint",
+        "includes_original_step0": true,
+        "shared_for_both_groups": true
+      },
+      "counts": {
+        "train": 5000,
+        "calibration": 500
+      },
+      "runtime": {
+        "device": "cuda",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.5.1",
+        "gpu": "NVIDIA A10"
+      },
+      "wandb": {
+        "project": "6280_wm",
+        "entity": "tianzizh-university-of-pennsylvania",
+        "name": "a5-wm-onpolicy-120k",
+        "id": "a5-wm-onpolicy-120k-s0"
+      },
+      "selected_step": 0,
+      "selected_regret": 0.5042030989975901,
+      "frozen_checks": true
+    },
+    "wm_evaluation": {
+      "rule": "user_requested_checkpoint",
+      "step": 56000,
+      "sha256": "bec1eb8df7b2ef90b909a12a03d94d1935a3577d118122cf05cd10eda0f8c376",
+      "actor_sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3",
+      "original_wm_sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa",
+      "training_selection_sha256": "50b69d17ae4e03a98902761c4172f29947183a50c0a58f59d8f667ec938aa473",
+      "source_checkpoint": "/mnt/projects/ll/tianzizh/cis6280-v2-a5-20261105/checkpoints/wm-a5/step-056000.pt",
+      "original_selected_step": 0,
+      "scope": "User-requested 56k WM / 32 candidates development supplement; original selection unchanged",
+      "calibration_metrics": {
+        "h1": 0.0008599845694261604,
+        "h4": 0.0014916088545287494,
+        "h8": 0.0022696549784741366,
+        "h16": 0.004051940266916063,
+        "agreement_16": 0.464,
+        "regret_16": 0.456904536470538,
+        "agreement_32": 0.338,
+        "regret_32": 0.5575757153312443,
+        "selection_regret": 0.5072401259008912
+      },
+      "frozen_parameters_and_buffers_verified": true,
+      "representation_sha256": "403afd1c979ac651a6d7ffced23d18b98c9fd2326259052850c30e9a53cb7178"
+    }
+  },
+  "config": {
+    "candidates": {
+      "A1": 1,
+      "A2": 16,
+      "A3": 16,
+      "A4-16": 16,
+      "A4-32": 32,
+      "A5-16": 16,
+      "A5-32": 32
+    },
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "switch_tau": 0.25,
+    "next_goal_weight": 0.25,
+    "score_epsilon": 1e-08,
+    "action_handling": "unnormalize, clip to [-1,1], renormalize for WM/history",
+    "goal_switch": "real observation only; strict distance < tau * reference_gap",
+    "A2": "min over future blocks 1..16",
+    "A3": "eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2",
+    "tie_break": "earliest candidate",
+    "decision_timing": "CUDA synchronized; excludes reset/render/video",
+    "call_units": "encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps"
+  },
+  "task": {
+    "horizon": 1795,
+    "target_count": 4,
+    "terminate_on_ground": false,
+    "resolution": 128
+  },
+  "runtime": {
+    "device": "cuda",
+    "gpus": [
+      0
+    ],
+    "workers": 8,
+    "videos": 20,
+    "gpu": "NVIDIA L40",
+    "dtype": "torch.bfloat16",
+    "versions": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "imageio": "2.37.2"
+    }
+  },
+  "reference": {
+    "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/outputs/planning/v2/a4-120k",
+    "manifest_sha256": "e0620ec3f023289de6552410ebcda41e9ae21317cf9360cffeacf9c818aced1f",
+    "episode_sha256": {
+      "A4-32": {
+        "scene-100035.sample-0": "86b704086bf3a47422013b5e5d75b9ec8f849c9784d58c4714102692f8dc049b",
+        "scene-100035.sample-2": "e2e92a2ca0fc04838c191d19695775fbe1e5402f398a80c22a39681c22751927",
+        "scene-100035.sample-3": "4ea6048bfdb5c6a317c928440d5db235c306789d780ff8ad756fd12f7d14f40d",
+        "scene-100038.sample-0": "8df9006faae85fdce6315c7b4f8c74e5de0e04b2a506315fa59bff92e177ba73",
+        "scene-100038.sample-2": "8c115bface2dd26fa906886ac9cce16fc99a3aa9042f90fdfeb358e574866194",
+        "scene-100038.sample-3": "ab70202cfc714927e4e3b677d80de73826a9cd21af2f9c3cc75e1ae8e151f18e",
+        "scene-100057.sample-0": "e6555d86e4bac96dc7fd55a54b7210557734e0414098866120a6e320e034d21c",
+        "scene-100057.sample-2": "ebf7cb9eacc7fb98b0ade48095c2e1c61c9e8732bcc442a27096acfcc3230e77",
+        "scene-100057.sample-3": "1405184a8a03fc0896c4e7236501e17e218993fa56bb89814cfa93b954d83dc5",
+        "scene-100060.sample-0": "ec03f178235f6d9c8c9b66dbbfafdeff9d798e8d99ef676c0087698952d41b74",
+        "scene-100060.sample-2": "d9af5de4d37a8090adf4e741c46f85823c6ec832b50599ceba550dab125b55e0",
+        "scene-100060.sample-3": "a593851fdb7c49bb4f56404677cb434abe81d96fafe717cb3ec5b010faa8a6d8",
+        "scene-100069.sample-0": "8f218e62d9845a7860109e70f119ed57a6389e23d50dc6e3b3c1f3cbc705c7eb",
+        "scene-100069.sample-2": "c6c79584267d685b6c7602cc250f952e41d2f6076728a8bb10ae1333331cc68f",
+        "scene-100069.sample-3": "77fcb27965cd71fa74e244fc42cce794ee5de64a4c956335471cc2d0de9b1475",
+        "scene-100072.sample-0": "7d1fdb8f4014811cc0ebbb10587cbbbb557cfae061f3097563f4db263b01935d",
+        "scene-100072.sample-2": "aa726c24c562264c10c45326dcd56f716cd803e4dbd7f9e75c3cce748902378b",
+        "scene-100072.sample-3": "9feb4ffadf6aeb76f613e55aac4d4db1d74b319859ea299151a9390f0e171e3c",
+        "scene-100078.sample-0": "52aa2be9cd32ea8e4c8660f00cf3aea3bb2cb28151231377f679b5fd12d6958c",
+        "scene-100078.sample-2": "b9515b9d37ee136139304f0f654d001b2cc250461867c97d832632f5593053e4",
+        "scene-100078.sample-3": "ed51aef22cb1eec1f35b92dd03ee14e662de0ccce55f8e22ac0c6bc7175caf33",
+        "scene-100085.sample-0": "b22fb6e48264a6913b2df2e4d0fd5b49bb079d3dee3d21250030cec0e6d4ea98",
+        "scene-100085.sample-2": "bad1243fc808a3fe9bab9c0f13e857fd077be7b4e73ed8a81da0b0d677197e25",
+        "scene-100085.sample-3": "517dbb7c9a2afb52ebd4c26cdd7b23147d902924d3bf516f95cf56a454885fe5",
+        "scene-100087.sample-0": "0a02f295f2a615525f59482761344e2a7e0e41b8e7d732979dca5414b57908b9",
+        "scene-100087.sample-2": "b284b64817004d4682e77dc578f7593d33bfe4c4d3e45d15383e1c5794d8ea40",
+        "scene-100087.sample-3": "25b7f9035c2ebe3f3119fad1a2b5dab953e026f4e401f305191bf3095a9fca2e",
+        "scene-100098.sample-0": "950b6a06eeba06c89739031996c4a44c251706216a6b61e5c528bf3bdeef1c1e",
+        "scene-100098.sample-2": "9fe71c6fe37775e3a0f5ab68eaf23b8262e7692b9ea5300c4e4c2d7178df4966",
+        "scene-100098.sample-3": "581e7abbc554d8d51e137beed7274cc8919eedc22bfd4f1a51cef66486cc57ef",
+        "scene-100102.sample-0": "42721d2c33cc5608b90bcc6dd855ef2ee1e8a254479a54739c60675da45b34b4",
+        "scene-100102.sample-2": "fcda0049d0366309cf8e66e4bf1c728c4f1a368baa9e9cbbce38d2c0eea26504",
+        "scene-100102.sample-3": "5b7e65321c027e0c31c347ba4652044a2a68bbf2937fe64718638d9407272933",
+        "scene-100137.sample-0": "d9bd68188906d5570c7538189bb8bae756d2f95e49ce9a40750002de84ef362f",
+        "scene-100137.sample-2": "f54d2547ecd40e04f63d4d2dbc130e8291cc7bb565d23d455fb479e840054e57",
+        "scene-100137.sample-3": "03908e332e04ff1165965a2fcbf374407968ab39f1bc8153fcff1b7a3fe41bac",
+        "scene-100145.sample-0": "7c09c481f74893fdfb4dc8dd12870b3e3b0c172231e47b728a422f4bf4b8124a",
+        "scene-100145.sample-2": "eb2b562ab66b06e9a2c68fe315e368c9d7197d8664d9c6973f64d580a536587e",
+        "scene-100145.sample-3": "ee31489113a29a10b8d1fc8a096fdaf9a5537066de7bf312b2e18b1c89e30b1f",
+        "scene-100152.sample-0": "9876a47fccf8b7f8dd856d4332bd147a4a157316a1d5cc9eeed3ea885fcf2f2c",
+        "scene-100152.sample-2": "6763082983aa15fb81ed8e9d34ac9d95692cfb2d1abd2221c84ed85626e11761",
+        "scene-100152.sample-3": "2d3bfd5efb8344c9fdb6ce8a18061657cb9164c9dce232dadc065b76ffaf334c",
+        "scene-100164.sample-0": "17b58180e2285e374199afb5c1fc3e6bc399d278753a25e9b5c1fe24734c7512",
+        "scene-100164.sample-2": "4a4d28d478569b3d82e253477b9029b0995b6cc1fee1a8da558c1f18b18cb1ef",
+        "scene-100164.sample-3": "af85442bfda05080bb4dde3a56fdc8d86540d54e5669804d1485ead4cae42199",
+        "scene-100166.sample-0": "94466318b9fc7beb3911332c938f771a04d09f836fd7e02a59802c38dee7dfbe",
+        "scene-100166.sample-2": "096cc2ab2a4e7f8c6ab2c2f6b296f28a442db80d9d2e266810bae82c116220ee",
+        "scene-100166.sample-3": "a3beb7434e5ec082b31f04476b6748f5df1bb2aed042aa6249cbef29e6373dfc",
+        "scene-100169.sample-0": "1fc4ad93211cd00d068d60cb9c20b04891dbaf7763245d841d84427895ca041c",
+        "scene-100169.sample-2": "da8556a0a45196c3f955866ef1698185105d4d2cfb1d8117665132f8969fa900",
+        "scene-100169.sample-3": "7ef82827393d866a874080e010b0c3d0daca50f43e3ce3b85d43f41d40059258",
+        "scene-100175.sample-0": "71b06561b0086720cbedba9499606120ccc428110dc5965f556dbb95e8d44677",
+        "scene-100175.sample-2": "1569c09f9f82f0f82ea2fc4b09941f7bd567474354e77d961a15d8cc1b6010cf",
+        "scene-100175.sample-3": "719132288fc1427ba2bd1028eaf6d4d44e6afa185f253fecc29e9242882afdb1",
+        "scene-100183.sample-0": "916ce61218df4afd00a2e2651304160e093ddea5c4d9be9cf85b65a233f69f01",
+        "scene-100183.sample-2": "d182efae175011e4f115ff3e26e3476d53f347f2bd0718df584fb330a0be54b7",
+        "scene-100183.sample-3": "41910749bd643ade12181f1d02646758c2f5b53524fc85c63e77e6c4026f597e",
+        "scene-100186.sample-0": "eb520ae2f784a75dd1499b6b548f2cf33e35ea040970113db9fd0bed30aa170c",
+        "scene-100186.sample-2": "e94aeafe0042f7587b98b068702095d679bca184d8f59d5abbafabfcd9f06cc2",
+        "scene-100186.sample-3": "5b3714f5d35d05da2785093c2902e824386c95e4010dcf1cfca16de26baecdaa"
+      }
+    }
+  }
+}
