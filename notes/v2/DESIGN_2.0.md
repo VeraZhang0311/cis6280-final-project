@@ -2,6 +2,8 @@
 
 日期：2026-11-05。状态：goal actor 已完成累计 100k optimizer steps 的训练，A1/A2/A3 共 180 条开发评估已完成。A4 尾部训练已结束（Job `1502354` 按用户指令取消），当前锁定累计 **120k** 的 `step-020000.pt` EMA，A4-16/A4-32 各 60 条测评使用该权重。A5 采集、WM 微调、W&B 与 A5-16/A5-32 测评代码已实现；用户已授权将采集和训练提交 cluster，任务测评尚未提交。
 
+A5 采集 Job `1502656` 已在共享 `batch` A10 上运行，先生成训练用 scripted references，再完成固定分支预算。WM 训练 Job `1502663` 已设置 `afterok:1502656` 等待采集成功后自动启动；固定 60k steps、batch=256、microbatch=256。完整 batch 已通过实际 A10 的 16-step backward/冻结检查，峰值 tensor allocation 约 2.4 GiB。训练启动时注册 W&B `6280_wm`；[启动记录](a5/launch.json) 保存配置、依赖、模型/代码身份与日志路径。
+
 本次执行变更覆盖下文原定 150k final EMA 的选择：保留原 50k 训练预算和调度作为历史配置，当前测评显式传入 `--a4-cumulative-step 120000`，使用独立 `a4-120k` 证据目录，并记录 checkpoint SHA256 与 `user_selected_intermediate_ema`。不将中间 EMA 改写为 150k final，不依据本次任务结果挑选 checkpoint。A4-16 相对 A2 的新增训练量为 **20k**。
 
 120k 测评已提交 Job `1502593`，共享 `batch` 的单张 L40，8 workers；最后检查为 `PENDING (Resources)`，liu 组预计等待更长。两组各 60 条、共 120 条，均保存视频与逐步证据。[启动记录](../../outputs/planning/v2/a4-120k-20261104/launch.json)、[checkpoint 核验](../../outputs/planning/v2/a4-120k-20261104/preflight.json)。cluster 工作区为 `/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104`，结果目录为其下 `outputs/planning/v2/a4-120k`。

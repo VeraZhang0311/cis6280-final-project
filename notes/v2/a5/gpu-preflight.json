@@ -1,0 +1,16 @@
+{
+  "gpu": "NVIDIA A10",
+  "microbatch": 256,
+  "autoregressive_blocks": 16,
+  "loss": 1.0978765487670898,
+  "gradient_norm": 1.021114706993103,
+  "backward_seconds": [
+    1.5724789835512638,
+    0.5034844661131501
+  ],
+  "peak_allocated_mib": 2463.9541015625,
+  "frozen_checks": true,
+  "representation_sha256": "403afd1c979ac651a6d7ffced23d18b98c9fd2326259052850c30e9a53cb7178",
+  "source_verified": true,
+  "scope": "synthetic backward only; no optimizer or checkpoint written"
+}
