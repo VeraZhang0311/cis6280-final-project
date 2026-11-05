@@ -87,9 +87,10 @@ class GoalPlanningAgent(LatentPolicyAgent):
     Call reset(goal_frames, init_frame, seed) per episode and step(frame) every STRIDE steps.
     """
 
-    def __init__(self, policy_path, device='cuda', candidates=16, tau=.25, **kwargs):
+    def __init__(self, policy_path, device='cuda', candidates=16, tau=.25, clip_actions=False, **kwargs):
         super().__init__(policy_path, device, **kwargs)
         self.candidates, self.tau = candidates, tau
+        self.clip_actions = clip_actions
         self.goals = None
 
     def reset(self, goal_frames=None, init_frame=None, seed=None):
@@ -108,6 +109,17 @@ class GoalPlanningAgent(LatentPolicyAgent):
                 (z-self.goals[self.index]).square().sum() < self.tau*self.gap[self.index]:
             self.index += 1
         return self.index
+
+    def prepare_candidates(self, blocks):
+        return self._clip_candidates(blocks) if self.clip_actions else blocks
+
+    def _clip_candidates(self, blocks):
+        mean = torch.as_tensor(self.a_mean, device=blocks.device)
+        std = torch.as_tensor(self.a_std, device=blocks.device)
+        return ((blocks*std+mean).clamp(-1, 1)-mean)/std
+
+    def score_candidates(self, pred, goal):
+        return (pred[:, -1].float()-goal).square().sum(-1)
 
     @torch.no_grad()
     def _encode(self, frames):
@@ -129,6 +141,7 @@ class GoalPlanningAgent(LatentPolicyAgent):
             n = self.candidates
             blocks = self.policy.sample(torch.stack(pctx)[None].expand(n, -1, -1), self.generate, self.n_steps,
                                         self.lag, self.generator)
+            blocks = self.prepare_candidates(blocks)
             best = 0
             if n > 1:
                 # Pair the C-1 earlier context frames with the C-1 blocks executed after them,
@@ -138,10 +151,82 @@ class GoalPlanningAgent(LatentPolicyAgent):
                 with self._autocast():
                     pred = self.encoder.rollout(torch.stack(self.frames)[None].expand(n, -1, -1),
                                                 self.encoder.action_encoder(acts), self.generate)
-                self.last_distance = (pred[:, -1].float()-goal).square().sum(-1)
+                self.last_distance = self.score_candidates(pred, goal)
                 best = int(self.last_distance.argmin())
             raw = np.clip(blocks[best, :self.execute].cpu().numpy()*self.a_std+self.a_mean, -1, 1)
             self.queue = list(raw.reshape(-1, STRIDE, RAW_ACTION_DIM))
         block = self.queue.pop(0)
         self.executed.append(torch.from_numpy((block.reshape(-1)-self.a_mean)/self.a_std).to(self.device))
         return block
+
+
+class TrajectoryPlanningAgent(GoalPlanningAgent):
+    """Score reachable subgoals along a rollout with ordered, gated lookahead.
+
+    Uses only camera latents and frozen training statistics. The default candidate
+    count, diffusion steps, rollout length and execution length match the baseline.
+    """
+
+    def __init__(self, *args, terminal_weight=.25, lookahead_weight=.15,
+                 time_weight=.05, adaptive=True, patience=12, **kwargs):
+        if min(terminal_weight, lookahead_weight, time_weight) < 0:
+            raise ValueError('score weights must be nonnegative')
+        if patience < 1:
+            raise ValueError('patience must be positive')
+        self.terminal_weight = terminal_weight
+        self.lookahead_weight = lookahead_weight
+        self.time_weight = time_weight
+        self.adaptive, self.patience = adaptive, patience
+        super().__init__(*args, **kwargs)
+        self.policy.requires_grad_(False)
+        self.encoder.requires_grad_(False)
+
+    def reset(self, goal_frames=None, init_frame=None, seed=None):
+        if goal_frames is not None and len(goal_frames) == 0:
+            raise ValueError('goal_frames must not be empty')
+        super().reset(goal_frames, init_frame, seed)
+        self.stale, self.best_distance = 0, float('inf')
+        self.switches = []
+
+    def goal_index(self, z):
+        previous = self.index
+        super().goal_index(z)
+        if self.index != previous:
+            self.stale, self.best_distance = 0, float('inf')
+            self.switches.append('reached')
+        distance = float((z-self.goals[self.index]).square().sum())
+        if distance < self.best_distance*.98:
+            self.best_distance, self.stale = distance, 0
+        else:
+            self.stale += 1
+        if self.adaptive and self.stale >= self.patience and self.index < len(self.goals)-1:
+            following = float((z-self.goals[self.index+1]).square().sum())
+            # A timeout alone is insufficient evidence that a subgoal was passed.
+            if following < .8*distance and distance < 1.5*float(self.gap[self.index]):
+                self.index += 1
+                self.stale, self.best_distance = 0, float('inf')
+                self.switches.append('passed')
+        return self.index
+
+    def prepare_candidates(self, blocks):
+        return self._clip_candidates(blocks)
+
+    def score_candidates(self, pred, goal):
+        pred = pred.float()
+        # One shared scale preserves the relative weighting of adjacent goals.
+        scale = self.gap[self.index].clamp_min(1e-6)
+        distance = (pred-goal).square().sum(-1)/scale
+        time = torch.arange(1, pred.size(1)+1, device=pred.device)/pred.size(1)
+        closest, arrival = (distance+self.time_weight*time).min(-1)
+        score = closest+self.terminal_weight*distance[:, -1]
+        if self.lookahead_weight and self.index < len(self.goals)-1:
+            following = (pred-self.goals[self.index+1]).square().sum(-1)/scale
+            # Only later states can receive credit for the next subgoal.
+            later = torch.arange(pred.size(1), device=pred.device)[None] > arrival[:, None]
+            future = following.masked_fill(~later, float('inf')).min(-1).values
+            reached = distance.gather(1, arrival[:, None])[:, 0] < self.tau
+            valid = reached & later.any(-1)
+            # A bounded bonus cannot overwhelm the current subgoal objective.
+            bonus = 1/(1+future)
+            score = score-self.lookahead_weight*torch.where(valid, bonus, 0.)
+        return score

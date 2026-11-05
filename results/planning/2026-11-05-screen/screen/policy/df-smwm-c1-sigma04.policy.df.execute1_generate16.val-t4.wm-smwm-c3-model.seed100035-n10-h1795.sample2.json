@@ -1,0 +1,206 @@
+{
+ "code": "9540172640099ac764e3eeca52d09265dbb018fb-dirty",
+ "kind": "df",
+ "policy": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/policy/df-smwm-c1-sigma04/policy.pt",
+ "world_model": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/jepa/smwm-c3/model.pt",
+ "config": {
+  "generate": 16,
+  "execute": 1
+ },
+ "split": "val",
+ "goals": null,
+ "sample_seed": 2,
+ "seeds": [
+  100035,
+  100098
+ ],
+ "task": {
+  "target_count": 4,
+  "horizon": 1795,
+  "terminate_on_ground": false
+ },
+ "summary": {
+  "episodes": 10,
+  "success": 0.0,
+  "reached": {
+   "placed>=1": 0.9,
+   "placed>=2": 0.3,
+   "placed>=3": 0.0,
+   "placed>=4": 0.0
+  },
+  "max_placed_hist": {
+   "0": 1,
+   "1": 6,
+   "2": 3
+  },
+  "grasped": 1.0,
+  "lifted": 1.0,
+  "mean_steps_success": null,
+  "ground_fall_episodes": 0.0,
+  "mean_max_placed": 1.2
+ },
+ "wall_s": 97.3,
+ "episodes": [
+  {
+   "scene_seed": 100035,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 260,
+   "ground_falls": 0,
+   "grasp_steps": 218,
+   "lifted_steps": 165,
+   "stage_steps": [
+    260
+   ],
+   "agent_s": 22.8,
+   "seconds": 36.7
+  },
+  {
+   "scene_seed": 100038,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "final_count": 1,
+   "first_placement_step": 293,
+   "ground_falls": 0,
+   "grasp_steps": 522,
+   "lifted_steps": 322,
+   "stage_steps": [
+    293,
+    801
+   ],
+   "agent_s": 23.2,
+   "seconds": 38.1
+  },
+  {
+   "scene_seed": 100057,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 304,
+   "ground_falls": 0,
+   "grasp_steps": 421,
+   "lifted_steps": 304,
+   "stage_steps": [
+    304
+   ],
+   "agent_s": 22.3,
+   "seconds": 36.4
+  },
+  {
+   "scene_seed": 100060,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 470,
+   "ground_falls": 0,
+   "grasp_steps": 903,
+   "lifted_steps": 162,
+   "stage_steps": [
+    470
+   ],
+   "agent_s": 22.6,
+   "seconds": 37.0
+  },
+  {
+   "scene_seed": 100069,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 280,
+   "ground_falls": 0,
+   "grasp_steps": 202,
+   "lifted_steps": 167,
+   "stage_steps": [
+    280
+   ],
+   "agent_s": 22.8,
+   "seconds": 36.7
+  },
+  {
+   "scene_seed": 100072,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 0,
+   "final_count": 0,
+   "first_placement_step": null,
+   "ground_falls": 0,
+   "grasp_steps": 101,
+   "lifted_steps": 59,
+   "stage_steps": [],
+   "agent_s": 22.6,
+   "seconds": 36.3
+  },
+  {
+   "scene_seed": 100078,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "final_count": 1,
+   "first_placement_step": 276,
+   "ground_falls": 0,
+   "grasp_steps": 531,
+   "lifted_steps": 332,
+   "stage_steps": [
+    276,
+    1357
+   ],
+   "agent_s": 23.0,
+   "seconds": 37.7
+  },
+  {
+   "scene_seed": 100085,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 306,
+   "ground_falls": 0,
+   "grasp_steps": 243,
+   "lifted_steps": 196,
+   "stage_steps": [
+    306
+   ],
+   "agent_s": 23.2,
+   "seconds": 37.4
+  },
+  {
+   "scene_seed": 100087,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "final_count": 1,
+   "first_placement_step": 305,
+   "ground_falls": 0,
+   "grasp_steps": 556,
+   "lifted_steps": 367,
+   "stage_steps": [
+    305,
+    1317
+   ],
+   "agent_s": 12.7,
+   "seconds": 23.4
+  },
+  {
+   "scene_seed": 100098,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "final_count": 1,
+   "first_placement_step": 339,
+   "ground_falls": 0,
+   "grasp_steps": 383,
+   "lifted_steps": 293,
+   "stage_steps": [
+    339
+   ],
+   "agent_s": 12.5,
+   "seconds": 23.5
+  }
+ ]
+}

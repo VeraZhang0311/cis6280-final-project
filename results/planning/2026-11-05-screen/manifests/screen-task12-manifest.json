@@ -1,0 +1,65 @@
+{
+  "stage": "screen",
+  "scenes": [
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "variants": [
+    "trajectory"
+  ],
+  "commands": [
+    [
+      "/vast/home/z/zhangrm/wm/cis6280-final-project/.venv/bin/python",
+      "-m",
+      "assignment.training.planning.evaluate",
+      "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/policy/df-smwm-c1-sigma04/policy.pt",
+      "--world-model",
+      "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/jepa/smwm-c3/model.pt",
+      "--kind",
+      "trajectory",
+      "--configs",
+      "{\"generate\": 16, \"execute\": 1, \"candidates\": 16, \"adaptive\": false, \"lookahead_weight\": 0.0}",
+      "--start-seed",
+      "100102",
+      "--scenes",
+      "10",
+      "--horizon",
+      "1795",
+      "--target-count",
+      "4",
+      "--sample-seeds",
+      "0",
+      "2",
+      "3",
+      "--gpus",
+      "0",
+      "--workers",
+      "4",
+      "--out-dir",
+      "/vast/home/z/zhangrm/wm/cis6280-final-project/runs/planning/screen/trajectory",
+      "--goals",
+      "/vast/projects/xuhw/healthworldx/zhangrm/data/cis6280-stack-datasets-v2/goals/scripted-val300-every80/goals.npz"
+    ]
+  ],
+  "horizon": 1795,
+  "source_sha256": {
+    "assignment/training/planning/agent.py": "9db68bf6dfa1fe926e4bfe89368eecba85c79351b3f8ef0bc00357fc27d05f80",
+    "assignment/training/planning/evaluate.py": "8aac17ee0b635be6244ae40c457553f81cda0ea72046388f0d7399001343e561",
+    "assignment/planning/experiments.py": "d398bf84222828fec110a395ba364581b0802de3d908cd08a3edd528a4baa891"
+  },
+  "status": "completed",
+  "note": "No task results are implied by this manifest."
+}

@@ -1,0 +1,234 @@
+{
+ "code": "9540172640099ac764e3eeca52d09265dbb018fb-dirty",
+ "kind": "goal",
+ "policy": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/policy/df-smwm-c1-sigma04/policy.pt",
+ "world_model": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/jepa/smwm-c3/model.pt",
+ "config": {
+  "generate": 16,
+  "execute": 1,
+  "candidates": 16,
+  "tau": 0.25,
+  "clip_actions": true
+ },
+ "split": "val",
+ "goals": "/vast/projects/xuhw/healthworldx/zhangrm/data/cis6280-stack-datasets-v2/goals/scripted-val300-every80/goals.npz",
+ "sample_seed": 3,
+ "seeds": [
+  100102,
+  100186
+ ],
+ "task": {
+  "target_count": 4,
+  "horizon": 1795,
+  "terminate_on_ground": false
+ },
+ "summary": {
+  "episodes": 10,
+  "success": 0.0,
+  "reached": {
+   "placed>=1": 1.0,
+   "placed>=2": 0.4,
+   "placed>=3": 0.2,
+   "placed>=4": 0.0
+  },
+  "max_placed_hist": {
+   "1": 6,
+   "2": 2,
+   "3": 2
+  },
+  "grasped": 1.0,
+  "lifted": 1.0,
+  "mean_steps_success": null,
+  "ground_fall_episodes": 0.1,
+  "mean_max_placed": 1.6
+ },
+ "wall_s": 166.6,
+ "episodes": [
+  {
+   "scene_seed": 100102,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 7,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 276,
+   "ground_falls": 0,
+   "grasp_steps": 600,
+   "lifted_steps": 332,
+   "stage_steps": [
+    276
+   ],
+   "agent_s": 51.0,
+   "seconds": 65.1
+  },
+  {
+   "scene_seed": 100137,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 11,
+   "goals": 18,
+   "final_count": 0,
+   "first_placement_step": 261,
+   "ground_falls": 0,
+   "grasp_steps": 548,
+   "lifted_steps": 406,
+   "stage_steps": [
+    261
+   ],
+   "agent_s": 49.8,
+   "seconds": 64.9
+  },
+  {
+   "scene_seed": 100145,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 7,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 339,
+   "ground_falls": 0,
+   "grasp_steps": 339,
+   "lifted_steps": 241,
+   "stage_steps": [
+    339
+   ],
+   "agent_s": 49.0,
+   "seconds": 62.5
+  },
+  {
+   "scene_seed": 100152,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 2,
+   "goals": 22,
+   "final_count": 1,
+   "first_placement_step": 377,
+   "ground_falls": 0,
+   "grasp_steps": 348,
+   "lifted_steps": 266,
+   "stage_steps": [
+    377
+   ],
+   "agent_s": 51.4,
+   "seconds": 65.9
+  },
+  {
+   "scene_seed": 100164,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 6,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 240,
+   "ground_falls": 0,
+   "grasp_steps": 186,
+   "lifted_steps": 132,
+   "stage_steps": [
+    240
+   ],
+   "agent_s": 47.7,
+   "seconds": 60.3
+  },
+  {
+   "scene_seed": 100166,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 3,
+   "goal_index": 7,
+   "goals": 19,
+   "final_count": 0,
+   "first_placement_step": 343,
+   "ground_falls": 1,
+   "grasp_steps": 934,
+   "lifted_steps": 521,
+   "stage_steps": [
+    343,
+    879,
+    1285
+   ],
+   "agent_s": 50.9,
+   "seconds": 67.6
+  },
+  {
+   "scene_seed": 100169,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 12,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 327,
+   "ground_falls": 0,
+   "grasp_steps": 530,
+   "lifted_steps": 435,
+   "stage_steps": [
+    327,
+    774
+   ],
+   "agent_s": 49.5,
+   "seconds": 64.6
+  },
+  {
+   "scene_seed": 100175,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 3,
+   "goal_index": 12,
+   "goals": 18,
+   "final_count": 3,
+   "first_placement_step": 272,
+   "ground_falls": 0,
+   "grasp_steps": 673,
+   "lifted_steps": 508,
+   "stage_steps": [
+    272,
+    644,
+    1020
+   ],
+   "agent_s": 49.8,
+   "seconds": 65.3
+  },
+  {
+   "scene_seed": 100183,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 1,
+   "goal_index": 6,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 297,
+   "ground_falls": 0,
+   "grasp_steps": 227,
+   "lifted_steps": 166,
+   "stage_steps": [
+    297
+   ],
+   "agent_s": 27.3,
+   "seconds": 37.8
+  },
+  {
+   "scene_seed": 100186,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 11,
+   "goals": 19,
+   "final_count": 1,
+   "first_placement_step": 323,
+   "ground_falls": 0,
+   "grasp_steps": 697,
+   "lifted_steps": 558,
+   "stage_steps": [
+    323,
+    637
+   ],
+   "agent_s": 24.3,
+   "seconds": 36.3
+  }
+ ]
+}

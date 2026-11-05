@@ -1,0 +1,25 @@
+test_closed_loop_uses_history_and_returns_valid_blocks (test_planning.PlanningTests.test_closed_loop_uses_history_and_returns_valid_blocks) ... ok
+test_last_goal_and_zero_gap_stay_finite (test_planning.PlanningTests.test_last_goal_and_zero_gap_stay_finite) ... ok
+test_next_goal_bonus_requires_ordered_arrival (test_planning.PlanningTests.test_next_goal_bonus_requires_ordered_arrival) ... ok
+test_predicts_clipped_executable_actions (test_planning.PlanningTests.test_predicts_clipped_executable_actions) ... ok
+test_stall_does_not_skip_an_unreached_goal (test_planning.PlanningTests.test_stall_does_not_skip_an_unreached_goal) ... ok
+test_trajectory_recognizes_intermediate_arrival (test_planning.PlanningTests.test_trajectory_recognizes_intermediate_arrival) ... ok
+test_worker_respects_allocated_gpu_mask (test_planning.PlanningTests.test_worker_respects_allocated_gpu_mask) ... ok
+test_development_and_confirmation_scenes_are_disjoint (test_planning_experiments.ExperimentTests.test_development_and_confirmation_scenes_are_disjoint) ... ok
+test_paired_constant_improvement_has_exact_interval (test_planning_experiments.ExperimentTests.test_paired_constant_improvement_has_exact_interval) ... ok
+test_rejects_duplicate_and_unpaired_results (test_planning_experiments.ExperimentTests.test_rejects_duplicate_and_unpaired_results) ... ok
+test_summary_requires_complete_stage_and_selects_best (test_planning_experiments.ExperimentTests.test_summary_requires_complete_stage_and_selects_best) ... ok
+test_episode_limits_work_without_raw_manifest (test_assignment.AgentAndPolicyModules.test_episode_limits_work_without_raw_manifest) ... ok
+test_finetune_reload_picks_up_shards_that_become_readable (test_assignment.AgentAndPolicyModules.test_finetune_reload_picks_up_shards_that_become_readable) ... skipping unreadable shard /tmp/tmpr6jveoce/train-r001-00000.npz: This file contains pickled (object) data. If you trust the file you can load it unsafely using the `allow_pickle=` keyword argument or `pickle.load()`.
+ok
+test_goal_reset_reseeds_and_sets_switch_gaps (test_assignment.AgentAndPolicyModules.test_goal_reset_reseeds_and_sets_switch_gaps) ... ok
+test_goal_reset_validates_before_changing_state (test_assignment.AgentAndPolicyModules.test_goal_reset_validates_before_changing_state) ... ok
+test_modules_import (test_assignment.AgentAndPolicyModules.test_modules_import) ... ok
+test_reset_seed_makes_samples_independent_of_history (test_assignment.AgentAndPolicyModules.test_reset_seed_makes_samples_independent_of_history) ... ok
+test_script_functions_pickle_for_worker_processes (test_assignment.ScriptLoading.test_script_functions_pickle_for_worker_processes) ... ok
+test_stage_entrypoints_exist_and_import (test_assignment.ScriptLoading.test_stage_entrypoints_exist_and_import) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.619s
+
+OK

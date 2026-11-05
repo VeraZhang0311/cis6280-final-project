@@ -52,9 +52,12 @@ def init_worker(counter, gpus):
         rank = counter.value
         counter.value += 1
     gpu = gpus[rank % len(gpus)]
+    # Slurm exposes allocated devices through this mask; --gpus indexes that mask.
+    visible = os.environ.get('CUDA_VISIBLE_DEVICES')
+    device = visible.split(',')[gpu].strip() if visible else str(gpu)
     os.environ['MUJOCO_GL'] = 'egl'
-    os.environ['MUJOCO_EGL_DEVICE_ID'] = str(gpu)
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu)
+    os.environ['MUJOCO_EGL_DEVICE_ID'] = device if device.isdigit() else str(gpu)
+    os.environ['CUDA_VISIBLE_DEVICES'] = device
     import torch
     torch.set_num_threads(1)
 
@@ -63,7 +66,7 @@ def make_agent(kind, checkpoint, world_model, config):
     key = (kind, checkpoint, world_model, json.dumps(config, sort_keys=True))
     if key not in _worker:
         _worker.clear()
-        from assignment.training.planning.agent import GoalPlanningAgent, LatentPolicyAgent
+        from assignment.training.planning.agent import GoalPlanningAgent, LatentPolicyAgent, TrajectoryPlanningAgent
         kwargs = dict(config)
         if world_model:
             kwargs.setdefault('world_model', world_model)
@@ -71,6 +74,8 @@ def make_agent(kind, checkpoint, world_model, config):
             _worker[key] = LatentPolicyAgent(checkpoint, 'cuda', **kwargs)
         elif kind == 'goal':
             _worker[key] = GoalPlanningAgent(checkpoint, 'cuda', **kwargs)
+        elif kind == 'trajectory':
+            _worker[key] = TrajectoryPlanningAgent(checkpoint, 'cuda', **kwargs)
         else:
             raise ValueError(kind)
     return _worker[key]
@@ -97,7 +102,7 @@ def run_episode(job):
     agent = make_agent(kind, checkpoint, world_model, config)
     episode_seed = seed + 1_000_000*sample_seed
     goal_frames = None
-    if kind == 'goal':
+    if kind in ('goal', 'trajectory'):
         goal_frames, init_frame = scene_goal_frames(goals, seed)
         agent.reset(goal_frames, init_frame, episode_seed)
     else:
@@ -137,7 +142,9 @@ def run_episode(job):
         from assignment.training.data.recording import write_video
         Path(video).parent.mkdir(parents=True, exist_ok=True)
         write_video(Path(video), [f[None] for f in frames], STRIDE)
-    goal_info = dict(goal_index=agent.index, goals=len(goal_frames)) if kind == 'goal' else {}
+    goal_info = dict(goal_index=agent.index, goals=len(goal_frames)) if goal_frames is not None else {}
+    if kind == 'trajectory':
+        goal_info['goal_switches'] = agent.switches
     return dict(scene_seed=seed, success=success, steps=step+1, max_placed=int(max_placed), **goal_info,
                 final_count=int(info.get('count', 0)), first_placement_step=first_placement, ground_falls=int(ground),
                 grasp_steps=int(touched), lifted_steps=int(lifted), stage_steps=stage_steps, agent_s=round(agent_s, 1),
@@ -153,7 +160,7 @@ def main():
     p.add_argument('checkpoints', nargs='+', type=Path)
     p.add_argument('--world-model', type=Path, default=None,
                    help="Optional world-model checkpoint path (overrides info['encoder'] in the policy checkpoint)")
-    p.add_argument('--kind', choices=('df', 'goal'), default='df')
+    p.add_argument('--kind', choices=('df', 'goal', 'trajectory'), default='df')
     p.add_argument('--goals', type=Path, default=None, help='goals.npz from assignment.training.planning.goals (--kind goal)')
     p.add_argument('--configs', nargs='+', default=['{}'], help='JSON agent kwargs, e.g. {"generate": 16, "execute": 1}')
     p.add_argument('--split', default='val')
@@ -167,12 +174,12 @@ def main():
                    help='Policy sampler seeds; each episode is seeded with scene_seed + 1e6 * sample_seed, '
                         'and every sample seed gets its own report')
     p.add_argument('--gpus', default='0',
-                   help='Comma-separated physical GPU ids; each worker sets CUDA_VISIBLE_DEVICES to one of them')
+                   help='Comma-separated GPU indices into CUDA_VISIBLE_DEVICES if set, otherwise physical ids')
     p.add_argument('--workers', type=int, default=8)
     p.add_argument('--out-dir', type=Path, default=None, help='Defaults to <checkpoint dir>/eval')
     args = p.parse_args()
-    if args.kind == 'goal' and args.goals is None:
-        p.error('--kind goal requires --goals')
+    if args.kind in ('goal', 'trajectory') and args.goals is None:
+        p.error('goal-conditioned planners require --goals')
     from assignment.training.data.signals import scene_split
     seeds, seed = [], args.start_seed
     while len(seeds) < args.scenes:
@@ -202,7 +209,16 @@ def main():
                              str(out_dir/'videos'/f'{name}.s{s}.mp4') if i < args.videos else None,
                              args.goals and str(args.goals), sample_seed)
                             for i, s in enumerate(seeds)]
-                    results = list(pool.map(run_episode, jobs))
+                    out_dir.mkdir(parents=True, exist_ok=True)
+                    results = []
+                    with (out_dir/f'{name}.episodes.jsonl').open('w') as journal:
+                        for result in pool.map(run_episode, jobs):
+                            results.append(result)
+                            journal.write(json.dumps(result)+'\n')
+                            journal.flush()
+                            print(json.dumps(dict(progress=len(results), total=len(jobs), kind=args.kind,
+                                                  sample_seed=sample_seed, scene_seed=result['scene_seed'],
+                                                  max_placed=result['max_placed'], seconds=result['seconds'])), flush=True)
                     summary = summarize(results, args.target_count)
                     summary['mean_max_placed'] = float(np.mean([r['max_placed'] for r in results]))
                     report = dict(code=code_version(), kind=args.kind, policy=str(checkpoint), world_model=wm, config=config, split=args.split,
@@ -210,7 +226,10 @@ def main():
                                   seeds=[seeds[0], seeds[-1]], task=task, summary=summary,
                                   wall_s=round(time.time()-t0, 1), episodes=results)
                     out_dir.mkdir(parents=True, exist_ok=True)
-                    (out_dir/f'{name}.json').write_text(json.dumps(report, indent=1))
+                    report_path = out_dir/f'{name}.json'
+                    temporary = report_path.with_suffix('.json.tmp')
+                    temporary.write_text(json.dumps(report, indent=1))
+                    temporary.replace(report_path)
                     print(json.dumps(dict(policy=str(checkpoint), config=config, sample_seed=sample_seed,
                                           **summary, wall_s=report['wall_s'])), flush=True)
 

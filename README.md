@@ -8,6 +8,19 @@ This repository contains the MuJoCo dexterous manipulation simulator and the **C
 
 ## Course Assignment
 
+### Group Planning Experiments
+
+This branch adds eight planning configurations, PARCC GPU experiment scripts, and
+completed screening results (30 scenes, three policy seeds, 720 episodes total).
+Start with the [planning usage guide](assignment/planning/README.md#group-planning-quick-start).
+The best observed configuration, `trajectory`, reaches 1.622 mean peak stacked
+boxes versus the baseline's 1.422; its paired 95% confidence interval includes
+zero, so independent confirmation is still needed.
+
+- [Method descriptions and experiment protocol](assignment/planning/EXPERIMENTS.md)
+- [Results and limitations](assignment/planning/RESULTS.md)
+- [Committed episode reports and reproducible summary](results/planning/2026-11-05-screen/README.md)
+
 Start with **[`assignment/README.md`](assignment/README.md)** for an overview of the task. The assignment offers two tracks:
 
 - **[Planning Track (`assignment/planning/`)](assignment/planning/README.md)** — Keep our pretrained latent world model and action-chunk policy frozen, and design a test-time planner that scores candidate action chunks against visual subgoals. You can run and edit the entire baseline in Google Colab through [`assignment/planning/colab.ipynb`](assignment/planning/colab.ipynb) without local setup.

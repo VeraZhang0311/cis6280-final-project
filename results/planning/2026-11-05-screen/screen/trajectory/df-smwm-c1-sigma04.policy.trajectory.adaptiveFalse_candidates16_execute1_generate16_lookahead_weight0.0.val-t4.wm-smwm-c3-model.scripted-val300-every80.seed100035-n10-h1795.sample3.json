@@ -1,0 +1,324 @@
+{
+ "code": "9540172640099ac764e3eeca52d09265dbb018fb-dirty",
+ "kind": "trajectory",
+ "policy": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/policy/df-smwm-c1-sigma04/policy.pt",
+ "world_model": "/vast/projects/xuhw/healthworldx/zhangrm/model/cis6280-stack-world-models-v2/jepa/smwm-c3/model.pt",
+ "config": {
+  "generate": 16,
+  "execute": 1,
+  "candidates": 16,
+  "adaptive": false,
+  "lookahead_weight": 0.0
+ },
+ "split": "val",
+ "goals": "/vast/projects/xuhw/healthworldx/zhangrm/data/cis6280-stack-datasets-v2/goals/scripted-val300-every80/goals.npz",
+ "sample_seed": 3,
+ "seeds": [
+  100035,
+  100098
+ ],
+ "task": {
+  "target_count": 4,
+  "horizon": 1795,
+  "terminate_on_ground": false
+ },
+ "summary": {
+  "episodes": 10,
+  "success": 0.0,
+  "reached": {
+   "placed>=1": 0.6,
+   "placed>=2": 0.6,
+   "placed>=3": 0.1,
+   "placed>=4": 0.1
+  },
+  "max_placed_hist": {
+   "0": 4,
+   "2": 5,
+   "4": 1
+  },
+  "grasped": 1.0,
+  "lifted": 0.7,
+  "mean_steps_success": null,
+  "ground_fall_episodes": 0.1,
+  "mean_max_placed": 1.4
+ },
+ "wall_s": 176.0,
+ "episodes": [
+  {
+   "scene_seed": 100035,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 0,
+   "goal_index": 1,
+   "goals": 18,
+   "goal_switches": [
+    "reached"
+   ],
+   "final_count": 0,
+   "first_placement_step": null,
+   "ground_falls": 0,
+   "grasp_steps": 22,
+   "lifted_steps": 0,
+   "stage_steps": [],
+   "agent_s": 54.5,
+   "seconds": 67.3
+  },
+  {
+   "scene_seed": 100038,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 11,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 2,
+   "first_placement_step": 373,
+   "ground_falls": 0,
+   "grasp_steps": 726,
+   "lifted_steps": 389,
+   "stage_steps": [
+    373,
+    713
+   ],
+   "agent_s": 56.6,
+   "seconds": 72.2
+  },
+  {
+   "scene_seed": 100057,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 11,
+   "goals": 18,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 1,
+   "first_placement_step": 307,
+   "ground_falls": 0,
+   "grasp_steps": 534,
+   "lifted_steps": 405,
+   "stage_steps": [
+    307,
+    696
+   ],
+   "agent_s": 51.7,
+   "seconds": 67.4
+  },
+  {
+   "scene_seed": 100060,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 13,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 1,
+   "first_placement_step": 321,
+   "ground_falls": 0,
+   "grasp_steps": 640,
+   "lifted_steps": 494,
+   "stage_steps": [
+    321,
+    621
+   ],
+   "agent_s": 54.3,
+   "seconds": 69.4
+  },
+  {
+   "scene_seed": 100069,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 6,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 0,
+   "first_placement_step": 307,
+   "ground_falls": 1,
+   "grasp_steps": 386,
+   "lifted_steps": 294,
+   "stage_steps": [
+    307,
+    621
+   ],
+   "agent_s": 54.8,
+   "seconds": 69.4
+  },
+  {
+   "scene_seed": 100072,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 0,
+   "goal_index": 1,
+   "goals": 19,
+   "goal_switches": [
+    "reached"
+   ],
+   "final_count": 0,
+   "first_placement_step": null,
+   "ground_falls": 0,
+   "grasp_steps": 108,
+   "lifted_steps": 28,
+   "stage_steps": [],
+   "agent_s": 52.7,
+   "seconds": 66.1
+  },
+  {
+   "scene_seed": 100078,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 4,
+   "goal_index": 18,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 1,
+   "first_placement_step": 295,
+   "ground_falls": 0,
+   "grasp_steps": 916,
+   "lifted_steps": 693,
+   "stage_steps": [
+    295,
+    657,
+    1228,
+    1672
+   ],
+   "agent_s": 54.2,
+   "seconds": 70.7
+  },
+  {
+   "scene_seed": 100085,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 0,
+   "goal_index": 1,
+   "goals": 19,
+   "goal_switches": [
+    "reached"
+   ],
+   "final_count": 0,
+   "first_placement_step": null,
+   "ground_falls": 0,
+   "grasp_steps": 34,
+   "lifted_steps": 4,
+   "stage_steps": [],
+   "agent_s": 55.6,
+   "seconds": 68.5
+  },
+  {
+   "scene_seed": 100087,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 0,
+   "goal_index": 2,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached"
+   ],
+   "final_count": 0,
+   "first_placement_step": null,
+   "ground_falls": 0,
+   "grasp_steps": 8,
+   "lifted_steps": 0,
+   "stage_steps": [],
+   "agent_s": 29.9,
+   "seconds": 39.6
+  },
+  {
+   "scene_seed": 100098,
+   "success": false,
+   "steps": 1795,
+   "max_placed": 2,
+   "goal_index": 12,
+   "goals": 19,
+   "goal_switches": [
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached",
+    "reached"
+   ],
+   "final_count": 2,
+   "first_placement_step": 314,
+   "ground_falls": 0,
+   "grasp_steps": 464,
+   "lifted_steps": 377,
+   "stage_steps": [
+    314,
+    674
+   ],
+   "agent_s": 27.4,
+   "seconds": 38.8
+  }
+ ]
+}
