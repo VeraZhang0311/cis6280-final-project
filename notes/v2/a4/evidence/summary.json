@@ -1,0 +1,209 @@
+{
+  "groups": {
+    "A2": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.716666666666667,
+      "mean_final_boxes": 1.9833333333333334,
+      "success": 0.21666666666666667,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.8666666666666667,
+        "3": 0.65,
+        "4": 0.26666666666666666
+      },
+      "final_reached": {
+        "1": 0.8833333333333333,
+        "2": 0.5833333333333334,
+        "3": 0.3,
+        "4": 0.21666666666666667
+      },
+      "mean_decision_s": 0.20141190128927264,
+      "p95_decision_s": 0.2843394737996277,
+      "calls": {
+        "encoder": 20585,
+        "policy": 20585,
+        "policy_velocity": 205850,
+        "action_encoder": 20585,
+        "wm_rollout": 20585,
+        "predictor": 329360
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 52,
+        "censored": 4,
+        "conversion": 0.9285714285714286,
+        "km_median_s": 34.2
+      },
+      "third_to_fourth": {
+        "at_risk": 39,
+        "events": 16,
+        "censored": 23,
+        "conversion": 0.41025641025641024,
+        "km_median_s": null
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20585,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-16": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.683333333333333,
+      "mean_final_boxes": 2.1166666666666667,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.8833333333333333,
+        "3": 0.6,
+        "4": 0.26666666666666666
+      },
+      "final_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.6333333333333333,
+        "3": 0.3333333333333333,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.20087243021918055,
+      "p95_decision_s": 0.22997646005824207,
+      "calls": {
+        "encoder": 20504,
+        "policy": 20504,
+        "policy_velocity": 205040,
+        "action_encoder": 20504,
+        "wm_rollout": 20504,
+        "predictor": 328064
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 53,
+        "censored": 3,
+        "conversion": 0.9464285714285714,
+        "km_median_s": 34.4
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 16,
+        "censored": 20,
+        "conversion": 0.4444444444444444,
+        "km_median_s": 47.400000000000006
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20504,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.8666666666666667,
+      "mean_final_boxes": 2.1333333333333333,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9666666666666667,
+        "2": 0.8833333333333333,
+        "3": 0.6833333333333333,
+        "4": 0.3333333333333333
+      },
+      "final_reached": {
+        "1": 0.95,
+        "2": 0.6333333333333333,
+        "3": 0.31666666666666665,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.21700869151280752,
+      "p95_decision_s": 0.24756437111645935,
+      "calls": {
+        "encoder": 20469,
+        "policy": 20469,
+        "policy_velocity": 204690,
+        "action_encoder": 20469,
+        "wm_rollout": 20469,
+        "predictor": 327504
+      },
+      "first_to_second": {
+        "at_risk": 58,
+        "events": 53,
+        "censored": 5,
+        "conversion": 0.9137931034482759,
+        "km_median_s": 33.800000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 41,
+        "events": 20,
+        "censored": 21,
+        "conversion": 0.4878048780487805,
+        "km_median_s": 47.300000000000004
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20469,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    }
+  },
+  "paired_comparisons": {
+    "A4-16_minus_A2": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.03333333333333331,
+          "ci95": [
+            -0.26666666666666666,
+            0.21666666666666665
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.13333333333333333,
+          "ci95": [
+            -0.11708333333333334,
+            0.39999999999999997
+          ]
+        },
+        "success": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            -0.09999999999999999,
+            0.11666666666666665
+          ]
+        }
+      }
+    },
+    "A4-32_minus_A4-16": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.18333333333333332,
+          "ci95": [
+            -0.06666666666666665,
+            0.4170833333333311
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.016666666666666684,
+          "ci95": [
+            -0.33333333333333337,
+            0.3
+          ]
+        },
+        "success": {
+          "difference": -2.7755575615628915e-18,
+          "ci95": [
+            -0.13333333333333336,
+            0.13333333333333333
+          ]
+        }
+      }
+    }
+  },
+  "reference_groups": [
+    "A2"
+  ],
+  "wall_s": 1176.0706147048622,
+  "wall_scope": "current_attempt"
+}

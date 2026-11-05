@@ -1,0 +1,264 @@
+{
+  "code": {
+    "commit": "9540172640099ac764e3eeca52d09265dbb018fb",
+    "branch": "tianzi-branch/v2.0",
+    "dirty": true,
+    "status": "M assignment/training/README.md\n M assignment/training/planning/evaluate.py\n M assignment/training/training/policy.py\n?? assignment/training/planning/README.md\n?? assignment/training/planning/evaluate_goal_actor.py\n?? assignment/training/planning/goal_actor.py\n?? assignment/training/training/goal_policy.py\n?? assignment/training/training/train_goal_policy.py\n?? notes/v2/DESIGN_2.0.md\n?? scripts/evaluate_goal_actor_a4.sbatch\n?? scripts/evaluate_goal_actor_a4_120k.sbatch\n?? scripts/evaluate_goal_actor_full.sbatch\n?? scripts/evaluate_stack_goal_actor.py\n?? scripts/prepare_goal_actor_data.py\n?? scripts/train_goal_actor.sbatch\n?? scripts/train_goal_actor_a4.sbatch\n?? scripts/train_goal_actor_round2.sbatch\n?? scripts/train_stack_goal_policy.py\n?? tests/test_goal_actor.py\n?? tests/test_goal_policy.py",
+    "diff_sha256": "bc65dfb29b1e6b7da1f3b3ebf885c836ffd2fd7f5602fff1c54740efb0c921b5",
+    "source_sha256": {
+      "assignment/training/__init__.py": "415ebb93c0b729e93cd5318b9d90b9995a0a4a7620e74ef2e9319083df9bf43e",
+      "assignment/training/_cli.py": "9e9f1ce686576cae4819f44d191252f4f5e0f291e756ca560559c9536a0b6f87",
+      "assignment/training/data/__init__.py": "cd7e1416b666fe54f6004bae60d727582a727cfb1a39b13c854754d85d57adac",
+      "assignment/training/data/cache.py": "11f01dab6ebe385b04c6e9c244e30c544a76db85e88473c4078ac4f72754f525",
+      "assignment/training/data/collect.py": "59ff67a2e21042d280d6b634b113fa5f9451aa37bec4670d1c70816de5adca32",
+      "assignment/training/data/collect_onpolicy.py": "00ab3d1a37f27bde1a74305118f5aa99aab1e0cefd4e97a9876f856fe7eebdd0",
+      "assignment/training/data/encode.py": "4f44ad91c11ee65ab73c1e6a3eedbe97cdb6055fa8855b7a1cd364e0d3f6fa1f",
+      "assignment/training/data/recording.py": "b961ee620cb16fb44eaba1831d78e09d8224a463725287d93263c3851eaae07a",
+      "assignment/training/data/scripted.py": "f776ee27d10e113cfa5a6f26166e7cebc82e87d3f3e80d42c64b6c14c169f2e7",
+      "assignment/training/data/signals.py": "b539c6fefb1b5ae8b1863f02e2d47a21dbcd6932ec43f00a736da30a1968a49a",
+      "assignment/training/data/task.py": "3e6ea0528795c33a3ce0b32a610107086c97c30d6ff2d7787de459be2f057ff5",
+      "assignment/training/data/teacher.py": "b9148c4ca227c6e6c34c2b9d4e184a25e5902b5306106559e6e3908b70932259",
+      "assignment/training/planning/__init__.py": "b17115ff89f9e9f1e0636f180629eefbd37a690dcf36b742e8af8b1e4bebfd57",
+      "assignment/training/planning/agent.py": "216733b83b6384439804dcdbebfc4242eab437205ca481444fe996e805fad843",
+      "assignment/training/planning/evaluate.py": "056bc60edf21c9eb1e735933bd66f5107569c42324a8e8ef83cc8016a68f2de3",
+      "assignment/training/planning/evaluate_goal_actor.py": "6713d513e2f6c7842b23ffcae697e5bad80df9e8f1e708f43dc283a804389e69",
+      "assignment/training/planning/goal_actor.py": "1c09c3c12a3c114100ab4e2e6a55a43e79c21ec0f97a414366fb3e5322995b3c",
+      "assignment/training/planning/goals.py": "3396f3a5e3507ed2e1ddb0d14d2fcef38729394e29cdf9407cd643845b3f7ef5",
+      "assignment/training/training/__init__.py": "4129e6134960e62ac5a9e58aeb3afbeb3334952d078d099324533ce2d7e19959",
+      "assignment/training/training/finetune_onpolicy.py": "9dba363dbe218bfa002436976b28ac6887fc5e34ed07292aa9d4248273ccbd25",
+      "assignment/training/training/goal_policy.py": "32a5be5aa5796a7602c66b6adcc9fcf481b30656becafb3951d762559470695a",
+      "assignment/training/training/jepa.py": "6d6ae5e7856ba980932cb3eced73b2165cff9b7182d3d0497d69f61853b4df46",
+      "assignment/training/training/policy.py": "5d449737034b14470cc578e93d30333dba2824d2304917cc72daa88f905c9c1b",
+      "assignment/training/training/train_goal_policy.py": "1d88ccf28263863f888678f77a8dd4171d1356c2fffa99a482b27093d625a373",
+      "assignment/training/training/train_jepa.py": "fba21d8691a78078765b6e9e0c62c42a08e5f4c276bbe3d831ba91f3226cb99b",
+      "assignment/training/training/train_policy.py": "2fd0f3c2c85a76170bcbbb1c812f95a6095423251cb01cc14b16d07f5c59d6be",
+      "scripts/train_stack_goal_policy.py": "24f70647caf4e7a3c0315bad8adec5a2a317355c24499a689987a8eceeef6fa4"
+    },
+    "cluster_source_verified": true
+  },
+  "groups": [
+    "A4-16",
+    "A4-32"
+  ],
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "split": "val",
+  "policy_seed": "scene_seed + 1000000 * sample_seed",
+  "models": {
+    "world_model": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+      "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+    },
+    "goal_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+      "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+    },
+    "official_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+      "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+    },
+    "goals": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+      "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+    }
+  },
+  "actor_config": {
+    "latent_dim": 192,
+    "action_dim": 125,
+    "context": 1,
+    "horizon": 16,
+    "dim": 512,
+    "depth": 8,
+    "heads": 8,
+    "mlp": 2048
+  },
+  "actor_interface": {
+    "goal_features": "normalized_current,goal_minus_current,current_times_goal_minus_current",
+    "normalization": "shared_train_latent_mean_std",
+    "current_shape": [
+      1,
+      192
+    ],
+    "goal_shape": [
+      1,
+      192
+    ],
+    "adapter": {
+      "input_dim": 384,
+      "hidden_dim": 512,
+      "output_dim": 512,
+      "activation": "GELU",
+      "final_init": "zero"
+    },
+    "sampling": {
+      "n_steps": 10,
+      "lag": 0
+    },
+    "time_to_goal_input": false
+  },
+  "training_source": {
+    "step": 20000,
+    "cumulative_step": 120000,
+    "wandb": {
+      "project": "6280_actor",
+      "entity": "tianzizh-university-of-pennsylvania",
+      "id": "v2actor-20261104-a4-tail-s0",
+      "url": "https://forge.coreweave.com/wandb/tianzizh-university-of-pennsylvania/6280_actor/runs/v2actor-20261104-a4-tail-s0",
+      "sdk_version": "0.31.0"
+    },
+    "init_policy": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-eval-r2-20261104/checkpoints/goal-actor-r2-final.pt",
+      "sha256": "d039fbba25eabb9b976fff945afd6b59031cbbf11df5f916a5671dd774e234bf",
+      "model_type": "goal-df-policy-v2",
+      "parent_step": 50000
+    },
+    "evaluation_checkpoint": {
+      "cumulative_step": 120000,
+      "rule": "user_selected_intermediate_ema",
+      "original_training_selection": {
+        "rule": "final_step_ema",
+        "step": 50000,
+        "cumulative_step": 150000,
+        "metric_selection": false
+      }
+    }
+  },
+  "config": {
+    "candidates": {
+      "A1": 1,
+      "A2": 16,
+      "A3": 16,
+      "A4-16": 16,
+      "A4-32": 32
+    },
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "switch_tau": 0.25,
+    "next_goal_weight": 0.25,
+    "score_epsilon": 1e-08,
+    "action_handling": "unnormalize, clip to [-1,1], renormalize for WM/history",
+    "goal_switch": "real observation only; strict distance < tau * reference_gap",
+    "A2": "min over future blocks 1..16",
+    "A3": "eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2",
+    "tie_break": "earliest candidate",
+    "decision_timing": "CUDA synchronized; excludes reset/render/video",
+    "call_units": "encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps"
+  },
+  "task": {
+    "horizon": 1795,
+    "target_count": 4,
+    "terminate_on_ground": false,
+    "resolution": 128
+  },
+  "runtime": {
+    "device": "cuda",
+    "gpus": [
+      0
+    ],
+    "workers": 8,
+    "videos": 20,
+    "gpu": "NVIDIA L40",
+    "dtype": "torch.bfloat16",
+    "versions": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "imageio": "2.37.2"
+    }
+  },
+  "reference": {
+    "path": "/mnt/projects/ll/tianzizh/cis6280-v2-eval-r2-20261104/outputs/planning/v2/full",
+    "manifest_sha256": "ef1fa33515d7de292311558cb7b7d3e1b9bf44fc1242ddabc627202d726a0126",
+    "launch_sha256": "d9ee45208305fb4838c06c899f45cce8751b699d11252837443b3ab0aa53e252",
+    "gpu": "NVIDIA L40",
+    "episode_sha256": {
+      "100035.0": "0fcb737d86f76032366bd673bdb4a421046d6a0accea55726d5e3a76bcfd19d7",
+      "100035.2": "9d8a053737234d61d2f899704a9329452cad0c85d2214a9e037db69908f77afa",
+      "100035.3": "d736ee5c4a8576cb23d7a16a7b5d06c61fd83766dd9ddac78bccb2025cb7c9ff",
+      "100038.0": "52ee0c20bb18195f00d34d4b823f9e1fc9d9e2ae0b309265a2f39d702a32e726",
+      "100038.2": "8e349c045a3ee78e73ab9102eb734a43ede053ae1986f03a7e46771d0b703f4b",
+      "100038.3": "ad71de2f3ead0517672f7ff968109fd9cccf6ce5ca49069f4550c889d6d92255",
+      "100057.0": "53155b8b80e9c05fbcc95385076559329b3e0b7ab42f1657f2fb4671d1902563",
+      "100057.2": "bcfba8530a3dbe9c7814ebf5b5bb04930bd14a204e939e907bb906e844578765",
+      "100057.3": "27e4204ba57e217a9633204e0e146aa7c00a0f65e3573f9ad8f126073279f1b1",
+      "100060.0": "137d5aa2a0a01de40347608c77c0ea823e946085aaeb143a7c983cd136b4e758",
+      "100060.2": "41c4280ed2007ac48dead513149dbee56ca59c07cfbb339500ceea78fcac6953",
+      "100060.3": "4cc47eac41fe3e1337d725b38e630b72deb2906c28369476ba5a63bf8c288283",
+      "100069.0": "0dd6e900a9b3e801aee5f55b9ac7a673d31e093e5c69e3f9f26aac4ab08d00bd",
+      "100069.2": "8136675aacfb77d8735e6bc2d352d247caa22238b218214912cfae72ac6f33e8",
+      "100069.3": "bda1540337ed5e16a802d383fa90a95e148cb8e0a13507aefff425b7bbe8e12e",
+      "100072.0": "118b9bb06b6ab6f41b1b022918e375932ab0c242af038487a7a92f87351a2ea0",
+      "100072.2": "0d4a6fceb417066b4a88df2e5d6fabfc29415694b09d2261e5f8fa273e062f3a",
+      "100072.3": "6ac78378fdc2683289e40fd2ebf14f4a6907798777c35a4ee8168fc5d3a1cc9b",
+      "100078.0": "466068d43e6811d723dfec82b6bec3edd9cabb29a3f60fe4d30e49896aff0d1d",
+      "100078.2": "853861e55e3de1ad06a95ed9e2647ac7ffecc4e4968494094439c529329bef32",
+      "100078.3": "fca5498767e00e7643e1207c54db14bfe4266902f1ff2d06dda2645de995dcbd",
+      "100085.0": "e5989646bd16de52fcf477f2547a2d7936e9b721851a6b70cb4776670f23953b",
+      "100085.2": "109e9d101fb85a38facc89553d5c4f8a243537a56c6ff642a951d00b0efeb2f5",
+      "100085.3": "d708a3de8b7f7ccee5b03377fc3f9eca1bf0349adb150ec5248ea64dee2cf229",
+      "100087.0": "06581628371b349f0dbfb64b541413baf719d860d690651ab99426a827fb6cb2",
+      "100087.2": "aa5bbe37fc677ce270db5e07b6653b8f437f72eb62db214fd4f2e4a046abec94",
+      "100087.3": "5ba6af3751cbe34e20b1d31e729c8b6b98d5935c87333e436a0f0504a6aaf2b4",
+      "100098.0": "df79785d000c314c60d0663d3bd1eedc6b786029af146319f486a4e57762eb89",
+      "100098.2": "a167ab63bf0147ec84c1f1578ae4de9b522a111469f5b9cf3867c49c74bf9635",
+      "100098.3": "65ab20887124dedaddc387b08ba292dc5dfc7c1e553e1f0ad4fc4e963f2e7cfe",
+      "100102.0": "29a2ca4ffeeb7fdab389b618f3fec6588bfa19b3e5dc8d9b0c7f3cf5bb8ad5f6",
+      "100102.2": "c92fe774d41c63438fd547538a134065facfed492a0422aa6f845a5fa2560a59",
+      "100102.3": "1fe41bcd76794a70beb0092104fa3055e556c5373a83c49a4b88292544773507",
+      "100137.0": "17169b60b727faee005afb13ad83ec6eae30cc6972a93e18f51d886332c3ef24",
+      "100137.2": "7060b528e2e999b04ed467f006d98e16ca63f11eb7d48f443d5c74d90d3afafb",
+      "100137.3": "f4f7c7e8eef50f0a3dded6b0954810d38161a12139972541c88e7a53062314ed",
+      "100145.0": "30a4615b61b82bf4ff2617ff8ccc2812b49f254c09d85de1621e43dc1428af07",
+      "100145.2": "c70a42842ddfc44c7e23b9f3b26c9e565763357b4813473c39caa4cb905c6ed5",
+      "100145.3": "debffaa1da5940a317ff0e8023e175bb293f465b7b0391e3bb5d07b1836158d6",
+      "100152.0": "a9bfbf5f6b9b60a6b984f755dd5269b7d783f7f3ab9651b64d8e368038c6626a",
+      "100152.2": "1dea708657c4994c536344eacc3104005c896df90ecace57974a20830e4b6bb8",
+      "100152.3": "e1abe36aa160569fc3c435921b8e98414fa424f88751520722494e54ad924bce",
+      "100164.0": "84d6c1dae2f8f0c9eeae6f99cd6dc8b28d09596a5ace086a0a51f0dc0d6ab360",
+      "100164.2": "08adb2e1a9b64c2b149f907644193b96f6e467a5ebf99444e54d39136536b418",
+      "100164.3": "c8c11ad1a6119afd3a5756ac6c9a1f7ef3ccaf0708106e3e89ad2ce777b38048",
+      "100166.0": "cd91249e7b2c9a568da6b4d7656e8bf4eeb1180197fd118726b1c08f3c8a506a",
+      "100166.2": "c498d0b28018048468c293353265d5f8dab2b67aa3ac1cc10cd8fee5b22d6e19",
+      "100166.3": "20b4abbb470b2df5be8ecf64f7611e8d447a8a1e4d033e69236180731f1a604a",
+      "100169.0": "9fcb55e31ab4e278095af8c21ed590ca7a8d2231af2e3bac3a2dfa9d609ec9ac",
+      "100169.2": "28e344f019d8ec5ed015b105142ea4f9c6ea61aa4fb08bb435c1928ecea19349",
+      "100169.3": "b8de80d191f75c34a00c6335a6fd61a5dc3ed980583985ae3a120aea63c4d317",
+      "100175.0": "4d7e1ae0afa022df6dbdc975b70d396a0ff1da1b8aa3e8a28b4411702ebbdfe8",
+      "100175.2": "3f01a4ca65a165385649d161280472a223c5f38bfbde766223a1b71f9724be71",
+      "100175.3": "92e207338200835a524f89d90fa43d228d77884c6df2a92f994ed60d7dc511a5",
+      "100183.0": "01dcaf75085ce36eb78a90891af4ce75672bedf12c3117a97a9529ae08aa729f",
+      "100183.2": "9a9766a8da6187e08cab3b4bd6b8e835329df2fc5ad109db80104df09410790f",
+      "100183.3": "161f960adc92e7c1f554205a388ce016ca2a99e2a92683a0c7eee6c012ec3e9e",
+      "100186.0": "f0e66fd65e187c8b72ff4ca6bce241242419debdf7dc5cc1fd46639c24d46642",
+      "100186.2": "673e307263ef337d0132bf1fb9ee4dbb765484117604bfde16fed54f1f241a52",
+      "100186.3": "c6af5f288a3bfcedfef85422105bc1dcfed925c635699f81ce57d4dabb497142"
+    }
+  }
+}
