@@ -127,6 +127,37 @@ class A5Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_a5_wm(self.toy(), {}, __file__, __file__, None)
 
+    def test_user_checkpoint_requires_explicit_hashed_receipt_without_rewriting_selection(self):
+        from assignment.training.training import onpolicy_a5 as module
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            wm, policy, selected, requested = [root/name for name in ('wm.pt', 'actor.pt', 'selection.json', 'request.json')]
+            wm.write_bytes(b'intermediate WM fixture')
+            model = self.toy()
+            info = dict(step=56000, a5=dict(schema=module.SCHEMA, actor_sha256=module.ACTOR_SHA256,
+                        original_wm_sha256='original-wm', representation_sha256=module.representation_digest(model),
+                        frozen_checks=True, selected_step=0, selection=dict(rule='mean_regret_16_32')))
+            module.write_json(selected, dict(step=0, sha256='original-selected-checkpoint',
+                                             training_complete=True, frozen_checks=True, trained_steps=60000))
+            original_bytes = selected.read_bytes()
+            digest = module.sha256
+            receipt = dict(rule='user_requested_checkpoint', step=56000, sha256=digest(wm),
+                           training_selection_sha256=digest(selected), actor_sha256=module.ACTOR_SHA256,
+                           original_wm_sha256='original-wm')
+            module.write_json(requested, receipt)
+            def identity(path):
+                return module.ACTOR_SHA256 if Path(path) == policy else digest(path)
+            with mock.patch.object(module, 'sha256', side_effect=identity):
+                with self.assertRaises(ValueError):
+                    module.validate_a5_wm(model, info, policy, wm, selected)
+                module.validate_a5_wm(model, info, policy, wm, selected, requested)
+                for wrong in (dict(step=54000), dict(sha256='other'), dict(training_selection_sha256='changed')):
+                    module.write_json(requested, dict(receipt, **wrong))
+                    with self.assertRaisesRegex(ValueError, 'user-requested'):
+                        module.validate_a5_wm(model, info, policy, wm, selected, requested)
+            self.assertEqual(selected.read_bytes(), original_bytes)
+            self.assertEqual(info['a5']['selected_step'], 0)
+
     def test_a5_paired_reporting(self):
         from assignment.training.planning.evaluate_goal_actor import paired_comparisons
         base = [dict(scene_seed=1, sample_seed=0, peak_boxes=2, final_boxes=1, success=False),

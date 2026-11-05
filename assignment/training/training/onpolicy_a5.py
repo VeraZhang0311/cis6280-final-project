@@ -121,19 +121,29 @@ def verify_models(policy, world_model, plan):
         raise ValueError('A5 original WM identity differs from the A4 collection plan')
 
 
-def validate_a5_wm(model, info, policy_path, wm_path, selection_path):
+def validate_a5_wm(model, info, policy_path, wm_path, selection_path, evaluation_receipt_path=None):
     meta = info.get('a5', {})
     if (sha256(policy_path) != ACTOR_SHA256 or meta.get('actor_sha256') != ACTOR_SHA256
             or meta.get('schema') != SCHEMA or not meta.get('frozen_checks')
             or meta.get('representation_sha256') != representation_digest(model)
-            or meta.get('selection', {}).get('rule') != 'mean_regret_16_32'
-            or meta.get('selected_step') != info.get('step')):
+            or meta.get('selection', {}).get('rule') != 'mean_regret_16_32'):
         raise ValueError('A5 requires the locked actor, unchanged representation and shared selected WM')
     if selection_path is None:
         raise ValueError('A5 requires the completed WM selection.json receipt')
     selection = json.loads(Path(selection_path).read_text())
-    if (not selection.get('training_complete') or not selection.get('frozen_checks')
-            or selection.get('sha256') != sha256(wm_path) or selection.get('step') != info.get('step')):
+    if not selection.get('training_complete') or not selection.get('frozen_checks'):
+        raise ValueError('A5 WM does not match the completed selection receipt')
+    if evaluation_receipt_path is not None:
+        receipt = json.loads(Path(evaluation_receipt_path).read_text())
+        if (receipt.get('rule') != 'user_requested_checkpoint'
+                or receipt.get('sha256') != sha256(wm_path) or receipt.get('step') != info.get('step')
+                or receipt.get('training_selection_sha256') != sha256(selection_path)
+                or receipt.get('actor_sha256') != ACTOR_SHA256
+                or receipt.get('original_wm_sha256') != meta.get('original_wm_sha256')
+                or not 0 < info.get('step', 0) <= selection.get('trained_steps', 0)):
+            raise ValueError('A5 user-requested WM checkpoint receipt does not match')
+    elif (selection.get('sha256') != sha256(wm_path) or selection.get('step') != info.get('step')
+          or meta.get('selected_step') != info.get('step')):
         raise ValueError('A5 WM does not match the completed selection receipt')
     return meta
 

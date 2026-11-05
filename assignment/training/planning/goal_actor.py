@@ -98,7 +98,7 @@ class GoalActorAgent:
     """
 
     def __init__(self, policy_path, device='cuda', mode='A1', world_model=None, seed=0,
-                 a4_cumulative_step=150000, wm_selection=None):
+                 a4_cumulative_step=150000, wm_selection=None, wm_evaluation_receipt=None):
         if mode not in MODES:
             raise ValueError(f'mode must be one of {MODES}')
         self.device = torch.device(device)
@@ -114,7 +114,7 @@ class GoalActorAgent:
         self.encoder, self.wm_info = load_model(wm_path, self.device)
         if mode.startswith('A5-'):
             from assignment.training.training.onpolicy_a5 import validate_a5_wm
-            validate_a5_wm(self.encoder, self.wm_info, policy_path, wm_path, wm_selection)
+            validate_a5_wm(self.encoder, self.wm_info, policy_path, wm_path, wm_selection, wm_evaluation_receipt)
         self.policy.eval().requires_grad_(False)
         self.encoder.eval().requires_grad_(False)
         if (self.encoder.cfg.dim != self.policy.cfg.latent_dim

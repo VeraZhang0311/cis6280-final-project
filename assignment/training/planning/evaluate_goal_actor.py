@@ -41,13 +41,14 @@ def init_worker(counter, gpus, device):
 
 def make_agent(job):
     key = (job['mode'], job['policy'], job['world_model'], job['device'],
-           job.get('a4_cumulative_step', 150000), job.get('wm_selection'))
+           job.get('a4_cumulative_step', 150000), job.get('wm_selection'), job.get('wm_evaluation_receipt'))
     if key not in _agents:
         _agents.clear()
         from assignment.training.planning.goal_actor import GoalActorAgent
         _agents[key] = GoalActorAgent(job['policy'], job['device'], mode=job['mode'], world_model=job['world_model'],
                                      a4_cumulative_step=job.get('a4_cumulative_step', 150000),
-                                     wm_selection=job.get('wm_selection'))
+                                     wm_selection=job.get('wm_selection'),
+                                     wm_evaluation_receipt=job.get('wm_evaluation_receipt'))
     return _agents[key]
 
 
@@ -377,6 +378,8 @@ def main(argv=None):
     parser.add_argument('--reference-run', type=Path, help='Completed matched-condition 100k A2 evaluation directory')
     parser.add_argument('--reference-launch', type=Path, help='Verified launch.json for legacy references missing GPU metadata')
     parser.add_argument('--wm-selection', type=Path, help='A5 completed shared WM selection.json receipt')
+    parser.add_argument('--wm-evaluation-receipt', type=Path,
+                        help='Explicit user-requested intermediate WM identity; leaves original selection unchanged')
     parser.add_argument('--sample-seeds', type=int, nargs='+', default=[0, 2, 3])
     parser.add_argument('--split', choices=('train', 'val', 'test'), default='val')
     parser.add_argument('--out', type=Path, required=True)
@@ -394,6 +397,8 @@ def main(argv=None):
         parser.error('Run A5 groups separately with their shared selected WM')
     if a5 and not args.wm_selection:
         parser.error('A5 requires --wm-selection')
+    if args.wm_evaluation_receipt and not a5:
+        parser.error('--wm-evaluation-receipt requires only A5 groups')
     if args.reference_run and not (a5 or all(mode.startswith('A4-') for mode in args.groups)):
         parser.error('Reference reuse requires only A4 groups or only A5 groups')
     scenes = scene_list(args)
@@ -429,7 +434,7 @@ def main(argv=None):
         from assignment.training.training.onpolicy_a5 import validate_a5_wm
         validate_a4_checkpoint(training_info, 120000)
         wm, wm_info = load_model(args.world_model)
-        validate_a5_wm(wm, wm_info, args.policy, args.world_model, args.wm_selection)
+        validate_a5_wm(wm, wm_info, args.policy, args.world_model, args.wm_selection, args.wm_evaluation_receipt)
         del wm
     actor_config, actor_interface = vars(policy.cfg), policy.interface()
     del policy
@@ -468,6 +473,10 @@ def main(argv=None):
     if a5:
         manifest['training_source']['wm'] = wm_info['a5']
         manifest['models']['wm_selection'] = dict(path=str(args.wm_selection.resolve()), sha256=sha256(args.wm_selection))
+        if args.wm_evaluation_receipt:
+            manifest['models']['wm_evaluation_receipt'] = dict(
+                path=str(args.wm_evaluation_receipt.resolve()), sha256=sha256(args.wm_evaluation_receipt))
+            manifest['training_source']['wm_evaluation'] = json.loads(args.wm_evaluation_receipt.read_text())
     if args.reference_run and a5:
         reference_rows, manifest['reference'] = load_a4_reference(args.reference_run, manifest, wm_info)
         reference_groups = list(reference_rows)
@@ -492,6 +501,8 @@ def main(argv=None):
             jobs = [dict(mode=mode, policy=str(args.policy.resolve()), world_model=str(args.world_model.resolve()),
                          a4_cumulative_step=args.a4_cumulative_step,
                          wm_selection=str(args.wm_selection.resolve()) if args.wm_selection else None,
+                         wm_evaluation_receipt=(str(args.wm_evaluation_receipt.resolve())
+                                                if args.wm_evaluation_receipt else None),
                          goals=str(args.goals.resolve()), device=args.device, scene=scene, sample_seed=sample,
                          target=4, horizon=args.horizon, video=i < args.videos, resume=args.resume,
                          folder=str((args.out/mode/'episodes'/f'scene-{scene}.sample-{sample}').resolve()))
