@@ -139,6 +139,13 @@ Both modes log arrival blocks, terminal distances and selection costs. The
 protocol and result ledger are in
 [`notes/v2/scoring-experiment`](../../../notes/v2/scoring-experiment/README.md).
 
+The follow-up ablations preserve T1 and change one retention assumption at a
+time: `T1-L4` averages blocks 13–16, `T1-H8` and `T1-H12` use the named future
+block, and `T1-L4-HOLD` switches from T1-L4 to late-window-only retention after
+two consecutive real observations satisfy the final-goal threshold. The hold
+latch uses no simulator state or box-count signal. See the frozen protocol in
+[`FOLLOWUP.md`](../../../notes/v2/scoring-experiment/FOLLOWUP.md).
+
 [evaluate_goal_actor_a4.sbatch](../../../scripts/evaluate_goal_actor_a4.sbatch)
 fixes 20 development scenes x sample seeds 0/2/3, 8 workers on a Liu L40,
 1795 control steps, and all videos for A4-16/A4-32 (60 each). Prepare the same

@@ -13,7 +13,9 @@ import numpy as np
 
 from assignment.training.planning.evaluate import scene_goal_frames
 
-MODES = ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2', 'A5-16', 'A5-32')
+MODES = ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2',
+         'A4-32-T1-L4', 'A4-32-T1-H8', 'A4-32-T1-H12', 'A4-32-T1-L4-HOLD',
+         'A5-16', 'A5-32')
 _agents = {}
 
 
@@ -220,8 +222,11 @@ def summarize(episodes, target=4):
     late_events = sum(row['event'] for row in late_risk)
     applicable = sum(row['lookahead_applicable'] for row in episodes)
     decisions = sum(row['decisions'] for row in episodes)
+    reached_target = [row for row in episodes if row['peak_boxes'] >= target]
+    retained_target = sum(row['final_boxes'] >= target for row in reached_target)
     return dict(episodes=len(episodes), mean_peak_boxes=float(np.mean([r['peak_boxes'] for r in episodes])),
                 mean_final_boxes=float(np.mean([r['final_boxes'] for r in episodes])),
+                mean_peak_to_final_loss=float(np.mean([r['peak_boxes']-r['final_boxes'] for r in episodes])),
                 success=float(np.mean([r['success'] for r in episodes])),
                 peak_reached={str(k): float(np.mean([r['peak_boxes'] >= k for r in episodes])) for k in range(1, target+1)},
                 final_reached={str(k): float(np.mean([r['final_boxes'] >= k for r in episodes])) for k in range(1, target+1)},
@@ -233,6 +238,8 @@ def summarize(episodes, target=4):
                 third_to_fourth=dict(at_risk=len(late_risk), events=late_events, censored=len(late_risk)-late_events,
                                      conversion=late_events/len(late_risk) if late_risk else None,
                                      km_median_s=km_median(late)),
+                target_retention=dict(target=target, at_risk=len(reached_target), retained=retained_target,
+                                      rate=retained_target/len(reached_target) if reached_target else None),
                 lookahead=dict(applicable_decisions=applicable, all_decisions=decisions,
                                eligible_nonempty_rate=(sum(r['eligible_nonempty'] for r in episodes)/applicable
                                                        if applicable else None),
@@ -244,6 +251,10 @@ def paired_comparisons(results, draws=2000):
     for left, right in (('A2', 'A1'), ('A3', 'A2'), ('A4-16', 'A2'), ('A4-32', 'A4-16'),
                         ('A4-32-T1', 'A4-32'), ('A4-32-T2', 'A4-32'),
                         ('A4-32-T2', 'A4-32-T1'),
+                        ('A4-32-T1-L4', 'A4-32-T1'),
+                        ('A4-32-T1-H8', 'A4-32-T1'),
+                        ('A4-32-T1-H12', 'A4-32-T1'),
+                        ('A4-32-T1-L4-HOLD', 'A4-32-T1-L4'),
                         ('A5-16', 'A4-16'), ('A5-32', 'A4-32'), ('A5-32', 'A5-16')):
         if left not in results or right not in results:
             continue
@@ -451,6 +462,8 @@ def main(argv=None):
                                          wandb=training_info.get('wandb'), init_policy=training_info.get('init_policy')),
                     config=dict(candidates={'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32,
                                             'A4-32-T1': 32, 'A4-32-T2': 32,
+                                            'A4-32-T1-L4': 32, 'A4-32-T1-H8': 32,
+                                            'A4-32-T1-H12': 32, 'A4-32-T1-L4-HOLD': 32,
                                             'A5-16': 16, 'A5-32': 32},
                                 generate=16, execute=1, n_steps=10,
                                 lag=0, switch_tau=.25, next_goal_weight=.25, score_epsilon=1e-8,
@@ -459,6 +472,11 @@ def main(argv=None):
                                 A2='min over future blocks 1..16',
                                 T1='normalized arrival distance + 0.05 * arrival/H + 0.25 * terminal distance',
                                 T2='normalized arrival distance + 0.05 * arrival/H + 0.50 * terminal distance',
+                                T1_L4='T1 with 0.25 * mean normalized distance over blocks 13..16',
+                                T1_H8='T1 with 0.25 * normalized distance at block 8',
+                                T1_H12='T1 with 0.25 * normalized distance at block 12',
+                                T1_L4_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
+                                            'threshold; then minimize the late-four mean'),
                                 A3='eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2',
                                 tie_break='earliest candidate', decision_timing='CUDA synchronized; excludes reset/render/video',
                                 call_units='encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps'),

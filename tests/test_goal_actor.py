@@ -97,6 +97,37 @@ class SelectionTests(unittest.TestCase):
         expected = .25/2 + .05*4/16 + .25*.5/2
         self.assertAlmostEqual(float(result.cost[0]), expected, places=6)
 
+    def test_retention_ablation_rules_use_the_declared_future_blocks(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((2, 16), 1.)
+        distances[:, 0] = .1  # Equal arrival term; retention alone decides.
+        distances[0, 7], distances[1, 7] = .1, .9
+        distances[0, 11], distances[1, 11] = .9, .1
+        distances[0, 12:], distances[1, 12:] = .8, .2
+        h8 = select_candidate(distances, 'A4-32-T1-H8', .25)
+        h12 = select_candidate(distances, 'A4-32-T1-H12', .25)
+        late = select_candidate(distances, 'A4-32-T1-L4', .25)
+        self.assertEqual((h8.best, h12.best, late.best), (0, 1, 1))
+        self.assertEqual((h8.retention_rule, h12.retention_rule, late.retention_rule),
+                         ('block8', 'block12', 'late4_mean'))
+        torch.testing.assert_close(late.retention, torch.tensor([.8, .2]))
+        torch.testing.assert_close(torch.tensor(late.trace()['candidate_terminal_distance']),
+                                   torch.tensor([.8, .2]))
+        json.dumps(late.trace(), allow_nan=False)
+
+    def test_hold_mode_drops_arrival_term_only_after_confirmation(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((2, 16), .2)
+        distances[0, 0], distances[0, 12:] = 0., .3
+        distances[1, 12:] = .1
+        approach = select_candidate(distances, 'A4-32-T1-L4-HOLD', .25)
+        hold = select_candidate(distances, 'A4-32-T1-L4-HOLD', .25, hold_active=True)
+        self.assertEqual(approach.best, 0)
+        self.assertEqual(hold.best, 1)
+        self.assertEqual(hold.selection_rule, 'trajectory_hold_late4_mean')
+        with self.assertRaises(ValueError):
+            select_candidate(distances, 'A4-32-T1-L4', .25, hold_active=True)
+
 
 @unittest.skipIf(torch is None, 'torch is not installed')
 class AgentTests(unittest.TestCase):
@@ -240,7 +271,11 @@ class AgentTests(unittest.TestCase):
     def test_a4_modes_use_expected_scoring_and_candidate_budget(self):
         for mode, count, rule in (('A4-16', 16, 'active_min'), ('A4-32', 32, 'active_min'),
                                   ('A4-32-T1', 32, 'trajectory_arrival_terminal'),
-                                  ('A4-32-T2', 32, 'trajectory_arrival_terminal')):
+                                  ('A4-32-T2', 32, 'trajectory_arrival_terminal'),
+                                  ('A4-32-T1-L4', 32, 'trajectory_arrival_retention'),
+                                  ('A4-32-T1-H8', 32, 'trajectory_arrival_retention'),
+                                  ('A4-32-T1-H12', 32, 'trajectory_arrival_retention'),
+                                  ('A4-32-T1-L4-HOLD', 32, 'trajectory_arrival_retention')):
             agent = self.agent(mode)
             block = agent.step(self.frame(0))
             self.assertEqual(block.shape, (5, 25))
@@ -250,13 +285,30 @@ class AgentTests(unittest.TestCase):
             self.assertEqual(agent.last_trace['selection_rule'], rule)
             self.assertFalse(agent.last_trace['lookahead_used'])
             self.assertEqual(agent.last_trace['calls']['predictor'], 16)
-            if mode.endswith(('T1', 'T2')):
+            if '-T1' in mode or mode.endswith('T2'):
                 self.assertEqual(len(agent.last_trace['candidate_arrival_block']), 32)
                 self.assertEqual(len(agent.last_trace['candidate_terminal_distance']), 32)
+                self.assertEqual(len(agent.last_trace['candidate_retention_distance']), 32)
             self.assertEqual(len(agent.last_trace['candidate_min_distance']), count)
         self.info['cumulative_step'] = 100000
         with self.assertRaisesRegex(ValueError, '150k'):
             self.agent('A4-32')
+
+    def test_hold_mode_requires_two_real_final_goal_confirmations_and_latches(self):
+        agent = self.agent('A4-32-T1-L4-HOLD')
+        agent.step(self.frame(30))
+        self.assertEqual(agent.index, 1)
+        self.assertFalse(agent.last_trace['hold_latched'])
+        agent.step(self.frame(60))
+        self.assertEqual(agent.last_trace['hold_streak'], 1)
+        self.assertFalse(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['selection_rule'], 'trajectory_arrival_retention')
+        agent.step(self.frame(60))
+        self.assertEqual(agent.last_trace['hold_streak'], 2)
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['selection_rule'], 'trajectory_hold_late4_mean')
+        agent.step(self.frame(0))
+        self.assertTrue(agent.last_trace['hold_latched'])
 
     def test_intermediate_a4_requires_explicit_matching_step_and_tail_provenance(self):
         from assignment.training.planning.goal_actor import GoalActorAgent
@@ -326,6 +378,9 @@ class ReportingTests(unittest.TestCase):
         self.assertEqual(summary['first_to_second']['conversion'], .5)
         self.assertEqual(summary['first_to_second']['km_median_s'], 10.)
         self.assertEqual(summary['peak_reached']['2'], .5)
+        self.assertEqual(summary['mean_peak_to_final_loss'], .5)
+        self.assertEqual(summary['target_retention'],
+                         {'target': 4, 'at_risk': 0, 'retained': 0, 'rate': None})
         self.assertIsNone(km_median([dict(at_risk=True, event=False, duration_s=20.)]))
         paired = paired_comparisons(dict(A1=b, A2=a))['A2_minus_A1']
         self.assertEqual(paired['scenes'], 2)
@@ -344,6 +399,19 @@ class ReportingTests(unittest.TestCase):
         self.assertEqual(comparisons['A4-32-T1_minus_A4-32']['metrics']['peak_boxes']['difference'], 0.)
         self.assertEqual(comparisons['A4-32-T2_minus_A4-32']['metrics']['peak_boxes']['difference'], -.5)
         self.assertEqual(comparisons['A4-32-T2_minus_A4-32-T1']['metrics']['peak_boxes']['difference'], -.5)
+
+    def test_target_retention_is_conditioned_on_reaching_the_target(self):
+        from assignment.training.planning.evaluate_goal_actor import summarize
+        def episode(peak, final):
+            return dict(scene_seed=1, sample_seed=peak, peak_boxes=peak, final_boxes=final,
+                        success=final == 4, decision_times_s=[.1], calls=dict(predictor=1), decisions=1,
+                        lookahead_applicable=0, eligible_nonempty=0, lookahead_used=0,
+                        first_to_second=dict(at_risk=False, event=False, duration_s=None),
+                        first_reach_step={}, steps=10)
+        result = summarize([episode(4, 4), episode(4, 3), episode(3, 3)])
+        self.assertEqual(result['target_retention'],
+                         {'target': 4, 'at_risk': 2, 'retained': 1, 'rate': .5})
+        self.assertAlmostEqual(result['mean_peak_to_final_loss'], 1/3)
 
     @unittest.skipIf(torch is None, 'torch is not installed')
     def test_a4_reference_checks_hardware_dtype_and_baseline_identity(self):
