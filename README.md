@@ -58,7 +58,38 @@ All three stages use effective batch 256 and EMA 0.999. The tail run was schedul
 | A4 results, timing, and paired comparisons | [notes/v2/a4/evidence/summary.json](notes/v2/a4/evidence/summary.json), group `A4-32` |
 | Exact evaluated models, hashes, scenes, seeds, and runtime | [notes/v2/a4/evidence/run.json](notes/v2/a4/evidence/run.json) |
 
-The selected actor checkpoint on the cluster is:
+### Download the final A4 actor
+
+The **exact 120k EMA actor used in A4-16/A4-32** is available in the public
+[v2.0-a4-120k release](https://github.com/VeraZhang0311/cis6280-final-project/releases/tag/v2.0-a4-120k).
+Download [goal-actor-a4-120k-ema.pt](https://github.com/VeraZhang0311/cis6280-final-project/releases/download/v2.0-a4-120k/goal-actor-a4-120k-ema.pt)
+(153 MiB), or use GitHub CLI and verify its checksum:
+
+```bash
+gh release download v2.0-a4-120k --repo VeraZhang0311/cis6280-final-project \
+  --pattern goal-actor-a4-120k-ema.pt --pattern SHA256SUMS --pattern artifact.json \
+  --dir checkpoints
+(cd checkpoints && sha256sum -c SHA256SUMS)
+```
+
+The file includes the actor backbone, learned goal adapter, architecture/interface,
+and latent/action normalization statistics. Load it with `load_goal_policy` or
+`GoalActorAgent`. WM weights, reference goals and hand assets remain separate;
+follow the [assignment setup/download instructions](assignment/training/README.md).
+Pass your **local** frozen WM path explicitly with `--world-model`, since the actor's
+encoder provenance records its original cluster path. For example, after downloading
+the original WM and goals:
+
+```bash
+python -m assignment.training.planning.evaluate_goal_actor \
+  --policy checkpoints/goal-actor-a4-120k-ema.pt --a4-cumulative-step 120000 \
+  --world-model checkpoints/jepa/smwm-c3/model.pt \
+  --goals dataset/goals/scripted-val100-every80/goals.npz \
+  --scenes 100038 --sample-seeds 0 --groups A4-32 \
+  --workers 1 --gpus 0 --videos 1 --out outputs/planning/a4-32-check
+```
+
+The original selected actor checkpoint on the cluster is:
 
 ```text
 /mnt/projects/ll/tianzizh/cis6280-v2-a4-20261104/checkpoints/goal-actor-v2-a4-tail-seed0-20261104/step-020000.pt
