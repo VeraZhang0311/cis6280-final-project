@@ -129,6 +129,16 @@ break, clipping/normalization, real-observation goal switching, and first-block
 execution. They use no next-goal lookahead or candidate reuse. Their modes are
 available in both evaluation entry points; defaults remain A1/A2/A3.
 
+### Locked A4-32 scoring experiment
+
+`A4-32-T1` and `A4-32-T2` keep the released 120k actor, original WM,
+32-candidate budget, action handling, goal switching and execution loop fixed.
+T1 applies the independently screened trajectory-arrival score with time weight
+0.05 and terminal weight 0.25. T2 changes only the terminal weight to 0.50.
+Both modes log arrival blocks, terminal distances and selection costs. The
+protocol and result ledger are in
+[`notes/v2/scoring-experiment`](../../../notes/v2/scoring-experiment/README.md).
+
 [evaluate_goal_actor_a4.sbatch](../../../scripts/evaluate_goal_actor_a4.sbatch)
 fixes 20 development scenes x sample seeds 0/2/3, 8 workers on a Liu L40,
 1795 control steps, and all videos for A4-16/A4-32 (60 each). Prepare the same

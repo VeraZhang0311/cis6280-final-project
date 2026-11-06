@@ -71,7 +71,7 @@ def make_agent(kind, checkpoint, world_model, config):
             _worker[key] = LatentPolicyAgent(checkpoint, 'cuda', **kwargs)
         elif kind == 'goal':
             _worker[key] = GoalPlanningAgent(checkpoint, 'cuda', **kwargs)
-        elif kind in ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'):
+        elif kind in ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2', 'A5-16', 'A5-32'):
             from assignment.training.planning.goal_actor import GoalActorAgent
             _worker[key] = GoalActorAgent(checkpoint, 'cuda', mode=kind, **kwargs)
         else:
@@ -100,7 +100,7 @@ def run_episode(job):
     agent = make_agent(kind, checkpoint, world_model, config)
     episode_seed = seed + 1_000_000*sample_seed
     goal_frames = None
-    if kind in ('goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'):
+    if kind in ('goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2', 'A5-16', 'A5-32'):
         goal_frames, init_frame = scene_goal_frames(goals, seed)
         agent.reset(goal_frames, init_frame, episode_seed)
     else:
@@ -156,7 +156,7 @@ def main():
     p.add_argument('checkpoints', nargs='+', type=Path)
     p.add_argument('--world-model', type=Path, default=None,
                    help="Optional world-model checkpoint path (overrides info['encoder'] in the policy checkpoint)")
-    p.add_argument('--kind', choices=('df', 'goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32'), default='df')
+    p.add_argument('--kind', choices=('df', 'goal', 'A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2', 'A5-16', 'A5-32'), default='df')
     p.add_argument('--goals', type=Path, default=None, help='goals.npz from assignment.training.planning.goals (--kind goal)')
     p.add_argument('--configs', nargs='+', default=['{}'], help='JSON agent kwargs, e.g. {"generate": 16, "execute": 1}')
     p.add_argument('--split', default='val')

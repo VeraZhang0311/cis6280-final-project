@@ -1,4 +1,4 @@
-"""Frozen goal actor deployment: A1 direct, A2/A4 trajectory minimum, A3 lookahead."""
+"""Frozen goal actor deployment and reproducible candidate-selection variants."""
 from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
@@ -11,10 +11,13 @@ from assignment.training.data.cache import RAW_ACTION_DIM, STRIDE
 from assignment.training.training.goal_policy import HORIZON, load_goal_policy, validate_a4_checkpoint
 from assignment.training.training.jepa import amp_dtype, load_model
 
-CANDIDATES = {'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32, 'A5-16': 16, 'A5-32': 32}
+CANDIDATES = {'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32,
+              'A4-32-T1': 32, 'A4-32-T2': 32, 'A5-16': 16, 'A5-32': 32}
 MODES = tuple(CANDIDATES)
 SWITCH_TAU = .25
 NEXT_GOAL_WEIGHT = .25
+ARRIVAL_TIME_WEIGHT = .05
+TERMINAL_WEIGHTS = {'A4-32-T1': .25, 'A4-32-T2': .50}
 SCORE_EPS = 1e-8
 
 
@@ -27,6 +30,11 @@ class Selection:
     q: torch.Tensor | None = None
     r: torch.Tensor | None = None
     eligible: torch.Tensor | None = None
+    arrival: torch.Tensor | None = None
+    terminal: torch.Tensor | None = None
+    arrival_time_weight: float | None = None
+    terminal_weight: float | None = None
+    selection_rule: str = 'active_min'
     lookahead_used: bool = False
     fallback: str | None = None
 
@@ -38,11 +46,14 @@ class Selection:
         costs = self.cost.detach().cpu().tolist()
         return dict(selected_candidate=self.best, candidate_min_distance=values(self.active_min),
                     candidate_nearest_block=values(self.nearest_block),
+                    candidate_arrival_block=values(self.arrival),
+                    candidate_terminal_distance=values(self.terminal),
                     # Ineligible lookahead candidates have no selection cost, not JSON Infinity.
                     selection_cost=[v if np.isfinite(v) else None for v in costs],
                     q=values(self.q), r=values(self.r), eligible=values(self.eligible),
+                    arrival_time_weight=self.arrival_time_weight, terminal_weight=self.terminal_weight,
                     lookahead_used=self.lookahead_used, fallback=self.fallback,
-                    selection_rule='active_first_lookahead' if self.lookahead_used else 'active_min')
+                    selection_rule='active_first_lookahead' if self.lookahead_used else self.selection_rule)
 
 
 def select_candidate(active_distances, mode, threshold, next_distances=None, next_threshold=None):
@@ -53,8 +64,8 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
     """
     if mode in ('A4-16', 'A4-32', 'A5-16', 'A5-32'):
         mode = 'A2'
-    if mode not in ('A2', 'A3'):
-        raise ValueError('Selection requires A2 or A3')
+    if mode not in ('A2', 'A3', *TERMINAL_WEIGHTS):
+        raise ValueError('Unknown candidate-selection mode')
     if (active_distances.ndim != 2 or active_distances.shape[1] != HORIZON
             or active_distances.shape[0] < 1 or not torch.isfinite(active_distances).all()
             or (active_distances < 0).any()):
@@ -64,6 +75,26 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
         raise ValueError('Invalid active goal threshold')
     minimum, nearest = active_distances.min(-1)
     selection = Selection(int(minimum.argmin()), minimum, nearest+1, minimum)
+    if mode in TERMINAL_WEIGHTS:
+        # Match the independently screened PARCC trajectory score. Distances are
+        # normalized by the reference gap so the fixed time term has consistent
+        # meaning across active goals. T2 is the predeclared stronger terminal-
+        # retention variant; it differs from T1 only in terminal weight.
+        gap = threshold/SWITCH_TAU
+        normalized = active_distances/gap.clamp_min(SCORE_EPS)
+        time_cost = ARRIVAL_TIME_WEIGHT*torch.arange(
+            1, HORIZON+1, device=normalized.device, dtype=normalized.dtype)/HORIZON
+        arrival_objective = normalized+time_cost
+        arrival_value, arrival = arrival_objective.min(-1)
+        terminal_weight = TERMINAL_WEIGHTS[mode]
+        selection.cost = arrival_value+terminal_weight*normalized[:, -1]
+        selection.best = int(selection.cost.argmin())
+        selection.arrival = arrival+1
+        selection.terminal = active_distances[:, -1]
+        selection.arrival_time_weight = ARRIVAL_TIME_WEIGHT
+        selection.terminal_weight = terminal_weight
+        selection.selection_rule = 'trajectory_arrival_terminal'
+        return selection
     if mode == 'A2':
         return selection
     if next_distances is None:

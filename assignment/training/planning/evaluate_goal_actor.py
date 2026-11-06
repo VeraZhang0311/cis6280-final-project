@@ -13,7 +13,7 @@ import numpy as np
 
 from assignment.training.planning.evaluate import scene_goal_frames
 
-MODES = ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32')
+MODES = ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A4-32-T1', 'A4-32-T2', 'A5-16', 'A5-32')
 _agents = {}
 
 
@@ -242,6 +242,8 @@ def summarize(episodes, target=4):
 def paired_comparisons(results, draws=2000):
     comparisons = {}
     for left, right in (('A2', 'A1'), ('A3', 'A2'), ('A4-16', 'A2'), ('A4-32', 'A4-16'),
+                        ('A4-32-T1', 'A4-32'), ('A4-32-T2', 'A4-32'),
+                        ('A4-32-T2', 'A4-32-T1'),
                         ('A5-16', 'A4-16'), ('A5-32', 'A4-32'), ('A5-32', 'A5-16')):
         if left not in results or right not in results:
             continue
@@ -448,12 +450,15 @@ def main(argv=None):
                     training_source=dict(step=training_info.get('step'), cumulative_step=training_info.get('cumulative_step'),
                                          wandb=training_info.get('wandb'), init_policy=training_info.get('init_policy')),
                     config=dict(candidates={'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32,
+                                            'A4-32-T1': 32, 'A4-32-T2': 32,
                                             'A5-16': 16, 'A5-32': 32},
                                 generate=16, execute=1, n_steps=10,
                                 lag=0, switch_tau=.25, next_goal_weight=.25, score_epsilon=1e-8,
                                 action_handling='unnormalize, clip to [-1,1], renormalize for WM/history',
                                 goal_switch='real observation only; strict distance < tau * reference_gap',
                                 A2='min over future blocks 1..16',
+                                T1='normalized arrival distance + 0.05 * arrival/H + 0.25 * terminal distance',
+                                T2='normalized arrival distance + 0.05 * arrival/H + 0.50 * terminal distance',
                                 A3='eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2',
                                 tie_break='earliest candidate', decision_timing='CUDA synchronized; excludes reset/render/video',
                                 call_units='encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps'),
