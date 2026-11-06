@@ -80,15 +80,25 @@ class GoalPlanningAgent(LatentPolicyAgent):
       3. Roll each candidate chunk forward in the world model from the last C<=3 real frame
          latents (and the action blocks executed between them) to predict latents z_hat.
       4. Execute the first `execute` blocks of the candidate whose final predicted latent
-         z_hat_{k+generate} is closest in squared L2 distance to the active subgoal g_m.
+         z_hat_{k+planning_horizon} is closest in squared L2 distance to the active subgoal g_m.
+
+    planning_horizon counts 0.5-second blocks, defaults to generate, and only
+    truncates WM prediction. The policy always samples generate complete blocks.
 
     Goals are an ordered subgoal sequence; the index advances monotonically
     while ||z - g_m||_2^2 < tau * ||g_m - g_{m-1}||_2^2, with g_{-1} the latent of init_frame.
     Call reset(goal_frames, init_frame, seed) per episode and step(frame) every STRIDE steps.
     """
 
-    def __init__(self, policy_path, device='cuda', candidates=16, tau=.25, **kwargs):
+    def __init__(self, policy_path, device='cuda', candidates=16, tau=.25,
+                 planning_horizon=None, **kwargs):
         super().__init__(policy_path, device, **kwargs)
+        # Policy generation and WM prediction are independent. Keep sampling the
+        # usual full plans while scoring only their requested future prefix.
+        horizon = self.generate if planning_horizon is None else planning_horizon
+        if isinstance(horizon, bool) or not isinstance(horizon, (int, np.integer)) or not self.execute <= horizon <= self.generate:
+            raise ValueError('need an integer execute <= planning_horizon <= generate')
+        self.planning_horizon = int(horizon)
         self.candidates, self.tau = candidates, tau
         self.goals = None
 
@@ -134,10 +144,11 @@ class GoalPlanningAgent(LatentPolicyAgent):
                 # Pair the C-1 earlier context frames with the C-1 blocks executed after them,
                 # and the current frame with the n candidate chunks of length `generate`.
                 past = self.executed[len(self.executed)-len(self.frames)+1:] if len(self.frames) > 1 else []
-                acts = torch.cat([torch.stack(past)[None].expand(n, -1, -1), blocks], 1) if past else blocks
+                future = blocks[:, :self.planning_horizon]
+                acts = torch.cat([torch.stack(past)[None].expand(n, -1, -1), future], 1) if past else future
                 with self._autocast():
                     pred = self.encoder.rollout(torch.stack(self.frames)[None].expand(n, -1, -1),
-                                                self.encoder.action_encoder(acts), self.generate)
+                                                self.encoder.action_encoder(acts), self.planning_horizon)
                 self.last_distance = (pred[:, -1].float()-goal).square().sum(-1)
                 best = int(self.last_distance.argmin())
             raw = np.clip(blocks[best, :self.execute].cpu().numpy()*self.a_std+self.a_mean, -1, 1)
