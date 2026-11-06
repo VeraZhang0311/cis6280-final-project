@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-06",
+  "scene": 100038,
+  "sample_seed": 0,
+  "horizon": 1795,
+  "groups": {
+    "A4-32": {
+      "episodes": 1,
+      "mean_peak_boxes": 4,
+      "mean_final_boxes": 1,
+      "success": 0,
+      "peak_reached": {"1": 1, "2": 1, "3": 1, "4": 1},
+      "final_reached": {"1": 1, "2": 0, "3": 0, "4": 0},
+      "mean_decision_s": 0.18501518733147637,
+      "p95_decision_s": 0.24852904029995668,
+      "calls": {"encoder": 359, "policy": 359, "policy_velocity": 3590, "action_encoder": 359, "wm_rollout": 359, "predictor": 5744},
+      "first_to_second": {"at_risk": 1, "events": 1, "censored": 0, "conversion": 1, "km_median_s": 35},
+      "third_to_fourth": {"at_risk": 1, "events": 1, "censored": 0, "conversion": 1, "km_median_s": 36.2},
+      "lookahead": {"applicable_decisions": 0, "all_decisions": 359, "eligible_nonempty_rate": null, "used_rate": 0}
+    },
+    "A4-32-T1": {
+      "episodes": 1,
+      "mean_peak_boxes": 4,
+      "mean_final_boxes": 3,
+      "success": 0,
+      "peak_reached": {"1": 1, "2": 1, "3": 1, "4": 1},
+      "final_reached": {"1": 1, "2": 1, "3": 1, "4": 0},
+      "mean_decision_s": 0.18634969410026908,
+      "p95_decision_s": 0.24511245999999556,
+      "calls": {"encoder": 359, "policy": 359, "policy_velocity": 3590, "action_encoder": 359, "wm_rollout": 359, "predictor": 5744},
+      "first_to_second": {"at_risk": 1, "events": 1, "censored": 0, "conversion": 1, "km_median_s": 42.800000000000004},
+      "third_to_fourth": {"at_risk": 1, "events": 1, "censored": 0, "conversion": 1, "km_median_s": 33.1},
+      "lookahead": {"applicable_decisions": 0, "all_decisions": 359, "eligible_nonempty_rate": null, "used_rate": 0}
+    },
+    "A4-32-T2": {
+      "episodes": 1,
+      "mean_peak_boxes": 3,
+      "mean_final_boxes": 1,
+      "success": 0,
+      "peak_reached": {"1": 1, "2": 1, "3": 1, "4": 0},
+      "final_reached": {"1": 1, "2": 0, "3": 0, "4": 0},
+      "mean_decision_s": 0.18878779065460252,
+      "p95_decision_s": 0.24494125870003244,
+      "calls": {"encoder": 359, "policy": 359, "policy_velocity": 3590, "action_encoder": 359, "wm_rollout": 359, "predictor": 5744},
+      "first_to_second": {"at_risk": 1, "events": 1, "censored": 0, "conversion": 1, "km_median_s": 65.10000000000001},
+      "third_to_fourth": {"at_risk": 1, "events": 0, "censored": 1, "conversion": 0, "km_median_s": null},
+      "lookahead": {"applicable_decisions": 0, "all_decisions": 359, "eligible_nonempty_rate": null, "used_rate": 0}
+    }
+  },
+  "paired_comparisons": {
+    "A4-32-T1_minus_A4-32": {"scenes": 1, "resampling_unit": "scene", "metrics": {"peak_boxes": {"difference": 0, "ci95": null}, "final_boxes": {"difference": 2, "ci95": null}, "success": {"difference": 0, "ci95": null}}},
+    "A4-32-T2_minus_A4-32": {"scenes": 1, "resampling_unit": "scene", "metrics": {"peak_boxes": {"difference": -1, "ci95": null}, "final_boxes": {"difference": 0, "ci95": null}, "success": {"difference": 0, "ci95": null}}},
+    "A4-32-T2_minus_A4-32-T1": {"scenes": 1, "resampling_unit": "scene", "metrics": {"peak_boxes": {"difference": -1, "ci95": null}, "final_boxes": {"difference": -2, "ci95": null}, "success": {"difference": 0, "ci95": null}}}
+  },
+  "reference_groups": [],
+  "wall_s": 1013.2215817000001,
+  "wall_scope": "current_attempt",
+  "provenance_note": "Structured transcription of the completed Colab summary supplied by the user; generated Drive artifacts remain authoritative."
+}

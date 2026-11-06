@@ -5,6 +5,12 @@ holding the released 120k A4 goal actor, original frozen world model, official
 goals, 32-candidate budget, 16-block rollout, action handling, goal switching,
 and first-block execution fixed.
 
+Status: the single-scene screening run is complete. `A4-32-T1` is retained as
+the current trajectory-scoring version because it preserved three boxes at the
+end of the episode, compared with one for both the v2 baseline and T2, while
+adding no material inference cost. The baseline and T2 implementations remain
+available as frozen controls; they are not the selected deployment setting.
+
 ## Locked groups
 
 | Group | Candidate cost |
@@ -19,6 +25,19 @@ plus the time term. Exact cost ties retain the earliest candidate. T1 copies
 the independently screened PARCC trajectory weights. T2 is a predeclared test
 of whether stronger terminal retention converts transient peak progress into
 better final count or official success.
+
+The retained T1 score is:
+
+```text
+d[n,h] = ||z_hat[n,h] - g_active||^2 / max(||g_active-g_previous||^2, eps)
+h*[n] = argmin_h (d[n,h] + 0.05 * h/H)
+cost[n] = d[n,h*[n]] + 0.05 * h*[n]/H + 0.25 * d[n,H]
+best = earliest argmin_n cost[n]
+```
+
+Only the selected plan's first block is executed before observing the real
+environment and replanning. Reaching a small imagined distance does not advance
+the real goal index.
 
 There is no next-goal lookahead, adaptive goal advancement, candidate reuse,
 or action-space optimization. Those mechanisms did not show consistent gains
@@ -55,4 +74,8 @@ python -m assignment.training.planning.evaluate_goal_actor \
 Do not tune weights using the reserved-scene result. Report mean peak, mean
 final, official success, third-to-fourth conversion, decision time, and the
 scene-grouped paired intervals emitted by the evaluator.
+
+The completed screening result and the precise scope of the retention decision
+are recorded in [RESULTS.md](RESULTS.md). The machine-readable transcription of
+the Colab summary is [evidence/single-scene-summary.json](evidence/single-scene-summary.json).
 
