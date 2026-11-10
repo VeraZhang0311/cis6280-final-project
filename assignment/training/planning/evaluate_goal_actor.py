@@ -12,8 +12,8 @@ import time
 import numpy as np
 
 from assignment.training.planning.evaluate import scene_goal_frames
+from assignment.training.planning.variants import CANDIDATES, MODES, PLANNING_HORIZONS, TRAJECTORY_SPECS
 
-MODES = ('A1', 'A2', 'A3', 'A4-16', 'A4-32', 'A5-16', 'A5-32')
 _agents = {}
 
 
@@ -98,6 +98,8 @@ def validate_resume(previous, current):
         raise ValueError('Evaluation resume requires the same source snapshot')
     if previous.get('reference') != current.get('reference'):
         raise ValueError('Evaluation resume requires the same reference run')
+    if previous.get('experiment') != current.get('experiment'):
+        raise ValueError('Evaluation resume requires the same experiment plan')
 
 
 def stage_transition(reach, end_step, before, after, dt=.1):
@@ -220,8 +222,11 @@ def summarize(episodes, target=4):
     late_events = sum(row['event'] for row in late_risk)
     applicable = sum(row['lookahead_applicable'] for row in episodes)
     decisions = sum(row['decisions'] for row in episodes)
+    reached_target = [row for row in episodes if row['peak_boxes'] >= target]
+    retained_target = sum(row['final_boxes'] >= target for row in reached_target)
     return dict(episodes=len(episodes), mean_peak_boxes=float(np.mean([r['peak_boxes'] for r in episodes])),
                 mean_final_boxes=float(np.mean([r['final_boxes'] for r in episodes])),
+                mean_peak_to_final_loss=float(np.mean([r['peak_boxes']-r['final_boxes'] for r in episodes])),
                 success=float(np.mean([r['success'] for r in episodes])),
                 peak_reached={str(k): float(np.mean([r['peak_boxes'] >= k for r in episodes])) for k in range(1, target+1)},
                 final_reached={str(k): float(np.mean([r['final_boxes'] >= k for r in episodes])) for k in range(1, target+1)},
@@ -233,6 +238,8 @@ def summarize(episodes, target=4):
                 third_to_fourth=dict(at_risk=len(late_risk), events=late_events, censored=len(late_risk)-late_events,
                                      conversion=late_events/len(late_risk) if late_risk else None,
                                      km_median_s=km_median(late)),
+                target_retention=dict(target=target, at_risk=len(reached_target), retained=retained_target,
+                                      rate=retained_target/len(reached_target) if reached_target else None),
                 lookahead=dict(applicable_decisions=applicable, all_decisions=decisions,
                                eligible_nonempty_rate=(sum(r['eligible_nonempty'] for r in episodes)/applicable
                                                        if applicable else None),
@@ -241,8 +248,17 @@ def summarize(episodes, target=4):
 
 def paired_comparisons(results, draws=2000):
     comparisons = {}
-    for left, right in (('A2', 'A1'), ('A3', 'A2'), ('A4-16', 'A2'), ('A4-32', 'A4-16'),
-                        ('A5-16', 'A4-16'), ('A5-32', 'A4-32'), ('A5-32', 'A5-16')):
+    pairs = [('A2', 'A1'), ('A3', 'A2'), ('A4-16', 'A2'), ('A4-32', 'A4-16'),
+             ('A4-32-T1', 'A4-32'), ('A4-32-T2', 'A4-32'),
+             ('A4-32-T2', 'A4-32-T1'),
+             ('A4-32-T1-L4', 'A4-32-T1'),
+             ('A4-32-T1-H8', 'A4-32-T1'),
+             ('A4-32-T1-H12', 'A4-32-T1'),
+             ('A4-32-T1-L4-HOLD', 'A4-32-T1-L4'),
+             ('A5-16', 'A4-16'), ('A5-32', 'A4-32'), ('A5-32', 'A5-16')]
+    pairs += [(mode, 'A4-32') for mode in (*TRAJECTORY_SPECS, *PLANNING_HORIZONS)]
+    pairs += [('A4-16-RUIMING', 'A4-16'), ('A4-32-T1', 'A4-16-RUIMING')]
+    for left, right in dict.fromkeys(pairs):
         if left not in results or right not in results:
             continue
         a = {(r['scene_seed'], r['sample_seed']): r for r in results[left]}
@@ -369,6 +385,7 @@ def main(argv=None):
     parser.add_argument('--world-model', type=Path, required=True)
     parser.add_argument('--goals', type=Path, required=True)
     parser.add_argument('--official-policy', type=Path, help='Optional provenance for the original actor, not executed')
+    parser.add_argument('--experiment-plan', type=Path, help='Frozen integration plan, checked against this evaluation')
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--scenes', type=int, nargs='+')
     source.add_argument('--scene-file', type=Path)
@@ -447,13 +464,21 @@ def main(argv=None):
                     actor_config=actor_config, actor_interface=actor_interface,
                     training_source=dict(step=training_info.get('step'), cumulative_step=training_info.get('cumulative_step'),
                                          wandb=training_info.get('wandb'), init_policy=training_info.get('init_policy')),
-                    config=dict(candidates={'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32,
-                                            'A5-16': 16, 'A5-32': 32},
+                    config=dict(candidates=CANDIDATES,
+                                planning_horizons=PLANNING_HORIZONS,
+                                trajectory_specs=TRAJECTORY_SPECS,
                                 generate=16, execute=1, n_steps=10,
                                 lag=0, switch_tau=.25, next_goal_weight=.25, score_epsilon=1e-8,
                                 action_handling='unnormalize, clip to [-1,1], renormalize for WM/history',
                                 goal_switch='real observation only; strict distance < tau * reference_gap',
                                 A2='min over future blocks 1..16',
+                                T1='normalized arrival distance + 0.05 * arrival/H + 0.25 * terminal distance',
+                                T2='normalized arrival distance + 0.05 * arrival/H + 0.50 * terminal distance',
+                                T1_L4='T1 with 0.25 * mean normalized distance over blocks 13..16',
+                                T1_H8='T1 with 0.25 * normalized distance at block 8',
+                                T1_H12='T1 with 0.25 * normalized distance at block 12',
+                                T1_L4_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
+                                            'threshold; then minimize the late-four mean'),
                                 A3='eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2',
                                 tie_break='earliest candidate', decision_timing='CUDA synchronized; excludes reset/render/video',
                                 call_units='encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps'),
@@ -462,6 +487,19 @@ def main(argv=None):
                                  gpu=torch.cuda.get_device_name(gpus[0]) if args.device == 'cuda' else None,
                                  dtype=str(amp_dtype()) if args.device == 'cuda' else 'torch.float32',
                                  versions={name: version(name) for name in ('torch', 'numpy', 'mujoco', 'imageio')}))
+    if args.experiment_plan:
+        plan = json.loads(args.experiment_plan.read_text(encoding='utf-8'))
+        for key in ('scene_seeds', 'sample_seeds'):
+            if plan[key] != manifest[key]:
+                raise ValueError(f'Frozen experiment has different {key}')
+        if (not set(args.groups) <= set(plan['groups']) or args.horizon != plan['horizon']
+                or args.workers != plan['workers'] or args.videos != plan['videos']):
+            raise ValueError('Frozen experiment groups/task/runtime differ')
+        for key in ('goal_actor', 'world_model', 'goals'):
+            if plan['models'][key]['sha256'] != manifest['models'][key]['sha256']:
+                raise ValueError(f'Frozen experiment has different {key}')
+        manifest['experiment'] = dict(path=str(args.experiment_plan.resolve()),
+                                      sha256=sha256(args.experiment_plan), plan=plan)
     if any(mode.startswith('A4-') for mode in args.groups):
         manifest['training_source']['evaluation_checkpoint'] = dict(
             cumulative_step=args.a4_cumulative_step,

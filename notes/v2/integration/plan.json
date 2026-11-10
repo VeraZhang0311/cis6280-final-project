@@ -1,0 +1,78 @@
+{
+  "schema": "v2-member-integration-v1",
+  "branch": "tianzi/v2.0-integration",
+  "base_commit": "050c748089fba9469aec5b8ba47f2cb3d19101fd",
+  "sources": {
+    "shafaa": "21eb0973b1a6446b903e1c72388e235badd9bf26",
+    "ruiming": "5e57e95479d60ecdc8903c7c82d342ef906ec336",
+    "emoo": "5c0bc8afb212b8e63758c1414f4e3d4fe3efa9c1"
+  },
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "models": {
+    "world_model": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+      "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+    },
+    "goal_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+      "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+    },
+    "official_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+      "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+    },
+    "goals": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+      "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+    }
+  },
+  "groups": [
+    "A4-32",
+    "A4-16",
+    "A4-16-RUIMING",
+    "A4-32-T1",
+    "A4-32-SHAFAA-2S",
+    "A4-32-SHAFAA-4S",
+    "A4-32-SHAFAA-8S",
+    "A4-32-T1-L4",
+    "A4-32-T1-H8",
+    "A4-32-T1-H12",
+    "A4-32-T1-L4-HOLD"
+  ],
+  "horizon": 1795,
+  "workers": 8,
+  "videos": 20,
+  "expected_episodes": 660,
+  "comparisons": "Every variant vs A4-32; 16-candidate Ruiming also vs A4-16; retention ablations also vs T1; hold also vs L4.",
+  "selection_notes": {
+    "ruiming": "User-selected whole-trajectory formula; original 16-candidate budget and a 32-candidate version shared with Emoo T1. H=16 blocks = 8 seconds. No lookahead or adaptive switching.",
+    "shafaa": "No published physical results: compare all 2/4/8-second WM horizons. Standardize candidates to 32; always generate 16 blocks and execute one.",
+    "emoo": "Retain best screened T1; run all four GPU-pending followups. Exclude the worse T2."
+  }
+}

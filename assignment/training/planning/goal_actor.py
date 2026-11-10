@@ -1,4 +1,4 @@
-"""Frozen goal actor deployment: A1 direct, A2/A4 trajectory minimum, A3 lookahead."""
+"""Frozen goal actor deployment and reproducible candidate-selection variants."""
 from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,11 +10,12 @@ import torch
 from assignment.training.data.cache import RAW_ACTION_DIM, STRIDE
 from assignment.training.training.goal_policy import HORIZON, load_goal_policy, validate_a4_checkpoint
 from assignment.training.training.jepa import amp_dtype, load_model
+from assignment.training.planning.variants import CANDIDATES, MODES, PLANNING_HORIZONS, TRAJECTORY_SPECS
 
-CANDIDATES = {'A1': 1, 'A2': 16, 'A3': 16, 'A4-16': 16, 'A4-32': 32, 'A5-16': 16, 'A5-32': 32}
-MODES = tuple(CANDIDATES)
 SWITCH_TAU = .25
 NEXT_GOAL_WEIGHT = .25
+ARRIVAL_TIME_WEIGHT = .05
+HOLD_CONFIRMATIONS = 2
 SCORE_EPS = 1e-8
 
 
@@ -27,6 +28,13 @@ class Selection:
     q: torch.Tensor | None = None
     r: torch.Tensor | None = None
     eligible: torch.Tensor | None = None
+    arrival: torch.Tensor | None = None
+    terminal: torch.Tensor | None = None
+    retention: torch.Tensor | None = None
+    retention_rule: str | None = None
+    arrival_time_weight: float | None = None
+    terminal_weight: float | None = None
+    selection_rule: str = 'active_min'
     lookahead_used: bool = False
     fallback: str | None = None
 
@@ -38,32 +46,88 @@ class Selection:
         costs = self.cost.detach().cpu().tolist()
         return dict(selected_candidate=self.best, candidate_min_distance=values(self.active_min),
                     candidate_nearest_block=values(self.nearest_block),
+                    candidate_arrival_block=values(self.arrival),
+                    candidate_terminal_distance=values(self.terminal),
+                    candidate_retention_distance=values(self.retention),
                     # Ineligible lookahead candidates have no selection cost, not JSON Infinity.
                     selection_cost=[v if np.isfinite(v) else None for v in costs],
                     q=values(self.q), r=values(self.r), eligible=values(self.eligible),
+                    arrival_time_weight=self.arrival_time_weight, terminal_weight=self.terminal_weight,
+                    retention_rule=self.retention_rule,
                     lookahead_used=self.lookahead_used, fallback=self.fallback,
-                    selection_rule='active_first_lookahead' if self.lookahead_used else 'active_min')
+                    selection_rule='active_first_lookahead' if self.lookahead_used else self.selection_rule)
 
 
-def select_candidate(active_distances, mode, threshold, next_distances=None, next_threshold=None):
-    """Pure selection over *future* distances [N,16]; ties retain the earliest candidate.
+def select_candidate(active_distances, mode, threshold, next_distances=None, next_threshold=None,
+                     hold_active=False):
+    """Pure selection over future distances; ties retain the earliest candidate.
 
     next_distances contains only each candidate's terminal distance to next goal.
     No observed state or real active index is changed here.
     """
     if mode in ('A4-16', 'A4-32', 'A5-16', 'A5-32'):
         mode = 'A2'
-    if mode not in ('A2', 'A3'):
-        raise ValueError('Selection requires A2 or A3')
-    if (active_distances.ndim != 2 or active_distances.shape[1] != HORIZON
+    horizon = PLANNING_HORIZONS.get(mode, HORIZON)
+    if mode not in ('A2', 'A3', *TRAJECTORY_SPECS, *PLANNING_HORIZONS):
+        raise ValueError('Unknown candidate-selection mode')
+    if (active_distances.ndim != 2 or active_distances.shape[1] != horizon
             or active_distances.shape[0] < 1 or not torch.isfinite(active_distances).all()
             or (active_distances < 0).any()):
-        raise ValueError('Expected finite nonnegative future distances [N,16]')
+        raise ValueError(f'Expected finite nonnegative future distances [N,{horizon}]')
     threshold = torch.as_tensor(threshold, device=active_distances.device, dtype=torch.float32)
     if threshold.numel() != 1 or not torch.isfinite(threshold).all() or (threshold < 0).any():
         raise ValueError('Invalid active goal threshold')
     minimum, nearest = active_distances.min(-1)
     selection = Selection(int(minimum.argmin()), minimum, nearest+1, minimum)
+    if mode in PLANNING_HORIZONS:
+        selection.cost = active_distances[:, -1]
+        selection.best = int(selection.cost.argmin())
+        selection.terminal = selection.cost
+        selection.selection_rule = 'horizon_terminal'
+        return selection
+    if mode in TRAJECTORY_SPECS:
+        # Match the independently screened PARCC trajectory score. Distances are
+        # normalized by the reference gap so the fixed time term has consistent
+        # meaning across active goals. T2 is the predeclared stronger terminal-
+        # retention variant; it differs from T1 only in terminal weight.
+        gap = threshold/SWITCH_TAU
+        # Preserve Ruiming's original numerical floor; Emoo used 1e-8.
+        gap_epsilon = 1e-6 if mode == 'A4-16-RUIMING' else SCORE_EPS
+        normalized = active_distances/gap.clamp_min(gap_epsilon)
+        time_cost = ARRIVAL_TIME_WEIGHT*torch.arange(
+            1, HORIZON+1, device=normalized.device, dtype=normalized.dtype)/HORIZON
+        arrival_objective = normalized+time_cost
+        arrival_value, arrival = arrival_objective.min(-1)
+        retention_rule, terminal_weight = TRAJECTORY_SPECS[mode]
+        if retention_rule == 'block8':
+            retention = normalized[:, 7]
+            retention_raw = active_distances[:, 7]
+        elif retention_rule == 'block12':
+            retention = normalized[:, 11]
+            retention_raw = active_distances[:, 11]
+        elif retention_rule == 'late4_mean':
+            retention = normalized[:, -4:].mean(-1)
+            retention_raw = active_distances[:, -4:].mean(-1)
+        else:
+            retention = normalized[:, -1]
+            retention_raw = active_distances[:, -1]
+        if hold_active:
+            if mode != 'A4-32-T1-L4-HOLD':
+                raise ValueError('hold_active is only valid for the hold mode')
+            selection.cost = retention
+            selection.selection_rule = 'trajectory_hold_late4_mean'
+        else:
+            selection.cost = arrival_value+terminal_weight*retention
+            selection.selection_rule = ('trajectory_arrival_terminal' if retention_rule == 'block16'
+                                        else 'trajectory_arrival_retention')
+        selection.best = int(selection.cost.argmin())
+        selection.arrival = arrival+1
+        selection.terminal = active_distances[:, -1]
+        selection.retention = retention_raw
+        selection.retention_rule = retention_rule
+        selection.arrival_time_weight = ARRIVAL_TIME_WEIGHT
+        selection.terminal_weight = terminal_weight
+        return selection
     if mode == 'A2':
         return selection
     if next_distances is None:
@@ -121,6 +185,7 @@ class GoalActorAgent:
                 or self.encoder.cfg.action_dim != self.policy.cfg.action_dim or self.encoder.cfg.proprio_dim):
             raise ValueError('World-model and goal actor dimensions/modalities disagree')
         self.candidates = CANDIDATES[mode]
+        self.planning_horizon = PLANNING_HORIZONS.get(mode, HORIZON)
         self.generate, self.execute, self.n_steps, self.lag = HORIZON, 1, 10, 0
         self.tau, self.lookahead_weight = SWITCH_TAU, NEXT_GOAL_WEIGHT
         self._amp_dtype = amp_dtype() if self.device.type == 'cuda' else torch.float32
@@ -174,6 +239,7 @@ class GoalActorAgent:
         if seed is not None:
             self.generator.manual_seed(int(seed))
         self.frames, self.executed, self.index = [], [], 0
+        self.hold_streak, self.hold_latched = 0, False
         self.goals = self.gap = self.thresholds = self.last_trace = None
         self.decision = 0
         self.setup_calls = dict(encoder=int(encoded is not None), policy=0, predictor=0)
@@ -211,6 +277,11 @@ class GoalActorAgent:
         previous = self.index
         switches = self._advance_goal(z)
         active = self.goals[self.index]
+        observed_distance = (z-active).square().sum()
+        if self.mode == 'A4-32-T1-L4-HOLD':
+            close_to_final = self.index == len(self.goals)-1 and observed_distance < self.thresholds[self.index]
+            self.hold_streak = self.hold_streak+1 if close_to_final else 0
+            self.hold_latched = self.hold_latched or self.hold_streak >= HOLD_CONFIRMATIONS
         self.frames = (self.frames+[z])[-self.encoder.cfg.context:]
         n = self.candidates
         current = ((z-self.z_mean)/self.z_std)[None, None].expand(n, 1, -1)
@@ -235,12 +306,13 @@ class GoalActorAgent:
                           q=None, r=None, eligible=None, lookahead_used=False, fallback=None)
         else:
             past = self.executed[-(len(self.frames)-1):] if len(self.frames) > 1 else []
-            actions = torch.cat([torch.stack(past)[None].expand(n, -1, -1), normalized], 1) if past else normalized
+            future = normalized[:, :self.planning_horizon]
+            actions = torch.cat([torch.stack(past)[None].expand(n, -1, -1), future], 1) if past else future
             self._sync()
             predictor_start = time.perf_counter()
             with self._autocast():
                 imagined = self.encoder.rollout(torch.stack(self.frames)[None].expand(n, -1, -1),
-                                                self.encoder.action_encoder(actions), HORIZON)
+                                                self.encoder.action_encoder(actions), self.planning_horizon)
             self._sync()
             predictor_s = time.perf_counter()-predictor_start
             distances = (imagined.float()-active).square().sum(-1)
@@ -249,9 +321,9 @@ class GoalActorAgent:
                 next_distances = (imagined[:, -1].float()-self.goals[self.index+1]).square().sum(-1)
                 next_threshold = self.thresholds[self.index+1]
             selection = select_candidate(distances, self.mode, self.thresholds[self.index],
-                                         next_distances, next_threshold)
+                                         next_distances, next_threshold, hold_active=self.hold_latched)
             selected, choice = selection.best, selection.trace()
-            calls.update(action_encoder=1, wm_rollout=1, predictor=HORIZON)
+            calls.update(action_encoder=1, wm_rollout=1, predictor=self.planning_horizon)
         block = raw[selected, 0].reshape(STRIDE, RAW_ACTION_DIM).cpu().numpy().copy()
         if self.encoder.cfg.context > 1:
             self.executed = (self.executed+[normalized[selected, 0].clone()])[-(self.encoder.cfg.context-1):]
@@ -260,9 +332,11 @@ class GoalActorAgent:
         self.last_trace = dict(
             decision=self.decision, mode=self.mode, active_index_before=previous, active_index=self.index,
             next_index=self.index+1 if self.index+1 < len(self.goals) else None,
-            goal_distance=float((z-active).square().sum()), goal_threshold=float(self.thresholds[self.index]),
+            goal_distance=float(observed_distance), goal_threshold=float(self.thresholds[self.index]),
             next_goal_threshold=float(self.thresholds[self.index+1]) if self.index+1 < len(self.goals) else None,
             switches=switches, candidates=n, generated_blocks=HORIZON, execute_blocks=1,
+            imagined_blocks=self.planning_horizon,
+            hold_streak=self.hold_streak, hold_latched=self.hold_latched,
             calls=calls, **choice,
             timings_s=dict(encoder=encoded_at-start, policy=policy_end-policy_start, predictor=predictor_s))
         self._sync()
