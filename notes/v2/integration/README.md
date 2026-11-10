@@ -46,3 +46,28 @@ allow a fair within-run comparison if the allocated GPU differs from the old L40
 
 Member source snapshots are pinned in `plan.json`; imported Emoo selector/tests
 retain her follow-up definitions. `variants.py` is the shared mode registry.
+
+## Launch receipt — November 10, 2026
+
+Code snapshot: `d67ce6e00426ed15cae827fb7102639a8b081fad`. All 35 goal actor/policy
+tests and 10 A5 regression tests passed in the reused GRASP runtime. Actor, WM,
+goals and scene/seed lists match historical A4 exactly; see `preflight.json`.
+
+Isolated workspace: `/mnt/projects/ll/tianzizh/cis6280-v2-integration-20261110-01`.
+Slurm smoke job `1523361`, full job `1523362`, partition `liu-compute`, QoS
+`ll-med`, one L40. The full job depends on successful smoke completion. At launch,
+smoke is pending resources and full is pending its dependency. No physical
+evaluation results are claimed yet. `launch.json` records the exact source archive.
+The working source archive explicitly disables Windows Git's CRLF conversion.
+
+For later submissions to this partition, include `--partition=liu-compute
+--qos=ll-med --gres=gpu:l40:1` plus `--export=ALL,TASK_ROOT=<isolated workspace>`.
+Completed results will be in `outputs/planning/v2/integration/` in that workspace.
+The full job automatically validates all 660 episode records and writes
+`comparison.json` and `RESULTS.md` after evaluation, including paired differences
+and scene-bootstrap intervals. `logs/smoke-1523361.log` and
+`logs/full-1523362.log` contain scheduler-run output. To inspect queue status:
+
+```bash
+squeue -j 1523361,1523362
+```

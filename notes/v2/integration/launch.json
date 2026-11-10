@@ -1,0 +1,17 @@
+{
+  "workspace": "/mnt/projects/ll/tianzizh/cis6280-v2-integration-20261110-01",
+  "commit": "d67ce6e00426ed15cae827fb7102639a8b081fad",
+  "branch": "tianzi/v2.0-integration",
+  "source_archive_sha256": "450ed8d72c4478d7f9ca9ad2507a078aca0389b341e208b528bc561aec13334c",
+  "smoke_job": "1523361",
+  "full_job": "1523362",
+  "partition": "liu-compute",
+  "gpu": "l40",
+  "cpus": 16,
+  "mem": "48G",
+  "expected_episodes": 660,
+  "reason": "Same L40 as historical A4; shared batch estimate Nov 12, liu-compute estimate Nov 10 afternoon.",
+  "model_and_scene_verification": "preflight.json",
+  "cpu_tests_log": "validation.log",
+  "qos": "ll-med"
+}

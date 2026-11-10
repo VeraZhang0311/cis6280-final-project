@@ -1,0 +1,47 @@
+{
+  "cpu_tests": {
+    "goal": 35,
+    "onpolicy_a5": 10
+  },
+  "models": {
+    "goal_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+      "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+    },
+    "world_model": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+      "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+    },
+    "goals": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+      "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+    }
+  },
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ]
+}
