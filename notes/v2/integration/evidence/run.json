@@ -1,0 +1,345 @@
+{
+  "code": {
+    "commit": "d67ce6e00426ed15cae827fb7102639a8b081fad",
+    "branch": "tianzi/v2.0-integration",
+    "dirty": false,
+    "status": "",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_sha256": {
+      "assignment/training/__init__.py": "866b66df387b37fe93745c031f25bd4cb8ffd68133c6ce4e89365c9693b59169",
+      "assignment/training/_cli.py": "e4994099af4ec486f64cb856548253cdccd9f4e29c41d7ed490f66f9e84d8368",
+      "assignment/training/data/__init__.py": "04d204970df06d458f4e99522ee59279345ed1dac2fa402a6da9cb778859ffbe",
+      "assignment/training/data/cache.py": "c944487a6f492df6343abf75a8f954e253bdaf8a7a68272dddc0ff8498e7a986",
+      "assignment/training/data/collect.py": "9b468ffb500d89c08e6145e79aaaaf4066d48975d2dd9009519b47ec469ff1ce",
+      "assignment/training/data/collect_goal_onpolicy.py": "f49d18069aa50e428fb9673a631ff1227e19d5faa1dc9479bdefb964dae48d63",
+      "assignment/training/data/collect_onpolicy.py": "4528e75f1543e712967a4299b4c1d8ef2604577372627e8f1786021eb42cad87",
+      "assignment/training/data/encode.py": "34845805f42aad0e9758779b93344a249d2969279c2d6ed49ddfd69a64be7e8e",
+      "assignment/training/data/recording.py": "297c501be527541b537e62b87487cccef290386fa4f1a38518f8f2fc1335c09a",
+      "assignment/training/data/scripted.py": "fbed0260170b2af8fd5497271d340914a71804a6acbb3ecd75cf850dabef9fdc",
+      "assignment/training/data/signals.py": "cd4927c1443369ae569ecd1d5de85d28d4c1273ff5ec528268922e6f2d900a15",
+      "assignment/training/data/task.py": "73b7abb68fa0914b08fe71fb4d8348281d7840cccc2b1df1db5465ca423d5153",
+      "assignment/training/data/teacher.py": "c211248df9ad4b4aa5c469a6e3b369c7e65a0d5824d449392c89467756ce779b",
+      "assignment/training/planning/__init__.py": "306383bc50d9e691812a5e9f47b74edaee8d33a7638694d12dda1e9c871319e4",
+      "assignment/training/planning/agent.py": "115632b2498993556529225ca737b42c815ce0db4c59ab398c52d60f18673174",
+      "assignment/training/planning/evaluate.py": "4718b1bf64bbedeac79e0c9c9bf32c0d02ce58641fca96f827d4d77393dd76ab",
+      "assignment/training/planning/evaluate_goal_actor.py": "04abf624691ad9e26488be919394b7848081213ce5da6b6d4c5acde57ed9d21a",
+      "assignment/training/planning/goal_actor.py": "322f3d3aaeb6360e9bc290c253c8e4e9915d47c13d2c2b8c4c17bd5e5be659cb",
+      "assignment/training/planning/goals.py": "9786381f87639725a68009911471f2a5aa0e5d6aec6cde657339da12d2f6b842",
+      "assignment/training/planning/variants.py": "42bf184cdac352460d8f7d86cb6b620e670aa2d657be7759e7a77ed6412745fa",
+      "assignment/training/training/__init__.py": "c7fd5030168c9031cf8a83b3fb8cb84b5fbf3bc03d5ad4f68c48e6b59cc52746",
+      "assignment/training/training/finetune_goal_onpolicy.py": "653a9645bb8cdd14b7379f8b2bcf98e99468885fa62ac7d7f6f75d0b0ec8d7c5",
+      "assignment/training/training/finetune_onpolicy.py": "f0ecfaacc67e13c211531e8c22942efbb20a64a5c3521c223c96e885f993ea8c",
+      "assignment/training/training/goal_policy.py": "32a5be5aa5796a7602c66b6adcc9fcf481b30656becafb3951d762559470695a",
+      "assignment/training/training/jepa.py": "8e8cdaacbd4d1e5177ec363b82622efefec18af9ef2aae6bbadd72119234da3f",
+      "assignment/training/training/onpolicy_a5.py": "3a138181cd7ea86fe13663c0da0815f41045f629a7c1362d5d5fd7b270ffc443",
+      "assignment/training/training/policy.py": "9aca7c1cd410c78e959ef113027a145d0c1f23a3b5551c09e184a651838dae6e",
+      "assignment/training/training/train_goal_policy.py": "1d88ccf28263863f888678f77a8dd4171d1356c2fffa99a482b27093d625a373",
+      "assignment/training/training/train_jepa.py": "6bb231191fa26ff0405d56b788d770f2a02cbd802899a3781e641e32dd974a46",
+      "assignment/training/training/train_policy.py": "287ca26de3085969288f37f446587e4b25a071a20837544d1de4804649b69244",
+      "scripts/train_stack_goal_policy.py": "24f70647caf4e7a3c0315bad8adec5a2a317355c24499a689987a8eceeef6fa4"
+    },
+    "cluster_source_verified": true
+  },
+  "groups": [
+    "A4-32",
+    "A4-16",
+    "A4-16-RUIMING",
+    "A4-32-T1",
+    "A4-32-SHAFAA-2S",
+    "A4-32-SHAFAA-4S",
+    "A4-32-SHAFAA-8S",
+    "A4-32-T1-L4",
+    "A4-32-T1-H8",
+    "A4-32-T1-H12",
+    "A4-32-T1-L4-HOLD"
+  ],
+  "scene_seeds": [
+    100035,
+    100038,
+    100057,
+    100060,
+    100069,
+    100072,
+    100078,
+    100085,
+    100087,
+    100098,
+    100102,
+    100137,
+    100145,
+    100152,
+    100164,
+    100166,
+    100169,
+    100175,
+    100183,
+    100186
+  ],
+  "sample_seeds": [
+    0,
+    2,
+    3
+  ],
+  "split": "val",
+  "policy_seed": "scene_seed + 1000000 * sample_seed",
+  "models": {
+    "world_model": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+      "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+    },
+    "goal_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+      "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+    },
+    "official_actor": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+      "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+    },
+    "goals": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+      "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+    }
+  },
+  "actor_config": {
+    "latent_dim": 192,
+    "action_dim": 125,
+    "context": 1,
+    "horizon": 16,
+    "dim": 512,
+    "depth": 8,
+    "heads": 8,
+    "mlp": 2048
+  },
+  "actor_interface": {
+    "goal_features": "normalized_current,goal_minus_current,current_times_goal_minus_current",
+    "normalization": "shared_train_latent_mean_std",
+    "current_shape": [
+      1,
+      192
+    ],
+    "goal_shape": [
+      1,
+      192
+    ],
+    "adapter": {
+      "input_dim": 384,
+      "hidden_dim": 512,
+      "output_dim": 512,
+      "activation": "GELU",
+      "final_init": "zero"
+    },
+    "sampling": {
+      "n_steps": 10,
+      "lag": 0
+    },
+    "time_to_goal_input": false
+  },
+  "training_source": {
+    "step": 20000,
+    "cumulative_step": 120000,
+    "wandb": {
+      "project": "6280_actor",
+      "entity": "tianzizh-university-of-pennsylvania",
+      "id": "v2actor-20261104-a4-tail-s0",
+      "url": "https://forge.coreweave.com/wandb/tianzizh-university-of-pennsylvania/6280_actor/runs/v2actor-20261104-a4-tail-s0",
+      "sdk_version": "0.31.0"
+    },
+    "init_policy": {
+      "path": "/mnt/projects/ll/tianzizh/cis6280-v2-eval-r2-20261104/checkpoints/goal-actor-r2-final.pt",
+      "sha256": "d039fbba25eabb9b976fff945afd6b59031cbbf11df5f916a5671dd774e234bf",
+      "model_type": "goal-df-policy-v2",
+      "parent_step": 50000
+    },
+    "evaluation_checkpoint": {
+      "cumulative_step": 120000,
+      "rule": "user_selected_intermediate_ema",
+      "original_training_selection": {
+        "rule": "final_step_ema",
+        "step": 50000,
+        "cumulative_step": 150000,
+        "metric_selection": false
+      }
+    }
+  },
+  "config": {
+    "candidates": {
+      "A1": 1,
+      "A2": 16,
+      "A3": 16,
+      "A4-16": 16,
+      "A4-32": 32,
+      "A4-16-RUIMING": 16,
+      "A4-32-T1": 32,
+      "A4-32-T2": 32,
+      "A4-32-T1-L4": 32,
+      "A4-32-T1-H8": 32,
+      "A4-32-T1-H12": 32,
+      "A4-32-T1-L4-HOLD": 32,
+      "A4-32-SHAFAA-2S": 32,
+      "A4-32-SHAFAA-4S": 32,
+      "A4-32-SHAFAA-8S": 32,
+      "A5-16": 16,
+      "A5-32": 32
+    },
+    "planning_horizons": {
+      "A4-32-SHAFAA-2S": 4,
+      "A4-32-SHAFAA-4S": 8,
+      "A4-32-SHAFAA-8S": 16
+    },
+    "trajectory_specs": {
+      "A4-16-RUIMING": [
+        "block16",
+        0.25
+      ],
+      "A4-32-T1": [
+        "block16",
+        0.25
+      ],
+      "A4-32-T2": [
+        "block16",
+        0.5
+      ],
+      "A4-32-T1-L4": [
+        "late4_mean",
+        0.25
+      ],
+      "A4-32-T1-H8": [
+        "block8",
+        0.25
+      ],
+      "A4-32-T1-H12": [
+        "block12",
+        0.25
+      ],
+      "A4-32-T1-L4-HOLD": [
+        "late4_mean",
+        0.25
+      ]
+    },
+    "generate": 16,
+    "execute": 1,
+    "n_steps": 10,
+    "lag": 0,
+    "switch_tau": 0.25,
+    "next_goal_weight": 0.25,
+    "score_epsilon": 1e-08,
+    "action_handling": "unnormalize, clip to [-1,1], renormalize for WM/history",
+    "goal_switch": "real observation only; strict distance < tau * reference_gap",
+    "A2": "min over future blocks 1..16",
+    "T1": "normalized arrival distance + 0.05 * arrival/H + 0.25 * terminal distance",
+    "T2": "normalized arrival distance + 0.05 * arrival/H + 0.50 * terminal distance",
+    "T1_L4": "T1 with 0.25 * mean normalized distance over blocks 13..16",
+    "T1_H8": "T1 with 0.25 * normalized distance at block 8",
+    "T1_H12": "T1 with 0.25 * normalized distance at block 12",
+    "T1_L4_HOLD": "T1-L4 until two consecutive real observations satisfy the final-goal threshold; then minimize the late-four mean",
+    "A3": "eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2",
+    "tie_break": "earliest candidate",
+    "decision_timing": "CUDA synchronized; excludes reset/render/video",
+    "call_units": "encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps"
+  },
+  "task": {
+    "horizon": 1795,
+    "target_count": 4,
+    "terminate_on_ground": false,
+    "resolution": 128
+  },
+  "runtime": {
+    "device": "cuda",
+    "gpus": [
+      0
+    ],
+    "workers": 8,
+    "videos": 20,
+    "gpu": "NVIDIA L40",
+    "dtype": "torch.bfloat16",
+    "versions": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "imageio": "2.37.2"
+    }
+  },
+  "experiment": {
+    "path": "/mnt/projects/ll/tianzizh/cis6280-v2-integration-20261110-01/notes/v2/integration/plan.json",
+    "sha256": "71a7af4e04e10e65d32324ded572a3d4547240f5eef42ad97c75cdf80204bd45",
+    "plan": {
+      "schema": "v2-member-integration-v1",
+      "branch": "tianzi/v2.0-integration",
+      "base_commit": "050c748089fba9469aec5b8ba47f2cb3d19101fd",
+      "sources": {
+        "shafaa": "21eb0973b1a6446b903e1c72388e235badd9bf26",
+        "ruiming": "5e57e95479d60ecdc8903c7c82d342ef906ec336",
+        "emoo": "5c0bc8afb212b8e63758c1414f4e3d4fe3efa9c1"
+      },
+      "scene_seeds": [
+        100035,
+        100038,
+        100057,
+        100060,
+        100069,
+        100072,
+        100078,
+        100085,
+        100087,
+        100098,
+        100102,
+        100137,
+        100145,
+        100152,
+        100164,
+        100166,
+        100169,
+        100175,
+        100183,
+        100186
+      ],
+      "sample_seeds": [
+        0,
+        2,
+        3
+      ],
+      "models": {
+        "world_model": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+          "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+        },
+        "goal_actor": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+          "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+        },
+        "official_actor": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+          "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+        },
+        "goals": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+          "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+        }
+      },
+      "groups": [
+        "A4-32",
+        "A4-16",
+        "A4-16-RUIMING",
+        "A4-32-T1",
+        "A4-32-SHAFAA-2S",
+        "A4-32-SHAFAA-4S",
+        "A4-32-SHAFAA-8S",
+        "A4-32-T1-L4",
+        "A4-32-T1-H8",
+        "A4-32-T1-H12",
+        "A4-32-T1-L4-HOLD"
+      ],
+      "horizon": 1795,
+      "workers": 8,
+      "videos": 20,
+      "expected_episodes": 660,
+      "comparisons": "Every variant vs A4-32; 16-candidate Ruiming also vs A4-16; retention ablations also vs T1; hold also vs L4.",
+      "selection_notes": {
+        "ruiming": "User-selected whole-trajectory formula; original 16-candidate budget and a 32-candidate version shared with Emoo T1. H=16 blocks = 8 seconds. No lookahead or adaptive switching.",
+        "shafaa": "No published physical results: compare all 2/4/8-second WM horizons. Standardize candidates to 32; always generate 16 blocks and execute one.",
+        "emoo": "Retain best screened T1; run all four GPU-pending followups. Exclude the worse T2."
+      }
+    }
+  },
+  "reference": null
+}

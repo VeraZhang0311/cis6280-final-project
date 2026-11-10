@@ -1,0 +1,7 @@
+{
+  "sha256": "70328cec6284a4ee8794962dbb46848bbd55fee4b8435f175981e1da5c2aed84",
+  "bytes": 2230311,
+  "cluster_path": "/mnt/projects/ll/tianzizh/cis6280-v2-integration-20261110-01/integration-evidence-complete.tar.gz",
+  "local_path": "outputs/integration-20261110/integration-evidence-complete.tar.gz",
+  "contents": "660 episode.json records, complete aggregate reports, manifests and receipt logs; full videos/step traces/count traces remain on GRASP."
+}

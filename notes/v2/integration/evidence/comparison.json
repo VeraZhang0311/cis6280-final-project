@@ -1,0 +1,1183 @@
+{
+  "groups": {
+    "A4-32": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.8666666666666667,
+      "mean_final_boxes": 2.1333333333333333,
+      "mean_peak_to_final_loss": 0.7333333333333333,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9666666666666667,
+        "2": 0.8833333333333333,
+        "3": 0.6833333333333333,
+        "4": 0.3333333333333333
+      },
+      "final_reached": {
+        "1": 0.95,
+        "2": 0.6333333333333333,
+        "3": 0.31666666666666665,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.22077717343134964,
+      "p95_decision_s": 0.3031087769661098,
+      "calls": {
+        "encoder": 20469,
+        "policy": 20469,
+        "policy_velocity": 204690,
+        "action_encoder": 20469,
+        "wm_rollout": 20469,
+        "predictor": 327504
+      },
+      "first_to_second": {
+        "at_risk": 58,
+        "events": 53,
+        "censored": 5,
+        "conversion": 0.9137931034482759,
+        "km_median_s": 33.800000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 41,
+        "events": 20,
+        "censored": 21,
+        "conversion": 0.4878048780487805,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 20,
+        "retained": 14,
+        "rate": 0.7
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20469,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-16": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.683333333333333,
+      "mean_final_boxes": 2.1166666666666667,
+      "mean_peak_to_final_loss": 0.5666666666666667,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.8833333333333333,
+        "3": 0.6,
+        "4": 0.26666666666666666
+      },
+      "final_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.6333333333333333,
+        "3": 0.3333333333333333,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.20468498046468112,
+      "p95_decision_s": 0.2914877548522782,
+      "calls": {
+        "encoder": 20504,
+        "policy": 20504,
+        "policy_velocity": 205040,
+        "action_encoder": 20504,
+        "wm_rollout": 20504,
+        "predictor": 328064
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 53,
+        "censored": 3,
+        "conversion": 0.9464285714285714,
+        "km_median_s": 34.4
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 16,
+        "censored": 20,
+        "conversion": 0.4444444444444444,
+        "km_median_s": 47.400000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 16,
+        "retained": 14,
+        "rate": 0.875
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20504,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-16-RUIMING": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.6333333333333333,
+      "mean_final_boxes": 1.9666666666666666,
+      "mean_peak_to_final_loss": 0.6666666666666666,
+      "success": 0.21666666666666667,
+      "peak_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.8333333333333334,
+        "3": 0.6,
+        "4": 0.2833333333333333
+      },
+      "final_reached": {
+        "1": 0.8833333333333333,
+        "2": 0.5333333333333333,
+        "3": 0.3333333333333333,
+        "4": 0.21666666666666667
+      },
+      "mean_decision_s": 0.2106128291180438,
+      "p95_decision_s": 0.30117448620148934,
+      "calls": {
+        "encoder": 20796,
+        "policy": 20796,
+        "policy_velocity": 207960,
+        "action_encoder": 20796,
+        "wm_rollout": 20796,
+        "predictor": 332736
+      },
+      "first_to_second": {
+        "at_risk": 55,
+        "events": 50,
+        "censored": 5,
+        "conversion": 0.9090909090909091,
+        "km_median_s": 38.800000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 17,
+        "censored": 19,
+        "conversion": 0.4722222222222222,
+        "km_median_s": 51.1
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 17,
+        "retained": 13,
+        "rate": 0.7647058823529411
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20796,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.8,
+      "mean_final_boxes": 1.9833333333333334,
+      "mean_peak_to_final_loss": 0.8166666666666667,
+      "success": 0.16666666666666666,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.9166666666666666,
+        "3": 0.6333333333333333,
+        "4": 0.31666666666666665
+      },
+      "final_reached": {
+        "1": 0.9,
+        "2": 0.6333333333333333,
+        "3": 0.2833333333333333,
+        "4": 0.16666666666666666
+      },
+      "mean_decision_s": 0.2257056155286849,
+      "p95_decision_s": 0.3152464929735288,
+      "calls": {
+        "encoder": 21131,
+        "policy": 21131,
+        "policy_velocity": 211310,
+        "action_encoder": 21131,
+        "wm_rollout": 21131,
+        "predictor": 338096
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 55,
+        "censored": 1,
+        "conversion": 0.9821428571428571,
+        "km_median_s": 38.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 38,
+        "events": 19,
+        "censored": 19,
+        "conversion": 0.5,
+        "km_median_s": 49.900000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 19,
+        "retained": 10,
+        "rate": 0.5263157894736842
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21131,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-2S": {
+      "episodes": 60,
+      "mean_peak_boxes": 1.3166666666666667,
+      "mean_final_boxes": 0.9666666666666667,
+      "mean_peak_to_final_loss": 0.35,
+      "success": 0.0,
+      "peak_reached": {
+        "1": 0.7166666666666667,
+        "2": 0.48333333333333334,
+        "3": 0.11666666666666667,
+        "4": 0.0
+      },
+      "final_reached": {
+        "1": 0.7166666666666667,
+        "2": 0.25,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "mean_decision_s": 0.15991400061174146,
+      "p95_decision_s": 0.22429262611549347,
+      "calls": {
+        "encoder": 21540,
+        "policy": 21540,
+        "policy_velocity": 215400,
+        "action_encoder": 21540,
+        "wm_rollout": 21540,
+        "predictor": 86160
+      },
+      "first_to_second": {
+        "at_risk": 43,
+        "events": 29,
+        "censored": 14,
+        "conversion": 0.6744186046511628,
+        "km_median_s": 61.2
+      },
+      "third_to_fourth": {
+        "at_risk": 7,
+        "events": 0,
+        "censored": 7,
+        "conversion": 0.0,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 0,
+        "retained": 0,
+        "rate": null
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21540,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-4S": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.0,
+      "mean_final_boxes": 1.5666666666666667,
+      "mean_peak_to_final_loss": 0.43333333333333335,
+      "success": 0.016666666666666666,
+      "peak_reached": {
+        "1": 0.9,
+        "2": 0.7666666666666667,
+        "3": 0.31666666666666665,
+        "4": 0.016666666666666666
+      },
+      "final_reached": {
+        "1": 0.8833333333333333,
+        "2": 0.5333333333333333,
+        "3": 0.13333333333333333,
+        "4": 0.016666666666666666
+      },
+      "mean_decision_s": 0.18072680445936146,
+      "p95_decision_s": 0.2565630939905531,
+      "calls": {
+        "encoder": 21459,
+        "policy": 21459,
+        "policy_velocity": 214590,
+        "action_encoder": 21459,
+        "wm_rollout": 21459,
+        "predictor": 171672
+      },
+      "first_to_second": {
+        "at_risk": 54,
+        "events": 46,
+        "censored": 8,
+        "conversion": 0.8518518518518519,
+        "km_median_s": 34.5
+      },
+      "third_to_fourth": {
+        "at_risk": 19,
+        "events": 1,
+        "censored": 18,
+        "conversion": 0.05263157894736842,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 1,
+        "retained": 1,
+        "rate": 1.0
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21459,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-8S": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.35,
+      "mean_final_boxes": 1.5666666666666667,
+      "mean_peak_to_final_loss": 0.7833333333333333,
+      "success": 0.11666666666666667,
+      "peak_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.7666666666666667,
+        "3": 0.5,
+        "4": 0.16666666666666666
+      },
+      "final_reached": {
+        "1": 0.8333333333333334,
+        "2": 0.4666666666666667,
+        "3": 0.15,
+        "4": 0.11666666666666667
+      },
+      "mean_decision_s": 0.22754490434816446,
+      "p95_decision_s": 0.3175531611777842,
+      "calls": {
+        "encoder": 21190,
+        "policy": 21190,
+        "policy_velocity": 211900,
+        "action_encoder": 21190,
+        "wm_rollout": 21190,
+        "predictor": 339040
+      },
+      "first_to_second": {
+        "at_risk": 55,
+        "events": 46,
+        "censored": 9,
+        "conversion": 0.8363636363636363,
+        "km_median_s": 46.7
+      },
+      "third_to_fourth": {
+        "at_risk": 30,
+        "events": 10,
+        "censored": 20,
+        "conversion": 0.3333333333333333,
+        "km_median_s": 52.900000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 10,
+        "retained": 7,
+        "rate": 0.7
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21190,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-L4": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.6333333333333333,
+      "mean_final_boxes": 1.9166666666666667,
+      "mean_peak_to_final_loss": 0.7166666666666667,
+      "success": 0.18333333333333332,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.85,
+        "3": 0.55,
+        "4": 0.2833333333333333
+      },
+      "final_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.55,
+        "3": 0.26666666666666666,
+        "4": 0.18333333333333332
+      },
+      "mean_decision_s": 0.22392844607756815,
+      "p95_decision_s": 0.29972781610558724,
+      "calls": {
+        "encoder": 20908,
+        "policy": 20908,
+        "policy_velocity": 209080,
+        "action_encoder": 20908,
+        "wm_rollout": 20908,
+        "predictor": 334528
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 51,
+        "censored": 6,
+        "conversion": 0.8947368421052632,
+        "km_median_s": 39.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 33,
+        "events": 17,
+        "censored": 16,
+        "conversion": 0.5151515151515151,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 17,
+        "retained": 11,
+        "rate": 0.6470588235294118
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20908,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-H8": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.433333333333333,
+      "mean_final_boxes": 1.8166666666666667,
+      "mean_peak_to_final_loss": 0.6166666666666667,
+      "success": 0.08333333333333333,
+      "peak_reached": {
+        "1": 0.9,
+        "2": 0.8,
+        "3": 0.6,
+        "4": 0.13333333333333333
+      },
+      "final_reached": {
+        "1": 0.8666666666666667,
+        "2": 0.6,
+        "3": 0.26666666666666666,
+        "4": 0.08333333333333333
+      },
+      "mean_decision_s": 0.2305381101332446,
+      "p95_decision_s": 0.3240225145651493,
+      "calls": {
+        "encoder": 21110,
+        "policy": 21110,
+        "policy_velocity": 211100,
+        "action_encoder": 21110,
+        "wm_rollout": 21110,
+        "predictor": 337760
+      },
+      "first_to_second": {
+        "at_risk": 54,
+        "events": 48,
+        "censored": 6,
+        "conversion": 0.8888888888888888,
+        "km_median_s": 33.4
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 8,
+        "censored": 28,
+        "conversion": 0.2222222222222222,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 8,
+        "retained": 5,
+        "rate": 0.625
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21110,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-H12": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.4166666666666665,
+      "mean_final_boxes": 1.8,
+      "mean_peak_to_final_loss": 0.6166666666666667,
+      "success": 0.08333333333333333,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.8,
+        "3": 0.48333333333333334,
+        "4": 0.18333333333333332
+      },
+      "final_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.5666666666666667,
+        "3": 0.21666666666666667,
+        "4": 0.08333333333333333
+      },
+      "mean_decision_s": 0.22969996004410104,
+      "p95_decision_s": 0.3260374079691246,
+      "calls": {
+        "encoder": 21201,
+        "policy": 21201,
+        "policy_velocity": 212010,
+        "action_encoder": 21201,
+        "wm_rollout": 21201,
+        "predictor": 339216
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 48,
+        "censored": 9,
+        "conversion": 0.8421052631578947,
+        "km_median_s": 36.300000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 29,
+        "events": 11,
+        "censored": 18,
+        "conversion": 0.3793103448275862,
+        "km_median_s": 50.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 11,
+        "retained": 5,
+        "rate": 0.45454545454545453
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21201,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-L4-HOLD": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.65,
+      "mean_final_boxes": 2.05,
+      "mean_peak_to_final_loss": 0.6,
+      "success": 0.21666666666666667,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.85,
+        "3": 0.55,
+        "4": 0.3
+      },
+      "final_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.6,
+        "3": 0.3,
+        "4": 0.21666666666666667
+      },
+      "mean_decision_s": 0.22636173172855925,
+      "p95_decision_s": 0.3162679630389903,
+      "calls": {
+        "encoder": 20802,
+        "policy": 20802,
+        "policy_velocity": 208020,
+        "action_encoder": 20802,
+        "wm_rollout": 20802,
+        "predictor": 332832
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 51,
+        "censored": 6,
+        "conversion": 0.8947368421052632,
+        "km_median_s": 39.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 33,
+        "events": 18,
+        "censored": 15,
+        "conversion": 0.5454545454545454,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 18,
+        "retained": 13,
+        "rate": 0.7222222222222222
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20802,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    }
+  },
+  "paired_comparisons": {
+    "A4-32_minus_A4-16": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.18333333333333332,
+          "ci95": [
+            -0.06666666666666665,
+            0.4170833333333311
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.016666666666666684,
+          "ci95": [
+            -0.33333333333333337,
+            0.3
+          ]
+        },
+        "success": {
+          "difference": -2.7755575615628915e-18,
+          "ci95": [
+            -0.13333333333333336,
+            0.13333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.06666666666666667,
+          "ci95": [
+            -0.36666666666666664,
+            0.16666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.15,
+          "ci95": [
+            -0.5,
+            0.14999999999999997
+          ]
+        },
+        "success": {
+          "difference": -0.06666666666666667,
+          "ci95": [
+            -0.18333333333333332,
+            0.03333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.16666666666666669,
+          "ci95": [
+            -0.4833333333333334,
+            0.13333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.06666666666666668,
+          "ci95": [
+            -0.4666666666666667,
+            0.26666666666666666
+          ]
+        },
+        "success": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            -0.08333333333333333,
+            0.1
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H8_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.3666666666666667,
+          "ci95": [
+            -0.6333333333333332,
+            -0.06666666666666668
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.16666666666666669,
+          "ci95": [
+            -0.4666666666666666,
+            0.13333333333333336
+          ]
+        },
+        "success": {
+          "difference": -0.08333333333333333,
+          "ci95": [
+            -0.18333333333333335,
+            0.016666666666666666
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H12_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.3833333333333333,
+          "ci95": [
+            -0.6666666666666666,
+            -0.06666666666666667
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.1833333333333333,
+          "ci95": [
+            -0.5999999999999999,
+            0.26666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.08333333333333334,
+          "ci95": [
+            -0.21666666666666665,
+            0.03333333333333334
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4-HOLD_minus_A4-32-T1-L4": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            0.0,
+            0.05
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.13333333333333333,
+          "ci95": [
+            -2.7755575615628915e-18,
+            0.31666666666666665
+          ]
+        },
+        "success": {
+          "difference": 0.03333333333333333,
+          "ci95": [
+            0.0,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-16-RUIMING_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.2333333333333334,
+          "ci95": [
+            -0.5337500000000001,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.16666666666666663,
+          "ci95": [
+            -0.41666666666666663,
+            0.06708333333333107
+          ]
+        },
+        "success": {
+          "difference": -0.016666666666666666,
+          "ci95": [
+            -0.11666666666666665,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.2333333333333333,
+          "ci95": [
+            -0.5833333333333333,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.6166666666666667,
+            0.11666666666666665
+          ]
+        },
+        "success": {
+          "difference": -0.05,
+          "ci95": [
+            -0.18333333333333332,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H8_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.4333333333333334,
+          "ci95": [
+            -0.75,
+            -0.11666666666666665
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.3166666666666667,
+          "ci95": [
+            -0.6499999999999999,
+            0.0333333333333333
+          ]
+        },
+        "success": {
+          "difference": -0.15,
+          "ci95": [
+            -0.2833333333333333,
+            -0.01666666666666667
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H12_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.45,
+          "ci95": [
+            -0.7166666666666667,
+            -0.15
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.33333333333333326,
+          "ci95": [
+            -0.7333333333333333,
+            0.08374999999999776
+          ]
+        },
+        "success": {
+          "difference": -0.15000000000000002,
+          "ci95": [
+            -0.2833333333333333,
+            -0.016666666666666666
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4-HOLD_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.5666666666666667,
+            0.11666666666666665
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.08333333333333333,
+          "ci95": [
+            -0.5333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "success": {
+          "difference": -0.016666666666666666,
+          "ci95": [
+            -0.16666666666666666,
+            0.13333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-2S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -1.5500000000000003,
+          "ci95": [
+            -1.85,
+            -1.282916666666669
+          ]
+        },
+        "final_boxes": {
+          "difference": -1.1666666666666667,
+          "ci95": [
+            -1.4166666666666667,
+            -0.9
+          ]
+        },
+        "success": {
+          "difference": -0.2333333333333333,
+          "ci95": [
+            -0.35,
+            -0.11666666666666667
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-4S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.8666666666666668,
+          "ci95": [
+            -1.1500000000000001,
+            -0.6000000000000001
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.5666666666666667,
+          "ci95": [
+            -0.8166666666666667,
+            -0.3495833333333356
+          ]
+        },
+        "success": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.33333333333333337,
+            -0.1
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-8S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.5166666666666667,
+          "ci95": [
+            -0.8333333333333333,
+            -0.2166666666666667
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.5666666666666667,
+          "ci95": [
+            -0.9166666666666667,
+            -0.20000000000000004
+          ]
+        },
+        "success": {
+          "difference": -0.11666666666666667,
+          "ci95": [
+            -0.2666666666666666,
+            0.033333333333333326
+          ]
+        }
+      }
+    },
+    "A4-16-RUIMING_minus_A4-16": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.04999999999999999,
+          "ci95": [
+            -0.3833333333333333,
+            0.26666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.15000000000000002,
+          "ci95": [
+            -0.5,
+            0.16666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.01666666666666667,
+          "ci95": [
+            -0.15,
+            0.11666666666666665
+          ]
+        }
+      }
+    },
+    "A4-32-T1_minus_A4-16-RUIMING": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.16666666666666666,
+          "ci95": [
+            -0.15,
+            0.4666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.016666666666666653,
+          "ci95": [
+            -0.35000000000000003,
+            0.3666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.05,
+          "ci95": [
+            -0.16666666666666669,
+            0.06666666666666667
+          ]
+        }
+      }
+    }
+  },
+  "episodes": 660,
+  "runtime": {
+    "device": "cuda",
+    "gpus": [
+      0
+    ],
+    "workers": 8,
+    "videos": 20,
+    "gpu": "NVIDIA L40",
+    "dtype": "torch.bfloat16",
+    "versions": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.5.1",
+      "mujoco": "3.15.0",
+      "imageio": "2.37.2"
+    }
+  },
+  "experiment": {
+    "path": "/mnt/projects/ll/tianzizh/cis6280-v2-integration-20261110-01/notes/v2/integration/plan.json",
+    "sha256": "71a7af4e04e10e65d32324ded572a3d4547240f5eef42ad97c75cdf80204bd45",
+    "plan": {
+      "schema": "v2-member-integration-v1",
+      "branch": "tianzi/v2.0-integration",
+      "base_commit": "050c748089fba9469aec5b8ba47f2cb3d19101fd",
+      "sources": {
+        "shafaa": "21eb0973b1a6446b903e1c72388e235badd9bf26",
+        "ruiming": "5e57e95479d60ecdc8903c7c82d342ef906ec336",
+        "emoo": "5c0bc8afb212b8e63758c1414f4e3d4fe3efa9c1"
+      },
+      "scene_seeds": [
+        100035,
+        100038,
+        100057,
+        100060,
+        100069,
+        100072,
+        100078,
+        100085,
+        100087,
+        100098,
+        100102,
+        100137,
+        100145,
+        100152,
+        100164,
+        100166,
+        100169,
+        100175,
+        100183,
+        100186
+      ],
+      "sample_seeds": [
+        0,
+        2,
+        3
+      ],
+      "models": {
+        "world_model": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/jepa/smwm-c3/model.pt",
+          "sha256": "26590118c9cb38e6af88248a3379c6622c89160d605d68e7d48f586527e821aa"
+        },
+        "goal_actor": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-v2-a4-eval120k-20261104/checkpoints/goal-actor-a4-120k-ema.pt",
+          "sha256": "755e95f0fac13fd8990436432986584ce0f8977a23eb5c8d946546fb55477ce3"
+        },
+        "official_actor": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/checkpoints/policy/df-smwm-c1-sigma04/policy.pt",
+          "sha256": "8e1e0cea81ab55d0b2223ea28fa70c429227522f2543b98c43f3ae05048788f3"
+        },
+        "goals": {
+          "path": "/mnt/projects/ll/tianzizh/cis6280-final-project/dataset/goals/scripted-val100-every80/goals.npz",
+          "sha256": "acc0ae132bd7ff3566235c03b5302073aade88cf11c41e0b201dca6b6e72dfde"
+        }
+      },
+      "groups": [
+        "A4-32",
+        "A4-16",
+        "A4-16-RUIMING",
+        "A4-32-T1",
+        "A4-32-SHAFAA-2S",
+        "A4-32-SHAFAA-4S",
+        "A4-32-SHAFAA-8S",
+        "A4-32-T1-L4",
+        "A4-32-T1-H8",
+        "A4-32-T1-H12",
+        "A4-32-T1-L4-HOLD"
+      ],
+      "horizon": 1795,
+      "workers": 8,
+      "videos": 20,
+      "expected_episodes": 660,
+      "comparisons": "Every variant vs A4-32; 16-candidate Ruiming also vs A4-16; retention ablations also vs T1; hold also vs L4.",
+      "selection_notes": {
+        "ruiming": "User-selected whole-trajectory formula; original 16-candidate budget and a 32-candidate version shared with Emoo T1. H=16 blocks = 8 seconds. No lookahead or adaptive switching.",
+        "shafaa": "No published physical results: compare all 2/4/8-second WM horizons. Standardize candidates to 32; always generate 16 blocks and execute one.",
+        "emoo": "Retain best screened T1; run all four GPU-pending followups. Exclude the worse T2."
+      }
+    }
+  },
+  "code": {
+    "commit": "d67ce6e00426ed15cae827fb7102639a8b081fad",
+    "branch": "tianzi/v2.0-integration",
+    "dirty": false,
+    "status": "",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_sha256": {
+      "assignment/training/__init__.py": "866b66df387b37fe93745c031f25bd4cb8ffd68133c6ce4e89365c9693b59169",
+      "assignment/training/_cli.py": "e4994099af4ec486f64cb856548253cdccd9f4e29c41d7ed490f66f9e84d8368",
+      "assignment/training/data/__init__.py": "04d204970df06d458f4e99522ee59279345ed1dac2fa402a6da9cb778859ffbe",
+      "assignment/training/data/cache.py": "c944487a6f492df6343abf75a8f954e253bdaf8a7a68272dddc0ff8498e7a986",
+      "assignment/training/data/collect.py": "9b468ffb500d89c08e6145e79aaaaf4066d48975d2dd9009519b47ec469ff1ce",
+      "assignment/training/data/collect_goal_onpolicy.py": "f49d18069aa50e428fb9673a631ff1227e19d5faa1dc9479bdefb964dae48d63",
+      "assignment/training/data/collect_onpolicy.py": "4528e75f1543e712967a4299b4c1d8ef2604577372627e8f1786021eb42cad87",
+      "assignment/training/data/encode.py": "34845805f42aad0e9758779b93344a249d2969279c2d6ed49ddfd69a64be7e8e",
+      "assignment/training/data/recording.py": "297c501be527541b537e62b87487cccef290386fa4f1a38518f8f2fc1335c09a",
+      "assignment/training/data/scripted.py": "fbed0260170b2af8fd5497271d340914a71804a6acbb3ecd75cf850dabef9fdc",
+      "assignment/training/data/signals.py": "cd4927c1443369ae569ecd1d5de85d28d4c1273ff5ec528268922e6f2d900a15",
+      "assignment/training/data/task.py": "73b7abb68fa0914b08fe71fb4d8348281d7840cccc2b1df1db5465ca423d5153",
+      "assignment/training/data/teacher.py": "c211248df9ad4b4aa5c469a6e3b369c7e65a0d5824d449392c89467756ce779b",
+      "assignment/training/planning/__init__.py": "306383bc50d9e691812a5e9f47b74edaee8d33a7638694d12dda1e9c871319e4",
+      "assignment/training/planning/agent.py": "115632b2498993556529225ca737b42c815ce0db4c59ab398c52d60f18673174",
+      "assignment/training/planning/evaluate.py": "4718b1bf64bbedeac79e0c9c9bf32c0d02ce58641fca96f827d4d77393dd76ab",
+      "assignment/training/planning/evaluate_goal_actor.py": "04abf624691ad9e26488be919394b7848081213ce5da6b6d4c5acde57ed9d21a",
+      "assignment/training/planning/goal_actor.py": "322f3d3aaeb6360e9bc290c253c8e4e9915d47c13d2c2b8c4c17bd5e5be659cb",
+      "assignment/training/planning/goals.py": "9786381f87639725a68009911471f2a5aa0e5d6aec6cde657339da12d2f6b842",
+      "assignment/training/planning/variants.py": "42bf184cdac352460d8f7d86cb6b620e670aa2d657be7759e7a77ed6412745fa",
+      "assignment/training/training/__init__.py": "c7fd5030168c9031cf8a83b3fb8cb84b5fbf3bc03d5ad4f68c48e6b59cc52746",
+      "assignment/training/training/finetune_goal_onpolicy.py": "653a9645bb8cdd14b7379f8b2bcf98e99468885fa62ac7d7f6f75d0b0ec8d7c5",
+      "assignment/training/training/finetune_onpolicy.py": "f0ecfaacc67e13c211531e8c22942efbb20a64a5c3521c223c96e885f993ea8c",
+      "assignment/training/training/goal_policy.py": "32a5be5aa5796a7602c66b6adcc9fcf481b30656becafb3951d762559470695a",
+      "assignment/training/training/jepa.py": "8e8cdaacbd4d1e5177ec363b82622efefec18af9ef2aae6bbadd72119234da3f",
+      "assignment/training/training/onpolicy_a5.py": "3a138181cd7ea86fe13663c0da0815f41045f629a7c1362d5d5fd7b270ffc443",
+      "assignment/training/training/policy.py": "9aca7c1cd410c78e959ef113027a145d0c1f23a3b5551c09e184a651838dae6e",
+      "assignment/training/training/train_goal_policy.py": "1d88ccf28263863f888678f77a8dd4171d1356c2fffa99a482b27093d625a373",
+      "assignment/training/training/train_jepa.py": "6bb231191fa26ff0405d56b788d770f2a02cbd802899a3781e641e32dd974a46",
+      "assignment/training/training/train_policy.py": "287ca26de3085969288f37f446587e4b25a071a20837544d1de4804649b69244",
+      "scripts/train_stack_goal_policy.py": "24f70647caf4e7a3c0315bad8adec5a2a317355c24499a689987a8eceeef6fa4"
+    },
+    "cluster_source_verified": true
+  }
+}

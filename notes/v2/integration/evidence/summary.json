@@ -1,0 +1,1046 @@
+{
+  "groups": {
+    "A4-32": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.8666666666666667,
+      "mean_final_boxes": 2.1333333333333333,
+      "mean_peak_to_final_loss": 0.7333333333333333,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9666666666666667,
+        "2": 0.8833333333333333,
+        "3": 0.6833333333333333,
+        "4": 0.3333333333333333
+      },
+      "final_reached": {
+        "1": 0.95,
+        "2": 0.6333333333333333,
+        "3": 0.31666666666666665,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.22077717343134964,
+      "p95_decision_s": 0.3031087769661098,
+      "calls": {
+        "encoder": 20469,
+        "policy": 20469,
+        "policy_velocity": 204690,
+        "action_encoder": 20469,
+        "wm_rollout": 20469,
+        "predictor": 327504
+      },
+      "first_to_second": {
+        "at_risk": 58,
+        "events": 53,
+        "censored": 5,
+        "conversion": 0.9137931034482759,
+        "km_median_s": 33.800000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 41,
+        "events": 20,
+        "censored": 21,
+        "conversion": 0.4878048780487805,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 20,
+        "retained": 14,
+        "rate": 0.7
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20469,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-16": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.683333333333333,
+      "mean_final_boxes": 2.1166666666666667,
+      "mean_peak_to_final_loss": 0.5666666666666667,
+      "success": 0.23333333333333334,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.8833333333333333,
+        "3": 0.6,
+        "4": 0.26666666666666666
+      },
+      "final_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.6333333333333333,
+        "3": 0.3333333333333333,
+        "4": 0.23333333333333334
+      },
+      "mean_decision_s": 0.20468498046468112,
+      "p95_decision_s": 0.2914877548522782,
+      "calls": {
+        "encoder": 20504,
+        "policy": 20504,
+        "policy_velocity": 205040,
+        "action_encoder": 20504,
+        "wm_rollout": 20504,
+        "predictor": 328064
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 53,
+        "censored": 3,
+        "conversion": 0.9464285714285714,
+        "km_median_s": 34.4
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 16,
+        "censored": 20,
+        "conversion": 0.4444444444444444,
+        "km_median_s": 47.400000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 16,
+        "retained": 14,
+        "rate": 0.875
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20504,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-16-RUIMING": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.6333333333333333,
+      "mean_final_boxes": 1.9666666666666666,
+      "mean_peak_to_final_loss": 0.6666666666666666,
+      "success": 0.21666666666666667,
+      "peak_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.8333333333333334,
+        "3": 0.6,
+        "4": 0.2833333333333333
+      },
+      "final_reached": {
+        "1": 0.8833333333333333,
+        "2": 0.5333333333333333,
+        "3": 0.3333333333333333,
+        "4": 0.21666666666666667
+      },
+      "mean_decision_s": 0.2106128291180438,
+      "p95_decision_s": 0.30117448620148934,
+      "calls": {
+        "encoder": 20796,
+        "policy": 20796,
+        "policy_velocity": 207960,
+        "action_encoder": 20796,
+        "wm_rollout": 20796,
+        "predictor": 332736
+      },
+      "first_to_second": {
+        "at_risk": 55,
+        "events": 50,
+        "censored": 5,
+        "conversion": 0.9090909090909091,
+        "km_median_s": 38.800000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 17,
+        "censored": 19,
+        "conversion": 0.4722222222222222,
+        "km_median_s": 51.1
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 17,
+        "retained": 13,
+        "rate": 0.7647058823529411
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20796,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.8,
+      "mean_final_boxes": 1.9833333333333334,
+      "mean_peak_to_final_loss": 0.8166666666666667,
+      "success": 0.16666666666666666,
+      "peak_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.9166666666666666,
+        "3": 0.6333333333333333,
+        "4": 0.31666666666666665
+      },
+      "final_reached": {
+        "1": 0.9,
+        "2": 0.6333333333333333,
+        "3": 0.2833333333333333,
+        "4": 0.16666666666666666
+      },
+      "mean_decision_s": 0.2257056155286849,
+      "p95_decision_s": 0.3152464929735288,
+      "calls": {
+        "encoder": 21131,
+        "policy": 21131,
+        "policy_velocity": 211310,
+        "action_encoder": 21131,
+        "wm_rollout": 21131,
+        "predictor": 338096
+      },
+      "first_to_second": {
+        "at_risk": 56,
+        "events": 55,
+        "censored": 1,
+        "conversion": 0.9821428571428571,
+        "km_median_s": 38.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 38,
+        "events": 19,
+        "censored": 19,
+        "conversion": 0.5,
+        "km_median_s": 49.900000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 19,
+        "retained": 10,
+        "rate": 0.5263157894736842
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21131,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-2S": {
+      "episodes": 60,
+      "mean_peak_boxes": 1.3166666666666667,
+      "mean_final_boxes": 0.9666666666666667,
+      "mean_peak_to_final_loss": 0.35,
+      "success": 0.0,
+      "peak_reached": {
+        "1": 0.7166666666666667,
+        "2": 0.48333333333333334,
+        "3": 0.11666666666666667,
+        "4": 0.0
+      },
+      "final_reached": {
+        "1": 0.7166666666666667,
+        "2": 0.25,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "mean_decision_s": 0.15991400061174146,
+      "p95_decision_s": 0.22429262611549347,
+      "calls": {
+        "encoder": 21540,
+        "policy": 21540,
+        "policy_velocity": 215400,
+        "action_encoder": 21540,
+        "wm_rollout": 21540,
+        "predictor": 86160
+      },
+      "first_to_second": {
+        "at_risk": 43,
+        "events": 29,
+        "censored": 14,
+        "conversion": 0.6744186046511628,
+        "km_median_s": 61.2
+      },
+      "third_to_fourth": {
+        "at_risk": 7,
+        "events": 0,
+        "censored": 7,
+        "conversion": 0.0,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 0,
+        "retained": 0,
+        "rate": null
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21540,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-4S": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.0,
+      "mean_final_boxes": 1.5666666666666667,
+      "mean_peak_to_final_loss": 0.43333333333333335,
+      "success": 0.016666666666666666,
+      "peak_reached": {
+        "1": 0.9,
+        "2": 0.7666666666666667,
+        "3": 0.31666666666666665,
+        "4": 0.016666666666666666
+      },
+      "final_reached": {
+        "1": 0.8833333333333333,
+        "2": 0.5333333333333333,
+        "3": 0.13333333333333333,
+        "4": 0.016666666666666666
+      },
+      "mean_decision_s": 0.18072680445936146,
+      "p95_decision_s": 0.2565630939905531,
+      "calls": {
+        "encoder": 21459,
+        "policy": 21459,
+        "policy_velocity": 214590,
+        "action_encoder": 21459,
+        "wm_rollout": 21459,
+        "predictor": 171672
+      },
+      "first_to_second": {
+        "at_risk": 54,
+        "events": 46,
+        "censored": 8,
+        "conversion": 0.8518518518518519,
+        "km_median_s": 34.5
+      },
+      "third_to_fourth": {
+        "at_risk": 19,
+        "events": 1,
+        "censored": 18,
+        "conversion": 0.05263157894736842,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 1,
+        "retained": 1,
+        "rate": 1.0
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21459,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-SHAFAA-8S": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.35,
+      "mean_final_boxes": 1.5666666666666667,
+      "mean_peak_to_final_loss": 0.7833333333333333,
+      "success": 0.11666666666666667,
+      "peak_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.7666666666666667,
+        "3": 0.5,
+        "4": 0.16666666666666666
+      },
+      "final_reached": {
+        "1": 0.8333333333333334,
+        "2": 0.4666666666666667,
+        "3": 0.15,
+        "4": 0.11666666666666667
+      },
+      "mean_decision_s": 0.22754490434816446,
+      "p95_decision_s": 0.3175531611777842,
+      "calls": {
+        "encoder": 21190,
+        "policy": 21190,
+        "policy_velocity": 211900,
+        "action_encoder": 21190,
+        "wm_rollout": 21190,
+        "predictor": 339040
+      },
+      "first_to_second": {
+        "at_risk": 55,
+        "events": 46,
+        "censored": 9,
+        "conversion": 0.8363636363636363,
+        "km_median_s": 46.7
+      },
+      "third_to_fourth": {
+        "at_risk": 30,
+        "events": 10,
+        "censored": 20,
+        "conversion": 0.3333333333333333,
+        "km_median_s": 52.900000000000006
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 10,
+        "retained": 7,
+        "rate": 0.7
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21190,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-L4": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.6333333333333333,
+      "mean_final_boxes": 1.9166666666666667,
+      "mean_peak_to_final_loss": 0.7166666666666667,
+      "success": 0.18333333333333332,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.85,
+        "3": 0.55,
+        "4": 0.2833333333333333
+      },
+      "final_reached": {
+        "1": 0.9166666666666666,
+        "2": 0.55,
+        "3": 0.26666666666666666,
+        "4": 0.18333333333333332
+      },
+      "mean_decision_s": 0.22392844607756815,
+      "p95_decision_s": 0.29972781610558724,
+      "calls": {
+        "encoder": 20908,
+        "policy": 20908,
+        "policy_velocity": 209080,
+        "action_encoder": 20908,
+        "wm_rollout": 20908,
+        "predictor": 334528
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 51,
+        "censored": 6,
+        "conversion": 0.8947368421052632,
+        "km_median_s": 39.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 33,
+        "events": 17,
+        "censored": 16,
+        "conversion": 0.5151515151515151,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 17,
+        "retained": 11,
+        "rate": 0.6470588235294118
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20908,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-H8": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.433333333333333,
+      "mean_final_boxes": 1.8166666666666667,
+      "mean_peak_to_final_loss": 0.6166666666666667,
+      "success": 0.08333333333333333,
+      "peak_reached": {
+        "1": 0.9,
+        "2": 0.8,
+        "3": 0.6,
+        "4": 0.13333333333333333
+      },
+      "final_reached": {
+        "1": 0.8666666666666667,
+        "2": 0.6,
+        "3": 0.26666666666666666,
+        "4": 0.08333333333333333
+      },
+      "mean_decision_s": 0.2305381101332446,
+      "p95_decision_s": 0.3240225145651493,
+      "calls": {
+        "encoder": 21110,
+        "policy": 21110,
+        "policy_velocity": 211100,
+        "action_encoder": 21110,
+        "wm_rollout": 21110,
+        "predictor": 337760
+      },
+      "first_to_second": {
+        "at_risk": 54,
+        "events": 48,
+        "censored": 6,
+        "conversion": 0.8888888888888888,
+        "km_median_s": 33.4
+      },
+      "third_to_fourth": {
+        "at_risk": 36,
+        "events": 8,
+        "censored": 28,
+        "conversion": 0.2222222222222222,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 8,
+        "retained": 5,
+        "rate": 0.625
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21110,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-H12": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.4166666666666665,
+      "mean_final_boxes": 1.8,
+      "mean_peak_to_final_loss": 0.6166666666666667,
+      "success": 0.08333333333333333,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.8,
+        "3": 0.48333333333333334,
+        "4": 0.18333333333333332
+      },
+      "final_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.5666666666666667,
+        "3": 0.21666666666666667,
+        "4": 0.08333333333333333
+      },
+      "mean_decision_s": 0.22969996004410104,
+      "p95_decision_s": 0.3260374079691246,
+      "calls": {
+        "encoder": 21201,
+        "policy": 21201,
+        "policy_velocity": 212010,
+        "action_encoder": 21201,
+        "wm_rollout": 21201,
+        "predictor": 339216
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 48,
+        "censored": 9,
+        "conversion": 0.8421052631578947,
+        "km_median_s": 36.300000000000004
+      },
+      "third_to_fourth": {
+        "at_risk": 29,
+        "events": 11,
+        "censored": 18,
+        "conversion": 0.3793103448275862,
+        "km_median_s": 50.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 11,
+        "retained": 5,
+        "rate": 0.45454545454545453
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 21201,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-T1-L4-HOLD": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.65,
+      "mean_final_boxes": 2.05,
+      "mean_peak_to_final_loss": 0.6,
+      "success": 0.21666666666666667,
+      "peak_reached": {
+        "1": 0.95,
+        "2": 0.85,
+        "3": 0.55,
+        "4": 0.3
+      },
+      "final_reached": {
+        "1": 0.9333333333333333,
+        "2": 0.6,
+        "3": 0.3,
+        "4": 0.21666666666666667
+      },
+      "mean_decision_s": 0.22636173172855925,
+      "p95_decision_s": 0.3162679630389903,
+      "calls": {
+        "encoder": 20802,
+        "policy": 20802,
+        "policy_velocity": 208020,
+        "action_encoder": 20802,
+        "wm_rollout": 20802,
+        "predictor": 332832
+      },
+      "first_to_second": {
+        "at_risk": 57,
+        "events": 51,
+        "censored": 6,
+        "conversion": 0.8947368421052632,
+        "km_median_s": 39.400000000000006
+      },
+      "third_to_fourth": {
+        "at_risk": 33,
+        "events": 18,
+        "censored": 15,
+        "conversion": 0.5454545454545454,
+        "km_median_s": 47.300000000000004
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 18,
+        "retained": 13,
+        "rate": 0.7222222222222222
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20802,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    }
+  },
+  "paired_comparisons": {
+    "A4-32_minus_A4-16": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.18333333333333332,
+          "ci95": [
+            -0.06666666666666665,
+            0.4170833333333311
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.016666666666666684,
+          "ci95": [
+            -0.33333333333333337,
+            0.3
+          ]
+        },
+        "success": {
+          "difference": -2.7755575615628915e-18,
+          "ci95": [
+            -0.13333333333333336,
+            0.13333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.06666666666666667,
+          "ci95": [
+            -0.36666666666666664,
+            0.16666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.15,
+          "ci95": [
+            -0.5,
+            0.14999999999999997
+          ]
+        },
+        "success": {
+          "difference": -0.06666666666666667,
+          "ci95": [
+            -0.18333333333333332,
+            0.03333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.16666666666666669,
+          "ci95": [
+            -0.4833333333333334,
+            0.13333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.06666666666666668,
+          "ci95": [
+            -0.4666666666666667,
+            0.26666666666666666
+          ]
+        },
+        "success": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            -0.08333333333333333,
+            0.1
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H8_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.3666666666666667,
+          "ci95": [
+            -0.6333333333333332,
+            -0.06666666666666668
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.16666666666666669,
+          "ci95": [
+            -0.4666666666666666,
+            0.13333333333333336
+          ]
+        },
+        "success": {
+          "difference": -0.08333333333333333,
+          "ci95": [
+            -0.18333333333333335,
+            0.016666666666666666
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H12_minus_A4-32-T1": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.3833333333333333,
+          "ci95": [
+            -0.6666666666666666,
+            -0.06666666666666667
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.1833333333333333,
+          "ci95": [
+            -0.5999999999999999,
+            0.26666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.08333333333333334,
+          "ci95": [
+            -0.21666666666666665,
+            0.03333333333333334
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4-HOLD_minus_A4-32-T1-L4": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            0.0,
+            0.05
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.13333333333333333,
+          "ci95": [
+            -2.7755575615628915e-18,
+            0.31666666666666665
+          ]
+        },
+        "success": {
+          "difference": 0.03333333333333333,
+          "ci95": [
+            0.0,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-16-RUIMING_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.2333333333333334,
+          "ci95": [
+            -0.5337500000000001,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.16666666666666663,
+          "ci95": [
+            -0.41666666666666663,
+            0.06708333333333107
+          ]
+        },
+        "success": {
+          "difference": -0.016666666666666666,
+          "ci95": [
+            -0.11666666666666665,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.2333333333333333,
+          "ci95": [
+            -0.5833333333333333,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.6166666666666667,
+            0.11666666666666665
+          ]
+        },
+        "success": {
+          "difference": -0.05,
+          "ci95": [
+            -0.18333333333333332,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H8_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.4333333333333334,
+          "ci95": [
+            -0.75,
+            -0.11666666666666665
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.3166666666666667,
+          "ci95": [
+            -0.6499999999999999,
+            0.0333333333333333
+          ]
+        },
+        "success": {
+          "difference": -0.15,
+          "ci95": [
+            -0.2833333333333333,
+            -0.01666666666666667
+          ]
+        }
+      }
+    },
+    "A4-32-T1-H12_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.45,
+          "ci95": [
+            -0.7166666666666667,
+            -0.15
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.33333333333333326,
+          "ci95": [
+            -0.7333333333333333,
+            0.08374999999999776
+          ]
+        },
+        "success": {
+          "difference": -0.15000000000000002,
+          "ci95": [
+            -0.2833333333333333,
+            -0.016666666666666666
+          ]
+        }
+      }
+    },
+    "A4-32-T1-L4-HOLD_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.5666666666666667,
+            0.11666666666666665
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.08333333333333333,
+          "ci95": [
+            -0.5333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "success": {
+          "difference": -0.016666666666666666,
+          "ci95": [
+            -0.16666666666666666,
+            0.13333333333333333
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-2S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -1.5500000000000003,
+          "ci95": [
+            -1.85,
+            -1.282916666666669
+          ]
+        },
+        "final_boxes": {
+          "difference": -1.1666666666666667,
+          "ci95": [
+            -1.4166666666666667,
+            -0.9
+          ]
+        },
+        "success": {
+          "difference": -0.2333333333333333,
+          "ci95": [
+            -0.35,
+            -0.11666666666666667
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-4S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.8666666666666668,
+          "ci95": [
+            -1.1500000000000001,
+            -0.6000000000000001
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.5666666666666667,
+          "ci95": [
+            -0.8166666666666667,
+            -0.3495833333333356
+          ]
+        },
+        "success": {
+          "difference": -0.21666666666666665,
+          "ci95": [
+            -0.33333333333333337,
+            -0.1
+          ]
+        }
+      }
+    },
+    "A4-32-SHAFAA-8S_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.5166666666666667,
+          "ci95": [
+            -0.8333333333333333,
+            -0.2166666666666667
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.5666666666666667,
+          "ci95": [
+            -0.9166666666666667,
+            -0.20000000000000004
+          ]
+        },
+        "success": {
+          "difference": -0.11666666666666667,
+          "ci95": [
+            -0.2666666666666666,
+            0.033333333333333326
+          ]
+        }
+      }
+    },
+    "A4-16-RUIMING_minus_A4-16": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": -0.04999999999999999,
+          "ci95": [
+            -0.3833333333333333,
+            0.26666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": -0.15000000000000002,
+          "ci95": [
+            -0.5,
+            0.16666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.01666666666666667,
+          "ci95": [
+            -0.15,
+            0.11666666666666665
+          ]
+        }
+      }
+    },
+    "A4-32-T1_minus_A4-16-RUIMING": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.16666666666666666,
+          "ci95": [
+            -0.15,
+            0.4666666666666666
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.016666666666666653,
+          "ci95": [
+            -0.35000000000000003,
+            0.3666666666666666
+          ]
+        },
+        "success": {
+          "difference": -0.05,
+          "ci95": [
+            -0.16666666666666669,
+            0.06666666666666667
+          ]
+        }
+      }
+    }
+  },
+  "reference_groups": [],
+  "wall_s": 7792.974003892974,
+  "wall_scope": "current_attempt"
+}

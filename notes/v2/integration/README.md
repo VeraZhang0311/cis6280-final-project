@@ -1,5 +1,11 @@
 # v2.0 member-method integration
 
+Status: all **660/660 episodes completed** on November 10, 2026; Slurm job
+`1523362` exited `0:0` after 2:10:01. No integrated variant improved on A4-32
+in this paired development evaluation. See [results and interpretation](RESULTS.md)
+and [independent audit](evidence/audit.json). Both baselines reproduced their
+historical peak/final/success outcomes for every episode (120/120 combined).
+
 Branch: `tianzi/v2.0-integration`, based on v2.0 `050c748`. No member branch
 is modified. Planner implementation is shared; `plan.json` selects the groups
 and freezes the scenes, seeds, checkpoint hashes, and evaluation budget.
