@@ -128,6 +128,24 @@ class SelectionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             select_candidate(distances, 'A4-32-T1-L4', .25, hold_active=True)
 
+    def test_a4_hold_is_exact_a4_before_latch_and_late4_after_latch(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((2, 16), 2.)
+        distances[0, 0], distances[0, 12:] = .05, .8
+        distances[1, 0], distances[1, 12:] = .10, .2
+        baseline = select_candidate(distances, 'A4-32', .25)
+        approach = select_candidate(distances, 'A4-32-HOLD', .25)
+        hold = select_candidate(distances, 'A4-32-HOLD', .25, hold_active=True)
+        self.assertEqual(baseline.best, 0)
+        self.assertEqual(approach.best, baseline.best)
+        torch.testing.assert_close(approach.cost, baseline.cost)
+        self.assertEqual(approach.selection_rule, 'active_min')
+        self.assertEqual(hold.best, 1)
+        self.assertEqual(hold.selection_rule, 'active_hold_late4_mean')
+        torch.testing.assert_close(hold.retention, torch.tensor([.8, .2]))
+        with self.assertRaises(ValueError):
+            select_candidate(distances, 'A4-32', .25, hold_active=True)
+
 
 @unittest.skipIf(torch is None, 'torch is not installed')
 class AgentTests(unittest.TestCase):
@@ -270,6 +288,7 @@ class AgentTests(unittest.TestCase):
 
     def test_a4_modes_use_expected_scoring_and_candidate_budget(self):
         for mode, count, rule in (('A4-16', 16, 'active_min'), ('A4-32', 32, 'active_min'),
+                                  ('A4-32-HOLD', 32, 'active_min'),
                                   ('A4-32-T1', 32, 'trajectory_arrival_terminal'),
                                   ('A4-32-T2', 32, 'trajectory_arrival_terminal'),
                                   ('A4-32-T1-L4', 32, 'trajectory_arrival_retention'),
@@ -307,6 +326,20 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(agent.last_trace['hold_streak'], 2)
         self.assertTrue(agent.last_trace['hold_latched'])
         self.assertEqual(agent.last_trace['selection_rule'], 'trajectory_hold_late4_mean')
+        agent.step(self.frame(0))
+        self.assertTrue(agent.last_trace['hold_latched'])
+
+    def test_a4_hold_requires_two_real_final_goal_confirmations_and_latches(self):
+        agent = self.agent('A4-32-HOLD')
+        agent.step(self.frame(30))
+        self.assertEqual(agent.index, 1)
+        self.assertFalse(agent.last_trace['hold_latched'])
+        agent.step(self.frame(60))
+        self.assertEqual(agent.last_trace['hold_streak'], 1)
+        self.assertEqual(agent.last_trace['selection_rule'], 'active_min')
+        agent.step(self.frame(60))
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['selection_rule'], 'active_hold_late4_mean')
         agent.step(self.frame(0))
         self.assertTrue(agent.last_trace['hold_latched'])
 
@@ -432,10 +465,11 @@ class ReportingTests(unittest.TestCase):
         self.assertEqual((late['at_risk'], late['events'], late['censored']), (2, 1, 1))
         self.assertEqual(late['conversion'], .5)
         self.assertEqual(late['km_median_s'], 10.)
-        comparisons = paired_comparisons({'A2': b, 'A4-16': a, 'A4-32': a,
+        comparisons = paired_comparisons({'A2': b, 'A4-16': a, 'A4-32': a, 'A4-32-HOLD': b,
                                           'A4-32-T1': a, 'A4-32-T2': b})
         self.assertEqual(comparisons['A4-16_minus_A2']['metrics']['peak_boxes']['difference'], .5)
         self.assertEqual(comparisons['A4-32_minus_A4-16']['metrics']['peak_boxes']['difference'], 0.)
+        self.assertEqual(comparisons['A4-32-HOLD_minus_A4-32']['metrics']['peak_boxes']['difference'], -.5)
         self.assertEqual(comparisons['A4-32-T1_minus_A4-32']['metrics']['peak_boxes']['difference'], 0.)
         self.assertEqual(comparisons['A4-32-T2_minus_A4-32']['metrics']['peak_boxes']['difference'], -.5)
         self.assertEqual(comparisons['A4-32-T2_minus_A4-32-T1']['metrics']['peak_boxes']['difference'], -.5)

@@ -65,7 +65,10 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
     next_distances contains only each candidate's terminal distance to next goal.
     No observed state or real active index is changed here.
     """
-    if mode in ('A4-16', 'A4-32', 'A5-16', 'A5-32'):
+    original_mode = mode
+    if hold_active and original_mode not in ('A4-32-HOLD', 'A4-32-T1-L4-HOLD'):
+        raise ValueError('hold_active is only valid for a hold mode')
+    if mode in ('A4-16', 'A4-32', 'A4-32-HOLD', 'A5-16', 'A5-32'):
         mode = 'A2'
     horizon = PLANNING_HORIZONS.get(mode, HORIZON)
     if mode not in ('A2', 'A3', *TRAJECTORY_SPECS, *PLANNING_HORIZONS):
@@ -79,6 +82,18 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
         raise ValueError('Invalid active goal threshold')
     minimum, nearest = active_distances.min(-1)
     selection = Selection(int(minimum.argmin()), minimum, nearest+1, minimum)
+    if original_mode == 'A4-32-HOLD':
+        if hold_active:
+            # Preserve the released A4-32 selector until the final-goal latch.
+            # Once latched, prefer candidates that remain close throughout the
+            # last two imagined seconds instead of briefly touching the goal.
+            selection.retention = active_distances[:, -4:].mean(-1)
+            selection.terminal = active_distances[:, -1]
+            selection.cost = selection.retention
+            selection.best = int(selection.cost.argmin())
+            selection.retention_rule = 'late4_mean'
+            selection.selection_rule = 'active_hold_late4_mean'
+        return selection
     if mode in PLANNING_HORIZONS:
         selection.cost = active_distances[:, -1]
         selection.best = int(selection.cost.argmin())
@@ -112,8 +127,6 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
             retention = normalized[:, -1]
             retention_raw = active_distances[:, -1]
         if hold_active:
-            if mode != 'A4-32-T1-L4-HOLD':
-                raise ValueError('hold_active is only valid for the hold mode')
             selection.cost = retention
             selection.selection_rule = 'trajectory_hold_late4_mean'
         else:
@@ -278,7 +291,7 @@ class GoalActorAgent:
         switches = self._advance_goal(z)
         active = self.goals[self.index]
         observed_distance = (z-active).square().sum()
-        if self.mode == 'A4-32-T1-L4-HOLD':
+        if self.mode in ('A4-32-HOLD', 'A4-32-T1-L4-HOLD'):
             close_to_final = self.index == len(self.goals)-1 and observed_distance < self.thresholds[self.index]
             self.hold_streak = self.hold_streak+1 if close_to_final else 0
             self.hold_latched = self.hold_latched or self.hold_streak >= HOLD_CONFIRMATIONS

@@ -249,6 +249,7 @@ def summarize(episodes, target=4):
 def paired_comparisons(results, draws=2000):
     comparisons = {}
     pairs = [('A2', 'A1'), ('A3', 'A2'), ('A4-16', 'A2'), ('A4-32', 'A4-16'),
+             ('A4-32-HOLD', 'A4-32'),
              ('A4-32-T1', 'A4-32'), ('A4-32-T2', 'A4-32'),
              ('A4-32-T2', 'A4-32-T1'),
              ('A4-32-T1-L4', 'A4-32-T1'),
@@ -477,6 +478,8 @@ def main(argv=None):
                                 T1_L4='T1 with 0.25 * mean normalized distance over blocks 13..16',
                                 T1_H8='T1 with 0.25 * normalized distance at block 8',
                                 T1_H12='T1 with 0.25 * normalized distance at block 12',
+                                A4_32_HOLD=('A4-32 until two consecutive real observations satisfy the final-goal '
+                                            'threshold; then minimize the late-four mean'),
                                 T1_L4_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
                                             'threshold; then minimize the late-four mean'),
                                 A3='eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2',
