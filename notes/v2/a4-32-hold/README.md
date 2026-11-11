@@ -1,4 +1,14 @@
-# A4-32-HOLD experiment
+# A4-32-HOLD and LOCAL-HOLD experiment
+
+Status: implementation and deterministic tests complete; the single-scene
+Colab screen is complete; the matched 20-scene x 3-seed L40 evaluation is
+frozen but not yet run. See [screen results](RESULTS.md) and
+[structured evidence](evidence/single-scene-summary.json). The pending cluster
+receipt is recorded separately in [launch.json](launch.json); its null job ID is
+intentional until a scheduler submission actually occurs.
+
+Branch: `emoo-a4-32-hold`. LOCAL-HOLD implementation snapshot before this
+documentation update: `257231e8fb38df236ee63216ac18c8971fa9d77e`.
 
 This experiment isolates the final-goal HOLD mechanism from the weaker T1/L4
 approach score. Before the latch, `A4-32-HOLD` is exactly the released A4-32
@@ -43,3 +53,7 @@ sbatch --account=liu-account --partition=liu-compute --qos=ll-med \
 The launcher validates the frozen plan and model hashes, evaluates 20 scenes x
 3 policy seeds x 3 groups (180 episodes), supports exact resume, and writes the
 automatic paired report under `outputs/planning/v2/a4-32-local-hold/`.
+
+Do not modify the selector, entry/exit confirmations, local window, fallback,
+scene list, seeds, models, or runtime after inspecting the screen. The full run
+is a matched development confirmation, not an independent test set.

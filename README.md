@@ -1,5 +1,32 @@
 > **For collaborators: DO NOT make changes directly on this branch. Create your own branch from `tianzi-branch/v2.0` and commit/push your work there. Keep this branch as the shared experiment reference.**
 
+## A4-32 LOCAL-HOLD follow-up
+
+Branch `emoo-a4-32-hold` adds a final-stage planner without retraining the v2
+actor or world model. It keeps A4-32 unchanged until two consecutive real
+observations satisfy the final-goal threshold. The original late-four HOLD then
+scores blocks 13--16 and stays latched; the new `A4-32-LOCAL-HOLD` instead uses
+a four-block local window, prefers low-wrist-motion candidates when the complete
+window remains within threshold, falls back to the four-block mean distance,
+and can exit HOLD after two real-observation misses.
+
+In the completed Colab screen (scene `100038`, seed `0`), fresh A4-32 and the
+late-four HOLD both reached four boxes but finished with one and did not
+succeed. LOCAL-HOLD reached four, finished with four, and achieved official
+success after three latched decisions. All three LOCAL-HOLD decisions used its
+fallback because no candidate satisfied the strict four-block safety predicate;
+the screen therefore supports the short-window fallback, not yet the proposed
+safe-candidate/wrist-ranking mechanism. This is one selected development case,
+not evidence of general improvement.
+
+- [Method, frozen protocol, and launch instructions](notes/v2/a4-32-hold/README.md)
+- [Screen results and interpretation](notes/v2/a4-32-hold/RESULTS.md)
+- [Structured screen evidence](notes/v2/a4-32-hold/evidence/single-scene-summary.json)
+- [Frozen 20-scene x 3-seed plan](notes/v2/a4-32-hold/plan.json)
+
+The matched L40/BF16 20 x 3 evaluation is prepared but not yet completed, so
+A4-32 remains the recommended configuration until that paired result exists.
+
 ## What this branch works on
 
 This branch finetunes a **goal-conditioned rectified-flow actor** for four-box stacking and uses a latent world model (WM) to select its proposed action plans. **A4-32 is this branch's best-performing tested configuration:** the **120k-step actor**, **32 candidate plans**, and the **original frozen WM**. On the fixed 20 development scenes × sampler seeds 0/2/3 (60 runs), it achieved **2.87 mean peak boxes, 2.13 mean final boxes, and 14/60 success (23.3%)**, with a mean decision time of **217 ms**. Its success rate ties A4-16; its mean peak and final box counts are higher. These are development results.

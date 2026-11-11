@@ -1,0 +1,78 @@
+{
+  "schema": "a4-32-local-hold-screen-v1",
+  "status": "completed_single_scene_screen",
+  "scope": {
+    "scene_seed": 100038,
+    "sample_seed": 0,
+    "episodes_per_group": 1,
+    "selected_development_case": true,
+    "independent_confirmation": false
+  },
+  "code": {
+    "branch": "emoo-a4-32-hold",
+    "implementation_commit": "257231e8fb38df236ee63216ac18c8971fa9d77e"
+  },
+  "evidence_root": "/content/drive/MyDrive/cis6280-final-project-v2/outputs/a4-32-local-hold/20261111-015436",
+  "groups": {
+    "A4-32": {
+      "peak_boxes": 4,
+      "final_boxes": 1,
+      "success": false,
+      "four_box_retained": false,
+      "mean_decision_ms": 188.2108222339831,
+      "p95_decision_ms": 248.36007809992675,
+      "decisions": 359
+    },
+    "A4-32-HOLD": {
+      "peak_boxes": 4,
+      "final_boxes": 1,
+      "success": false,
+      "four_box_retained": false,
+      "mean_decision_ms": 184.66623122841785,
+      "p95_decision_ms": 242.04217510007306,
+      "decisions": 359,
+      "hold": {
+        "latched_decisions": 87,
+        "entries": 1,
+        "exits": 0
+      }
+    },
+    "A4-32-LOCAL-HOLD": {
+      "peak_boxes": 4,
+      "final_boxes": 4,
+      "success": true,
+      "four_box_retained": true,
+      "mean_decision_ms": 185.15921527636403,
+      "p95_decision_ms": 245.04503230009506,
+      "decisions": 275,
+      "hold": {
+        "latched_decisions": 3,
+        "entries": 1,
+        "exits": 0,
+        "safe_candidate_decisions": 0,
+        "safe_candidate_rate": 0.0,
+        "fallback_decisions": 3,
+        "selected_wrist_rms_mean": 0.0078
+      }
+    }
+  },
+  "paired_differences": {
+    "A4-32-LOCAL-HOLD_minus_A4-32": {
+      "peak_boxes": 0,
+      "final_boxes": 3,
+      "success": 1,
+      "ci95": null
+    },
+    "A4-32-LOCAL-HOLD_minus_A4-32-HOLD": {
+      "peak_boxes": 0,
+      "final_boxes": 3,
+      "success": 1,
+      "ci95": null
+    }
+  },
+  "interpretation": {
+    "supported": "The first-four-block mean-distance fallback converted this selected screen case to official success.",
+    "not_supported": "No safe candidate existed, so this screen does not validate safe-candidate filtering or wrist-RMS ranking.",
+    "recommendation": "Keep A4-32 as default until the frozen matched 20-scene x 3-seed evaluation completes."
+  }
+}
