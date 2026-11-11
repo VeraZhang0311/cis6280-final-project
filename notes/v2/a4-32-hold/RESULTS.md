@@ -1,73 +1,86 @@
-# A4-32 HOLD / LOCAL-HOLD 实验结果
+# A4-32 HOLD / LOCAL-HOLD Results
 
-更新日期：2026-11-10（America/New_York）。当前只有 scene `100038`、sample
-seed `0` 的 Colab screen 完成；20 scenes x seeds `0/2/3` 的等效 L40/BF16
-配对评测尚未完成。因此这里记录机制证据和下一阶段决定，不宣称泛化提升。
+Updated November 10, 2026 (America/New_York). Only the Colab screen for scene
+`100038`, sample seed `0`, is complete. The matched L40/BF16 evaluation over 20
+scenes and sample seeds `0/2/3` has not been run. This document therefore records
+mechanism evidence and the next evaluation decision; it does not claim a
+generalizable improvement.
 
-## 修改内容
+## Changes
 
-三组固定使用同一个 v2 120k EMA goal actor、原始冻结 WM、32 candidates、
-16-block rollout、10 次 flow velocity evaluation、真实观测 goal switching，
-并且每轮只执行第一个 0.5 秒 block。
+All three groups use the same v2 120k EMA goal actor, original frozen world
+model, 32 candidates, 16-block rollout, ten flow-velocity evaluations,
+real-observation-only goal switching, and execution of only the first 0.5-second
+block before replanning.
 
-| 方法 | latch 前 | latch 后 | 恢复规则 |
+| Method | Before latch | After latch | Recovery rule |
 | --- | --- | --- | --- |
-| `A4-32` | 16 blocks 内最小 active-goal distance | 不变 | 不适用 |
-| `A4-32-HOLD` | 与 A4-32 完全相同 | 最小化 blocks 13--16 的平均 goal distance | 永久 latch |
-| `A4-32-LOCAL-HOLD` | 与 A4-32 完全相同 | 若前四 blocks 全在 threshold 内，按首 block wrist XYZ RMS、全动作 RMS、candidate index 字典序选择；否则最小化前四 blocks 平均 distance | 连续两次真实观测离开 threshold 后返回 A4-32 |
+| `A4-32` | Minimum active-goal distance over all 16 blocks | Unchanged | Not applicable |
+| `A4-32-HOLD` | Exactly A4-32 | Minimize mean goal distance over blocks 13--16 | Permanently latched |
+| `A4-32-LOCAL-HOLD` | Exactly A4-32 | If all first four blocks are within threshold, choose lexicographically by first-block wrist XYZ RMS, full-action RMS, and candidate index; otherwise minimize mean distance over the first four blocks | Return to A4-32 after two consecutive real observations outside the threshold |
 
-两个 HOLD 都只在最终 official goal 上、连续两次真实观测满足严格
-`distance < 0.25 * reference_gap` 后进入。planner 不读取模拟器 box count、
-reward、contact 或 success。
+Both HOLD variants enter only at the final official goal, after two consecutive
+real observations satisfy the strict condition
+`distance < 0.25 * reference_gap`. The planner does not read simulator box
+counts, rewards, contacts, or success.
 
-## 单场景 screen
+## Single-scene screen
 
-证据目录：
-`/content/drive/MyDrive/cis6280-final-project-v2/outputs/a4-32-local-hold/20261111-015436`。
+Evidence directory:
+`/content/drive/MyDrive/cis6280-final-project-v2/outputs/a4-32-local-hold/20261111-015436`.
 
-| 方法 | Peak | Final | Official success | 四箱保留 | 平均决策 ms | 决策数 |
+| Method | Peak | Final | Official success | Four-box retention | Mean decision ms | Decisions |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | A4-32 | 4 | 1 | 0 | 0/1 | 188.2 | 359 |
 | A4-32-HOLD | 4 | 1 | 0 | 0/1 | 184.7 | 359 |
 | **A4-32-LOCAL-HOLD** | **4** | **4** | **1** | **1/1** | 185.2 | 275 |
 
-LOCAL-HOLD 达成 official success 并提前结束，比两个失败组少 84 次规划
-决策（约 42 秒仿真时间）。三组平均决策耗时接近，本 screen 没有看到
-LOCAL-HOLD 的推理开销惩罚。
+LOCAL-HOLD reached official success and terminated early, using 84 fewer
+planning decisions than either failed group, equivalent to approximately 42
+seconds of simulator time. Mean decision latency was similar across the three
+groups, so this screen showed no inference-time penalty for LOCAL-HOLD.
 
-## HOLD 机制审计
+## HOLD mechanism audit
 
-| 方法 | latched decisions | entries | exits | 存在安全候选的比例 | 选中候选 wrist RMS |
+| Method | Latched decisions | Entries | Exits | Decisions with a safe candidate | Selected-candidate wrist RMS |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| A4-32 | 0 | 0 | 0 | 不适用 | 不适用 |
-| A4-32-HOLD | 87 | 1 | 0 | 不适用 | 不适用 |
+| A4-32 | 0 | 0 | 0 | Not applicable | Not applicable |
+| A4-32-HOLD | 87 | 1 | 0 | Not applicable | Not applicable |
 | A4-32-LOCAL-HOLD | 3 | 1 | 0 | **0/3 (0%)** | 0.0078 |
 
-LOCAL-HOLD 的三次 latch 决策均没有候选满足“前四个 imagined blocks 全部
-在 threshold 内”，因此三次全部走 `first4_mean` fallback。低 wrist RMS
-是 fallback 选中候选的观测属性，不是 wrist 排序分支造成的结果。
+None of the three latched LOCAL-HOLD decisions had a candidate whose first four
+imagined blocks all remained within the threshold. All three decisions therefore
+used the `first4_mean` fallback. The low selected-candidate wrist RMS is an
+observed property of the fallback choices, not an effect of the wrist-ranking
+branch.
 
-## 当前可支持的结论
+## Conclusions supported by current evidence
 
-- 原 late-four HOLD 在该场景没有收益：与 baseline 同为 peak 4、final 1、
-  success 0；此前逐步审计还显示它更早丢失第一次四箱状态。
-- LOCAL-HOLD 在该场景将 final 从 1 提升到 4，并转换为 official success。
-- 该结果支持的窄结论是：**完成阶段的前四-block平均距离 fallback 在这个
-  场景优于 blocks 13--16 的长期 retention score。**
-- 该结果不支持“严格安全候选筛选有效”或“最小 wrist RMS 导致成功”，因为
-  对应分支从未执行。
-- 只有一个已经用于方法开发的 scene/seed，没有方差和置信区间；不能据此
-  宣称 LOCAL-HOLD 稳定优于 A4-32。
+- The original late-four HOLD did not help in this scene: like the baseline, it
+  reached four boxes, finished with one, and did not succeed. Earlier step-level
+  auditing also showed that it lost its first four-box state sooner.
+- LOCAL-HOLD improved the final count from one to four and converted this screen
+  case to official success.
+- The narrow supported conclusion is that **the first-four-block mean-distance
+  fallback was better than the blocks-13--16 retention score in this scene.**
+- This result does not validate strict safe-candidate filtering or wrist-RMS
+  ranking, because that branch never executed.
+- This is one scene/seed already used during method development. It provides no
+  variance estimate or confidence interval and cannot establish that LOCAL-HOLD
+  is consistently better than A4-32.
 
-## 冻结的后续评测
+## Frozen follow-up evaluation
 
-下一步保持 snapshot `257231e8fb38df236ee63216ac18c8971fa9d77e` 的方法
-不变，按照 v2 integration 的等效条件重跑三组：20 个相同 development
-scenes x seeds `0/2/3`，L40、bfloat16、8 workers、1795 steps，每组 60
-episodes，共 180 episodes。使用 fresh A4-32 control，按 scene 聚合三个
-seed 后 bootstrap 配对差值。
+The next evaluation keeps implementation snapshot
+`257231e8fb38df236ee63216ac18c8971fa9d77e` unchanged and reruns all three groups
+under conditions matched to the v2 integration: the same 20 development scenes
+and sample seeds `0/2/3`, one L40, bfloat16, eight workers, and a 1795-step
+horizon. Each group has 60 episodes, for 180 episodes total. A fresh A4-32
+control is included. Paired differences are aggregated across the three seeds
+within each scene, then bootstrapped by scene.
 
-主指标为 official success、mean final boxes 和
-`P(final=4 | peak=4)`；同时报告 peak、third-to-fourth conversion、HOLD
-触发/退出次数、safe eligible rate、fallback rate、决策时间和提前终止节省。
-在这批结果完成前，A4-32 仍是推荐配置。
+Primary metrics are official success, mean final boxes, and
+`P(final=4 | peak=4)`. The report also includes peak boxes, third-to-fourth
+conversion, HOLD entry and exit counts, safe-candidate rate, fallback rate,
+decision latency, and decisions saved by early termination. A4-32 remains the
+recommended configuration until this evaluation is complete.
