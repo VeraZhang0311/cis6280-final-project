@@ -27,3 +27,19 @@ and sample seeds 0/2/3. Primary metrics are official success, mean final boxes,
 and four-box retention. Secondary metrics are mean peak boxes, third-to-fourth
 conversion, HOLD trigger count, false-positive HOLD outcomes, and decision time.
 This is a paired development experiment, not independent confirmation.
+
+## Frozen 20 x 3 launch
+
+Stage this commit in a new GRASP workspace, then submit on the same L40 class as
+the historical A4 evaluation:
+
+```bash
+sbatch --account=liu-account --partition=liu-compute --qos=ll-med \
+  --gres=gpu:l40:1 \
+  --export=ALL,TASK_ROOT=/mnt/projects/ll/tianzizh/cis6280-a4-local-hold-20261111 \
+  scripts/evaluate_a4_32_hold.sbatch
+```
+
+The launcher validates the frozen plan and model hashes, evaluates 20 scenes x
+3 policy seeds x 3 groups (180 episodes), supports exact resume, and writes the
+automatic paired report under `outputs/planning/v2/a4-32-local-hold/`.
