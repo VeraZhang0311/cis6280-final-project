@@ -146,6 +146,36 @@ class SelectionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             select_candidate(distances, 'A4-32', .25, hold_active=True)
 
+    def test_local_hold_requires_short_term_safety_then_minimizes_wrist_motion(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((3, 16), .1)
+        distances[0, 2] = .3  # Unsafe even though its wrist motion is smallest.
+        action_rows = torch.full((3, 5, 25), .5)
+        action_rows[0, :, :3], action_rows[1, :, :3], action_rows[2, :, :3] = .01, .2, .2
+        action_rows[1, :, 3:], action_rows[2, :, 3:] = .3, .1  # Full-action RMS breaks the wrist tie.
+        actions = action_rows.reshape(3, 125)
+        baseline = select_candidate(distances, 'A4-32', .25)
+        approach = select_candidate(distances, 'A4-32-LOCAL-HOLD', .25)
+        hold = select_candidate(distances, 'A4-32-LOCAL-HOLD', .25, hold_active=True,
+                                first_block_actions=actions)
+        self.assertEqual(approach.best, baseline.best)
+        self.assertEqual(hold.eligible.tolist(), [False, True, True])
+        self.assertEqual(hold.best, 2)
+        self.assertEqual(hold.selection_rule, 'local_hold_safe_min_wrist')
+        self.assertEqual(hold.retention_rule, 'first4_mean')
+        self.assertIsNone(hold.trace()['selection_cost'][0])
+
+    def test_local_hold_falls_back_to_first_four_mean_when_no_candidate_is_safe(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((2, 16), .5)
+        distances[0, :4], distances[1, :4] = .4, .3
+        actions = torch.zeros(2, 125)
+        hold = select_candidate(distances, 'A4-32-LOCAL-HOLD', .25, hold_active=True,
+                                first_block_actions=actions)
+        self.assertEqual(hold.best, 1)
+        self.assertEqual(hold.fallback, 'no_safe_local_candidate')
+        self.assertEqual(hold.selection_rule, 'local_hold_first4_mean_fallback')
+
 
 @unittest.skipIf(torch is None, 'torch is not installed')
 class AgentTests(unittest.TestCase):
@@ -289,6 +319,7 @@ class AgentTests(unittest.TestCase):
     def test_a4_modes_use_expected_scoring_and_candidate_budget(self):
         for mode, count, rule in (('A4-16', 16, 'active_min'), ('A4-32', 32, 'active_min'),
                                   ('A4-32-HOLD', 32, 'active_min'),
+                                  ('A4-32-LOCAL-HOLD', 32, 'active_min'),
                                   ('A4-32-T1', 32, 'trajectory_arrival_terminal'),
                                   ('A4-32-T2', 32, 'trajectory_arrival_terminal'),
                                   ('A4-32-T1-L4', 32, 'trajectory_arrival_retention'),
@@ -342,6 +373,24 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(agent.last_trace['selection_rule'], 'active_hold_late4_mean')
         agent.step(self.frame(0))
         self.assertTrue(agent.last_trace['hold_latched'])
+
+    def test_local_hold_enters_and_exits_with_two_real_observation_confirmations(self):
+        agent = self.agent('A4-32-LOCAL-HOLD')
+        agent.step(self.frame(30))
+        agent.step(self.frame(60))
+        self.assertFalse(agent.last_trace['hold_latched'])
+        agent.step(self.frame(60))
+        self.assertTrue(agent.last_trace['hold_entered'])
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertIn(agent.last_trace['selection_rule'],
+                      ('local_hold_safe_min_wrist', 'local_hold_first4_mean_fallback'))
+        agent.step(self.frame(0))
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['hold_exit_streak'], 1)
+        agent.step(self.frame(0))
+        self.assertTrue(agent.last_trace['hold_exited'])
+        self.assertFalse(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['selection_rule'], 'active_min')
 
     def test_shafaa_truncates_only_wm_and_scores_the_requested_endpoint(self):
         from assignment.training.planning.goal_actor import select_candidate

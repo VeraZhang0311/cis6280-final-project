@@ -16,6 +16,8 @@ SWITCH_TAU = .25
 NEXT_GOAL_WEIGHT = .25
 ARRIVAL_TIME_WEIGHT = .05
 HOLD_CONFIRMATIONS = 2
+HOLD_EXIT_CONFIRMATIONS = 2
+LOCAL_HOLD_BLOCKS = 4
 SCORE_EPS = 1e-8
 
 
@@ -31,6 +33,8 @@ class Selection:
     arrival: torch.Tensor | None = None
     terminal: torch.Tensor | None = None
     retention: torch.Tensor | None = None
+    wrist_rms: torch.Tensor | None = None
+    action_rms: torch.Tensor | None = None
     retention_rule: str | None = None
     arrival_time_weight: float | None = None
     terminal_weight: float | None = None
@@ -49,6 +53,8 @@ class Selection:
                     candidate_arrival_block=values(self.arrival),
                     candidate_terminal_distance=values(self.terminal),
                     candidate_retention_distance=values(self.retention),
+                    candidate_first_block_wrist_rms=values(self.wrist_rms),
+                    candidate_first_block_action_rms=values(self.action_rms),
                     # Ineligible lookahead candidates have no selection cost, not JSON Infinity.
                     selection_cost=[v if np.isfinite(v) else None for v in costs],
                     q=values(self.q), r=values(self.r), eligible=values(self.eligible),
@@ -59,16 +65,17 @@ class Selection:
 
 
 def select_candidate(active_distances, mode, threshold, next_distances=None, next_threshold=None,
-                     hold_active=False):
+                     hold_active=False, first_block_actions=None):
     """Pure selection over future distances; ties retain the earliest candidate.
 
     next_distances contains only each candidate's terminal distance to next goal.
     No observed state or real active index is changed here.
     """
     original_mode = mode
-    if hold_active and original_mode not in ('A4-32-HOLD', 'A4-32-T1-L4-HOLD'):
+    hold_modes = ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD')
+    if hold_active and original_mode not in hold_modes:
         raise ValueError('hold_active is only valid for a hold mode')
-    if mode in ('A4-16', 'A4-32', 'A4-32-HOLD', 'A5-16', 'A5-32'):
+    if mode in ('A4-16', 'A4-32', 'A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A5-16', 'A5-32'):
         mode = 'A2'
     horizon = PLANNING_HORIZONS.get(mode, HORIZON)
     if mode not in ('A2', 'A3', *TRAJECTORY_SPECS, *PLANNING_HORIZONS):
@@ -93,6 +100,32 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
             selection.best = int(selection.cost.argmin())
             selection.retention_rule = 'late4_mean'
             selection.selection_rule = 'active_hold_late4_mean'
+        return selection
+    if original_mode == 'A4-32-LOCAL-HOLD':
+        if hold_active:
+            if (first_block_actions is None or first_block_actions.shape !=
+                    (len(active_distances), STRIDE*RAW_ACTION_DIM)
+                    or not torch.isfinite(first_block_actions).all()):
+                raise ValueError('Local HOLD requires finite first-block raw actions [N,125]')
+            local = active_distances[:, :LOCAL_HOLD_BLOCKS]
+            selection.retention = local.mean(-1)
+            selection.retention_rule = 'first4_mean'
+            selection.eligible = (local < threshold).all(-1)
+            actions = first_block_actions.reshape(-1, STRIDE, RAW_ACTION_DIM)
+            selection.wrist_rms = actions[:, :, :3].square().mean((1, 2)).sqrt()
+            selection.action_rms = actions.square().mean((1, 2)).sqrt()
+            if selection.eligible.any():
+                selection.cost = selection.wrist_rms.masked_fill(~selection.eligible, float('inf'))
+                best_wrist = selection.cost.min()
+                tied = selection.eligible & (selection.wrist_rms == best_wrist)
+                tie_cost = selection.action_rms.masked_fill(~tied, float('inf'))
+                selection.best = int(tie_cost.argmin())
+                selection.selection_rule = 'local_hold_safe_min_wrist'
+            else:
+                selection.cost = selection.retention
+                selection.best = int(selection.cost.argmin())
+                selection.selection_rule = 'local_hold_first4_mean_fallback'
+                selection.fallback = 'no_safe_local_candidate'
         return selection
     if mode in PLANNING_HORIZONS:
         selection.cost = active_distances[:, -1]
@@ -252,7 +285,7 @@ class GoalActorAgent:
         if seed is not None:
             self.generator.manual_seed(int(seed))
         self.frames, self.executed, self.index = [], [], 0
-        self.hold_streak, self.hold_latched = 0, False
+        self.hold_streak, self.hold_exit_streak, self.hold_latched = 0, 0, False
         self.goals = self.gap = self.thresholds = self.last_trace = None
         self.decision = 0
         self.setup_calls = dict(encoder=int(encoded is not None), policy=0, predictor=0)
@@ -291,10 +324,18 @@ class GoalActorAgent:
         switches = self._advance_goal(z)
         active = self.goals[self.index]
         observed_distance = (z-active).square().sum()
-        if self.mode in ('A4-32-HOLD', 'A4-32-T1-L4-HOLD'):
+        hold_entered = hold_exited = False
+        if self.mode in ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD'):
             close_to_final = self.index == len(self.goals)-1 and observed_distance < self.thresholds[self.index]
-            self.hold_streak = self.hold_streak+1 if close_to_final else 0
-            self.hold_latched = self.hold_latched or self.hold_streak >= HOLD_CONFIRMATIONS
+            if self.mode == 'A4-32-LOCAL-HOLD' and self.hold_latched:
+                self.hold_exit_streak = 0 if close_to_final else self.hold_exit_streak+1
+                if self.hold_exit_streak >= HOLD_EXIT_CONFIRMATIONS:
+                    self.hold_latched, hold_exited = False, True
+                    self.hold_streak = self.hold_exit_streak = 0
+            else:
+                self.hold_streak = self.hold_streak+1 if close_to_final else 0
+                if not self.hold_latched and self.hold_streak >= HOLD_CONFIRMATIONS:
+                    self.hold_latched, hold_entered = True, True
         self.frames = (self.frames+[z])[-self.encoder.cfg.context:]
         n = self.candidates
         current = ((z-self.z_mean)/self.z_std)[None, None].expand(n, 1, -1)
@@ -334,7 +375,8 @@ class GoalActorAgent:
                 next_distances = (imagined[:, -1].float()-self.goals[self.index+1]).square().sum(-1)
                 next_threshold = self.thresholds[self.index+1]
             selection = select_candidate(distances, self.mode, self.thresholds[self.index],
-                                         next_distances, next_threshold, hold_active=self.hold_latched)
+                                         next_distances, next_threshold, hold_active=self.hold_latched,
+                                         first_block_actions=raw[:, 0])
             selected, choice = selection.best, selection.trace()
             calls.update(action_encoder=1, wm_rollout=1, predictor=self.planning_horizon)
         block = raw[selected, 0].reshape(STRIDE, RAW_ACTION_DIM).cpu().numpy().copy()
@@ -349,7 +391,8 @@ class GoalActorAgent:
             next_goal_threshold=float(self.thresholds[self.index+1]) if self.index+1 < len(self.goals) else None,
             switches=switches, candidates=n, generated_blocks=HORIZON, execute_blocks=1,
             imagined_blocks=self.planning_horizon,
-            hold_streak=self.hold_streak, hold_latched=self.hold_latched,
+            hold_streak=self.hold_streak, hold_exit_streak=self.hold_exit_streak,
+            hold_latched=self.hold_latched, hold_entered=hold_entered, hold_exited=hold_exited,
             calls=calls, **choice,
             timings_s=dict(encoder=encoded_at-start, policy=policy_end-policy_start, predictor=predictor_s))
         self._sync()

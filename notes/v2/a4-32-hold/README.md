@@ -12,7 +12,17 @@ the episode. After latching, candidates are ranked by their mean distance over
 imagined blocks 13--16, favoring sustained final-goal retention. Simulator box
 counts, reward, and success are never read by the planner.
 
-Run a fresh `A4-32` control and `A4-32-HOLD` on the frozen 20 development scenes
+The follow-up `A4-32-LOCAL-HOLD` preserves the same pre-latch A4-32 behavior and
+entry condition. While active, it considers a candidate safe only when all of
+its first four imagined blocks remain within the final-goal threshold. Among
+safe candidates it lexicographically minimizes first-block wrist XYZ RMS, then
+full-action RMS, retaining candidate order as the final tie break. If no safe
+candidate exists, it minimizes mean distance over those four blocks. Two
+consecutive real observations outside the threshold exit HOLD and restore
+A4-32. This rule was frozen after the original late-four HOLD retained four
+boxes for only 0.5 seconds in the single-scene screen.
+
+Run a fresh `A4-32` control and both HOLD variants on the frozen 20 development scenes
 and sample seeds 0/2/3. Primary metrics are official success, mean final boxes,
 and four-box retention. Secondary metrics are mean peak boxes, third-to-fourth
 conversion, HOLD trigger count, false-positive HOLD outcomes, and decision time.
