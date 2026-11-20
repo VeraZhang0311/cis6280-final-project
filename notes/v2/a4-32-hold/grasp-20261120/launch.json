@@ -1,0 +1,28 @@
+{
+  "status": "submitted",
+  "workspace": "/mnt/projects/ll/tianzizh/cis6280-emoo-hold-eval-20261120-01",
+  "implementation_commit": "d4e185b86b52e05c37261d693ce235abe6def3e0",
+  "implementation_branch": "emoo-a4-32-hold",
+  "integration_branch": "tianzi/v2.0-integration",
+  "submitted_utc": "2026-11-20T21:48:33.897569+00:00",
+  "smoke_job": "1557532",
+  "full_job": "1557533",
+  "groups": [
+    "A4-32",
+    "A4-32-HOLD",
+    "A4-32-LOCAL-HOLD"
+  ],
+  "episodes_per_group": 60,
+  "expected_episodes": 180,
+  "partition": "liu-compute",
+  "qos": "ll-med",
+  "gpu": "l40",
+  "cpus": 16,
+  "mem": "48G",
+  "source_archive_sha256": "a3604bb5ce3f8d265893455d4db6b632222b8e1e4c4b5b99de3691d9846016b9",
+  "helper_sha256": {
+    "smoke.sbatch": "2229bbf4e38f66431d10676b600884feea0b4fa212a3892a80f605b088a3e61a",
+    "run.sbatch": "8c6af1b01b6b2568dc74b5aaaca8b4cc35f5d6d7ecd1037dc991e3960f37f2dd",
+    "audit_hold.py": "065f80464de5be30ed786f6f1a6d94409bf42ec251fd90efcbda372228063634"
+  }
+}
