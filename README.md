@@ -24,8 +24,13 @@ not evidence of general improvement.
 - [Structured screen evidence](notes/v2/a4-32-hold/evidence/single-scene-summary.json)
 - [Frozen 20-scene x 3-seed plan](notes/v2/a4-32-hold/plan.json)
 
-The matched L40/BF16 20 x 3 evaluation is prepared but not yet completed, so
-A4-32 remains the recommended configuration until that paired result exists.
+The matched L40/BF16 evaluation completed all 180 episodes on November 20:
+fresh A4-32 and HOLD each succeeded in 10/60, LOCAL-HOLD in 11/60. The small
+point gain does not establish a reliable improvement; LOCAL-HOLD's extra success
+over HOLD occurred in an episode where neither method activated HOLD. The fresh
+baseline differs from the historical 14/60 result, so comparisons use this same
+job's control. See [full batch results and audit](notes/v2/a4-32-hold/grasp-20261120/RESULTS.md).
+A4-32 remains the recommended configuration.
 
 ## What this branch works on
 

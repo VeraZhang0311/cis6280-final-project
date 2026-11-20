@@ -1,0 +1,255 @@
+{
+  "groups": {
+    "A4-32": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.816666666666667,
+      "mean_final_boxes": 2.066666666666667,
+      "mean_peak_to_final_loss": 0.75,
+      "success": 0.16666666666666666,
+      "peak_reached": {
+        "1": 0.9833333333333333,
+        "2": 0.8833333333333333,
+        "3": 0.7,
+        "4": 0.25
+      },
+      "final_reached": {
+        "1": 0.9666666666666667,
+        "2": 0.6666666666666666,
+        "3": 0.26666666666666666,
+        "4": 0.16666666666666666
+      },
+      "mean_decision_s": 0.21200394439754922,
+      "p95_decision_s": 0.23732663656264777,
+      "calls": {
+        "encoder": 20754,
+        "policy": 20754,
+        "policy_velocity": 207540,
+        "action_encoder": 20754,
+        "wm_rollout": 20754,
+        "predictor": 332064
+      },
+      "first_to_second": {
+        "at_risk": 59,
+        "events": 53,
+        "censored": 6,
+        "conversion": 0.8983050847457628,
+        "km_median_s": 32.9
+      },
+      "third_to_fourth": {
+        "at_risk": 42,
+        "events": 15,
+        "censored": 27,
+        "conversion": 0.35714285714285715,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 15,
+        "retained": 10,
+        "rate": 0.6666666666666666
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20754,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-HOLD": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.816666666666667,
+      "mean_final_boxes": 2.066666666666667,
+      "mean_peak_to_final_loss": 0.75,
+      "success": 0.16666666666666666,
+      "peak_reached": {
+        "1": 0.9833333333333333,
+        "2": 0.8833333333333333,
+        "3": 0.7,
+        "4": 0.25
+      },
+      "final_reached": {
+        "1": 0.9833333333333333,
+        "2": 0.6666666666666666,
+        "3": 0.25,
+        "4": 0.16666666666666666
+      },
+      "mean_decision_s": 0.21248388942321955,
+      "p95_decision_s": 0.23819162297877483,
+      "calls": {
+        "encoder": 20741,
+        "policy": 20741,
+        "policy_velocity": 207410,
+        "action_encoder": 20741,
+        "wm_rollout": 20741,
+        "predictor": 331856
+      },
+      "first_to_second": {
+        "at_risk": 59,
+        "events": 53,
+        "censored": 6,
+        "conversion": 0.8983050847457628,
+        "km_median_s": 32.9
+      },
+      "third_to_fourth": {
+        "at_risk": 42,
+        "events": 15,
+        "censored": 27,
+        "conversion": 0.35714285714285715,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 15,
+        "retained": 10,
+        "rate": 0.6666666666666666
+      },
+      "lookahead": {
+        "applicable_decisions": 0,
+        "all_decisions": 20741,
+        "eligible_nonempty_rate": null,
+        "used_rate": 0.0
+      }
+    },
+    "A4-32-LOCAL-HOLD": {
+      "episodes": 60,
+      "mean_peak_boxes": 2.85,
+      "mean_final_boxes": 2.1,
+      "mean_peak_to_final_loss": 0.75,
+      "success": 0.18333333333333332,
+      "peak_reached": {
+        "1": 0.9833333333333333,
+        "2": 0.9,
+        "3": 0.7,
+        "4": 0.26666666666666666
+      },
+      "final_reached": {
+        "1": 0.9833333333333333,
+        "2": 0.6666666666666666,
+        "3": 0.26666666666666666,
+        "4": 0.18333333333333332
+      },
+      "mean_decision_s": 0.21247083466096373,
+      "p95_decision_s": 0.23735067399975376,
+      "calls": {
+        "encoder": 20663,
+        "policy": 20663,
+        "policy_velocity": 206630,
+        "action_encoder": 20663,
+        "wm_rollout": 20663,
+        "predictor": 330608
+      },
+      "first_to_second": {
+        "at_risk": 59,
+        "events": 54,
+        "censored": 5,
+        "conversion": 0.9152542372881356,
+        "km_median_s": 32.9
+      },
+      "third_to_fourth": {
+        "at_risk": 42,
+        "events": 16,
+        "censored": 26,
+        "conversion": 0.38095238095238093,
+        "km_median_s": null
+      },
+      "target_retention": {
+        "target": 4,
+        "at_risk": 16,
+        "retained": 11,
+        "rate": 0.6875
+      },
+      "lookahead": {
+        "applicable_decisions": 37,
+        "all_decisions": 20663,
+        "eligible_nonempty_rate": 0.05405405405405406,
+        "used_rate": 0.0
+      }
+    }
+  },
+  "paired_comparisons": {
+    "A4-32-HOLD_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.0,
+          "ci95": [
+            -0.05,
+            0.05
+          ]
+        },
+        "final_boxes": {
+          "difference": -2.7755575615628915e-18,
+          "ci95": [
+            -0.15,
+            0.18333333333333335
+          ]
+        },
+        "success": {
+          "difference": 0.0,
+          "ci95": [
+            -0.05,
+            0.05
+          ]
+        }
+      }
+    },
+    "A4-32-LOCAL-HOLD_minus_A4-32": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.03333333333333333,
+          "ci95": [
+            0.0,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.03333333333333334,
+          "ci95": [
+            -0.1,
+            0.21666666666666665
+          ]
+        },
+        "success": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            0.0,
+            0.05
+          ]
+        }
+      }
+    },
+    "A4-32-LOCAL-HOLD_minus_A4-32-HOLD": {
+      "scenes": 20,
+      "resampling_unit": "scene",
+      "metrics": {
+        "peak_boxes": {
+          "difference": 0.03333333333333333,
+          "ci95": [
+            0.0,
+            0.08333333333333333
+          ]
+        },
+        "final_boxes": {
+          "difference": 0.03333333333333333,
+          "ci95": [
+            0.0,
+            0.1
+          ]
+        },
+        "success": {
+          "difference": 0.016666666666666666,
+          "ci95": [
+            0.0,
+            0.05
+          ]
+        }
+      }
+    }
+  },
+  "reference_groups": [],
+  "wall_s": 2055.6319419140054,
+  "wall_scope": "current_attempt"
+}

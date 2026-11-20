@@ -1,0 +1,786 @@
+{
+  "run.json": {
+    "bytes": 12644,
+    "sha256": "fd3015866c074bbc67a8f183192c368acac2c1807ceb0f70feea780f16815f8b"
+  },
+  "summary.json": {
+    "bytes": 6212,
+    "sha256": "21aeb1969f4ee1fa5ad0689f9b1bb89529d7f1e505b70e372318d8c75020475f"
+  },
+  "comparison.json": {
+    "bytes": 13051,
+    "sha256": "e3f9fdbc7e142e78d2cc7f1b5c9988b99e2f57b7acc8e1ceab4144fbcc97e46c"
+  },
+  "RESULTS.md": {
+    "bytes": 1040,
+    "sha256": "15c05397db373f95bc64fdd5418d648fb645296820d62d750110bf2b94ce0ef0"
+  },
+  "hold-audit.json": {
+    "bytes": 98063,
+    "sha256": "cbcb224b1d67fa55f367f75df739fbfd18d968ebf2137432affeb2d5533e03d4"
+  },
+  "A4-32/episodes/scene-100035.sample-0/episode.json": {
+    "bytes": 10037,
+    "sha256": "4a79a93fc928bc3eaae3bf4781e064ece31213e5a47b2a0332d8feab94b960f7"
+  },
+  "A4-32/episodes/scene-100035.sample-2/episode.json": {
+    "bytes": 9977,
+    "sha256": "266f9ac4c721868664c31ed4284d03b60b96c61c0beea491965f414cbb8f400f"
+  },
+  "A4-32/episodes/scene-100035.sample-3/episode.json": {
+    "bytes": 9995,
+    "sha256": "04548d754c4cda603b0ab3e1ef29da4db4bc56137899fc2136376138deb163ee"
+  },
+  "A4-32/episodes/scene-100038.sample-0/episode.json": {
+    "bytes": 9974,
+    "sha256": "78ed876cd669a661315c1e7d79859e504a2c46f3224e6688568341e29209e173"
+  },
+  "A4-32/episodes/scene-100038.sample-2/episode.json": {
+    "bytes": 10019,
+    "sha256": "13fce2da86ebee60e80b94df8e49e8646e9dc3da86a84852997be93f76e6ea55"
+  },
+  "A4-32/episodes/scene-100038.sample-3/episode.json": {
+    "bytes": 10006,
+    "sha256": "34362f317fc39d701a779077227fd287cd33a33dced0b45916dad65a6b89f06f"
+  },
+  "A4-32/episodes/scene-100057.sample-0/episode.json": {
+    "bytes": 9998,
+    "sha256": "7615a67cb3fa1d7c746168328f0764d330be0f2a81a1bfb2b05e9dfd586bd1af"
+  },
+  "A4-32/episodes/scene-100057.sample-2/episode.json": {
+    "bytes": 7537,
+    "sha256": "d6772fffadabc861f8df31d20fb61516faf8a40e95827e4f562b4c09aed5aa13"
+  },
+  "A4-32/episodes/scene-100057.sample-3/episode.json": {
+    "bytes": 9980,
+    "sha256": "fb09fff8d7fa1640142e270896a7cb184aba4256c5bbb81de1b507521c5044cf"
+  },
+  "A4-32/episodes/scene-100060.sample-0/episode.json": {
+    "bytes": 7996,
+    "sha256": "914887c5a2579b1cb813a1899c0c64b1c0e829cb275cc18705898fc5f409066b"
+  },
+  "A4-32/episodes/scene-100060.sample-2/episode.json": {
+    "bytes": 10013,
+    "sha256": "3fab0fb10f04052075e10a4971b4d1e77387f04ba788dee04c29579343ad2313"
+  },
+  "A4-32/episodes/scene-100060.sample-3/episode.json": {
+    "bytes": 7981,
+    "sha256": "b484145b64eab56d8497833b404e2e6a271671bb90caba1c6652e8743acd8198"
+  },
+  "A4-32/episodes/scene-100069.sample-0/episode.json": {
+    "bytes": 10009,
+    "sha256": "8271dd6ff5295ac2eb8a9c07f40a09b7b22f01013f82ff9ae96b5e37100c7ee2"
+  },
+  "A4-32/episodes/scene-100069.sample-2/episode.json": {
+    "bytes": 10009,
+    "sha256": "15901de1139dc1fc99e472112170f691062c3d8facf4a4427c7e66ca2f0fafb9"
+  },
+  "A4-32/episodes/scene-100069.sample-3/episode.json": {
+    "bytes": 9986,
+    "sha256": "4af3a2c418a34fd3c2d994efe6c69a73d9b5c5a713e5a895ba5b432ee6d12152"
+  },
+  "A4-32/episodes/scene-100072.sample-0/episode.json": {
+    "bytes": 9978,
+    "sha256": "6ce40f8198157cd9793e54c5ad75f88185da28f657696195e6880c0e66cd3fb5"
+  },
+  "A4-32/episodes/scene-100072.sample-2/episode.json": {
+    "bytes": 8525,
+    "sha256": "f785d2484b90dfce9c475064333fcc4fb47362d420165555a5b891f548edc083"
+  },
+  "A4-32/episodes/scene-100072.sample-3/episode.json": {
+    "bytes": 9976,
+    "sha256": "4f0883b1768e0c199e387b47ee413ed4efae2ae4764b298c1b85c84c53322ac4"
+  },
+  "A4-32/episodes/scene-100078.sample-0/episode.json": {
+    "bytes": 10009,
+    "sha256": "6bcefb2ae3c4f460c57815fe0c43ba6d195d465ca06cb853e940d1629243d145"
+  },
+  "A4-32/episodes/scene-100078.sample-2/episode.json": {
+    "bytes": 9992,
+    "sha256": "d4b9aa29e39e10d9b1e6474d07f18d31a3719b893f577177ae0b06162897dacb"
+  },
+  "A4-32/episodes/scene-100078.sample-3/episode.json": {
+    "bytes": 9990,
+    "sha256": "55c0e849258240ca9413dcc2380eb2e6d99f521fa131d5f3b3c88708fe7fb6c0"
+  },
+  "A4-32/episodes/scene-100085.sample-0/episode.json": {
+    "bytes": 9997,
+    "sha256": "30d0815fbbc081669510ed1f0d5c156c09f4dc2348293779508327a2cf03781e"
+  },
+  "A4-32/episodes/scene-100085.sample-2/episode.json": {
+    "bytes": 9978,
+    "sha256": "62469835a132a63de5d135e8d89e7d258b89d95f9b3ec7bae14624b421e7114c"
+  },
+  "A4-32/episodes/scene-100085.sample-3/episode.json": {
+    "bytes": 9996,
+    "sha256": "9083c18be00be243c714abc2ba471ce2ad0d9789b89d5069341b8b51942205f0"
+  },
+  "A4-32/episodes/scene-100087.sample-0/episode.json": {
+    "bytes": 7892,
+    "sha256": "f1ac12f79a080668ec759061f0a2311150731b87bd2d1fa64f0217490cfef23e"
+  },
+  "A4-32/episodes/scene-100087.sample-2/episode.json": {
+    "bytes": 9973,
+    "sha256": "f7f3026bb7c5cb8bd6422199438396c4367b49c7b0417dc22ad69c49ecc4127c"
+  },
+  "A4-32/episodes/scene-100087.sample-3/episode.json": {
+    "bytes": 9980,
+    "sha256": "17fa210bf8719b6901d7407c2d0302d88f7f22742738c458d61f52b35d336e92"
+  },
+  "A4-32/episodes/scene-100098.sample-0/episode.json": {
+    "bytes": 9984,
+    "sha256": "2985c5d39a437fe44527e59b41f07d7bc110725bd594475da23c1008eb76b8ef"
+  },
+  "A4-32/episodes/scene-100098.sample-2/episode.json": {
+    "bytes": 9969,
+    "sha256": "ceda8bb26738acc0d3bcfa92052486f930c95c1f1551aedb2557d6b929c172a7"
+  },
+  "A4-32/episodes/scene-100098.sample-3/episode.json": {
+    "bytes": 9992,
+    "sha256": "ab87c9b29c1407ae65f19c08690b63723163db509f122cb9590c0566952892e0"
+  },
+  "A4-32/episodes/scene-100102.sample-0/episode.json": {
+    "bytes": 9999,
+    "sha256": "62597181935660d0f04e16c480c26fa9e6978cda8d6d185357273af0c3b91e85"
+  },
+  "A4-32/episodes/scene-100102.sample-2/episode.json": {
+    "bytes": 9988,
+    "sha256": "aeecdb83d9934a1b6228d56a543527cf81526460013684e507421baa7e577880"
+  },
+  "A4-32/episodes/scene-100102.sample-3/episode.json": {
+    "bytes": 7938,
+    "sha256": "83126c19283b7b41f53430c34b3f9dfabe3f2e7f3988923b24ad16452e07aa64"
+  },
+  "A4-32/episodes/scene-100137.sample-0/episode.json": {
+    "bytes": 9987,
+    "sha256": "c36636e312cc49107882a2ca0e8ea2335380b5c3c01f8b8722a49a9642de4595"
+  },
+  "A4-32/episodes/scene-100137.sample-2/episode.json": {
+    "bytes": 8008,
+    "sha256": "e77a07875dba464c9cbcea246d4c66e1851339dccaac70da5b4379b2a56a9f7e"
+  },
+  "A4-32/episodes/scene-100137.sample-3/episode.json": {
+    "bytes": 10000,
+    "sha256": "8c29b1ce0d4297fbf17ebf2399f91b0af1980af1e624b14e642b5a11867c6f30"
+  },
+  "A4-32/episodes/scene-100145.sample-0/episode.json": {
+    "bytes": 9994,
+    "sha256": "0335e7aad0080fe7211514f5d300f3062ae4469ef64c8cfa092892781be1a9e8"
+  },
+  "A4-32/episodes/scene-100145.sample-2/episode.json": {
+    "bytes": 9984,
+    "sha256": "6ac66efb400fab4118396ab812207ca0125c44ec95f09f37800b72ce5543519c"
+  },
+  "A4-32/episodes/scene-100145.sample-3/episode.json": {
+    "bytes": 10002,
+    "sha256": "c97e2ce01538818b2baab3560d6932e33792f941488a6cf5826649678d70cede"
+  },
+  "A4-32/episodes/scene-100152.sample-0/episode.json": {
+    "bytes": 9991,
+    "sha256": "ddcf737fa08bc4e936461596275800aeda8c9ac4ae6ee0ee1e6b1080236b2407"
+  },
+  "A4-32/episodes/scene-100152.sample-2/episode.json": {
+    "bytes": 9987,
+    "sha256": "a5c514715e819f78ddc7fe28a9a9a6effd70ce014cc01087c3c96159c6de5f21"
+  },
+  "A4-32/episodes/scene-100152.sample-3/episode.json": {
+    "bytes": 9975,
+    "sha256": "93c6bde4821afc38f685f683e712969d6647191f18a882f15e02c3901e465c39"
+  },
+  "A4-32/episodes/scene-100164.sample-0/episode.json": {
+    "bytes": 9976,
+    "sha256": "127793bae60d1817c8afa36945d60a2f596f6dc6f330e24bcb2943e7740b8b07"
+  },
+  "A4-32/episodes/scene-100164.sample-2/episode.json": {
+    "bytes": 9985,
+    "sha256": "dbc2760b5c6050c900cf5cbcdf88b08547e7fd77246144d670b549984ad9129f"
+  },
+  "A4-32/episodes/scene-100164.sample-3/episode.json": {
+    "bytes": 8472,
+    "sha256": "f5f986a23de9f2bb6a3ef04bb7ce51ee645083169d1ec77a7598928f2a953050"
+  },
+  "A4-32/episodes/scene-100166.sample-0/episode.json": {
+    "bytes": 9977,
+    "sha256": "dd85bc8834e66c5ab4812177aa453990b727d8dff9cc7f372a7f402316a9359b"
+  },
+  "A4-32/episodes/scene-100166.sample-2/episode.json": {
+    "bytes": 10001,
+    "sha256": "be310a4b57f8e16d6918b186ea15ec394163433d0d5c2e41776982f4f034e46c"
+  },
+  "A4-32/episodes/scene-100166.sample-3/episode.json": {
+    "bytes": 9986,
+    "sha256": "983f85ac294ebfcda049e8003e5df1ecc9b76f026499c1088318f778d3ecb47e"
+  },
+  "A4-32/episodes/scene-100169.sample-0/episode.json": {
+    "bytes": 9998,
+    "sha256": "09dc5a389fd5a53c43ff310779ae147933aab37849f1920118e0cf973aeb7687"
+  },
+  "A4-32/episodes/scene-100169.sample-2/episode.json": {
+    "bytes": 7976,
+    "sha256": "0ead810d77cc9229880eeefb77bacd37809e973e1befb8288c295b052fc43559"
+  },
+  "A4-32/episodes/scene-100169.sample-3/episode.json": {
+    "bytes": 10016,
+    "sha256": "292c9839b6bc578349413186892eccfa8fe656d892df96c99b8746bf14e6bd07"
+  },
+  "A4-32/episodes/scene-100175.sample-0/episode.json": {
+    "bytes": 9989,
+    "sha256": "8f39880ba291284cb87bf364f057923d21ab5138b195658d944d7e9532796147"
+  },
+  "A4-32/episodes/scene-100175.sample-2/episode.json": {
+    "bytes": 9986,
+    "sha256": "e44a24bd8891f328fefbce37332d08b43333aa53ec996050df3a9ad315fc56e5"
+  },
+  "A4-32/episodes/scene-100175.sample-3/episode.json": {
+    "bytes": 10027,
+    "sha256": "6d2c5bfb2e3299ee7248f64fdf922deff360c24913ce39860b5ddfe7391a3aac"
+  },
+  "A4-32/episodes/scene-100183.sample-0/episode.json": {
+    "bytes": 9970,
+    "sha256": "a2f5b8b54de87b07482891e3182a3c3f424c106afab96cc6a939ac7d6a77bcf8"
+  },
+  "A4-32/episodes/scene-100183.sample-2/episode.json": {
+    "bytes": 10014,
+    "sha256": "ee6e482160340172c059e96e9d1067a520af8bfb6e1711ae3e4ac9988e50a439"
+  },
+  "A4-32/episodes/scene-100183.sample-3/episode.json": {
+    "bytes": 8152,
+    "sha256": "a8b6f6327f8565239d045bdfcda05e4ba6e9c0cd02865347b464343e62b4cce6"
+  },
+  "A4-32/episodes/scene-100186.sample-0/episode.json": {
+    "bytes": 9985,
+    "sha256": "d41d9205a280c997c02d10e011204fb47fbcc508974fbdb63f92bec5fdc674c6"
+  },
+  "A4-32/episodes/scene-100186.sample-2/episode.json": {
+    "bytes": 9984,
+    "sha256": "3aa1331a871a11ad87e65566cfc9d390feeea4e56ff7d3bd09a09ffcf5937e40"
+  },
+  "A4-32/episodes/scene-100186.sample-3/episode.json": {
+    "bytes": 10026,
+    "sha256": "9a6427c21abd09b4aa6965b6619b89030d62f199283d7db121f960a1748093a8"
+  },
+  "A4-32-HOLD/episodes/scene-100035.sample-0/episode.json": {
+    "bytes": 10000,
+    "sha256": "d5eecf4f0102e9f8a42f596faa47fca78889076852e1cc06665067f635a7c5aa"
+  },
+  "A4-32-HOLD/episodes/scene-100035.sample-2/episode.json": {
+    "bytes": 9990,
+    "sha256": "a0a9ec113612c1131d9baa0503e26d333017637f8bc555a665bd3e5e9b73e688"
+  },
+  "A4-32-HOLD/episodes/scene-100035.sample-3/episode.json": {
+    "bytes": 9985,
+    "sha256": "a6287d22fb413e7cb7348cb21b9d94dadf8a849db6a6d7778737a79c742b755f"
+  },
+  "A4-32-HOLD/episodes/scene-100038.sample-0/episode.json": {
+    "bytes": 9992,
+    "sha256": "ca46a5d0774075e5364522f0127495b280dd068e94facf2e6f0f3b86b05daac0"
+  },
+  "A4-32-HOLD/episodes/scene-100038.sample-2/episode.json": {
+    "bytes": 10007,
+    "sha256": "86dd124bf936a756da457fae7b9bed01fb5265bae63c29648d54d1cffa2a302a"
+  },
+  "A4-32-HOLD/episodes/scene-100038.sample-3/episode.json": {
+    "bytes": 10000,
+    "sha256": "b9f59271b4b1dfa1bb55fdaebbd572602234db8978dd3d9f6e52e19f242ebb68"
+  },
+  "A4-32-HOLD/episodes/scene-100057.sample-0/episode.json": {
+    "bytes": 9996,
+    "sha256": "80fafe93c875884430d9a0dd16354cb4e32e15e4d934ba15fc396cdcb7f38c7c"
+  },
+  "A4-32-HOLD/episodes/scene-100057.sample-2/episode.json": {
+    "bytes": 7551,
+    "sha256": "38f663322b7221585f9e82239bb66c969bc5e62f5c3bad5c4111ff9a0524270b"
+  },
+  "A4-32-HOLD/episodes/scene-100057.sample-3/episode.json": {
+    "bytes": 9984,
+    "sha256": "f71fd0a854b0679034d043602243a3dbd14001b5d8ada1ba5ad56bab140775c9"
+  },
+  "A4-32-HOLD/episodes/scene-100060.sample-0/episode.json": {
+    "bytes": 10002,
+    "sha256": "1fa377e0f1e6dd0cc55d76cca6f494e339700a8a3f6d1ee4c4a05adda7951d32"
+  },
+  "A4-32-HOLD/episodes/scene-100060.sample-2/episode.json": {
+    "bytes": 10008,
+    "sha256": "df07bf7f807584bd888d67c3504a22912e539575a02cd410787c36a1c24ba713"
+  },
+  "A4-32-HOLD/episodes/scene-100060.sample-3/episode.json": {
+    "bytes": 7985,
+    "sha256": "42bc497c979405f9c5bf251eb0cf86faa284940669f34f88b310931b865cea3a"
+  },
+  "A4-32-HOLD/episodes/scene-100069.sample-0/episode.json": {
+    "bytes": 10006,
+    "sha256": "790bb189e1b1b06f33da8c604c1439af8720192b105ce2b7bfadf9aaa00b4667"
+  },
+  "A4-32-HOLD/episodes/scene-100069.sample-2/episode.json": {
+    "bytes": 9994,
+    "sha256": "9da32b0293aed394d6687a5c8c547c0bbebedeadb24ddc5f4adc73a1677f529a"
+  },
+  "A4-32-HOLD/episodes/scene-100069.sample-3/episode.json": {
+    "bytes": 9992,
+    "sha256": "587fe88c03e8a3b3ea7827733caef12e3809d1a3c1210f35395554200e3f7362"
+  },
+  "A4-32-HOLD/episodes/scene-100072.sample-0/episode.json": {
+    "bytes": 10008,
+    "sha256": "a3c69cbbb8116349d934e8f47d4fa74190057106af6d6e5e1278d353a56a100e"
+  },
+  "A4-32-HOLD/episodes/scene-100072.sample-2/episode.json": {
+    "bytes": 8419,
+    "sha256": "76ae41ae3de52a28b4d3caab3ba253ab575565dbd8f257ecd5a709137045c10f"
+  },
+  "A4-32-HOLD/episodes/scene-100072.sample-3/episode.json": {
+    "bytes": 9984,
+    "sha256": "ad1126a7f8e48a1fb5b614afcee7e547c7eddafd29cddde5115573a393ffa44f"
+  },
+  "A4-32-HOLD/episodes/scene-100078.sample-0/episode.json": {
+    "bytes": 10002,
+    "sha256": "3fd5dadbcb06e921908ccb7b486b7306984e47726bc205bfaf905ea2d9037f0d"
+  },
+  "A4-32-HOLD/episodes/scene-100078.sample-2/episode.json": {
+    "bytes": 9984,
+    "sha256": "bbdfe24f334ed87d76f95464235e58acdb5bc9c604cbaa858db026038d084efb"
+  },
+  "A4-32-HOLD/episodes/scene-100078.sample-3/episode.json": {
+    "bytes": 10001,
+    "sha256": "975d72e7e0e96b7b153573f06c37fc8879fa516984eb3c39830dc586cb236ad2"
+  },
+  "A4-32-HOLD/episodes/scene-100085.sample-0/episode.json": {
+    "bytes": 9978,
+    "sha256": "585a6f62353894334a2f0b1c72360575372ce70b5ba01a4f9921e23028a9208d"
+  },
+  "A4-32-HOLD/episodes/scene-100085.sample-2/episode.json": {
+    "bytes": 9991,
+    "sha256": "915fe65a1ad7fdf9e54aecac00a1473f27932cfd55aba35d3f2f8ec8c3a0ee07"
+  },
+  "A4-32-HOLD/episodes/scene-100085.sample-3/episode.json": {
+    "bytes": 9977,
+    "sha256": "0cf64c368493d639532743bd1f6026f441366da4862f1698f2b94c0c7e8160eb"
+  },
+  "A4-32-HOLD/episodes/scene-100087.sample-0/episode.json": {
+    "bytes": 7887,
+    "sha256": "5cc104f1b78cea788fd3f0035574f5dbd448d6290eb32d978cad8a086cf87d08"
+  },
+  "A4-32-HOLD/episodes/scene-100087.sample-2/episode.json": {
+    "bytes": 10002,
+    "sha256": "b03e2018e35bed4ab06cacf4abeca5df48a459ca683577583f35e814dad8b03c"
+  },
+  "A4-32-HOLD/episodes/scene-100087.sample-3/episode.json": {
+    "bytes": 10000,
+    "sha256": "06eaa267a59e568550ad5e8691d9960de8af30ae1d15ff3fbee695ce3d08957f"
+  },
+  "A4-32-HOLD/episodes/scene-100098.sample-0/episode.json": {
+    "bytes": 9993,
+    "sha256": "98df9cbea790bd87f9a2fa692505f59b474eb594393cfacbfa395e240a4aa37b"
+  },
+  "A4-32-HOLD/episodes/scene-100098.sample-2/episode.json": {
+    "bytes": 10012,
+    "sha256": "69506c7afe855de68eff278a2e10bfe44d1d01a72f79b59eb6130931d564f1fd"
+  },
+  "A4-32-HOLD/episodes/scene-100098.sample-3/episode.json": {
+    "bytes": 10000,
+    "sha256": "5d22dd116a4779c14048f21b2538e89be6109711d695fbdf8eca894a400ffa75"
+  },
+  "A4-32-HOLD/episodes/scene-100102.sample-0/episode.json": {
+    "bytes": 10007,
+    "sha256": "73e466c83bd1b11446935c75bbacc2f3e21232e8667fb1b0b41f5cf49d308dd6"
+  },
+  "A4-32-HOLD/episodes/scene-100102.sample-2/episode.json": {
+    "bytes": 9972,
+    "sha256": "0dc6b3c984f7b61c55521d024bc3dc1b9c5e536715f6bfcf4e46da72d3607c8e"
+  },
+  "A4-32-HOLD/episodes/scene-100102.sample-3/episode.json": {
+    "bytes": 7931,
+    "sha256": "6aef94cb342725110975527f353a9db84e034e910819ce24597e6673371732c3"
+  },
+  "A4-32-HOLD/episodes/scene-100137.sample-0/episode.json": {
+    "bytes": 9992,
+    "sha256": "5126f1e46c3f90ec896e102fa0f696da03a1457e983538a80029a9f22038b593"
+  },
+  "A4-32-HOLD/episodes/scene-100137.sample-2/episode.json": {
+    "bytes": 8021,
+    "sha256": "5d94cd9fffa96b05751b46a0df8d6b94a4c17ee2f3c1fca80ec6a5cb73d9bd99"
+  },
+  "A4-32-HOLD/episodes/scene-100137.sample-3/episode.json": {
+    "bytes": 9990,
+    "sha256": "b10bb3239a5c8701eb01c1174270ee0fdbe1fb586c12ea7fcc1776a9ff1fa4b1"
+  },
+  "A4-32-HOLD/episodes/scene-100145.sample-0/episode.json": {
+    "bytes": 10001,
+    "sha256": "065491f99679f116274d3940e0d13560ab10f687795864577f1d69b04c9476fc"
+  },
+  "A4-32-HOLD/episodes/scene-100145.sample-2/episode.json": {
+    "bytes": 9987,
+    "sha256": "6e76a76496345a08293fada7fc7b9010da90ec22f334f7f5bf2b770d3a03fe66"
+  },
+  "A4-32-HOLD/episodes/scene-100145.sample-3/episode.json": {
+    "bytes": 9989,
+    "sha256": "994341d77e6fb6cd961869fed870adf2aa3b2e48675d530570281ddeff5b56cd"
+  },
+  "A4-32-HOLD/episodes/scene-100152.sample-0/episode.json": {
+    "bytes": 10013,
+    "sha256": "d40163f55d8e86a45e14ff45660384a36e18fe09ff7f50a58471a2911cc1d654"
+  },
+  "A4-32-HOLD/episodes/scene-100152.sample-2/episode.json": {
+    "bytes": 9967,
+    "sha256": "8bcac6b7eee0f4c49de57f9ef25ab3d1cf0733b5846c59d9e150f562115b3c53"
+  },
+  "A4-32-HOLD/episodes/scene-100152.sample-3/episode.json": {
+    "bytes": 9982,
+    "sha256": "c418b4aff742fbb12e6b155ef5156cfebc06f3f67512ed3c3b274b45956447fb"
+  },
+  "A4-32-HOLD/episodes/scene-100164.sample-0/episode.json": {
+    "bytes": 10000,
+    "sha256": "bd972c49e02930b91689dc2ba987394c432de8242870dfd62683bfe836a6f7e5"
+  },
+  "A4-32-HOLD/episodes/scene-100164.sample-2/episode.json": {
+    "bytes": 9994,
+    "sha256": "e41b80958977c4d269b281f7aa0accc2571c8f9b8301bd2ccbf234670298b4bf"
+  },
+  "A4-32-HOLD/episodes/scene-100164.sample-3/episode.json": {
+    "bytes": 8480,
+    "sha256": "b28628cd901897ee2dc55823807101cd87669451b1bd2fb991623fb4d299f7e1"
+  },
+  "A4-32-HOLD/episodes/scene-100166.sample-0/episode.json": {
+    "bytes": 10001,
+    "sha256": "f2af1724d9d265b89091a956f7b68ce7f9403702a62a19ca60cce1b8bc77d950"
+  },
+  "A4-32-HOLD/episodes/scene-100166.sample-2/episode.json": {
+    "bytes": 9990,
+    "sha256": "8c582c08b0eb13d352ac5ac8a3262873e37fde59fcfddb885a2bcc409021bd11"
+  },
+  "A4-32-HOLD/episodes/scene-100166.sample-3/episode.json": {
+    "bytes": 9977,
+    "sha256": "b38a07cad8670f7f1e76e3db3c5536484855f2b26a774cd917e552349b533414"
+  },
+  "A4-32-HOLD/episodes/scene-100169.sample-0/episode.json": {
+    "bytes": 9995,
+    "sha256": "378803c89d986856ce3427f7ea9ffed75015b4115aabf76436d0b6cc40b54eb6"
+  },
+  "A4-32-HOLD/episodes/scene-100169.sample-2/episode.json": {
+    "bytes": 7898,
+    "sha256": "8551d6c7bafe02f145886224d21fe749cfd0cca09d2041862e05479726110c27"
+  },
+  "A4-32-HOLD/episodes/scene-100169.sample-3/episode.json": {
+    "bytes": 7890,
+    "sha256": "f2696261df6cab7bf421fe07e2ea6228b2881fb6b3eee02776d9d57083299bcb"
+  },
+  "A4-32-HOLD/episodes/scene-100175.sample-0/episode.json": {
+    "bytes": 10002,
+    "sha256": "cf97343ebb661aa4df5e42ebaeb560cc5de8f48e277188609c4fb796378f9958"
+  },
+  "A4-32-HOLD/episodes/scene-100175.sample-2/episode.json": {
+    "bytes": 9990,
+    "sha256": "96b123cbe49742d33613f6c5c68eca478c9782e142332b22005359902fb1464c"
+  },
+  "A4-32-HOLD/episodes/scene-100175.sample-3/episode.json": {
+    "bytes": 10017,
+    "sha256": "83aeeb008a389dad7a7a74a845c90b2bac8a1e404c17e572f3a77333b7c15c1e"
+  },
+  "A4-32-HOLD/episodes/scene-100183.sample-0/episode.json": {
+    "bytes": 9989,
+    "sha256": "26c48a19802cb513b4765df3037936d0715f0fa951579cd124dedc29a84ccd64"
+  },
+  "A4-32-HOLD/episodes/scene-100183.sample-2/episode.json": {
+    "bytes": 9986,
+    "sha256": "b858e6e8b79852aa71b23f245582d5688b072bf1e08862b8badd1b8687a24ff6"
+  },
+  "A4-32-HOLD/episodes/scene-100183.sample-3/episode.json": {
+    "bytes": 8142,
+    "sha256": "4110d232098d69f64d30e8049cce05c3d60adb3d057423fc235a7aeec2f34ed1"
+  },
+  "A4-32-HOLD/episodes/scene-100186.sample-0/episode.json": {
+    "bytes": 9986,
+    "sha256": "0bea1ef87cb02289b80e20e501c48f438d4be3f57c2310982d6da1eb04783e72"
+  },
+  "A4-32-HOLD/episodes/scene-100186.sample-2/episode.json": {
+    "bytes": 9972,
+    "sha256": "8e997ad875a9fcb1255410aded34a7c3d3f3913695d3cec7b21236b88f34ec20"
+  },
+  "A4-32-HOLD/episodes/scene-100186.sample-3/episode.json": {
+    "bytes": 10025,
+    "sha256": "4da2ef68553fa21cfad6fcfb3cc5de2b311dad8a689f1245534842314cf7af53"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100035.sample-0/episode.json": {
+    "bytes": 10010,
+    "sha256": "4c7619fae835063f2071669658cda4dd0cafd1eaa0dcc037a972af6687382f51"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100035.sample-2/episode.json": {
+    "bytes": 10024,
+    "sha256": "d37f27faf15f8f28da98eb0d64a8224599e8409892c80b1df0cf0594c1f43c94"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100035.sample-3/episode.json": {
+    "bytes": 9991,
+    "sha256": "2960e7d84cd085b29226cbaf9c819a64d0cc8096d975c3c6171690395997b702"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100038.sample-0/episode.json": {
+    "bytes": 10010,
+    "sha256": "c322f3855ef779161179bde93d57f1d17825eb37e07c2047a439d9146b54fe12"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100038.sample-2/episode.json": {
+    "bytes": 10021,
+    "sha256": "55106dad713a82e577bfa6163ab27afda23c2ab924ed32995717829dd1be6d6c"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100038.sample-3/episode.json": {
+    "bytes": 10018,
+    "sha256": "d704d160049e3afe5dde9015de5b224aee40d760f2a062974a4378523c2c7c2f"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100057.sample-0/episode.json": {
+    "bytes": 10021,
+    "sha256": "f06d547193b4a1ebe2a3a3ff3fe3795ef900be25dd89a21f6ed9926d029b3d21"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100057.sample-2/episode.json": {
+    "bytes": 7539,
+    "sha256": "b7be873d28a7b09bc30285cfa865b2bc7412ca429507ee7ec5af356c8ca993d1"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100057.sample-3/episode.json": {
+    "bytes": 9999,
+    "sha256": "d81519f15642ab32c27ad9760fb71255edaf4f6b6856068d46498c9de2bf170b"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100060.sample-0/episode.json": {
+    "bytes": 8016,
+    "sha256": "ff5a90903d8a2a6d73d0215f81c75230ae95be60eeb109fa3af8b1998a148a07"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100060.sample-2/episode.json": {
+    "bytes": 10007,
+    "sha256": "426f8ae6ee43bf0a20a0c838afe9f251e12b073fa22aced67b7ff70790d34d41"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100060.sample-3/episode.json": {
+    "bytes": 7973,
+    "sha256": "73c5bc29b142602fa2e6343f916f2c8eedf51054ee41bc224cd4e3aa9b7c369b"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100069.sample-0/episode.json": {
+    "bytes": 10024,
+    "sha256": "cd6e553fb38b4460a03c1e0f3a606ab088c69de96ac4520e675bbf317eca6a7b"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100069.sample-2/episode.json": {
+    "bytes": 10006,
+    "sha256": "4ad3162808a50cff2f0d1137fc96246af94399a1b3287cb9b2d3b0d80ecc5cf9"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100069.sample-3/episode.json": {
+    "bytes": 9984,
+    "sha256": "16385f8d07e6e4a91c588f149f2ba9fe98128c5a14889cc17651152bd222c9da"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100072.sample-0/episode.json": {
+    "bytes": 9998,
+    "sha256": "c8f173b2bed39e6f9f1973e373546ee17ed01cb37ca16d94811e4c8d8d43f719"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100072.sample-2/episode.json": {
+    "bytes": 8455,
+    "sha256": "c3684c2b692d4ae60a5426545413867fc87e9c8ebe1d573a08cbad612001d4c7"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100072.sample-3/episode.json": {
+    "bytes": 10011,
+    "sha256": "c2fb0ef4f99a29fac4c88de48bfd6ac7cf430faa68a10f8fa274bf70787e90d4"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100078.sample-0/episode.json": {
+    "bytes": 10009,
+    "sha256": "003150e60055d6176166378809fae3ad0b40f72e47e6a7926d1beeec830139ba"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100078.sample-2/episode.json": {
+    "bytes": 9989,
+    "sha256": "4626218eeed9cbc2dd8a2202fe725703e1462b68eecdc847e5ca041a651ec3cd"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100078.sample-3/episode.json": {
+    "bytes": 10006,
+    "sha256": "852f33486ab337adf365e5c8a6a7fff10ab28f0dbccac8569d8b4e3676b89f06"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100085.sample-0/episode.json": {
+    "bytes": 10002,
+    "sha256": "7f92442f5e53707a3dcfd95e77026e4c3cc1028ccd0be9bf77ff0da42921d771"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100085.sample-2/episode.json": {
+    "bytes": 9994,
+    "sha256": "d9e6d40fccf71a2f560d6c53d0cb657a5ca23c0b1dd9679c4291167e636e5059"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100085.sample-3/episode.json": {
+    "bytes": 10000,
+    "sha256": "813bca8b89d1b37fbc7ef5b1f9c75d354b4ca461b76eb4123496b2ae74d11819"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100087.sample-0/episode.json": {
+    "bytes": 7916,
+    "sha256": "822c9f469b0943a24ee14819251c46491299972780e99697cf9e6a0e3ed54431"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100087.sample-2/episode.json": {
+    "bytes": 10020,
+    "sha256": "c112f99111a04c47d342ece0663310da0bf93497e7e4d18f09f28c1cc4645ef4"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100087.sample-3/episode.json": {
+    "bytes": 10018,
+    "sha256": "c8d04e5086a86377665fa0572e0ece073d73e4b01544a5830100f0915be54ec6"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100098.sample-0/episode.json": {
+    "bytes": 9991,
+    "sha256": "33ec120ba15d67d56672e1b2cf45e45e467a635ad5111c7d181273140046c2f2"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100098.sample-2/episode.json": {
+    "bytes": 10014,
+    "sha256": "3d0f7710a75807d6420371d8097938ad28a3ecfb2c308e4aa720b9d59e5b5525"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100098.sample-3/episode.json": {
+    "bytes": 10001,
+    "sha256": "098a74cf8ee982ded5986114eae5d31618223f6036860bbe33fa87ff2325b60e"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100102.sample-0/episode.json": {
+    "bytes": 10002,
+    "sha256": "b6ab9c11008cf62981d5edf3844b35e69de90935613ab1c320948826ae5648c4"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100102.sample-2/episode.json": {
+    "bytes": 10015,
+    "sha256": "08edfe85dc8817c37ed32c8b8b174aff35364e176615ccdbf6504d2e5e468ade"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100102.sample-3/episode.json": {
+    "bytes": 7936,
+    "sha256": "ba4108c026d71f333053341a5f6ff4f6f3c84a428f8a442c96da22f31584cd20"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100137.sample-0/episode.json": {
+    "bytes": 9991,
+    "sha256": "b203eb80192c75ce603423207ce349fd5be82f9ed5f1df7d8fe6f98a494f7dfe"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100137.sample-2/episode.json": {
+    "bytes": 8039,
+    "sha256": "45a69ff1b19c87883a5dc7a7d8daf4996051c7a4d6fd5fc2352a063925be4edf"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100137.sample-3/episode.json": {
+    "bytes": 9997,
+    "sha256": "94fdf87405dcfaf7c466d27815587e22070482e8f1a3e4604fa8217b14ad0fc7"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100145.sample-0/episode.json": {
+    "bytes": 10019,
+    "sha256": "bebf345236b0230d3663944084cb09fbfb96817c18b464102e3bbef8d94041f9"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100145.sample-2/episode.json": {
+    "bytes": 9996,
+    "sha256": "513b56359bee0c7bd8b80ef12721ade602d16b56f29577e7d4bed845fb48a80d"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100145.sample-3/episode.json": {
+    "bytes": 9998,
+    "sha256": "4b93590a3723591cdcb5e3c2d06d07d1ad972dab6794d9108429fa8191383a0c"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100152.sample-0/episode.json": {
+    "bytes": 10009,
+    "sha256": "ee9eb8496d03c2496aebfe9b8765405ea23ad87f6bec82f496279f41a4ab362b"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100152.sample-2/episode.json": {
+    "bytes": 9996,
+    "sha256": "1a06aaae84aa140fd3966fbfde63dfe45a6520834c662b570157b6f9df6fa31f"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100152.sample-3/episode.json": {
+    "bytes": 9997,
+    "sha256": "1917a6f66e723a64c88825d6f279fc16be2438b0cf75418acdfb68a5116cd5b3"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100164.sample-0/episode.json": {
+    "bytes": 10019,
+    "sha256": "e0ab857ebcd26f8795299c261358a81ea6ee8d75271b4eda3b23c90bfc9dfb74"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100164.sample-2/episode.json": {
+    "bytes": 9996,
+    "sha256": "81470e057cc74c8d07f1088bcf0ac999b78fc7820a0be9f24f23a798613a02b9"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100164.sample-3/episode.json": {
+    "bytes": 8490,
+    "sha256": "f8bd185eab37235caf7ba348d812c09db5faf2820a2868844943598c1b143a63"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100166.sample-0/episode.json": {
+    "bytes": 10026,
+    "sha256": "c655814e3eeb943d059f1e938625c17e88b9aa497e8d375554d00f9207662fbf"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100166.sample-2/episode.json": {
+    "bytes": 10013,
+    "sha256": "5390763089f7cb525ab23e60d51b6823127ee057aeb655a903d2877b35866412"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100166.sample-3/episode.json": {
+    "bytes": 10011,
+    "sha256": "48f88da2566113dadd00c0e6f2d9a99a75ed2b1d1d43a79168c4d733b116d911"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100169.sample-0/episode.json": {
+    "bytes": 10004,
+    "sha256": "384cd629ead9a7d892d5d968b0d090dd98783f7bc67bc686eff3becff3cfe259"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100169.sample-2/episode.json": {
+    "bytes": 7970,
+    "sha256": "5b5ebe2f20e443110308fadd9a8a509c016981d9c2c6a881c2235007b040202d"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100169.sample-3/episode.json": {
+    "bytes": 7895,
+    "sha256": "5d255c7fea663a3ec97e06803dd671d179da6d7828093acc3e0023baf73aeb95"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100175.sample-0/episode.json": {
+    "bytes": 9985,
+    "sha256": "773120d03c06cd368c93e1224593db4a906d150712700160cbba4140f7ebd647"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100175.sample-2/episode.json": {
+    "bytes": 9990,
+    "sha256": "e5bdf095d39fc4c6ca46a9c9c42d71850c3354bf5f8217df8e1613c96a4c6e3f"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100175.sample-3/episode.json": {
+    "bytes": 10029,
+    "sha256": "84c2717d12c54a5f4073ff6d4d8debb3b2864b3e67466b9cd7c876d4ca414868"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100183.sample-0/episode.json": {
+    "bytes": 9992,
+    "sha256": "7d00cfaa3c2c5c32e474729d9f4a20b7f023daad99652f10ff1f6bf21631af83"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100183.sample-2/episode.json": {
+    "bytes": 10009,
+    "sha256": "563abc98133d533e1ff1026abab4282c495032ccb573a76647f8dd30c1f24b5e"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100183.sample-3/episode.json": {
+    "bytes": 8127,
+    "sha256": "bccd0bef5c175d87bf903f7e8de3c7d74856ff13c646b0bfbc4b5f488454496c"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100186.sample-0/episode.json": {
+    "bytes": 9988,
+    "sha256": "36f7dd59440854f270b102446fea57aef2916766b1d51ade9b00649273ff5ab3"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100186.sample-2/episode.json": {
+    "bytes": 9986,
+    "sha256": "f9556750e6ebae24ec7471b476cb31b502bbb4bdf8a3792af774cc6a829d4cdb"
+  },
+  "A4-32-LOCAL-HOLD/episodes/scene-100186.sample-3/episode.json": {
+    "bytes": 10036,
+    "sha256": "c962ba1abfd8782202866666ef0f96c594ae69b5c1187b15aab574ef92d6f148"
+  },
+  "validation.json": {
+    "bytes": 753,
+    "sha256": "63edb2e319821b9ef52708ea23e20cbed163b00880a253b1b22b2d9f394fb30a"
+  },
+  "attribution.json": {
+    "bytes": 4972,
+    "sha256": "fcd19f563a82463c9575e1eea7926a9bfa56f2b84762663e6bc895a331fcfda8"
+  },
+  "receipts/launch.json": {
+    "bytes": 1361,
+    "sha256": "db0bbf6857a354cb2a637567b6028afdf969e49bda59b83a7a33f7a6c28410fb"
+  },
+  "receipts/preflight.json": {
+    "bytes": 1242,
+    "sha256": "d4e0a0936a7e1373769ece1bca4d5ef40cb260136378e8ab27d2b1f79e98454f"
+  },
+  "receipts/source-provenance.json": {
+    "bytes": 3821,
+    "sha256": "5c5802abc1aa47c8a8863a32067ace5fba2e3064a5f8bef8d9af26f8e0df4df6"
+  },
+  "receipts/validation.log": {
+    "bytes": 17976,
+    "sha256": "ca174f9f441166cccf06aea449a6c36e4c5f25c36698d5367121dc89e3312d1c"
+  },
+  "receipts/smoke.sbatch": {
+    "bytes": 1220,
+    "sha256": "2229bbf4e38f66431d10676b600884feea0b4fa212a3892a80f605b088a3e61a"
+  },
+  "receipts/run.sbatch": {
+    "bytes": 802,
+    "sha256": "8c6af1b01b6b2568dc74b5aaaca8b4cc35f5d6d7ecd1037dc991e3960f37f2dd"
+  },
+  "receipts/audit_hold.py": {
+    "bytes": 7812,
+    "sha256": "cffd4d6edbfd95042777248b4f206fe0771e270a3791582c36eab1554c2541af"
+  },
+  "plan.json": {
+    "bytes": 2073,
+    "sha256": "1d2d45b7112461c05f560447487de999acb63124fb6d5212a104bd7b9482709c"
+  },
+  "full-1557533.log": {
+    "bytes": 22864,
+    "sha256": "8cf7670f45cf4cef5b69a6d95aae8e0c549420ae0a399be93d6b1438490886f2"
+  }
+}

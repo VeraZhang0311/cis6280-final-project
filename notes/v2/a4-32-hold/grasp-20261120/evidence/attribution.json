@@ -1,0 +1,223 @@
+{
+  "versus_baseline": {
+    "A4-32-HOLD": [
+      {
+        "scene": 100038,
+        "sample_seed": 0,
+        "baseline": {
+          "peak_boxes": 4,
+          "final_boxes": 3,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 1,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100060,
+        "sample_seed": 0,
+        "baseline": {
+          "peak_boxes": 4,
+          "final_boxes": 4,
+          "success": true
+        },
+        "variant": {
+          "peak_boxes": 3,
+          "final_boxes": 2,
+          "success": false
+        },
+        "entries": 0,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 286
+      },
+      {
+        "scene": 100145,
+        "sample_seed": 3,
+        "baseline": {
+          "peak_boxes": 4,
+          "final_boxes": 1,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 2,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100169,
+        "sample_seed": 3,
+        "baseline": {
+          "peak_boxes": 3,
+          "final_boxes": 0,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 4,
+          "success": true
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100175,
+        "sample_seed": 2,
+        "baseline": {
+          "peak_boxes": 3,
+          "final_boxes": 2,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 3,
+          "final_boxes": 1,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 0
+      }
+    ],
+    "A4-32-LOCAL-HOLD": [
+      {
+        "scene": 100038,
+        "sample_seed": 0,
+        "baseline": {
+          "peak_boxes": 4,
+          "final_boxes": 3,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 1,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 2,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100098,
+        "sample_seed": 3,
+        "baseline": {
+          "peak_boxes": 1,
+          "final_boxes": 1,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 2,
+          "final_boxes": 1,
+          "success": false
+        },
+        "entries": 0,
+        "safe": 0,
+        "fallback": 0,
+        "pre_hold_choice_mismatches": 121
+      },
+      {
+        "scene": 100145,
+        "sample_seed": 3,
+        "baseline": {
+          "peak_boxes": 4,
+          "final_boxes": 1,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 2,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 2,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100169,
+        "sample_seed": 3,
+        "baseline": {
+          "peak_boxes": 3,
+          "final_boxes": 0,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 4,
+          "final_boxes": 4,
+          "success": true
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 2,
+        "pre_hold_choice_mismatches": 0
+      },
+      {
+        "scene": 100175,
+        "sample_seed": 2,
+        "baseline": {
+          "peak_boxes": 3,
+          "final_boxes": 2,
+          "success": false
+        },
+        "variant": {
+          "peak_boxes": 3,
+          "final_boxes": 1,
+          "success": false
+        },
+        "entries": 1,
+        "safe": 0,
+        "fallback": 2,
+        "pre_hold_choice_mismatches": 0
+      }
+    ]
+  },
+  "local_vs_hold": [
+    {
+      "scene": 100060,
+      "sample_seed": 0,
+      "HOLD": {
+        "peak_boxes": 3,
+        "final_boxes": 2,
+        "success": false
+      },
+      "LOCAL_HOLD": {
+        "peak_boxes": 4,
+        "final_boxes": 4,
+        "success": true
+      },
+      "HOLD_entries": 0,
+      "LOCAL_HOLD_entries": 0
+    },
+    {
+      "scene": 100098,
+      "sample_seed": 3,
+      "HOLD": {
+        "peak_boxes": 1,
+        "final_boxes": 1,
+        "success": false
+      },
+      "LOCAL_HOLD": {
+        "peak_boxes": 2,
+        "final_boxes": 1,
+        "success": false
+      },
+      "HOLD_entries": 0,
+      "LOCAL_HOLD_entries": 0
+    }
+  ],
+  "interpretation": "All LOCAL-HOLD versus HOLD outcome differences occurred in episodes where neither variant entered HOLD. Do not attribute those differences to the local hold selector or exit rule."
+}

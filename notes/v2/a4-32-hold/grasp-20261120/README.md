@@ -1,5 +1,11 @@
 # Emoo HOLD evaluation on GRASP — November 20, 2026
 
+**Completed: 180/180 episodes**, Slurm `1557533` exited `0:0` after 34:25.
+See [full results](RESULTS.md). LOCAL-HOLD scored 11/60 successes versus 10/60
+for fresh A4-32 and HOLD, but uncertainty includes zero. Its extra success over
+HOLD occurred without HOLD ever activating, so it cannot be credited to the new
+hold mechanism. A4-32 remains the default.
+
 The `emoo` branch remains at `5c0bc8a`. New branch `emoo-a4-32-hold` adds six
 commits after the integration snapshot `a8a12a4`:
 
@@ -43,6 +49,14 @@ original WM, official goals, the same 20 development scenes and seeds 0/2/3,
 per group, 180 total, on one L40 with bfloat16. Model/data hashes and dependency
 versions match the November 10 integration evaluation. The fresh A4-32 control
 will be checked against the 60 historical outcomes.
+
+The first completed baseline episodes already show some differences from the
+November 10 outcomes despite equal model/data hashes and package versions.
+Initial observations and decisions match; later trajectories can diverge. The
+cause is not established. Historical outcomes are therefore not reused as
+controls. All comparisons use the fresh baseline in this same job. The audit
+records historical and pre-HOLD replay differences rather than requiring bitwise
+trajectory reproduction; selector logic is still covered by deterministic tests.
 
 ## Execution and validation
 

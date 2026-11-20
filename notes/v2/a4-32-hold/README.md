@@ -1,11 +1,12 @@
 # A4-32-HOLD and LOCAL-HOLD experiment
 
-Status: implementation and deterministic tests complete; the single-scene
-Colab screen is complete; the matched 20-scene x 3-seed L40 evaluation is
-frozen but not yet run. See [screen results](RESULTS.md) and
-[structured evidence](evidence/single-scene-summary.json). The pending cluster
-receipt is recorded separately in [launch.json](launch.json); its null job ID is
-intentional until a scheduler submission actually occurs.
+Status: the single-scene Colab screen and the matched 20-scene x 3-seed L40
+evaluation are complete. The November 20 GRASP run finished all 180 episodes;
+see [batch results and mechanism audit](grasp-20261120/RESULTS.md) and the
+[actual launch receipt](grasp-20261120/launch.json). The original
+[screen results](RESULTS.md), [screen evidence](evidence/single-scene-summary.json),
+and prepared-but-unsubmitted [original launch record](launch.json) remain as
+historical records. The batch did not establish a reliable LOCAL-HOLD advantage.
 
 Branch: `emoo-a4-32-hold`. LOCAL-HOLD implementation snapshot before this
 documentation update: `257231e8fb38df236ee63216ac18c8971fa9d77e`.

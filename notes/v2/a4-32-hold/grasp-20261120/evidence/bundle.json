@@ -1,0 +1,7 @@
+{
+  "sha256": "e20674aa5d2741eb7bdf1b1e42f1050ebc6b660f45e0e43daeedf77fe0ecae06",
+  "bytes": 609184,
+  "local_path": "outputs/emoo-hold-eval-20261120/emoo-hold-evidence-180.tar.gz",
+  "cluster_path": "/mnt/projects/ll/tianzizh/cis6280-emoo-hold-eval-20261120-01/emoo-hold-evidence-180.tar.gz",
+  "contents": "180 episode records, reports, audit and provenance; videos and full step/count logs remain on GRASP."
+}

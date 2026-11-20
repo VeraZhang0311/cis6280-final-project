@@ -1,5 +1,9 @@
 # A4-32 HOLD / LOCAL-HOLD Results
 
+The matched 180-episode GRASP batch has since completed on November 20, 2026.
+See [full batch results and mechanism audit](grasp-20261120/RESULTS.md). This
+file preserves the original single-scene screen record below.
+
 Updated November 10, 2026 (America/New_York). Only the Colab screen for scene
 `100038`, sample seed `0`, is complete. The matched L40/BF16 evaluation over 20
 scenes and sample seeds `0/2/3` has not been run. This document therefore records

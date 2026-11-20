@@ -23,6 +23,13 @@
   "helper_sha256": {
     "smoke.sbatch": "2229bbf4e38f66431d10676b600884feea0b4fa212a3892a80f605b088a3e61a",
     "run.sbatch": "8c6af1b01b6b2568dc74b5aaaca8b4cc35f5d6d7ecd1037dc991e3960f37f2dd",
-    "audit_hold.py": "065f80464de5be30ed786f6f1a6d94409bf42ec251fd90efcbda372228063634"
-  }
+    "audit_hold.py": "cffd4d6edbfd95042777248b4f206fe0771e270a3791582c36eab1554c2541af"
+  },
+  "audit_updates": [
+    {
+      "previous_sha256": "065f80464de5be30ed786f6f1a6d94409bf42ec251fd90efcbda372228063634",
+      "sha256": "cffd4d6edbfd95042777248b4f206fe0771e270a3791582c36eab1554c2541af",
+      "reason": "Record observed historical/prefix replay differences rather than fail the audit; no planner, model, evaluation plan, or thresholds changed."
+    }
+  ]
 }
