@@ -1,7 +1,8 @@
 # Emoo HOLD evaluation on GRASP — November 20, 2026
 
 **Completed: 180/180 episodes**, Slurm `1557533` exited `0:0` after 34:25.
-See [full results](RESULTS.md). LOCAL-HOLD scored 11/60 successes versus 10/60
+See [full results](RESULTS.md) and the [downloadable 180-episode metrics bundle](evidence/emoo-hold-evidence-180.tar.gz).
+LOCAL-HOLD scored 11/60 successes versus 10/60
 for fresh A4-32 and HOLD, but uncertainty includes zero. Its extra success over
 HOLD occurred without HOLD ever activating, so it cannot be credited to the new
 hold mechanism. A4-32 remains the default.

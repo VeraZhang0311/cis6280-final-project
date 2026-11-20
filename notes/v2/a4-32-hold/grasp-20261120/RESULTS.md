@@ -71,6 +71,7 @@ The earlier Colab summary records LOCAL-HOLD peak/final 4/4 and official success
 
 - [Full comparison and all paired intervals](evidence/comparison.json), [run manifest](evidence/run.json), [aggregate summary](evidence/summary.json).
 - [HOLD audit, including all 180 episode summaries](evidence/hold-audit.json), [outcome attribution](evidence/attribution.json), [independent recomputation](evidence/validation.json).
+- [Download the portable 180-episode metrics bundle](evidence/emoo-hold-evidence-180.tar.gz) (609,184 bytes): all episode JSON records, aggregate/paired reports, mechanism audit, provenance, and validation logs. Videos and full per-step/count traces remain on GRASP.
 - [SHA256 file index](evidence/file-index.json), [portable evidence bundle identity](evidence/bundle.json), [actual scheduler launch receipt](launch.json).
 - Local complete metrics bundle: `outputs/emoo-hold-eval-20261120/emoo-hold-evidence-180.tar.gz`; extracted 180 episode records: `outputs/emoo-hold-eval-20261120/evidence/`.
 - GRASP videos and full traces: `/mnt/projects/ll/tianzizh/cis6280-emoo-hold-eval-20261120-01/outputs/planning/v2/a4-32-local-hold/`.
