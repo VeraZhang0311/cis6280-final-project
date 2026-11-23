@@ -18,6 +18,11 @@ The latch activates after two consecutive real observations are within the
 strict threshold for the final official goal and remains active for the episode.
 Simulator box counts, reward, and success are never read by the planner.
 
+The corrected Colab screen is preselected as scene `100183`, sample seed `3`.
+The released integration audit recorded 64 latched decisions, peak four, final
+two, and no success for this pair. It is therefore a high-information failure
+case for comparing post-latch selectors without changing pre-latch behavior.
+
 Post-latch groups differ only as follows:
 
 - `A4-32-T1-L4-HOLD`: minimize the mean distance over blocks 13--16.
