@@ -33,9 +33,19 @@ jobs:
           # locked torch version so setup does not pull CUDA/Triton libraries.
           # Triton's native extension crashes when AdamW is initialized in the
           # OSMesa test process with the CUDA wheel on these runners.
+          retry() {
+            for attempt in 1 2 3; do
+              "$@" && return 0
+              if [ "$attempt" -eq 3 ]; then
+                return 1
+              fi
+              echo "Attempt $attempt failed; retrying in $((attempt * 10)) seconds."
+              sleep $((attempt * 10))
+            done
+          }
           python -m venv .venv
-          .venv/bin/python -m pip install 'torch==2.14.0+cpu' --index-url https://download.pytorch.org/whl/cpu
-          bash scripts/setup.sh
+          retry .venv/bin/python -m pip install --retries 10 --timeout 60 'torch==2.14.0+cpu' --index-url https://download.pytorch.org/whl/cpu
+          retry bash scripts/setup.sh
           .venv/bin/python - <<'PY'
           import importlib.util
           import torch
