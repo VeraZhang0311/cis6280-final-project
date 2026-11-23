@@ -72,7 +72,8 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
     No observed state or real active index is changed here.
     """
     original_mode = mode
-    hold_modes = ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD')
+    hold_modes = ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD',
+                  'A4-32-T1-L4-FIRST4-HOLD', 'A4-32-T1-L4-LOCAL-HOLD')
     if hold_active and original_mode not in hold_modes:
         raise ValueError('hold_active is only valid for a hold mode')
     if mode in ('A4-16', 'A4-32', 'A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A5-16', 'A5-32'):
@@ -126,6 +127,36 @@ def select_candidate(active_distances, mode, threshold, next_distances=None, nex
                 selection.best = int(selection.cost.argmin())
                 selection.selection_rule = 'local_hold_first4_mean_fallback'
                 selection.fallback = 'no_safe_local_candidate'
+        return selection
+    if original_mode in ('A4-32-T1-L4-FIRST4-HOLD', 'A4-32-T1-L4-LOCAL-HOLD') and hold_active:
+        local = active_distances[:, :LOCAL_HOLD_BLOCKS]
+        selection.retention = local.mean(-1)
+        selection.retention_rule = 'first4_mean'
+        if original_mode == 'A4-32-T1-L4-FIRST4-HOLD':
+            selection.cost = selection.retention
+            selection.best = int(selection.cost.argmin())
+            selection.selection_rule = 'trajectory_hold_first4_mean'
+            return selection
+        if (first_block_actions is None or first_block_actions.shape !=
+                (len(active_distances), STRIDE*RAW_ACTION_DIM)
+                or not torch.isfinite(first_block_actions).all()):
+            raise ValueError('Local HOLD requires finite first-block raw actions [N,125]')
+        selection.eligible = (local < threshold).all(-1)
+        actions = first_block_actions.reshape(-1, STRIDE, RAW_ACTION_DIM)
+        selection.wrist_rms = actions[:, :, :3].square().mean((1, 2)).sqrt()
+        selection.action_rms = actions.square().mean((1, 2)).sqrt()
+        if selection.eligible.any():
+            selection.cost = selection.wrist_rms.masked_fill(~selection.eligible, float('inf'))
+            best_wrist = selection.cost.min()
+            tied = selection.eligible & (selection.wrist_rms == best_wrist)
+            tie_cost = selection.action_rms.masked_fill(~tied, float('inf'))
+            selection.best = int(tie_cost.argmin())
+            selection.selection_rule = 'trajectory_local_hold_safe_min_wrist'
+        else:
+            selection.cost = selection.retention
+            selection.best = int(selection.cost.argmin())
+            selection.selection_rule = 'trajectory_local_hold_first4_mean_fallback'
+            selection.fallback = 'no_safe_local_candidate'
         return selection
     if mode in PLANNING_HORIZONS:
         selection.cost = active_distances[:, -1]
@@ -325,7 +356,8 @@ class GoalActorAgent:
         active = self.goals[self.index]
         observed_distance = (z-active).square().sum()
         hold_entered = hold_exited = False
-        if self.mode in ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD'):
+        if self.mode in ('A4-32-HOLD', 'A4-32-LOCAL-HOLD', 'A4-32-T1-L4-HOLD',
+                         'A4-32-T1-L4-FIRST4-HOLD', 'A4-32-T1-L4-LOCAL-HOLD'):
             close_to_final = self.index == len(self.goals)-1 and observed_distance < self.thresholds[self.index]
             if self.mode == 'A4-32-LOCAL-HOLD' and self.hold_latched:
                 self.hold_exit_streak = 0 if close_to_final else self.hold_exit_streak+1

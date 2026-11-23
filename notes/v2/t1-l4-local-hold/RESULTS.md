@@ -1,4 +1,9 @@
-# A4-32 HOLD / LOCAL-HOLD Results
+# Superseded A4-based LOCAL-HOLD screen
+
+> **Not a valid optimization result for `A4-32-T1-L4-HOLD`.** This historical
+> screen used A4-32 `active_min` before the latch, whereas the released
+> integration method uses the T1-L4 trajectory objective. It remains here only
+> as debugging evidence. No corrected T1-L4 LOCAL-HOLD result exists yet.
 
 Updated November 10, 2026 (America/New_York). Only the Colab screen for scene
 `100038`, sample seed `0`, is complete. The matched L40/BF16 evaluation over 20

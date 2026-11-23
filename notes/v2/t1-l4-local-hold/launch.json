@@ -1,0 +1,25 @@
+{
+  "schema": "t1-l4-local-hold-launch-v2",
+  "status": "prepared_not_submitted",
+  "branch": "emoo-a4-32-hold",
+  "implementation_commit": null,
+  "documentation_launcher_commit": null,
+  "workspace": "/mnt/projects/ll/tianzizh/cis6280-t1-l4-local-hold-20261123",
+  "partition": "liu-compute",
+  "qos": "ll-med",
+  "gpu": "NVIDIA L40",
+  "workers": 8,
+  "groups": [
+    "A4-32-T1-L4-HOLD",
+    "A4-32-T1-L4-FIRST4-HOLD",
+    "A4-32-T1-L4-LOCAL-HOLD"
+  ],
+  "episodes_per_group": 60,
+  "expected_episodes": 180,
+  "plan": "notes/v2/t1-l4-local-hold/plan.json",
+  "launcher": "scripts/evaluate_t1_l4_local_hold.sbatch",
+  "output": "outputs/planning/v2/t1-l4-local-hold",
+  "job_id": null,
+  "submitted_at": null,
+  "note": "Populate job_id and submitted_at only after the matched GRASP job is actually submitted."
+}

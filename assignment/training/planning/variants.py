@@ -11,6 +11,7 @@ CANDIDATES = {
     'A4-16-RUIMING': 16,
     'A4-32-T1': 32, 'A4-32-T2': 32, 'A4-32-T1-L4': 32,
     'A4-32-T1-H8': 32, 'A4-32-T1-H12': 32, 'A4-32-T1-L4-HOLD': 32,
+    'A4-32-T1-L4-FIRST4-HOLD': 32, 'A4-32-T1-L4-LOCAL-HOLD': 32,
     **{mode: 32 for mode in PLANNING_HORIZONS},
     'A5-16': 16, 'A5-32': 32,
 }
@@ -23,4 +24,6 @@ TRAJECTORY_SPECS = {
     'A4-32-T1-H8': ('block8', .25),
     'A4-32-T1-H12': ('block12', .25),
     'A4-32-T1-L4-HOLD': ('late4_mean', .25),
+    'A4-32-T1-L4-FIRST4-HOLD': ('late4_mean', .25),
+    'A4-32-T1-L4-LOCAL-HOLD': ('late4_mean', .25),
 }

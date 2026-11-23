@@ -1,6 +1,8 @@
 {
   "schema": "a4-32-local-hold-screen-v1",
-  "status": "completed_single_scene_screen",
+  "status": "superseded_debugging_screen",
+  "valid_for_t1_l4_hold_optimization": false,
+  "superseded_reason": "The screen used A4-32 active-min scoring before the latch instead of the released T1-L4 trajectory objective.",
   "scope": {
     "scene_seed": 100038,
     "sample_seed": 0,
@@ -73,6 +75,6 @@
   "interpretation": {
     "supported": "The first-four-block mean-distance fallback converted this selected screen case to official success.",
     "not_supported": "No safe candidate existed, so this screen does not validate safe-candidate filtering or wrist-RMS ranking.",
-    "recommendation": "Keep A4-32 as default until the frozen matched 20-scene x 3-seed evaluation completes."
+    "recommendation": "Do not use this screen to claim an improvement to A4-32-T1-L4-HOLD. Run the corrected T1-L4 paired screen and matched evaluation."
   }
 }

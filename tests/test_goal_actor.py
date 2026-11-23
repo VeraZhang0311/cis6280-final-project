@@ -176,6 +176,39 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(hold.fallback, 'no_safe_local_candidate')
         self.assertEqual(hold.selection_rule, 'local_hold_first4_mean_fallback')
 
+    def test_t1_l4_hold_optimizations_are_identical_before_latch(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((3, 16), .4)
+        distances[0, 0], distances[0, 12:] = .02, .8
+        distances[1, 1], distances[1, 12:] = .04, .2
+        distances[2, 2], distances[2, 12:] = .06, .1
+        reference = select_candidate(distances, 'A4-32-T1-L4-HOLD', .25)
+        for mode in ('A4-32-T1-L4-FIRST4-HOLD', 'A4-32-T1-L4-LOCAL-HOLD'):
+            candidate = select_candidate(distances, mode, .25)
+            self.assertEqual(candidate.best, reference.best)
+            self.assertEqual(candidate.selection_rule, reference.selection_rule)
+            torch.testing.assert_close(candidate.cost, reference.cost)
+            torch.testing.assert_close(candidate.retention, reference.retention)
+
+    def test_t1_l4_first4_and_local_hold_change_only_post_latch_selection(self):
+        from assignment.training.planning.goal_actor import select_candidate
+        distances = torch.full((3, 16), .5)
+        distances[0, :4], distances[0, 12:] = .30, .05
+        distances[1, :4], distances[1, 12:] = .10, .20
+        distances[2, :4], distances[2, 12:] = .15, .30
+        actions = torch.full((3, 5, 25), .5)
+        actions[1, :, :3], actions[2, :, :3] = .20, .05
+        actions[1, :, 3:], actions[2, :, 3:] = .10, .10
+        actions = actions.reshape(3, 125)
+        late4 = select_candidate(distances, 'A4-32-T1-L4-HOLD', .25, hold_active=True)
+        first4 = select_candidate(distances, 'A4-32-T1-L4-FIRST4-HOLD', .25, hold_active=True)
+        local = select_candidate(distances, 'A4-32-T1-L4-LOCAL-HOLD', .25, hold_active=True,
+                                 first_block_actions=actions)
+        self.assertEqual((late4.best, first4.best, local.best), (0, 1, 2))
+        self.assertEqual(first4.selection_rule, 'trajectory_hold_first4_mean')
+        self.assertEqual(local.selection_rule, 'trajectory_local_hold_safe_min_wrist')
+        self.assertEqual(local.retention_rule, 'first4_mean')
+
 
 @unittest.skipIf(torch is None, 'torch is not installed')
 class AgentTests(unittest.TestCase):
@@ -325,7 +358,9 @@ class AgentTests(unittest.TestCase):
                                   ('A4-32-T1-L4', 32, 'trajectory_arrival_retention'),
                                   ('A4-32-T1-H8', 32, 'trajectory_arrival_retention'),
                                   ('A4-32-T1-H12', 32, 'trajectory_arrival_retention'),
-                                  ('A4-32-T1-L4-HOLD', 32, 'trajectory_arrival_retention')):
+                                  ('A4-32-T1-L4-HOLD', 32, 'trajectory_arrival_retention'),
+                                  ('A4-32-T1-L4-FIRST4-HOLD', 32, 'trajectory_arrival_retention'),
+                                  ('A4-32-T1-L4-LOCAL-HOLD', 32, 'trajectory_arrival_retention')):
             agent = self.agent(mode)
             block = agent.step(self.frame(0))
             self.assertEqual(block.shape, (5, 25))
@@ -391,6 +426,23 @@ class AgentTests(unittest.TestCase):
         self.assertTrue(agent.last_trace['hold_exited'])
         self.assertFalse(agent.last_trace['hold_latched'])
         self.assertEqual(agent.last_trace['selection_rule'], 'active_min')
+
+    def test_t1_l4_local_hold_uses_the_same_trigger_and_remains_latched(self):
+        agent = self.agent('A4-32-T1-L4-LOCAL-HOLD')
+        agent.step(self.frame(30))
+        agent.step(self.frame(60))
+        self.assertFalse(agent.last_trace['hold_latched'])
+        self.assertEqual(agent.last_trace['selection_rule'], 'trajectory_arrival_retention')
+        agent.step(self.frame(60))
+        self.assertTrue(agent.last_trace['hold_entered'])
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertIn(agent.last_trace['selection_rule'],
+                      ('trajectory_local_hold_safe_min_wrist',
+                       'trajectory_local_hold_first4_mean_fallback'))
+        agent.step(self.frame(0))
+        agent.step(self.frame(0))
+        self.assertTrue(agent.last_trace['hold_latched'])
+        self.assertFalse(agent.last_trace['hold_exited'])
 
     def test_shafaa_truncates_only_wm_and_scores_the_requested_endpoint(self):
         from assignment.training.planning.goal_actor import select_candidate

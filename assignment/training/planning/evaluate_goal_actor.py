@@ -257,6 +257,9 @@ def paired_comparisons(results, draws=2000):
              ('A4-32-T1-H8', 'A4-32-T1'),
              ('A4-32-T1-H12', 'A4-32-T1'),
              ('A4-32-T1-L4-HOLD', 'A4-32-T1-L4'),
+             ('A4-32-T1-L4-FIRST4-HOLD', 'A4-32-T1-L4-HOLD'),
+             ('A4-32-T1-L4-LOCAL-HOLD', 'A4-32-T1-L4-HOLD'),
+             ('A4-32-T1-L4-LOCAL-HOLD', 'A4-32-T1-L4-FIRST4-HOLD'),
              ('A5-16', 'A4-16'), ('A5-32', 'A4-32'), ('A5-32', 'A5-16')]
     pairs += [(mode, 'A4-32') for mode in (*TRAJECTORY_SPECS, *PLANNING_HORIZONS)]
     pairs += [('A4-16-RUIMING', 'A4-16'), ('A4-32-T1', 'A4-16-RUIMING')]
@@ -486,6 +489,11 @@ def main(argv=None):
                                                   'first-block wrist RMS; exit after two misses'),
                                 T1_L4_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
                                             'threshold; then minimize the late-four mean'),
+                                T1_L4_FIRST4_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
+                                                   'threshold; then permanently minimize the first-four mean'),
+                                T1_L4_LOCAL_HOLD=('T1-L4 until two consecutive real observations satisfy the final-goal '
+                                                  'threshold; then permanently require four locally safe blocks and '
+                                                  'minimize first-block wrist RMS, falling back to the first-four mean'),
                                 A3='eligible q<1 over blocks 1..15; q+0.25*r; otherwise A2',
                                 tie_break='earliest candidate', decision_timing='CUDA synchronized; excludes reset/render/video',
                                 call_units='encoder batches; policy sample calls / velocity forwards; predictor autoregressive steps'),

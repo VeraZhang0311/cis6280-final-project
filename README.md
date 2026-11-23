@@ -1,31 +1,27 @@
 > **For collaborators: DO NOT make changes directly on this branch. Create your own branch from `tianzi-branch/v2.0` and commit/push your work there. Keep this branch as the shared experiment reference.**
 
-## A4-32 LOCAL-HOLD follow-up
+## T1-L4 HOLD optimization follow-up
 
-Branch `emoo-a4-32-hold` adds a final-stage planner without retraining the v2
-actor or world model. It keeps A4-32 unchanged until two consecutive real
-observations satisfy the final-goal threshold. The original late-four HOLD then
-scores blocks 13--16 and stays latched; the new `A4-32-LOCAL-HOLD` instead uses
-a four-block local window, prefers low-wrist-motion candidates when the complete
-window remains within threshold, falls back to the four-block mean distance,
-and can exit HOLD after two real-observation misses.
+Branch `emoo-a4-32-hold` now contains a corrected optimization of the released
+`A4-32-T1-L4-HOLD` method from `tianzi/v2.0-integration`. The released method,
+the `FIRST4-HOLD` ablation, and the new `T1-L4-LOCAL-HOLD` are identical before
+the latch: all use the T1 arrival objective with L4 retention. They also share
+the same two-real-observation trigger and permanent latch. Only the post-latch
+selector changes: late-four mean, first-four mean, or local safety plus wrist
+motion with a first-four-mean fallback.
 
-In the completed Colab screen (scene `100038`, seed `0`), fresh A4-32 and the
-late-four HOLD both reached four boxes but finished with one and did not
-succeed. LOCAL-HOLD reached four, finished with four, and achieved official
-success after three latched decisions. All three LOCAL-HOLD decisions used its
-fallback because no candidate satisfied the strict four-block safety predicate;
-the screen therefore supports the short-window fallback, not yet the proposed
-safe-candidate/wrist-ranking mechanism. This is one selected development case,
-not evidence of general improvement.
+The earlier A4-based LOCAL-HOLD screen is retained only as superseded debugging
+evidence. Because its pre-latch selector differed from the released T1-L4-HOLD,
+it cannot establish an improvement to the integration method. Run the corrected
+single-scene screen before the frozen 20-scene x 3-seed paired evaluation.
 
-- [Method, frozen protocol, and launch instructions](notes/v2/a4-32-hold/README.md)
-- [Screen results and interpretation](notes/v2/a4-32-hold/RESULTS.md)
-- [Structured screen evidence](notes/v2/a4-32-hold/evidence/single-scene-summary.json)
-- [Frozen 20-scene x 3-seed plan](notes/v2/a4-32-hold/plan.json)
+- [Method, frozen protocol, and launch instructions](notes/v2/t1-l4-local-hold/README.md)
+- [Superseded screen and interpretation](notes/v2/t1-l4-local-hold/RESULTS.md)
+- [Superseded structured screen evidence](notes/v2/t1-l4-local-hold/evidence/single-scene-summary.json)
+- [Frozen 20-scene x 3-seed plan](notes/v2/t1-l4-local-hold/plan.json)
 
-The matched L40/BF16 20 x 3 evaluation is prepared but not yet completed, so
-A4-32 remains the recommended configuration until that paired result exists.
+The corrected matched evaluation is prepared but not yet completed. A4-32
+remains the recommended integration configuration until paired results exist.
 
 ## What this branch works on
 
