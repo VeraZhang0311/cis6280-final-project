@@ -1,0 +1,68 @@
+{
+  "schema": "t1-l4-local-hold-corrected-screen-v1",
+  "status": "completed_controlled_t4_screen",
+  "scope": {
+    "scene_seed": 100183,
+    "sample_seed": 3,
+    "episodes_per_group": 1,
+    "independent_confirmation": false,
+    "strict_historical_replay": false
+  },
+  "code": {
+    "branch": "emoo-a4-32-hold",
+    "implementation_commit": "1cf85741f2211ba9955a0295bd93f2cf73cb9068",
+    "screen_notebook_commit": "93950b685a9d05039fc2ab43826915ebf61320aa"
+  },
+  "evidence_root": "/content/drive/MyDrive/cis6280-final-project-v2/outputs/t1-l4-local-hold/20261123-233249",
+  "groups": {
+    "A4-32-T1-L4-HOLD": {
+      "peak_boxes": 4,
+      "final_boxes": 4,
+      "success": true,
+      "four_box_retained": true,
+      "mean_decision_ms": 186.63395641489433,
+      "p95_decision_ms": 238.45775895009352,
+      "decisions": 282,
+      "hold": {"latched_decisions": 5, "entries": 1, "exits": 0}
+    },
+    "A4-32-T1-L4-FIRST4-HOLD": {
+      "peak_boxes": 4,
+      "final_boxes": 4,
+      "success": true,
+      "four_box_retained": true,
+      "mean_decision_ms": 186.97829369366253,
+      "p95_decision_ms": 241.12970750003906,
+      "decisions": 284,
+      "hold": {"latched_decisions": 7, "entries": 1, "exits": 0}
+    },
+    "A4-32-T1-L4-LOCAL-HOLD": {
+      "peak_boxes": 4,
+      "final_boxes": 4,
+      "success": true,
+      "four_box_retained": true,
+      "mean_decision_ms": 185.8206700880343,
+      "p95_decision_ms": 243.00778229999195,
+      "decisions": 284,
+      "hold": {
+        "latched_decisions": 7,
+        "entries": 1,
+        "exits": 0,
+        "safe_candidate_decisions": 0,
+        "safe_candidate_rate": 0.0,
+        "fallback_decisions": 7,
+        "selected_wrist_rms_mean": 0.0699
+      }
+    }
+  },
+  "paired_differences": {
+    "FIRST4-HOLD_minus_HOLD": {"peak_boxes": 0, "final_boxes": 0, "success": 0, "ci95": null},
+    "LOCAL-HOLD_minus_HOLD": {"peak_boxes": 0, "final_boxes": 0, "success": 0, "ci95": null},
+    "LOCAL-HOLD_minus_FIRST4-HOLD": {"peak_boxes": 0, "final_boxes": 0, "success": 0, "ci95": null}
+  },
+  "interpretation": {
+    "supported": "The corrected variants share the released T1-L4 pre-latch selector and all retained four boxes in this T4 screen.",
+    "not_supported": "Neither FIRST4-HOLD nor LOCAL-HOLD improved official outcomes; no safe candidate existed, so wrist-RMS ranking was never used.",
+    "hardware_limit": "The T4 trajectory is not a strict replay of the historical L40/BF16 episode.",
+    "recommendation": "Keep the selector frozen and run the matched 20-scene x 3-seed L40/BF16 evaluation."
+  }
+}

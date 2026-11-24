@@ -1,9 +1,10 @@
 # T1-L4 HOLD optimization experiment
 
-Status: corrected implementation and static checks complete; the corrected
-single-scene screen and matched 20-scene x 3-seed L40 evaluation have not run.
-The previous screen is superseded because it optimized a different pre-latch
-selector. The pending cluster receipt is recorded in [launch.json](launch.json).
+Status: corrected implementation, CI, and the controlled T4 single-scene screen
+are complete. The matched 20-scene x 3-seed L40/BF16 evaluation has not run.
+The previous A4-based screen is superseded because it optimized a different
+pre-latch selector. See [RESULTS.md](RESULTS.md) and the corrected structured
+screen evidence. The pending cluster receipt is recorded in [launch.json](launch.json).
 
 Branch: `emoo-a4-32-hold`. Base: `tianzi/v2.0-integration` at
 `a8a12a4a34afa5306464763381da2dc0011b8a47`.
@@ -22,6 +23,11 @@ The corrected Colab screen is preselected as scene `100183`, sample seed `3`.
 The released integration audit recorded 64 latched decisions, peak four, final
 two, and no success for this pair. It is therefore a high-information failure
 case for comparing post-latch selectors without changing pre-latch behavior.
+On the T4 screen all three groups reached peak four, finished with four, and
+succeeded. LOCAL-HOLD found no safe candidate in any of seven latched decisions,
+so it was behaviorally identical to FIRST4-HOLD and showed no outcome gain over
+the released HOLD. The T4 trajectory is not a strict replay of the historical
+L40/BF16 trajectory.
 
 Post-latch groups differ only as follows:
 

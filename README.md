@@ -11,12 +11,12 @@ selector changes: late-four mean, first-four mean, or local safety plus wrist
 motion with a first-four-mean fallback.
 
 The earlier A4-based LOCAL-HOLD screen is retained only as superseded debugging
-evidence. Because its pre-latch selector differed from the released T1-L4-HOLD,
-it cannot establish an improvement to the integration method. Run the corrected
-single-scene screen before the frozen 20-scene x 3-seed paired evaluation.
+evidence. The corrected T1-L4 screen on scene `100183`, seed `3` produced success
+for all three groups and no paired outcome difference. LOCAL-HOLD used its
+FIRST4 fallback in all seven latched decisions because no safe candidate existed.
 
 - [Method, frozen protocol, and launch instructions](notes/v2/t1-l4-local-hold/README.md)
-- [Superseded screen and interpretation](notes/v2/t1-l4-local-hold/RESULTS.md)
+- [Corrected screen results and interpretation](notes/v2/t1-l4-local-hold/RESULTS.md)
 - [Superseded structured screen evidence](notes/v2/t1-l4-local-hold/evidence/single-scene-summary.json)
 - [Frozen 20-scene x 3-seed plan](notes/v2/t1-l4-local-hold/plan.json)
 
